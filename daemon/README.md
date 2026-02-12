@@ -1,26 +1,49 @@
-# Daemon Setup — The Org's Heartbeat
+# Daemon — The Org's Heartbeat
 
-This directory enables the org to run autonomously without CEO prompting.
+## What This Is
 
-## How It Works
-A cron job runs `run-cycle.sh` every 4 hours. The script invokes Claude Code with the CTO cycle prompt. The CTO-Agent reads org state, does the highest-priority work, updates all artifacts, and logs the cycle.
+The org runs autonomously in the background. Every 4 hours, a cron job on your machine fires `run-cycle.sh`, which starts a Claude Code session. That session *is* the CTO — it reads STATE.md, picks up the highest-priority work, executes it, commits changes, updates all org docs, and logs what it did. Then the session ends. 4 hours later, it happens again.
 
-## One-Time Setup (macOS)
+**You wake up, open the repo, and work got done overnight.** Commits are there. STATE.md is updated. CYCLE-LOG.md shows what happened.
 
-### Option 1: crontab (simplest)
-```bash
-# Open crontab editor
-crontab -e
+## Where It Runs
 
-# Add this line (runs every 4 hours):
-0 */4 * * * cd /Users/santiagoluna/Desktop/claude/agentic-org && ./daemon/run-cycle.sh >> /tmp/org-daemon.log 2>&1
+The daemon needs a machine that's on and connected to the internet.
 
-# Save and exit
+### Option A: Your MacBook (Start Here)
+- Simplest. Use launchd (below). The org runs while your laptop is open.
+- **Limitation**: Org sleeps when your laptop sleeps. Fine for getting started.
+
+### Option B: Always-On Machine (Recommended for Production)
+- A Mac Mini, Linux server, or cloud VM that's always running.
+- Same setup as below, but on a machine that never sleeps.
+- The org is truly alive 24/7.
+
+### Option C: GitHub Actions (Future)
+- Push this repo to GitHub. Use a scheduled workflow to run the daemon in CI.
+- Requires: GitHub repo, Claude Code installed in the workflow, API key as a secret.
+- No dependency on any physical machine. Cloud-native.
+- We'll set this up when we have a product and a GitHub repo.
+
+## Who Commits?
+
+When the daemon runs, Claude Code commits under your git identity (the one configured on the machine). Every autonomous commit follows this format:
+
+```
+Autonomous cycle #47: implemented login endpoint
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
 ```
 
-### Option 2: launchd (recommended for macOS — survives reboots)
+You can always tell which commits were autonomous (they say "Autonomous cycle #N") vs. interactive (your normal session commits).
+
+## One-Time Setup
+
+### Step 1: Set up launchd (runs every 4 hours, survives reboots)
+
+Copy and paste this entire block into your terminal:
+
 ```bash
-# Create the plist file
 cat > ~/Library/LaunchAgents/com.agentic-org.daemon.plist << 'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -30,6 +53,7 @@ cat > ~/Library/LaunchAgents/com.agentic-org.daemon.plist << 'EOF'
     <string>com.agentic-org.daemon</string>
     <key>ProgramArguments</key>
     <array>
+        <string>/bin/bash</string>
         <string>/Users/santiagoluna/Desktop/claude/agentic-org/daemon/run-cycle.sh</string>
     </array>
     <key>StartInterval</key>
@@ -40,36 +64,77 @@ cat > ~/Library/LaunchAgents/com.agentic-org.daemon.plist << 'EOF'
     <string>/tmp/org-daemon.log</string>
     <key>StandardErrorPath</key>
     <string>/tmp/org-daemon-error.log</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
+    </dict>
 </dict>
 </plist>
 EOF
 
-# Load it
 launchctl load ~/Library/LaunchAgents/com.agentic-org.daemon.plist
 ```
 
-### Verify It's Running
+### Step 2: Verify
+
 ```bash
-# Check launchd
+# Check it's registered
 launchctl list | grep agentic-org
 
-# Check cron
-crontab -l
-
-# Check logs
+# Watch logs (Ctrl+C to stop)
 tail -f /tmp/org-daemon.log
 ```
 
-### Changing Frequency
-- **Every 2 hours** (shipping mode): Change `StartInterval` to `7200` or cron to `0 */2 * * *`
-- **Every 8 hours** (planning mode): Change `StartInterval` to `28800` or cron to `0 */8 * * *`
-- **Pause the daemon**: `launchctl unload ~/Library/LaunchAgents/com.agentic-org.daemon.plist`
+### Step 3: Run the first cycle manually to test
 
-### Manual Trigger
-Run a cycle manually anytime:
 ```bash
 cd /Users/santiagoluna/Desktop/claude/agentic-org && ./daemon/run-cycle.sh
 ```
 
-## Cycle Logs
-Check `daemon/CYCLE-LOG.md` for a summary of every autonomous cycle.
+Then check `daemon/CYCLE-LOG.md` and `git log` to see the results.
+
+## Control
+
+```bash
+# Pause the daemon
+launchctl unload ~/Library/LaunchAgents/com.agentic-org.daemon.plist
+
+# Resume the daemon
+launchctl load ~/Library/LaunchAgents/com.agentic-org.daemon.plist
+
+# Run a cycle right now (doesn't affect the schedule)
+cd /Users/santiagoluna/Desktop/claude/agentic-org && ./daemon/run-cycle.sh
+
+# Change frequency to every 2 hours (shipping mode)
+# Edit the plist: change <integer>14400</integer> to <integer>7200</integer>
+# Then: launchctl unload ... && launchctl load ...
+
+# Check recent cycle output
+cat /tmp/org-daemon.log | tail -50
+```
+
+## What Happens Each Cycle
+
+```
+cron fires (every 4 hours)
+  → run-cycle.sh starts
+    → claude -p with CTO cycle prompt
+      → CTO reads STATE.md, DIRECTIVES.md, BACKLOG.md, CEO-INBOX.md
+      → Picks highest-priority backlog item within Autonomous Zone
+      → Executes the work (writes code, updates docs, etc.)
+      → Updates STATE.md (active work, current cycle, last activity)
+      → Updates BRIEFING.md if meaningful progress
+      → Flags CEO-INBOX.md if CEO input needed
+      → Commits everything: "Autonomous cycle #N: [summary]"
+      → Appends to CYCLE-LOG.md
+    → Session ends
+  → run-cycle.sh logs duration
+```
+
+## Logs
+
+- **Cycle log** (what the org did): `daemon/CYCLE-LOG.md`
+- **Raw output** (full session transcript): `/tmp/cto-cycle-[N].log`
+- **Daemon system log**: `/tmp/org-daemon.log`
+- **Daemon errors**: `/tmp/org-daemon-error.log`
