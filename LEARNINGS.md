@@ -25,5 +25,13 @@
 - **Action taken**: Every foundational doc includes an update protocol footer. PB-002 and PB-007 codify the update pattern.
 - **Tags**: architecture, process
 
+### LRN-002: Org structure needs explicit interfaces, not just internal coherence
+- **Date**: 2026-02-11
+- **Source**: DEC-002 — Building CEO↔Org and Org↔Product interfaces
+- **Insight**: A self-referential org that only talks to itself is useless. It needs two clear boundary interfaces: one upward to the CEO (visibility + steering) and one downward to the product (execution). Without these, the CEO can't see what's happening, and agents can't translate plans into code.
+- **Evidence**: After bootstrap, the org had 9 interlocking docs but no defined way for the CEO to give persistent direction (directives get lost in chat) or for agents to know how code changes should flow (branch strategy, testing, review). The CEO explicitly asked for these interfaces.
+- **Action taken**: Created DIRECTIVES.md, BRIEFING.md, WORKBENCH.md. Added PB-010 (Briefing), PB-011 (Processing Directives), PB-012 (Product Execution). Updated PB-001 to include new docs in session startup.
+- **Tags**: architecture, process, interfaces
+
 ---
 *Update protocol: Add entries after completing any work item, resolving any incident, or running any experiment. Entries are append-only — never delete a learning, even if it's later superseded (add a note instead). Tag entries for searchability. Review during PB-003 (Weekly Planning).*

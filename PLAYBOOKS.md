@@ -9,11 +9,13 @@
 **When**: Any agent begins a new work session.
 **Steps**:
 1. Read `STATE.md` — understand current phase, active work, blockers, and context
-2. Read `BACKLOG.md` — understand what's prioritized
-3. Read `ROSTER.md` — understand who's available and capability gaps
-4. Check `LEARNINGS.md` — see if past experience is relevant to current task
-5. If picking up existing work, read the relevant decision(s) in `DECISIONS.md`
-6. Begin work. Update `STATE.md` active work table.
+2. Read `DIRECTIVES.md` — understand active CEO constraints and priorities
+3. Read `BACKLOG.md` — understand what's prioritized
+4. Read `ROSTER.md` — understand who's available and capability gaps
+5. Check `LEARNINGS.md` — see if past experience is relevant to current task
+6. If picking up existing work, read the relevant decision(s) in `DECISIONS.md`
+7. If doing product work, read `WORKBENCH.md` and `product/CLAUDE.md`
+8. Begin work. Update `STATE.md` active work table.
 
 ## PB-002: Completing Work
 **When**: Any agent finishes a task or work item.
@@ -96,8 +98,40 @@
 5. Update capability map — identify if this creates a new gap
 6. If the gap is critical, initiate PB-005 (Hiring)
 
-## PB-010: Quarterly Self-Audit
-**When**: Every ~12 weeks (or when CTO-Agent suspects systemic drift).
+## PB-010: CEO Briefing
+**When**: After every meaningful work session, or at minimum weekly.
+**Steps**:
+1. Open `BRIEFING.md`
+2. Move the current "Latest Briefing" TL;DR to the archive table
+3. Write a new briefing covering: what happened, decisions made, decisions needed from CEO, risks, key numbers
+4. Keep it scannable — the CEO should understand the state in 60 seconds
+5. If decisions are needed from CEO, make them concrete with options
+
+## PB-011: Processing a CEO Directive
+**When**: CEO issues a new directive (directly or via DIRECTIVES.md).
+**Steps**:
+1. Record the directive in `DIRECTIVES.md` with full format
+2. Assess impact on current BACKLOG.md priorities — re-prioritize if needed
+3. Update `STATE.md` to reflect the new constraint or priority
+4. If the directive requires a decision, log it in `DECISIONS.md`
+5. Acknowledge to CEO: confirm understanding and planned response
+
+## PB-012: Product Execution (Making Code Changes)
+**When**: An agent is implementing a backlog item that involves product code.
+**Steps**:
+1. Read `WORKBENCH.md` — understand the execution protocol
+2. Read `product/CLAUDE.md` — understand tech stack and conventions
+3. Create branch named `[BACKLOG-ID]/short-description`
+4. Implement the change following product conventions
+5. Run tests — all must pass (existing + new)
+6. Run quality checks (lint, type check, build)
+7. Complete review checklist (in WORKBENCH.md)
+8. Commit with descriptive message referencing backlog item
+9. Merge to main
+10. Follow PB-002 (Completing Work) for org artifact updates
+
+## PB-013: Quarterly Self-Audit
+**When**: Every ~12 weeks (or when CTO-Agent suspects systemic drift). Covers all artifacts including DIRECTIVES.md, BRIEFING.md, and WORKBENCH.md.
 **Steps**:
 1. Read every foundational document (all 9) end-to-end
 2. Verify cross-references still hold (no broken links, no orphaned concepts)

@@ -5,12 +5,12 @@
 > Last updated: 2026-02-11
 
 ## Phase
-`PLANNING` — Org structure established. Awaiting CEO product direction.
+`PLANNING` — Org infrastructure complete. Awaiting CEO product direction.
 
 Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → `SHIPPING` → `OPERATING`
 
 ## Current Focus
-Org bootstrap complete. Ready for CEO to set product direction and priorities.
+All org infrastructure built — including CEO↔Org and Org↔Product interfaces. Ready for CEO to set product direction.
 
 ## Active Work
 | ID | Description | Owner | Status | Started |
@@ -21,13 +21,17 @@ Org bootstrap complete. Ready for CEO to set product direction and priorities.
 None.
 
 ## Key Context
-- Bootstrap complete: all 9 foundational artifacts created and verified
+- Org has 12 artifacts: 9 foundational + DIRECTIVES.md, BRIEFING.md, WORKBENCH.md
+- CEO↔Org interface: DIRECTIVES.md (CEO→Org), BRIEFING.md + STATE.md (Org→CEO)
+- Org↔Product interface: WORKBENCH.md defines execution protocol, product/ dir created on product kickoff
+- 13 playbooks (PB-001 through PB-013) cover all operational patterns
+- DIR-001 active: complete org infrastructure before product work
 - No product direction set yet — awaiting CEO strategic input
-- No specialist agents hired yet — CTO-Agent operating solo
-- No codebase exists yet — repo contains only org artifacts
+- CTO-Agent operating solo, no specialists
 
 ## Recent Decisions
 - DEC-001: Bootstrap org with self-referential knowledge architecture (2026-02-11)
+- DEC-002: Build two explicit interfaces — CEO↔Org and Org↔Product (2026-02-11)
 
 ## Upcoming
 - CEO to set product direction and initial priorities
@@ -40,7 +44,7 @@ None.
 | Delivery | N/A | No product work started |
 | Quality | N/A | No product work started |
 | Team | Minimal | CTO-Agent only, no specialists |
-| Knowledge | Established | All foundational docs created, verified, cross-referenced |
+| Knowledge | Strong | 12 artifacts, 13 playbooks, all cross-referenced |
 
 ---
 *Update protocol: When you change this file, update the "Last updated" timestamp and add context to the relevant section. Keep this file under 100 lines — it's a dashboard, not a journal.*

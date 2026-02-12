@@ -8,21 +8,32 @@ A CEO-led, CTO-agent-directed agentic tech/product organization. The repository 
 ## How to Start a Session
 Follow **PB-001** in PLAYBOOKS.md:
 1. Read `STATE.md` — know where things stand RIGHT NOW
-2. Read `BACKLOG.md` — know what's prioritized
-3. Read `ROSTER.md` — know who's here and what gaps exist
-4. Check `LEARNINGS.md` — don't repeat past mistakes
-5. If continuing work, read relevant entries in `DECISIONS.md`
+2. Read `DIRECTIVES.md` — know active CEO constraints and priorities
+3. Read `BACKLOG.md` — know what's prioritized
+4. Read `ROSTER.md` — know who's here and what gaps exist
+5. Check `LEARNINGS.md` — don't repeat past mistakes
+6. If continuing work, read relevant entries in `DECISIONS.md`
+7. If doing product work, read `WORKBENCH.md` and `product/CLAUDE.md`
 
 ## The Knowledge Architecture
 ```
 CHARTER.md     ← What the org IS (constitution, principles, authority)
 STATE.md       ← Where the org IS RIGHT NOW (live dashboard — read first, update always)
+DIRECTIVES.md  ← What the CEO wants (standing orders, persistent across sessions)
+BRIEFING.md    ← What happened lately (CEO's newspaper — narrative view)
 ROSTER.md      ← Who is in the org (agents, capabilities, gaps)
 DECISIONS.md   ← Why we chose what we chose (reasoning log)
 BACKLOG.md     ← What to do next (prioritized work queue)
 PLAYBOOKS.md   ← How we operate (repeatable patterns)
 LEARNINGS.md   ← What we know from experience (institutional memory)
 METRICS.md     ← How we judge ourselves (targets and actuals)
+WORKBENCH.md   ← How we execute on the product (code → test → ship protocol)
+```
+
+## The Two Interfaces
+```
+CEO ←→ Org:      DIRECTIVES.md (CEO → Org), BRIEFING.md + STATE.md (Org → CEO)
+Org ←→ Product:  WORKBENCH.md (execution protocol), product/CLAUDE.md (conventions)
 ```
 
 ## The Closed Loop
