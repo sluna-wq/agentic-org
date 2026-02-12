@@ -72,5 +72,17 @@
 - **Outcome**: Pending — will evaluate when research docs are produced and talent plan is proposed
 - **Learnings**: TBD
 
+### DEC-005: Expand CTO autonomy, GitHub CI, proactive CTO backlog
+- **Date**: 2026-02-11
+- **Decider**: CEO (directed to CTO-Agent)
+- **Context**: CEO flagged three issues: (1) daemon cycle prompt was too cautious — CTO should have full authority within the repo, (2) no GitHub remote — work should be continuously pushed, (3) CTO should proactively identify pre-product responsibilities beyond research.
+- **Options considered**:
+  1. Keep conservative daemon constraints, set up GitHub later — less risk but org stays timid
+  2. Full autonomy with do-no-harm principle, GitHub now, proactive CTO backlog — matches CEO intent and gets the org moving
+- **Decision**: Option 2 — expanded CTO Autonomous Zone (full repo authority with do-no-harm principle), public GitHub repo with auto-push, 5 new proactive backlog items (standards, tooling, market research, product vision, stress test)
+- **Rationale**: CEO explicitly said "full permissions to do anything within the repo" and "first principle is do no harm." This is the right balance — autonomy with judgment. GitHub CI ensures work is backed up and visible. Proactive backlog ensures the CTO thinks like a real CTO/CPO, not just a task executor.
+- **Outcome**: Pending — will evaluate after first autonomous cycle with expanded permissions
+- **Learnings**: TBD
+
 ---
 *Update protocol: Number decisions sequentially. Update outcomes retroactively. Link decisions from STATE.md when they affect current context. Reference decisions from CHARTER.md changelog when they modify governance.*

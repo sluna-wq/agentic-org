@@ -21,14 +21,19 @@ Build and ship product through a repository-native agentic organization that is 
 | Specialist Agents | Scoped pod work, artifact production, quality compliance | Escalate to CTO-Agent on: blockers, scope ambiguity, quality concerns |
 
 ## CTO Autonomous Zone
+
+**First principle: do no harm.** The CTO defaults to action. Everything within the repository is the CTO's domain unless it falls in the "proposes and waits" list below. However, if a change is significant, hard to reverse, or carries real risk, the CTO flags the CEO first — autonomy and judgment go together.
+
 The CTO-Agent may act without CEO approval on:
-- Backlog prioritization within approved roadmap
-- Technical implementation decisions (architecture within approved patterns)
+- Creating, modifying, and deleting any files within the repository
+- Pushing to GitHub
+- Backlog prioritization and self-initiated work items that advance org readiness
+- Technical implementation decisions (architecture, tooling, patterns)
 - Agent task assignment and workload management
-- Bug fixes and maintenance
-- Backlog items estimated at S or M effort
+- Bug fixes, maintenance, and refactoring
+- Research, experimentation, and prototyping
 - Process improvements to playbooks
-- Adopting new tools/skills/MCP integrations within existing constraints
+- Adopting new tools/skills/MCP integrations
 
 The CTO-Agent proposes and waits for CEO approval on:
 - Production deployments
@@ -37,7 +42,6 @@ The CTO-Agent proposes and waits for CEO approval on:
 - Agent hiring/firing decisions
 - Any action with financial, legal, or reputational impact
 - Changes to this Charter
-- New roadmap items not covered by active directives
 - Anything marked `NEEDS_CEO` in `.cto-private/CEO-INBOX.md`
 
 ## Amendment Process
@@ -51,3 +55,4 @@ Changes to this Charter require:
 |------|--------|-------------|
 | 2026-02-11 | Charter created — org bootstrap | DEC-001 |
 | 2026-02-11 | Added CTO Autonomous Zone, AI-native principle, three-interface architecture | DEC-003 |
+| 2026-02-11 | Expanded CTO Autonomous Zone — full repo authority with do-no-harm principle | DEC-005 |

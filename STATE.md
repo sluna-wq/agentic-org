@@ -16,25 +16,23 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → `SHIPPING` → `OPERATING`
 - **Focus**: CEO direction received — seeding backlog and prepping for autonomous research
 
 ## Current Focus
-CEO directed pre-product work: build AI agent expertise, survey the landscape, develop organizational knowledge. Three backlog items queued (BL-001, BL-002, BL-003). Daemon will begin executing on next cycle.
+Pre-product CTO work: AI agent expertise, technical standards, market research, product vision drafting. 8 backlog items queued (BL-001 through BL-008). GitHub repo set up for continuous push. Daemon ready.
 
 ## Active Work
 | ID | Description | Owner | Phase | Last Activity | ETA | Blocker? |
 |----|-------------|-------|-------|---------------|-----|----------|
 | BL-001 | AI agent landscape research | CTO-Agent | Claimed | 2026-02-11 | Next daemon cycle | No |
-| BL-002 | Claude Code & Agent SDK deep dive | CTO-Agent | Claimed | 2026-02-11 | After BL-001 or parallel | No |
-| BL-003 | Org talent & capability plan | CTO-Agent | Pending | — | After BL-001, BL-002 | Depends on BL-001, BL-002 |
+| BL-002 | Claude Code & Agent SDK deep dive | CTO-Agent | Claimed | 2026-02-11 | Next daemon cycle | No |
+| BL-004 | Technical standards & conventions | CTO-Agent | Claimed | 2026-02-11 | After BL-001/002 | No |
 
 ## Blockers
 None.
 
 ## Key Context
-- CEO-GUIDE.md created — CEO's quick reference for all commands and interaction patterns
-- DIR-001 active: complete org infra before product work
-- DIR-002 active: build AI agent expertise before product work
-- Three interfaces operational: Private (CEO↔CTO), Public (CEO↔Org), Execution (Org↔Product)
-- Skills available: `/cto` (check-in), `/status` (dashboard), `/sync` (weekly sync)
-- Daemon ready in `daemon/` — CEO to complete one-time setup (see daemon/README.md)
+- GitHub repo live — continuous push enabled, daemon auto-pushes after each cycle
+- CTO Autonomous Zone expanded — full repo authority with do-no-harm principle (DEC-005)
+- 8 backlog items: research (BL-001, 002), standards (BL-004, 005), market/product (BL-006, 007), talent (BL-003), stress test (BL-008)
+- DIR-001 + DIR-002 active
 - CTO-Agent operating solo, no specialists
 
 ## Recent Decisions
@@ -42,11 +40,13 @@ None.
 - DEC-002: Build two explicit interfaces — CEO↔Org and Org↔Product (2026-02-11)
 - DEC-003: Redesign for autonomy, privacy, AI-native operation (2026-02-11)
 - DEC-004: Prioritize AI agent expertise building as pre-product foundation (2026-02-11)
+- DEC-005: Expand CTO autonomy, GitHub CI, proactive CTO backlog (2026-02-11)
 
 ## Upcoming
-- Daemon executes BL-001 and BL-002 (AI agent research)
-- CEO to set up daemon (one-time launchd setup — see daemon/README.md)
-- BL-003: Talent & capability plan (after research completes)
+- Daemon executes BL-001 and BL-002 (AI agent research) — first cycle
+- BL-004: Technical standards & conventions
+- BL-006: Market landscape research
+- BL-007: Product vision drafting (CEO review)
 - First weekly sync (`/sync`)
 
 ## Health

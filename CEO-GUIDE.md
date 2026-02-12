@@ -50,6 +50,13 @@ Type `/sync`. The CTO will prep a structured review: roadmap status, decisions m
 | `.cto-private/CEO-INBOX.md` | CTO's flags and notifications for you |
 | `daemon/CYCLE-LOG.md` | Log of every autonomous cycle |
 
+## GitHub
+
+The org is on GitHub as a public repo. Every commit gets pushed automatically — both from interactive sessions and daemon cycles.
+
+- **View online**: Check the repo on GitHub to see commits, files, and history from anywhere
+- **Clone elsewhere**: Anyone can clone the repo to run their own instance or review the org structure
+
 ## The Daemon (Background Ops)
 
 The org runs autonomously every 4 hours via `launchd`. No terminal window needed. It picks up the highest-priority backlog item, does the work, commits, and logs what it did. You see the results next time you check in.

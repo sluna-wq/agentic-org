@@ -36,3 +36,8 @@ END_TIME=$(date +%s)
 DURATION=$(( (END_TIME - START_TIME) / 60 ))
 
 echo "[$TIMESTAMP] Cycle #$CYCLE_NUM completed in ${DURATION}m"
+
+# Push to GitHub
+echo "[$TIMESTAMP] Pushing to GitHub..."
+cd "$ORG_DIR"
+git push 2>&1 || echo "[$TIMESTAMP] Warning: git push failed (no remote or auth issue)"
