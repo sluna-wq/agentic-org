@@ -2,170 +2,126 @@
 
 ## What This Is
 
-The org runs autonomously in the background. Every 4 hours, a cron job on your machine fires `run-cycle.sh`, which starts a Claude Code session. That session *is* the CTO — it reads STATE.md, picks up the highest-priority work, executes it, commits changes, updates all org docs, and logs what it did. Then the session ends. 4 hours later, it happens again.
+The org runs autonomously in the cloud. Every 4 hours, GitHub Actions fires a workflow that runs the CTO-Agent via the Claude Agent SDK. The agent reads STATE.md, picks up the highest-priority work, executes it, commits changes, updates all org docs, and logs what it did. Then the session ends. 4 hours later, it happens again.
 
-**You wake up, open the repo, and work got done overnight.** Commits are there. STATE.md is updated. CYCLE-LOG.md shows what happened.
+**You wake up, open the repo, and work got done overnight.** Commits are there. STATE.md is updated. CYCLE-LOG.md shows what happened. `daemon/health.json` tells you if the org is alive.
 
-## Where It Runs
-
-The daemon needs a machine that's on and connected to the internet.
-
-### Option A: Your MacBook (Start Here)
-- Simplest. Use launchd (below). The org runs while your laptop is open.
-- **Limitation**: Org sleeps when your laptop sleeps. Fine for getting started.
-
-### Option B: Always-On Machine (Recommended for Production)
-- A Mac Mini, Linux server, or cloud VM that's always running.
-- Same setup as below, but on a machine that never sleeps.
-- The org is truly alive 24/7.
-
-### Option C: GitHub Actions (Future)
-- Push this repo to GitHub. Use a scheduled workflow to run the daemon in CI.
-- Requires: GitHub repo, Claude Code installed in the workflow, API key as a secret.
-- No dependency on any physical machine. Cloud-native.
-- We'll set this up when we have a product and a GitHub repo.
-
-## Who Commits?
-
-When the daemon runs, Claude Code commits under your git identity (the one configured on the machine). Every autonomous commit follows this format:
+## Architecture (DEC-008)
 
 ```
-Autonomous cycle #47: implemented login endpoint
+Two doors into the same org:
 
-Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+CEO (interactive)                    Daemon (autonomous)
+┌────────────────────┐              ┌──────────────────────────┐
+│ Claude Code CLI    │              │ GitHub Actions (cron)    │
+│ on your machine    │              │ every 4 hours            │
+│                    │              │   → SDK harness (TS)     │
+│ You ↔ CTO-Agent   │              │     → Claude Agent SDK   │
+│ Conversation mode  │              │       → Anthropic API    │
+│                    │              │     → git commit + push  │
+└────────┬───────────┘              └────────────┬─────────────┘
+         │                                       │
+         └───────────── Git Repo ────────────────┘
+                    (the org lives here)
 ```
 
-You can always tell which commits were autonomous (they say "Autonomous cycle #N") vs. interactive (your normal session commits).
-
-## One-Time Setup
-
-### Step 1: Set up launchd (runs every 4 hours, survives reboots)
-
-Copy and paste this entire block into your terminal:
-
-```bash
-cat > ~/Library/LaunchAgents/com.agentic-org.daemon.plist << 'EOF'
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Label</key>
-    <string>com.agentic-org.daemon</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/bin/bash</string>
-        <string>/Users/santiagoluna/Desktop/claude/agentic-org/daemon/run-cycle.sh</string>
-    </array>
-    <key>StartInterval</key>
-    <integer>14400</integer>
-    <key>WorkingDirectory</key>
-    <string>/Users/santiagoluna/Desktop/claude/agentic-org</string>
-    <key>StandardOutPath</key>
-    <string>/tmp/org-daemon.log</string>
-    <key>StandardErrorPath</key>
-    <string>/tmp/org-daemon-error.log</string>
-    <key>EnvironmentVariables</key>
-    <dict>
-        <key>PATH</key>
-        <string>/usr/local/bin:/usr/bin:/bin:/opt/homebrew/bin</string>
-    </dict>
-</dict>
-</plist>
-EOF
-
-launchctl load ~/Library/LaunchAgents/com.agentic-org.daemon.plist
-```
-
-### Step 2: Verify
-
-```bash
-# Check it's registered
-launchctl list | grep agentic-org
-
-# Watch logs (Ctrl+C to stop)
-tail -f /tmp/org-daemon.log
-```
-
-### Step 3: Run the first cycle manually to test
-
-```bash
-cd /Users/santiagoluna/Desktop/claude/agentic-org && ./daemon/run-cycle.sh
-```
-
-Then check `daemon/CYCLE-LOG.md` and `git log` to see the results.
-
-## Control
-
-```bash
-# Pause the daemon
-launchctl unload ~/Library/LaunchAgents/com.agentic-org.daemon.plist
-
-# Resume the daemon
-launchctl load ~/Library/LaunchAgents/com.agentic-org.daemon.plist
-
-# Run a cycle right now (doesn't affect the schedule)
-cd /Users/santiagoluna/Desktop/claude/agentic-org && ./daemon/run-cycle.sh
-
-# Change frequency to every 2 hours (shipping mode)
-# Edit the plist: change <integer>14400</integer> to <integer>7200</integer>
-# Then: launchctl unload ... && launchctl load ...
-
-# Check recent cycle output
-cat /tmp/org-daemon.log | tail -50
-```
+**The org is the repo.** Both doors read and write the same files. The repo is the only persistent thing. Everything else — the CLI session, the GitHub runner, the API call — is temporary.
 
 ## What Happens Each Cycle
 
 ```
-cron fires (every 4 hours)
-  → run-cycle.sh starts
-    → claude -p with CTO cycle prompt
-      → CTO reads STATE.md, DIRECTIVES.md, BACKLOG.md, CEO-INBOX.md
-      → Picks highest-priority backlog item within Autonomous Zone
-      → Executes the work (writes code, updates docs, etc.)
-      → Updates STATE.md (active work, current cycle, last activity)
-      → Updates BRIEFING.md if meaningful progress
-      → Flags CEO-INBOX.md if CEO input needed
-      → Commits everything: "Autonomous cycle #N: [summary]"
-      → Appends to CYCLE-LOG.md
-    → Session ends
-  → run-cycle.sh logs duration
+GitHub Actions cron fires (every 4 hours at :17)
+  → Ubuntu runner spins up
+    → Checks out repo
+    → Installs Claude Agent SDK
+    → Runs daemon/harness/run-cycle.ts
+      → Harness reads cycle prompt, injects cycle context
+      → SDK creates agent session (calls Anthropic API)
+        → Agent reads STATE.md, DIRECTIVES.md, BACKLOG.md, CEO-INBOX.md
+        → Picks highest-priority item within Autonomous Zone
+        → Executes work (reads/writes files, runs commands)
+        → Updates STATE.md, BRIEFING.md, CYCLE-LOG.md
+        → Flags CEO-INBOX.md if CEO input needed
+        → Commits: "Autonomous cycle #N: [summary]"
+      → SDK returns structured result (cost, tokens, turns, duration)
+    → Harness writes health.json + cycle report
+    → Harness commits report artifacts
+    → Workflow pushes all commits to GitHub
+  → Runner is destroyed
 ```
 
-## Logs
+## Harness: What It Does
 
-- **Cycle log** (what the org did): `daemon/CYCLE-LOG.md`
-- **Raw output** (full session transcript): `/tmp/cto-cycle-[N].log`
-- **Daemon system log**: `/tmp/org-daemon.log`
-- **Daemon errors**: `/tmp/org-daemon-error.log`
+The SDK harness (`daemon/harness/run-cycle.ts`) wraps the Claude Agent SDK with:
 
-## Cloud Deployment (Future — BL-013)
+- **Cost tracking**: Every cycle reports API spend. Hard cap at $2/cycle.
+- **Turn limits**: Max 50 turns per cycle to prevent runaway sessions.
+- **Health file**: `daemon/health.json` — last cycle status, cost, duration, consecutive failures.
+- **Cycle reports**: `daemon/reports/cycle-N.json` — detailed per-cycle telemetry.
+- **Concurrency safety**: GitHub Actions `concurrency` group prevents overlapping cycles.
+- **Git ops**: Harness commits its own artifacts (report, health) after the agent commits its work.
 
-The org can run headless in the cloud, accessible from your phone.
+## Logs & Observability
 
-### Architecture
+| File | What | Updated |
+|------|------|---------|
+| `daemon/CYCLE-LOG.md` | Human-readable index of all cycles | Each cycle (by agent) |
+| `daemon/health.json` | Machine-readable liveness status | Each cycle (by harness) |
+| `daemon/reports/cycle-N.json` | Detailed telemetry per cycle | Each cycle (by harness) |
+| GitHub Actions logs | Full stdout/stderr of each run | Each cycle (by GitHub) |
+
+**How to tell if the org is alive**: Check `daemon/health.json`. If `last_timestamp` is more than 5 hours old, something is wrong. If `consecutive_failures` > 0, the daemon is running but cycles are failing.
+
+## CEO Setup (One-Time)
+
+### Step 1: Add secrets to GitHub repo
+
+Go to: `https://github.com/sluna-wq/agentic-org/settings/secrets/actions`
+
+Add two repository secrets:
+
+| Secret | Value | How to get it |
+|--------|-------|---------------|
+| `ANTHROPIC_API_KEY` | Your Anthropic API key | https://console.anthropic.com/settings/keys |
+| `ORG_PAT` | GitHub Personal Access Token (with `repo` scope) | https://github.com/settings/tokens → Generate new token (classic) → check `repo` scope |
+
+### Step 2: Verify
+
+After pushing this code and adding secrets:
+
+1. Go to: `https://github.com/sluna-wq/agentic-org/actions`
+2. Click "Autonomous CTO Cycle" workflow
+3. Click "Run workflow" → "Run workflow" (manual trigger)
+4. Watch the run. It should complete in ~10-20 minutes.
+5. Check: `daemon/CYCLE-LOG.md`, `daemon/health.json`, and `git log` for results.
+
+### Step 3: Done
+
+The workflow runs automatically every 4 hours. You don't need to do anything else. Check GitHub periodically to see what the org did.
+
+## Control
+
+```bash
+# Trigger a cycle manually (from GitHub web UI)
+# Go to Actions → Autonomous CTO Cycle → Run workflow
+
+# Or via CLI:
+gh workflow run daemon-cycle.yml
+
+# View recent runs:
+gh run list --workflow=daemon-cycle.yml
+
+# View a specific run's logs:
+gh run view <run-id> --log
 ```
-Cloud VM (AWS EC2 / DigitalOcean / GCP)
-├── Claude Code CLI installed
-├── Git repo cloned
-├── Cron or systemd timer triggers cycles
-└── Pushes commits → GitHub
 
-CEO interacts via:
-├── GitHub mobile app (read commits, files, inbox)
-├── GitHub web UI (full experience)
-└── SSH to VM for interactive sessions (optional)
-```
+## Cost Model
 
-### Cost Model
-- **Compute**: $5-10/month (small VM — daemon runs briefly every few hours)
-- **API credits**: The real cost. Determined by cycle frequency and work complexity.
+- **Compute**: Free (GitHub Actions free tier for public repos, ~$4/mo for private)
+- **API credits**: ~$0.50-2.00 per cycle (depends on work complexity). Budget cap: $2/cycle.
+- **At 6 cycles/day**: ~$3-12/day in API costs = ~$90-360/month
 - **Storage**: Negligible (text files + git)
 
-### What Changes
-- Same `run-cycle.sh`, same prompts, same org structure
-- Just runs on a machine that never sleeps
-- Git is the communication channel — daemon pushes, CEO reviews on GitHub
+## Legacy: Local Daemon (MacBook)
 
-### Implementation
-Tracked as BL-013 in BACKLOG.md. Will implement when the org needs 24/7 operation.
+The original `run-cycle.sh` and launchd setup still work for local development. The cloud deployment supersedes this for production use. See `run-cycle.sh` for the local version.

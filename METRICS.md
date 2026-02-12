@@ -26,6 +26,17 @@
 | Stale docs | Docs not updated in >2 weeks while work happened | 0 | N/A | — |
 | Decision coverage | % of material choices logged in DECISIONS.md | 100% | N/A | — |
 
+### Liveness (Is the org alive?)
+| Metric | Definition | Target | Current | Trend |
+|--------|-----------|--------|---------|-------|
+| Cycles per day | Successful daemon cycles in 24h | 6 | 0 | — |
+| Hours since last cycle | Time since last successful cycle completed | <5h | N/A | — |
+| Consecutive failures | Back-to-back cycles that errored | 0 | 0 | — |
+| Cycle cost (USD) | API spend per cycle | <$2.00 | N/A | — |
+| Cycle duration (min) | Wall-clock time per cycle | <30 | N/A | — |
+
+*Source: `daemon/health.json` (updated by harness after every cycle). `daemon/reports/cycle-N.json` for per-cycle detail.*
+
 ### Team
 | Metric | Definition | Target | Current | Trend |
 |--------|-----------|--------|---------|-------|
@@ -33,6 +44,7 @@
 | Agent utilization | % of agent capacity on priority work vs overhead | >70% | N/A | — |
 
 ## Measurement Cadence
+- **Per-cycle**: Liveness metrics updated automatically by daemon harness
 - **Weekly**: All metrics reviewed during PB-003 (Weekly Planning)
 - **Per-item**: Delivery and quality metrics updated per completed backlog item
 - **Per-incident**: Incident metrics updated in real-time

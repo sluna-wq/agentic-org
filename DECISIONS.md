@@ -108,5 +108,28 @@
 - **Outcome**: Pending — will evaluate after first CEO session under new conversation mode and first daemon cycle with enhanced logging
 - **Learnings**: TBD
 
+### DEC-008: Cloud daemon via GitHub Actions + Claude Agent SDK harness
+- **Date**: 2026-02-12
+- **Decider**: CEO + CTO-Agent (aligned in conversation)
+- **Context**: The org's daemon was running on the CEO's MacBook via launchd — but it had only ever run once, the PATH was broken so `claude` couldn't be found, and the org dies when the laptop sleeps. CEO directed: "put this in the cloud" and prioritized making the org genuinely 24/7 before all other work.
+- **Options considered**:
+  1. **GitHub Actions (scheduled workflow)** — zero infrastructure, YAML file in repo, ~$4/mo for private repo. Scheduling has 5-30min jitter and occasional dropped runs. Concurrency groups prevent overlap.
+  2. **Google Cloud Run Jobs** — free tier, exact scheduling, no timeout concern. Requires GCP account, Docker container, Artifact Registry, Cloud Scheduler. More reliable but more setup.
+  3. **Hetzner/DigitalOcean VM ($4/mo)** — cron is bulletproof, full control. You own the machine (OS updates, monitoring, recovery).
+  4. **AWS Lambda** — disqualified: 15-minute hard timeout, daemon cycles can take 5-15min with no margin.
+- **Decision**: GitHub Actions to start, with migration path to Cloud Run Jobs if reliability proves insufficient. Use Claude Agent SDK (not raw CLI) as the execution runtime for cost tracking, structured output, and observability. CLI remains the CEO's interactive interface.
+- **Rationale**: GitHub Actions is the fastest path to cloud with zero infrastructure. The repo is already on GitHub. Scheduling jitter (5-30min) is irrelevant for 4-hour cycles. The SDK over CLI gives us cost visibility, turn limits, budget caps, and structured health reporting — all things we need to measure whether the org is alive. Concurrency groups prevent the >4h overlap risk CEO flagged. The harness writes `health.json` and per-cycle reports for liveness monitoring.
+- **Architecture**:
+  - CEO ↔ CTO: Claude Code CLI (interactive, conversation mode)
+  - Org execution: Claude Agent SDK in GitHub Actions (headless, execution mode)
+  - Persistence: Git repo (the only thing that survives between sessions)
+  - Scheduler: GitHub Actions cron (every 4h) + manual dispatch
+  - Observability: `daemon/health.json`, `daemon/reports/cycle-N.json`, CYCLE-LOG.md
+- **Future considerations logged**:
+  - Parallelism: multiple SDK instances can run but need coordination (separate repos or dispatcher). Not needed yet.
+  - Concurrency overlap: GitHub Actions `concurrency` group queues (doesn't cancel) overlapping cycles.
+- **Outcome**: Pending — will evaluate after 48h of cloud cycles running
+- **Learnings**: TBD
+
 ---
 *Update protocol: Number decisions sequentially. Update outcomes retroactively. Link decisions from STATE.md when they affect current context. Reference decisions from CHARTER.md changelog when they modify governance.*
