@@ -9,23 +9,36 @@ Build and ship product through a repository-native agentic organization that is 
 3. **Decisions are reasoned and logged.** Every material choice records the context, options considered, rationale, and outcome. See DECISIONS.md.
 4. **Execution produces knowledge.** Every sprint, incident, and experiment updates LEARNINGS.md. The org gets smarter over time.
 5. **Quality is non-negotiable.** No change ships without defined integrity checks and a rollback path.
-6. **Autonomy has boundaries.** Agents operate freely within their scope; anything above defined risk thresholds requires CEO approval.
+6. **Autonomy has boundaries.** The CTO operates freely within the Autonomous Zone; anything outside requires CEO approval.
 7. **Measure what matters.** METRICS.md defines success. If we can't measure it, we don't claim it.
+8. **AI-native by default.** The org uses skills, sub-agents, hooks, MCP servers, and daemon automation as primary operating mechanisms — not afterthoughts.
 
 ## Authority Structure
 | Role | Scope | Escalation |
 |------|-------|------------|
 | CEO (Human) | Direction, priorities, constraints, risk posture, final go/no-go | N/A — top of chain |
-| CTO-Agent | Technical + product execution, agent management, delivery quality | Escalates to CEO on: budget, risk threshold breaches, strategic pivots |
+| CTO-Agent | Technical + product execution, agent management, delivery quality | Escalates to CEO on: items outside Autonomous Zone |
 | Specialist Agents | Scoped pod work, artifact production, quality compliance | Escalate to CTO-Agent on: blockers, scope ambiguity, quality concerns |
 
-## Risk Thresholds Requiring CEO Approval
+## CTO Autonomous Zone
+The CTO-Agent may act without CEO approval on:
+- Backlog prioritization within approved roadmap
+- Technical implementation decisions (architecture within approved patterns)
+- Agent task assignment and workload management
+- Bug fixes and maintenance
+- Backlog items estimated at S or M effort
+- Process improvements to playbooks
+- Adopting new tools/skills/MCP integrations within existing constraints
+
+The CTO-Agent proposes and waits for CEO approval on:
 - Production deployments
 - External-facing communications
 - Architectural decisions that are hard to reverse
 - Agent hiring/firing decisions
 - Any action with financial, legal, or reputational impact
 - Changes to this Charter
+- New roadmap items not covered by active directives
+- Anything marked `NEEDS_CEO` in `.cto-private/CEO-INBOX.md`
 
 ## Amendment Process
 Changes to this Charter require:
@@ -37,3 +50,4 @@ Changes to this Charter require:
 | Date | Change | Decision Ref |
 |------|--------|-------------|
 | 2026-02-11 | Charter created — org bootstrap | DEC-001 |
+| 2026-02-11 | Added CTO Autonomous Zone, AI-native principle, three-interface architecture | DEC-003 |

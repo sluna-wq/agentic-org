@@ -9,13 +9,17 @@
 **When**: Any agent begins a new work session.
 **Steps**:
 1. Read `STATE.md` — understand current phase, active work, blockers, and context
-2. Read `DIRECTIVES.md` — understand active CEO constraints and priorities
-3. Read `BACKLOG.md` — understand what's prioritized
-4. Read `ROSTER.md` — understand who's available and capability gaps
-5. Check `LEARNINGS.md` — see if past experience is relevant to current task
-6. If picking up existing work, read the relevant decision(s) in `DECISIONS.md`
-7. If doing product work, read `WORKBENCH.md` and `product/CLAUDE.md`
-8. Begin work. Update `STATE.md` active work table.
+2. **CTO-Agent only**: Read `.cto-private/CEO-INBOX.md` — check for CEO responses or clear acknowledged items
+3. **CTO-Agent only**: Read `.cto-private/THREAD.md` — check for new CEO messages
+4. Read `DIRECTIVES.md` — understand active CEO constraints and priorities
+5. Read `BACKLOG.md` — understand what's prioritized
+6. Read `ROSTER.md` — understand who's available and capability gaps
+7. Check `LEARNINGS.md` — see if past experience is relevant to current task
+8. If picking up existing work, read the relevant decision(s) in `DECISIONS.md`
+9. If doing product work, read `WORKBENCH.md` and `product/CLAUDE.md`
+10. **If interactive (CEO present)**: Greet CEO with status summary, ask what they need
+11. **If daemon-triggered**: Log cycle start to `daemon/CYCLE-LOG.md`, follow PB-014
+12. Begin work. Update `STATE.md` active work table.
 
 ## PB-002: Completing Work
 **When**: Any agent finishes a task or work item.
@@ -131,16 +135,66 @@
 10. Follow PB-002 (Completing Work) for org artifact updates
 
 ## PB-013: Quarterly Self-Audit
-**When**: Every ~12 weeks (or when CTO-Agent suspects systemic drift). Covers all artifacts including DIRECTIVES.md, BRIEFING.md, and WORKBENCH.md.
+**When**: Every ~12 weeks (or when CTO-Agent suspects systemic drift). Covers all artifacts, interfaces, skills, and daemon.
 **Steps**:
-1. Read every foundational document (all 9) end-to-end
+1. Read every document end-to-end (all org artifacts + .cto-private/ + daemon/)
 2. Verify cross-references still hold (no broken links, no orphaned concepts)
 3. Check STATE.md accuracy against actual repo state
 4. Review PLAYBOOKS.md against LEARNINGS.md — are playbooks reflecting what we've learned?
 5. Review METRICS.md — are we measuring what matters, or has the game changed?
 6. Check CLAUDE.md — does the bootstrap still orient agents correctly?
-7. Document findings and fixes in DECISIONS.md and LEARNINGS.md
-8. Update any stale artifacts
+7. Review skills in `.claude/skills/` — are they current and useful?
+8. Check daemon/CYCLE-LOG.md — is the daemon running reliably?
+9. Evaluate new AI tools/patterns — anything to adopt? (per AI-Native Principle 6)
+10. Document findings and fixes in DECISIONS.md and LEARNINGS.md
+11. Update any stale artifacts
+
+## PB-014: Autonomous CTO Cycle
+**When**: CTO-Agent is invoked by the daemon (cron/launchd).
+**Steps**:
+1. Run PB-001 (Session Startup) — read all state, directives, inbox
+2. Check `.cto-private/CEO-INBOX.md` for CEO responses — process first
+3. Check `.cto-private/THREAD.md` for new CEO messages — respond if needed
+4. Review BACKLOG.md — pick the highest-priority item within CTO Autonomous Zone
+5. Execute the work (use sub-agents for parallel tasks where appropriate)
+6. Update STATE.md: active work table (Phase, Last Activity), Current Cycle section
+7. If anything needs CEO attention, write to `.cto-private/CEO-INBOX.md` per PB-016
+8. Update BRIEFING.md if meaningful progress was made (per PB-010)
+9. Append cycle summary to `daemon/CYCLE-LOG.md`
+10. Commit all changes: "Autonomous cycle #[N]: [brief summary]"
+11. If BACKLOG.md is empty: do org maintenance (mini PB-013 audit, propose work to CEO)
+
+## PB-015: Weekly CEO↔CTO Sync
+**When**: Weekly, or when CEO invokes `/sync` skill.
+**Steps**:
+1. Read all org artifacts comprehensively
+2. Read `daemon/CYCLE-LOG.md` — summarize what the org did this week
+3. Generate the "Weekly Sync Prep" section in BRIEFING.md:
+   - Roadmap Status (table with on-track assessment)
+   - Key Decisions Made (within CTO zone)
+   - Proposals Needing CEO Input (concrete options with CTO recommendation)
+   - Risks
+   - Next Week Plan (proposed commitments)
+4. Present sync prep to CEO in conversation
+5. After discussion, update:
+   - DIRECTIVES.md if CEO issues new directives (per PB-011)
+   - BACKLOG.md with any re-prioritization
+   - STATE.md with updated context
+   - `.cto-private/THREAD.md` with sync summary
+6. Commit updates
+
+## PB-016: CEO Notification (Flagging)
+**When**: CTO-Agent needs CEO attention on something before the next weekly sync.
+**Severity levels**:
+- `[INFO]` — FYI, no action needed. CEO reads when convenient.
+- `[NEEDS_INPUT]` — CTO is blocked on a CEO decision. Include options and recommendation.
+- `[URGENT]` — Something broke, a risk materialized, or immediate action needed.
+**Steps**:
+1. Write entry to `.cto-private/CEO-INBOX.md` at top of Pending section
+2. Format: `### [SEVERITY] Brief title (date)`
+3. Include: what happened, why it matters, what options exist, CTO recommendation
+4. For `[NEEDS_INPUT]`: update STATE.md to show the blocker
+5. For `[URGENT]`: also note in STATE.md Blockers section
 
 ---
 *Update protocol: Add new playbooks as patterns emerge. Revise existing playbooks when LEARNINGS.md shows they're not working. Reference playbook IDs from other docs when relevant.*

@@ -47,5 +47,18 @@
 - **Outcome**: Pending — will evaluate when first product work flows through the interfaces
 - **Learnings**: TBD
 
+### DEC-003: Redesign for autonomy, privacy, and AI-native operation
+- **Date**: 2026-02-11
+- **Decider**: CTO-Agent (directed by CEO)
+- **Context**: CEO identified four gaps: (1) org has no heartbeat — nothing triggers work without human prompting, (2) no private CEO↔CTO channel — everything is visible to all agents, (3) visibility is snapshot-based — no granular real-time view of work, (4) nothing is AI-native — org doesn't use skills, hooks, sub-agents, MCP, or daemon automation. CEO also wanted clear CTO autonomy and a structured weekly sync.
+- **Options considered**:
+  1. Incremental patches to existing docs — add a few new sections to existing artifacts
+  2. Full interface redesign with three distinct interfaces (Private, Public, Execution) + daemon + skills — more work upfront but solves all gaps comprehensively
+  3. External tooling (Slack, Linear, etc.) for notifications and scheduling — powerful but breaks repo-native principle
+- **Decision**: Option 2 — full redesign with three interfaces, daemon, skills, CTO Autonomous Zone
+- **Rationale**: The CEO's requirements are structurally different from what existed. Private communication, 24/7 autonomy, and AI-native operation can't be patched onto the existing design — they need dedicated mechanisms. `.cto-private/` for privacy, `daemon/` for heartbeat, `.claude/skills/` for AI-native capabilities, and CTO Autonomous Zone in CHARTER.md for codified autonomy. Staying repo-native while using Claude Code's skill/hook/sub-agent capabilities makes this practically AI-native without external dependencies.
+- **Outcome**: Pending — will evaluate after first autonomous cycle and first weekly sync
+- **Learnings**: TBD
+
 ---
 *Update protocol: Number decisions sequentially. Update outcomes retroactively. Link decisions from STATE.md when they affect current context. Reference decisions from CHARTER.md changelog when they modify governance.*
