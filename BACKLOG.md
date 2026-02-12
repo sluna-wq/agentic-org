@@ -15,10 +15,13 @@ Items are scored on:
 ### Priority 1 — Do Next
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| — | *Awaiting CEO product direction* | — | — | — | — | CEO |
+| BL-001 | AI agent landscape research — survey frameworks (Claude Agent SDK, OpenAI Agents SDK, LangGraph, CrewAI, AutoGen, etc.), trade-offs, production readiness. Output: `research/ai-agent-landscape.md` | 5 | 4 | M | None | CTO-Agent |
+| BL-002 | Claude Code & Agent SDK deep dive — tool use patterns, MCP server development, sub-agent orchestration, prompt engineering for agents. Output: `research/claude-agent-capabilities.md` | 5 | 4 | M | None | CTO-Agent |
 
 ### Priority 2 — Do Soon
-*(Empty — will populate after product direction is set)*
+| ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
+|----|-------------|--------|---------|--------|-------------|-------|
+| BL-003 | Org talent & capability plan — propose which specialist agent roles the org needs first, update ROSTER.md, propose hiring sequence to CEO via CEO-INBOX.md | 4 | 3 | S | BL-001, BL-002 | CTO-Agent |
 
 ### Priority 3 — Do Eventually
 *(Empty)*

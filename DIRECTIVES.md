@@ -32,5 +32,13 @@
 - **Success looks like**: CEO can open repo, understand state, give direction, and see it executed through defined interfaces.
 - **Expires**: When CEO explicitly approves transition to product work.
 
+### DIR-002: Build AI agent expertise before product work
+- **Status**: ACTIVE
+- **Issued**: 2026-02-11
+- **Context**: Before building a product, the org needs deep expertise in AI agent building — frameworks, tools, patterns, and the latest developments. This is foundational regardless of what product we build.
+- **Directive**: Research and develop organizational knowledge in AI agent technologies. Survey the landscape, go deep on our own stack (Claude Code, Agent SDK, MCP), and propose a talent/capability plan. Prioritize this over product work.
+- **Success looks like**: Research docs produced (`research/ai-agent-landscape.md`, `research/claude-agent-capabilities.md`), org has informed perspective on tools and trade-offs, talent plan proposed.
+- **Expires**: When CEO approves transition to product work.
+
 ---
 *Update protocol: Only the CEO can add, modify, or retire directives. CTO-Agent reads during PB-001 and PB-003. CTO-Agent may propose new directives but must get CEO approval before recording them.*

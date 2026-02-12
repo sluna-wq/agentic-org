@@ -60,5 +60,17 @@
 - **Outcome**: Pending — will evaluate after first autonomous cycle and first weekly sync
 - **Learnings**: TBD
 
+### DEC-004: Prioritize AI agent expertise building as pre-product foundation
+- **Date**: 2026-02-11
+- **Decider**: CEO (directed to CTO-Agent)
+- **Context**: Org infrastructure is complete. Before choosing a product to build, CEO wants the org to develop deep expertise in AI agent technologies — frameworks, tools, patterns, and latest developments. CEO also wants simplified interaction (CEO-GUIDE.md) and backlog seeded so the daemon can begin autonomous work.
+- **Options considered**:
+  1. Jump straight to product — start building something and learn along the way
+  2. Structured research phase — survey the AI agent landscape, go deep on our own stack, then plan talent needs before building
+- **Decision**: Option 2 — structured research phase with three backlog items (BL-001: landscape research, BL-002: Claude deep dive, BL-003: talent plan)
+- **Rationale**: The org will build AI agent products. Having an informed perspective on the ecosystem, tools, and trade-offs before committing to a product direction reduces risk of building on the wrong stack or missing key capabilities. Research items are within CTO Autonomous Zone (M effort) and can be executed by the daemon autonomously.
+- **Outcome**: Pending — will evaluate when research docs are produced and talent plan is proposed
+- **Learnings**: TBD
+
 ---
 *Update protocol: Number decisions sequentially. Update outcomes retroactively. Link decisions from STATE.md when they affect current context. Reference decisions from CHARTER.md changelog when they modify governance.*

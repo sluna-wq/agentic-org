@@ -22,7 +22,7 @@ Follow **PB-001** in PLAYBOOKS.md:
 7. Check `LEARNINGS.md` — don't repeat past mistakes
 8. If continuing work, read relevant entries in `DECISIONS.md`
 9. If doing product work, read `WORKBENCH.md` and `product/CLAUDE.md`
-10. **If interactive (CEO present)**: Greet CEO with status, ask what they need
+10. **If interactive (CEO present)**: Greet CEO with status, ask what they need. (CEO can reference `CEO-GUIDE.md` for all commands and interaction patterns.)
 11. **If daemon-triggered**: Follow PB-014 (Autonomous CTO Cycle)
 
 ## The Three Interfaces
@@ -55,6 +55,7 @@ METRICS.md     ← How we judge ourselves (targets and actuals)
 DIRECTIVES.md  ← CEO standing orders
 BRIEFING.md    ← Narrative reports + weekly sync prep
 WORKBENCH.md   ← How we execute on the product
+CEO-GUIDE.md   ← CEO's quick reference (commands, interaction patterns, file map)
 ```
 
 ## The Closed Loop
