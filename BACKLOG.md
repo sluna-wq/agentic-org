@@ -15,10 +15,17 @@ Items are scored on:
 ### Priority 1 — Do Next
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| BL-001 | AI agent landscape research — survey frameworks (Claude Agent SDK, OpenAI Agents SDK, LangGraph, CrewAI, AutoGen, etc.), trade-offs, production readiness. Output: `research/ai-agent-landscape.md` | 5 | 4 | M | None | CTO-Agent |
 | BL-002 | Claude Code & Agent SDK deep dive — tool use patterns, MCP server development, sub-agent orchestration, prompt engineering for agents. Output: `research/claude-agent-capabilities.md` | 5 | 4 | M | None | CTO-Agent |
 | BL-004 | Technical standards & conventions — define coding standards, project structure, testing strategy, CI/CD patterns. Output: `standards/CONVENTIONS.md` | 5 | 3 | M | None | CTO-Agent |
 | BL-005 | Developer tooling & environment setup — linting, formatting, CI pipeline (GitHub Actions), test runner config. Output: `.github/workflows/`, working CI/CD | 4 | 3 | M | BL-004 | CTO-Agent |
+
+### Priority 1.5 — Product Exploration (CEO-directed, DEC-006)
+| ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
+|----|-------------|--------|---------|--------|-------------|-------|
+| BL-009 | Data stack competitive landscape — map existing players (Monte Carlo, Datafold, Atlan, Sifflet, Great Expectations, Elementary, Metaplane, etc.), their positioning, gaps, and where an agentic approach is differentiated. Output: `research/data-stack-competitive-landscape.md` | 5 | 5 | M | None | CTO-Agent |
+| BL-010 | Modern data stack pain points & agent opportunities — map the full data stack (ingestion → transformation → warehouse → orchestration → BI → reverse ETL), identify top pain points at each layer, and assess which are most amenable to autonomous agent intervention. Output: `research/data-stack-pain-points.md` | 5 | 5 | M | None | CTO-Agent |
+| BL-011 | Agent architecture for data stack — design patterns for specialized agents (what agents, what they own, how they coordinate, what tools/access they need, safety model). Output: `research/agent-architecture-for-data.md` | 5 | 4 | M | BL-001, BL-010 | CTO-Agent |
+| BL-012 | Product concept synthesis — combine research into 2-3 concrete product concepts with positioning, MVP scope, go-to-market angle. For CEO review. Output: `research/product-concepts.md` | 5 | 4 | M | BL-009, BL-010, BL-011 | CTO-Agent |
 
 ### Priority 2 — Do Soon
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
@@ -37,6 +44,11 @@ Items are scored on:
 ## Completed
 | ID | Description | Completed | Outcome | Learnings Ref |
 |----|-------------|-----------|---------|---------------|
+| BL-001 | AI agent landscape research | 2026-02-12 | Success — `research/ai-agent-landscape.md` | LRN-005 |
+| BL-009 | Data stack competitive landscape | 2026-02-11 | Success — `research/data-stack-competitive-landscape.md` | LRN-004 |
+| BL-010 | Data stack pain points & agent opportunities | 2026-02-11 | Success — `research/modern-data-stack-agent-opportunity.md` | LRN-004 |
+| BL-011 | Agent architecture for data stack | 2026-02-11 | Success — `research/data-stack-agent-architecture.md` | LRN-004 |
+| BL-012 | Product concept synthesis | 2026-02-11 | Success — `research/product-concepts.md` | LRN-004 |
 | BOOT-001 | Org bootstrap | 2026-02-11 | Success | LRN-001 |
 
 ---

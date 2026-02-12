@@ -41,5 +41,29 @@
 - **Action taken**: AI-Native Operating Principles section in CLAUDE.md now maps each principle to a specific mechanism. Skills directory created. Daemon directory created. Principle 6 ensures ongoing adoption of new tools.
 - **Tags**: architecture, tooling, ai-native
 
+### LRN-004: Parallel sub-agents are highly effective for research sprints
+- **Date**: 2026-02-11
+- **Source**: BL-009, BL-010, BL-011, BL-012 — Product exploration research
+- **Insight**: Running 3 research sub-agents in parallel (competitive landscape, pain points, architecture) produced 4 comprehensive research docs in a single session. The key is giving each agent a clear, non-overlapping scope with specific deliverables. The synthesis step (BL-012) works best done by the CTO-Agent directly, since it requires cross-referencing all three outputs.
+- **Evidence**: Three parallel agents each produced 400-600 line research docs. The CTO then synthesized into a 200-line product concepts doc with recommendation. Total wall-clock time was dominated by the slowest agent, not the sum of all three.
+- **Action taken**: Will use this pattern for future research sprints. Decompose into independent research questions → parallel agents → CTO synthesis.
+- **Tags**: process, tooling, ai-native, research
+
+### LRN-005: The data stack competitive landscape has a clear agentic gap
+- **Date**: 2026-02-11
+- **Source**: BL-009 — Competitive landscape research
+- **Insight**: As of early 2026, no company has shipped production-grade autonomous remediation for data pipelines. The market has observability (Monte Carlo, Anomalo), testing (Great Expectations, Elementary), and cataloging (Atlan, Collibra) — but every player stops at alerting. The "detect + diagnose + fix" loop is unsolved. This is a genuine market gap, not a feature gap.
+- **Evidence**: Mapped 30+ companies across 5 categories. The competitive map's "agentic" quadrant is empty. Closest attempts: Anomalo (AI diagnosis, no fix), Monte Carlo (AI RCA, no fix), Dagster+Sifflet (orchestration + observability, no autonomous remediation).
+- **Action taken**: Product concepts prioritize the "close the loop" positioning. Research docs capture detailed competitive profiles for reference.
+- **Tags**: product, market, competitive-intelligence
+
+### LRN-006: AI agent framework landscape has reached production maturity in 2026
+- **Date**: 2026-02-12
+- **Source**: BL-001 — AI agent landscape research
+- **Insight**: The AI agent framework landscape has consolidated and matured. Production adoption reached 57.3% (up from 11% in Q1 2025). Three clear categories emerged: orchestration frameworks (LangGraph, CrewAI, AutoGen), model-native SDKs (Claude Agent SDK, OpenAI), and specialized tooling (AgentOps, Langfuse). MCP (Model Context Protocol) is becoming the universal standard for tool integration (75% vendor adoption expected by end of 2026). The winning combination for this org: Claude Agent SDK or LangGraph for orchestration, MCP for tools, Langfuse/LangSmith for observability, and token optimization as a first-class concern.
+- **Evidence**: Comprehensive research across 8+ frameworks, 30+ web sources, production adoption data, and technical deep-dives. Key findings: LangGraph has 62% market share for complex workflows, OpenAI's Assistants API is being sunset (Aug 2026), MCP is replacing proprietary tool formats, and cost optimization is a gating factor (agents make 3-10x more LLM calls than chat interfaces).
+- **Action taken**: Research doc `research/ai-agent-landscape.md` produced with framework comparisons, production readiness assessments, emerging patterns, and org-specific recommendations. This informs future technical decisions on framework adoption and architecture patterns.
+- **Tags**: research, tooling, ai-native, architecture
+
 ---
 *Update protocol: Add entries after completing any work item, resolving any incident, or running any experiment. Entries are append-only — never delete a learning, even if it's later superseded (add a note instead). Tag entries for searchability. Review during PB-003 (Weekly Planning).*
