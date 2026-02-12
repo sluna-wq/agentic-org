@@ -138,3 +138,34 @@ cron fires (every 4 hours)
 - **Raw output** (full session transcript): `/tmp/cto-cycle-[N].log`
 - **Daemon system log**: `/tmp/org-daemon.log`
 - **Daemon errors**: `/tmp/org-daemon-error.log`
+
+## Cloud Deployment (Future — BL-013)
+
+The org can run headless in the cloud, accessible from your phone.
+
+### Architecture
+```
+Cloud VM (AWS EC2 / DigitalOcean / GCP)
+├── Claude Code CLI installed
+├── Git repo cloned
+├── Cron or systemd timer triggers cycles
+└── Pushes commits → GitHub
+
+CEO interacts via:
+├── GitHub mobile app (read commits, files, inbox)
+├── GitHub web UI (full experience)
+└── SSH to VM for interactive sessions (optional)
+```
+
+### Cost Model
+- **Compute**: $5-10/month (small VM — daemon runs briefly every few hours)
+- **API credits**: The real cost. Determined by cycle frequency and work complexity.
+- **Storage**: Negligible (text files + git)
+
+### What Changes
+- Same `run-cycle.sh`, same prompts, same org structure
+- Just runs on a machine that never sleeps
+- Git is the communication channel — daemon pushes, CEO reviews on GitHub
+
+### Implementation
+Tracked as BL-013 in BACKLOG.md. Will implement when the org needs 24/7 operation.

@@ -65,5 +65,13 @@
 - **Action taken**: Research doc `research/ai-agent-landscape.md` produced with framework comparisons, production readiness assessments, emerging patterns, and org-specific recommendations. This informs future technical decisions on framework adoption and architecture patterns.
 - **Tags**: research, tooling, ai-native, architecture
 
+### LRN-007: CEO sessions must be conversation mode — execution belongs between sessions
+- **Date**: 2026-02-12
+- **Source**: DEC-007 — CEO-CTO alignment conversation
+- **Insight**: When the CEO opens a session, the CTO should be fully present for strategic discussion — not context-switching into org maintenance or execution. The current bootstrap conflated "session start" with "do org work," preventing genuine strategic conversations. The fix: explicit CONVERSATION MODE (CEO present → discuss, debate, align) vs EXECUTION MODE (daemon → pick up work, execute). Conversation produces alignment artifacts (directives, backlog items, decisions). Execution happens between sessions.
+- **Evidence**: CEO explicitly flagged that sessions were interrupted by org work the CTO was meant to plan and execute independently. The CEO wants to discuss freely, disagree, debate, and align — then have the CTO execute between meetings.
+- **Action taken**: Updated CLAUDE.md bootstrap, PB-001, created PB-017 (Conversation Mode Protocol). Two clear modes now govern CTO behavior.
+- **Tags**: process, interfaces, ceo-collaboration
+
 ---
 *Update protocol: Add entries after completing any work item, resolving any incident, or running any experiment. Entries are append-only — never delete a learning, even if it's later superseded (add a note instead). Tag entries for searchability. Review during PB-003 (Weekly Planning).*

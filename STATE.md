@@ -27,19 +27,21 @@ Foundational research phase per DIR-002. Product exploration complete (BL-009–
 None.
 
 ## Key Context
+- **CEO-CTO alignment applied (DEC-007)**: Conversation mode vs execution mode, separate product repos, /inbox skill, enhanced activity logs, cloud deployment path documented
 - **CEO product direction received**: Autonomous agents for data stack management (DEC-006)
-- Three research agents running in parallel — competitive landscape, pain points, architecture
+- Product repos model: products live in separate git repos (see .product-repos.md), not subdirectories
 - GitHub repo live — continuous push enabled
 - CTO Autonomous Zone expanded — full repo authority with do-no-harm principle (DEC-005)
-- 12 backlog items: product exploration (BL-009–012), foundational research (BL-001, 002), standards (BL-004, 005), market/product (BL-006, 007), talent (BL-003), stress test (BL-008)
+- 13 backlog items (BL-013 added: cloud deployment)
 - DIR-001 + DIR-002 active
 - CTO-Agent operating solo, no specialists
+- **Ongoing discussions** (not yet codified): leadership principles, credit efficiency / org measurement
 
 ## Recent Decisions
+- DEC-007: CEO-CTO alignment — conversation mode, separate repos, operational evolution (2026-02-12)
 - DEC-006: CEO product direction — autonomous agents for data stack excellence (2026-02-11)
 - DEC-005: Expand CTO autonomy, GitHub CI, proactive CTO backlog (2026-02-11)
 - DEC-004: Prioritize AI agent expertise building as pre-product foundation (2026-02-11)
-- DEC-003: Redesign for autonomy, privacy, AI-native operation (2026-02-11)
 
 ## Upcoming
 - **CEO review of product concepts** — 4 docs in `research/`, start with `product-concepts.md`

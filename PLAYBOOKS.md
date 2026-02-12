@@ -17,9 +17,9 @@
 7. Check `LEARNINGS.md` — see if past experience is relevant to current task
 8. If picking up existing work, read the relevant decision(s) in `DECISIONS.md`
 9. If doing product work, read `WORKBENCH.md` and `product/CLAUDE.md`
-10. **If interactive (CEO present)**: Greet CEO with status summary, ask what they need
-11. **If daemon-triggered**: Log cycle start to `daemon/CYCLE-LOG.md`, follow PB-014
-12. Begin work. Update `STATE.md` active work table.
+10. **If interactive (CEO present)**: Enter **CONVERSATION MODE** (PB-017). Greet CEO with brief status, ask what they need. Be fully present for strategic discussion. Do NOT auto-execute org work — conversation produces alignment artifacts (directives, backlog items, decisions). Execution happens between sessions unless the CEO explicitly requests it.
+11. **If daemon-triggered**: Enter **EXECUTION MODE**. Log cycle start to `daemon/CYCLE-LOG.md`, follow PB-014.
+12. Begin work (execution mode only). Update `STATE.md` active work table.
 
 ## PB-002: Completing Work
 **When**: Any agent finishes a task or work item.
@@ -160,7 +160,7 @@
 6. Update STATE.md: active work table (Phase, Last Activity), Current Cycle section
 7. If anything needs CEO attention, write to `.cto-private/CEO-INBOX.md` per PB-016
 8. Update BRIEFING.md if meaningful progress was made (per PB-010)
-9. Append cycle summary to `daemon/CYCLE-LOG.md`
+9. Append cycle summary to `daemon/CYCLE-LOG.md` per PB-018 — include actions taken, outcome (successes AND failures)
 10. Commit all changes: "Autonomous cycle #[N]: [brief summary]"
 11. If BACKLOG.md is empty: do org maintenance (mini PB-013 audit, propose work to CEO)
 
@@ -195,6 +195,45 @@
 3. Include: what happened, why it matters, what options exist, CTO recommendation
 4. For `[NEEDS_INPUT]`: update STATE.md to show the blocker
 5. For `[URGENT]`: also note in STATE.md Blockers section
+
+## PB-017: Conversation Mode (CEO Session)
+**When**: CEO opens an interactive session (not daemon-triggered).
+**Principle**: CEO sessions are for strategic conversation — discuss, debate, align. The CTO is fully present, not context-switching into execution.
+**Steps**:
+1. Run PB-001 steps 1-9 (read state, inbox, directives, etc.)
+2. Greet CEO with a brief status (2-3 sentences max)
+3. Ask what they need
+4. Engage in conversation — discuss strategy, review work, debate approaches, give opinions
+5. Do NOT autonomously start executing backlog items or org maintenance
+6. If the CEO explicitly requests execution ("go ahead and do X"), switch to execution within that scope only
+7. Conversation outputs: updated directives, new backlog items, decisions, alignment on direction
+8. These outputs get executed in the next daemon cycle or a dedicated execution session
+
+**What conversation mode is NOT**:
+- It is not a briefing dump — keep status brief, focus on what the CEO wants to talk about
+- It is not execution time — don't start coding, researching, or updating files mid-conversation unless asked
+- It is not a formality — genuinely engage, push back when you disagree, surface risks proactively
+
+## PB-018: Activity Logging
+**When**: After every daemon cycle or significant execution session.
+**Steps**:
+1. Append a row to `daemon/CYCLE-LOG.md` with: Cycle #, Timestamp, Duration, Focus, Actions Taken, Outcome, CEO Flag?
+2. "Actions Taken" should be a concise list of what was attempted (not just the focus area)
+3. "Outcome" should note successes AND failures
+4. Keep entries glanceable — CEO should understand what happened in 5 seconds per row
+5. For detailed context, reference STATE.md and BRIEFING.md — CYCLE-LOG is the index, not the full story
+
+## PB-019: Product Repo Bootstrap
+**When**: CEO approves a product direction and it's time to start building.
+**Steps**:
+1. Create a new git repository for the product (separate from agentic-org)
+2. Add a `CLAUDE.md` to the product repo with: tech stack, conventions, project structure, testing strategy
+3. Register the product repo in `.product-repos.md` (in the org repo)
+4. Update `WORKBENCH.md` if execution protocol needs product-specific adjustments
+5. Set up CI/CD (GitHub Actions) in the product repo
+6. Configure the product repo as the agent's working directory for product execution
+7. First commit: scaffold project structure per the product's CLAUDE.md conventions
+8. Update STATE.md to reflect the new product repo
 
 ---
 *Update protocol: Add new playbooks as patterns emerge. Revise existing playbooks when LEARNINGS.md shows they're not working. Reference playbook IDs from other docs when relevant.*

@@ -4,7 +4,7 @@
 Build and ship product through a repository-native agentic organization that is fast, accountable, safe, and continuously improving.
 
 ## Principles
-1. **Repo is the org.** Strategy, plans, decisions, execution, quality evidence, and learnings are artifacts — not ephemeral conversation.
+1. **Repo is the org.** This repo is the management layer — strategy, plans, decisions, execution, quality evidence, and learnings are artifacts, not ephemeral conversation. Product code lives in separate repos (see WORKBENCH.md).
 2. **State is always legible.** Any agent (or the CEO) can read STATE.md and know exactly where things stand.
 3. **Decisions are reasoned and logged.** Every material choice records the context, options considered, rationale, and outcome. See DECISIONS.md.
 4. **Execution produces knowledge.** Every sprint, incident, and experiment updates LEARNINGS.md. The org gets smarter over time.
@@ -56,3 +56,4 @@ Changes to this Charter require:
 | 2026-02-11 | Charter created — org bootstrap | DEC-001 |
 | 2026-02-11 | Added CTO Autonomous Zone, AI-native principle, three-interface architecture | DEC-003 |
 | 2026-02-11 | Expanded CTO Autonomous Zone — full repo authority with do-no-harm principle | DEC-005 |
+| 2026-02-12 | Updated Principle 1 — repo is management layer, products in separate repos | DEC-007 |

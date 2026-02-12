@@ -36,7 +36,9 @@ Items are scored on:
 | BL-008 | Org process stress test — mini PB-013 audit, verify daemon/skills/cross-references all work end-to-end, find and fix gaps. Output: LEARNINGS.md entries, fixes | 3 | 3 | S | None | CTO-Agent |
 
 ### Priority 3 — Do Eventually
-*(Empty)*
+| ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
+|----|-------------|--------|---------|--------|-------------|-------|
+| BL-013 | Cloud deployment — move daemon to cloud VM for 24/7 operation. CEO interacts via GitHub mobile. Output: working cloud VM, documented setup in `daemon/README.md` | 4 | 2 | M | Product shipping | CTO-Agent |
 
 ### Icebox
 *(Ideas captured but not yet prioritized)*

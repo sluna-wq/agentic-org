@@ -9,6 +9,7 @@ Type these in any Claude Code session inside `agentic-org/`:
 
 | Command | What It Does | When to Use |
 |---------|-------------|-------------|
+| `/inbox` | Shows pending CEO inbox items — fast, no analysis | Daily check — see what's new in 5 seconds |
 | `/cto` | CTO gives you a 30-second status briefing and asks what you need | Quick check-in, give ad-hoc direction, ask questions |
 | `/status` | Renders an org dashboard (phase, active work, team, health, blockers) | See what's happening at a glance |
 | `/sync` | CTO preps and presents the weekly sync (roadmap, decisions, proposals, risks, next week plan) | Weekly alignment meeting |

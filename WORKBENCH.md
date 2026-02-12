@@ -4,17 +4,28 @@
 > This defines the boundary between "org thinking" (planning, decisions, backlog) and "product doing" (code, tests, builds, deploys).
 
 ## Product Location
+
+Products live in **separate git repositories**, not subdirectories of this org repo.
+
 ```
-agentic-org/
-├── [org artifacts]     ← CHARTER.md, STATE.md, etc. (the org)
-└── product/            ← The actual product codebase (the work)
-    ├── CLAUDE.md       ← Product-level agent instructions (tech stack, conventions, etc.)
-    ├── src/            ← Source code
-    ├── tests/          ← Test suite
-    └── ...             ← Whatever the product needs
+agentic-org/              ← Management/org layer (THIS repo)
+├── [org artifacts]       ← CHARTER.md, STATE.md, BACKLOG.md, etc.
+└── .product-repos.md     ← Registry of product repos this org manages
+
+product-repo-name/        ← Separate repo (actual product code)
+├── CLAUDE.md             ← Product-level agent instructions
+├── src/
+├── tests/
+└── ...
 ```
 
-The `product/` directory is created when the CEO sets product direction. Until then it doesn't exist.
+**Why separate repos?**
+- Clear separation: org management vs. product code
+- Independent versioning and CI/CD per product
+- Enables managing multiple products from one org
+- Product repos can be private even if org repo is public
+
+Product repos are created via PB-019 (Product Repo Bootstrap) when the CEO sets a product direction. The registry in `.product-repos.md` tracks all product repos.
 
 ## Execution Protocol
 
@@ -27,14 +38,16 @@ BACKLOG item → Agent picks up (STATE.md) → Branch → Code → Test → Revi
 
 **Steps**:
 1. **Claim**: Agent updates STATE.md active work table with the backlog item ID
-2. **Branch**: Create a git branch named `[BACKLOG-ID]/short-description` (e.g., `FEAT-001/add-login`)
-3. **Implement**: Write code in `product/` following product CLAUDE.md conventions
-4. **Test**: Run the test suite. All tests must pass. Add tests for new functionality.
-5. **Validate**: Run any defined quality checks (lint, type check, build)
-6. **Commit**: Descriptive commit messages referencing the backlog item ID
-7. **Review**: CTO-Agent reviews (or self-reviews with checklist if solo)
-8. **Merge**: Merge to main branch
-9. **Close**: Follow PB-002 (Completing Work) — update STATE.md, BACKLOG.md, LEARNINGS.md
+2. **Navigate**: Switch to the product repo (see `.product-repos.md` for local path)
+3. **Branch**: Create a git branch named `[BACKLOG-ID]/short-description` (e.g., `FEAT-001/add-login`) in the product repo
+4. **Implement**: Write code following the product repo's CLAUDE.md conventions
+5. **Test**: Run the test suite. All tests must pass. Add tests for new functionality.
+6. **Validate**: Run any defined quality checks (lint, type check, build)
+7. **Commit**: Descriptive commit messages referencing the backlog item ID
+8. **Review**: CTO-Agent reviews (or self-reviews with checklist if solo)
+9. **Merge**: Merge to main branch in the product repo
+10. **Return**: Switch back to the org repo
+11. **Close**: Follow PB-002 (Completing Work) — update STATE.md, BACKLOG.md, LEARNINGS.md in the org repo
 
 ### Review Checklist
 Before any merge, verify:

@@ -96,5 +96,17 @@
 - **Outcome**: Pending — will evaluate when research docs are ready for CEO review
 - **Learnings**: TBD
 
+### DEC-007: CEO-CTO alignment — conversation mode, separate repos, operational evolution
+- **Date**: 2026-02-12
+- **Decider**: CEO (aligned with CTO-Agent)
+- **Context**: After first autonomous cycle and several CEO sessions, a strategic conversation identified areas needing evolution: session behavior (CTO executes during conversations instead of being present), org/product boundary (directory isn't strong enough separation), activity visibility (CEO can't see what happened), and cloud deployment path.
+- **Options considered**:
+  1. Incremental patches — add features piecemeal as requested
+  2. Comprehensive evolution — treat as significant org maturation, redesign across all affected areas atomically
+- **Decision**: Option 2 — comprehensive evolution across 6 dimensions: (1) conversation vs execution mode, (2) /inbox skill for lightweight CEO check-ins, (3) enhanced activity logs, (4) separate git repos for products, (5) cloud deployment path documented, (6) new playbooks PB-017/018/019
+- **Rationale**: Changes are interconnected — session behavior affects playbooks, separation affects architecture, logging affects daemon. Doing them atomically ensures consistency. Some topics (leadership principles, credit efficiency, org measurement) were flagged as ongoing discussions, not ready for codification.
+- **Outcome**: Pending — will evaluate after first CEO session under new conversation mode and first daemon cycle with enhanced logging
+- **Learnings**: TBD
+
 ---
 *Update protocol: Number decisions sequentially. Update outcomes retroactively. Link decisions from STATE.md when they affect current context. Reference decisions from CHARTER.md changelog when they modify governance.*
