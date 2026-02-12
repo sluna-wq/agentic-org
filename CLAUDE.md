@@ -52,3 +52,6 @@ Every piece of work must:
 3. Update STATE.md after every meaningful action
 4. Contribute to LEARNINGS.md — the org must get smarter
 5. Escalate when in doubt — see PB-004
+
+---
+*Update protocol: This file must be updated whenever CHARTER.md changes (per PB-008) or when the knowledge architecture changes (per PB-007). Reviewed during PB-010 (Quarterly Self-Audit). If you change this file, all active agents must re-read it.*

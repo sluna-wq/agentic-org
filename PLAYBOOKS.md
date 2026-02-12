@@ -75,5 +75,38 @@
 4. Keep STATE.md current — it's the dashboard
 5. Commit with message explaining what changed and why
 
+## PB-008: Charter Amendment
+**When**: A change to CHARTER.md is proposed (governance, principles, authority, risk thresholds).
+**Steps**:
+1. Write the proposed change as a DECISIONS.md entry with full rationale
+2. Explicitly identify what changes and what stays the same
+3. Escalate to CEO — Charter changes always require CEO approval
+4. If approved: update CHARTER.md and its changelog table
+5. Update CLAUDE.md if the change affects agent orientation (principles, authority, commitments)
+6. Update STATE.md to reflect the governance change
+7. Announce to all active agents (they must re-read CLAUDE.md)
+
+## PB-009: Agent Offboarding
+**When**: An agent is being removed from the roster (performance, restructuring, or capability no longer needed).
+**Steps**:
+1. CTO-Agent documents the decision in DECISIONS.md with rationale
+2. Reassign all in-progress work from the departing agent — update STATE.md and BACKLOG.md
+3. Capture any undocumented institutional knowledge into LEARNINGS.md
+4. Move agent from "Active Agents" to "Alumni" in ROSTER.md
+5. Update capability map — identify if this creates a new gap
+6. If the gap is critical, initiate PB-005 (Hiring)
+
+## PB-010: Quarterly Self-Audit
+**When**: Every ~12 weeks (or when CTO-Agent suspects systemic drift).
+**Steps**:
+1. Read every foundational document (all 9) end-to-end
+2. Verify cross-references still hold (no broken links, no orphaned concepts)
+3. Check STATE.md accuracy against actual repo state
+4. Review PLAYBOOKS.md against LEARNINGS.md — are playbooks reflecting what we've learned?
+5. Review METRICS.md — are we measuring what matters, or has the game changed?
+6. Check CLAUDE.md — does the bootstrap still orient agents correctly?
+7. Document findings and fixes in DECISIONS.md and LEARNINGS.md
+8. Update any stale artifacts
+
 ---
 *Update protocol: Add new playbooks as patterns emerge. Revise existing playbooks when LEARNINGS.md shows they're not working. Reference playbook IDs from other docs when relevant.*
