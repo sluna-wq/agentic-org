@@ -81,5 +81,13 @@
 - **Action taken**: Research doc `research/claude-agent-capabilities.md` produced with immediate actions (standardize skills, deploy MCP servers, implement observability, establish error handling) and strategic investments (multi-agent orchestration, context management protocol, CI/CD pipeline, cost optimization). 10 open questions identified for further exploration.
 - **Tags**: research, tooling, ai-native, architecture, production-readiness
 
+### LRN-009: Comprehensive technical standards document requires anticipating product diversity while staying grounded
+- **Date**: 2026-02-14
+- **Source**: BL-004 — Technical standards & conventions
+- **Insight**: Creating technical standards before the first product requires balancing specificity (useful, actionable rules) with flexibility (multiple products, multiple tech stacks). The solution: establish core principles (AI-native development, explicit over clever, test behaviors not implementation), define concrete standards for the current stack (Node.js/JavaScript), and create placeholders for future stacks (TypeScript, Python) with clear adoption triggers. Standards must cover the full lifecycle: code style, testing, CI/CD, git workflow, security, documentation, error handling, performance, and accessibility. The key is making standards executable — not aspirational guidelines, but specific patterns with examples of good/bad code.
+- **Evidence**: Produced 600+ line `standards/CONVENTIONS.md` covering 15 major areas. Balanced current needs (JavaScript/Node.js conventions match our package.json) with future needs (TypeScript section "when adopted," Python section "if needed"). Included concrete examples (good/bad code snippets), rationale for each choice, and clear update protocol. Document is structured to serve both agents (explicit patterns to follow) and future code reviews (checklist format).
+- **Action taken**: Created `standards/CONVENTIONS.md` with sections on: AI-native development philosophy, repository architecture, language standards (JS/TS/Python), project structure, testing strategy (unit/integration/e2e), code quality & review, CI/CD patterns, dependency management, security standards, documentation, git conventions, error handling & logging, performance standards, accessibility standards, and change management. Document includes changelog for tracking evolution. BL-005 (developer tooling) now unblocked.
+- **Tags**: process, standards, architecture, quality, ai-native
+
 ---
 *Update protocol: Add entries after completing any work item, resolving any incident, or running any experiment. Entries are append-only — never delete a learning, even if it's later superseded (add a note instead). Tag entries for searchability. Review during PB-003 (Weekly Planning).*

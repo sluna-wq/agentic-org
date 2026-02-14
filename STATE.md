@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-14 (Cycle #2)
+> Last updated: 2026-02-14T20:47:00Z (Cycle #2)
 
 ## Phase
 `PLANNING` — CEO shared product direction. Cloud daemon being deployed.
@@ -11,9 +11,9 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → `SHIPPING` → `OPERATING`
 
 ## Current Cycle
 - **Cycle #**: 2
-- **Started**: 2026-02-14T16:52:15Z
+- **Started**: 2026-02-14T20:42:35Z
 - **Mode**: Autonomous (GitHub Actions)
-- **Focus**: BL-002 (Claude Code & Agent SDK deep dive) — research complete
+- **Focus**: BL-004 (Technical standards & conventions) — complete
 
 ## Current Focus
 **Cloud daemon operational but paused — out of API credits.** 2 successful cloud cycles ran on Feb 13 (~$3.70 total). 8+ failures since due to empty credit balance. Harness now has error classification (out_of_credits, auth_error) and push-on-failure. Needs: (1) Anthropic credits topped up, (2) ORG_PAT updated with repo write scope.
@@ -22,7 +22,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → `SHIPPING` → `OPERATING`
 | ID | Description | Owner | Phase | Last Activity | ETA | Blocker? |
 |----|-------------|-------|-------|---------------|-----|----------|
 | BL-013 | Cloud daemon deployment | CTO-Agent | Blocked | 2026-02-12 | Pending credits | Needs secrets in GitHub |
-| BL-004 | Technical standards & conventions | CTO-Agent | Queued | 2026-02-14 | Next cycle | No |
+| BL-005 | Developer tooling & environment setup | CTO-Agent | Queued | 2026-02-14 | Next cycle | No |
 
 ## Blockers
 - **Credits**: Anthropic API balance is $0. Top up at https://console.anthropic.com
