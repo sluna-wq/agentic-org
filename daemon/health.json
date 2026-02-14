@@ -1,10 +1,10 @@
 {
   "last_cycle": 2,
-  "last_timestamp": "2026-02-14T16:52:15Z",
+  "last_timestamp": "2026-02-14T20:42:35Z",
   "last_status": "success",
   "last_error_category": null,
-  "last_cost_usd": 1.6926962500000002,
-  "last_duration_minutes": 18,
-  "last_turns": 20,
+  "last_cost_usd": 0.8862760000000001,
+  "last_duration_minutes": 4,
+  "last_turns": 31,
   "consecutive_failures": 0
 }
