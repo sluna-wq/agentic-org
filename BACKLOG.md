@@ -15,7 +15,6 @@ Items are scored on:
 ### Priority 1 — Do Next
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| BL-002 | Claude Code & Agent SDK deep dive — tool use patterns, MCP server development, sub-agent orchestration, prompt engineering for agents. Output: `research/claude-agent-capabilities.md` | 5 | 4 | M | None | CTO-Agent |
 | BL-004 | Technical standards & conventions — define coding standards, project structure, testing strategy, CI/CD patterns. Output: `standards/CONVENTIONS.md` | 5 | 3 | M | None | CTO-Agent |
 | BL-005 | Developer tooling & environment setup — linting, formatting, CI pipeline (GitHub Actions), test runner config. Output: `.github/workflows/`, working CI/CD | 4 | 3 | M | BL-004 | CTO-Agent |
 
@@ -46,7 +45,8 @@ Items are scored on:
 ## Completed
 | ID | Description | Completed | Outcome | Learnings Ref |
 |----|-------------|-----------|---------|---------------|
-| BL-001 | AI agent landscape research | 2026-02-12 | Success — `research/ai-agent-landscape.md` | LRN-005 |
+| BL-002 | Claude Code & Agent SDK deep dive | 2026-02-14 | Success — `research/claude-agent-capabilities.md` (2,711 lines) | LRN-008 |
+| BL-001 | AI agent landscape research | 2026-02-12 | Success — `research/ai-agent-landscape.md` | LRN-006 |
 | BL-009 | Data stack competitive landscape | 2026-02-11 | Success — `research/data-stack-competitive-landscape.md` | LRN-004 |
 | BL-010 | Data stack pain points & agent opportunities | 2026-02-11 | Success — `research/modern-data-stack-agent-opportunity.md` | LRN-004 |
 | BL-011 | Agent architecture for data stack | 2026-02-11 | Success — `research/data-stack-agent-architecture.md` | LRN-004 |

@@ -73,5 +73,13 @@
 - **Action taken**: Updated CLAUDE.md bootstrap, PB-001, created PB-017 (Conversation Mode Protocol). Two clear modes now govern CTO behavior.
 - **Tags**: process, interfaces, ceo-collaboration
 
+### LRN-008: Claude Agent SDK research reveals production-ready tooling with critical context management requirements
+- **Date**: 2026-02-14
+- **Source**: BL-002 — Claude Code & Agent SDK deep dive
+- **Insight**: Claude Agent SDK and the broader ecosystem have matured significantly for production use. Key findings: (1) Open standards (Agent Skills, MCP) are winning across the industry — Microsoft, OpenAI, Cursor adopting; (2) Context management is the primary failure mode — context degradation requires aggressive management in long-running agents; (3) Production tooling is ready — observability (OpenTelemetry), session management, automatic compaction built-in; (4) Cost optimization is critical — agents consume 3-10x more tokens than chat interfaces; (5) Verification is mandatory — LLMs produce plausible but edge-case-vulnerable code. For this org: standardize on Agent Skills format, implement MCP servers (GitHub, Slack, Filesystem), add observability from day one, establish retry patterns with exponential backoff and dead letter queues.
+- **Evidence**: Comprehensive 2,711-line research doc covering 7 areas: tool use patterns, MCP server development, sub-agent orchestration, prompt engineering, SDK architecture, capabilities/limitations, and latest developments (Feb 2026). 50+ sources cited. Key technical insights: layered SDK architecture (Presentation → Application → Domain → Infrastructure), Claude 4.x models with extended context (200K tokens), MCP as universal tool protocol, Agent Skills as portable skill format.
+- **Action taken**: Research doc `research/claude-agent-capabilities.md` produced with immediate actions (standardize skills, deploy MCP servers, implement observability, establish error handling) and strategic investments (multi-agent orchestration, context management protocol, CI/CD pipeline, cost optimization). 10 open questions identified for further exploration.
+- **Tags**: research, tooling, ai-native, architecture, production-readiness
+
 ---
 *Update protocol: Add entries after completing any work item, resolving any incident, or running any experiment. Entries are append-only — never delete a learning, even if it's later superseded (add a note instead). Tag entries for searchability. Review during PB-003 (Weekly Planning).*
