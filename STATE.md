@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-12
+> Last updated: 2026-02-14
 
 ## Phase
 `PLANNING` — CEO shared product direction. Cloud daemon being deployed.
@@ -10,13 +10,13 @@
 Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → `SHIPPING` → `OPERATING`
 
 ## Current Cycle
-- **Cycle #**: 1 (only cycle so far — ran on MacBook)
-- **Started**: 2026-02-12T12:33:18Z
-- **Mode**: Autonomous (daemon-triggered)
-- **Focus**: Foundational AI agent research (BL-001 completed)
+- **Cycle #**: 2 (last successful — cloud daemon)
+- **Started**: 2026-02-13T05:37:26Z
+- **Mode**: Autonomous (GitHub Actions)
+- **Focus**: Cloud daemon validated — 2 successful cycles, then out of credits
 
 ## Current Focus
-**Cloud daemon deployment (DEC-008).** CEO priority: make the org genuinely 24/7 before all other work. GitHub Actions workflow + SDK harness built, needs first cloud cycle to validate. Product research (4 docs in `research/`) still awaiting CEO review.
+**Cloud daemon operational but paused — out of API credits.** 2 successful cloud cycles ran on Feb 13 (~$3.70 total). 8+ failures since due to empty credit balance. Harness now has error classification (out_of_credits, auth_error) and push-on-failure. Needs: (1) Anthropic credits topped up, (2) ORG_PAT updated with repo write scope.
 
 ## Active Work
 | ID | Description | Owner | Phase | Last Activity | ETA | Blocker? |
@@ -25,7 +25,8 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → `SHIPPING` → `OPERATING`
 | BL-002 | Claude Code & Agent SDK deep dive | CTO-Agent | Queued | 2026-02-12 | Next cycle | No |
 
 ## Blockers
-- **BL-013**: CEO needs to add 2 secrets to GitHub repo settings: `ANTHROPIC_API_KEY` and `ORG_PAT` (personal access token with repo write). See daemon/README.md for instructions.
+- **Credits**: Anthropic API balance is $0. Top up at https://console.anthropic.com
+- **ORG_PAT**: Token lacks repo write scope — push step gets 403. Regenerate with `repo` scope (classic) or `contents: write` (fine-grained).
 
 ## Key Context
 - **Cloud daemon architecture decided (DEC-008)**: GitHub Actions + Claude Agent SDK harness. CLI stays for CEO interactive sessions.
@@ -52,7 +53,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → `SHIPPING` → `OPERATING`
 ## Health
 | Dimension | Status | Notes |
 |-----------|--------|-------|
-| Liveness | NOT YET LIVE | Cloud daemon built, awaiting secrets + first run |
+| Liveness | PAUSED | Cloud daemon works but out of API credits + PAT needs write scope |
 | Delivery | N/A | No product work started |
 | Quality | N/A | No product work started |
 | Team | Minimal | CTO-Agent only, no specialists |

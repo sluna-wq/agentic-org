@@ -111,6 +111,7 @@ IMPORTANT: Do NOT run git push — the harness handles that. Do commit your chan
   let durationMs: number = 0;
   let error: string | undefined;
   let subtype: string = "unknown";
+  let stderrBuffer: string[] = [];
 
   try {
     for await (const message of query({
@@ -123,7 +124,10 @@ IMPORTANT: Do NOT run git push — the harness handles that. Do commit your chan
         permissionMode: "bypassPermissions",
         allowDangerouslySkipPermissions: true,
         settingSources: ["project"],  // Load CLAUDE.md
-        stderr: (data: string) => process.stderr.write(data),
+        stderr: (data: string) => {
+          process.stderr.write(data);
+          stderrBuffer.push(data);
+        },
       },
     })) {
       if (message.type === "assistant") {
@@ -157,6 +161,20 @@ IMPORTANT: Do NOT run git push — the harness handles that. Do commit your chan
     console.error("\nAgent crashed:", err.message);
   }
 
+  // ─── Detect known failure modes from stderr ─────────────────────────────
+
+  const allStderr = stderrBuffer.join("");
+  const isOutOfCredits = allStderr.includes("credit balance is too low");
+  const isAuthError = allStderr.includes("invalid_api_key") || allStderr.includes("authentication_error");
+
+  if (isOutOfCredits) {
+    error = "OUT_OF_CREDITS: Anthropic API credit balance is too low. Top up at https://console.anthropic.com";
+    console.error("\n!!! OUT OF CREDITS — daemon will keep failing until balance is topped up !!!");
+  } else if (isAuthError) {
+    error = "AUTH_ERROR: ANTHROPIC_API_KEY is invalid or expired. Update the secret in GitHub repo settings.";
+    console.error("\n!!! AUTH ERROR — check the ANTHROPIC_API_KEY secret !!!");
+  }
+
   const endTime = Date.now();
   const wallDurationMin = Math.round((endTime - startTime) / 60000);
 
@@ -170,6 +188,11 @@ IMPORTANT: Do NOT run git push — the harness handles that. Do commit your chan
   // ─── Write structured report ────────────────────────────────────────────
 
   fs.mkdirSync(REPORT_DIR, { recursive: true });
+  const errorCategory = isOutOfCredits ? "out_of_credits"
+    : isAuthError ? "auth_error"
+    : error ? "agent_error"
+    : null;
+
   const report = {
     cycle: cycleNum,
     timestamp: startTs,
@@ -182,6 +205,7 @@ IMPORTANT: Do NOT run git push — the harness handles that. Do commit your chan
     status: error ? "error" : "success",
     subtype,
     error: error ?? null,
+    error_category: errorCategory,
     result_summary: result?.slice(0, 500) ?? null,
   };
 
@@ -196,10 +220,11 @@ IMPORTANT: Do NOT run git push — the harness handles that. Do commit your chan
     last_cycle: cycleNum,
     last_timestamp: startTs,
     last_status: error ? "error" : "success",
+    last_error_category: errorCategory,
     last_cost_usd: cost,
     last_duration_minutes: wallDurationMin,
     last_turns: turns,
-    consecutive_failures: 0,  // TODO: read previous health and increment
+    consecutive_failures: 0,
   };
 
   // Read previous health to track consecutive failures
