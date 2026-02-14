@@ -47,15 +47,24 @@ jobs:
       - name: Run CTO cycle via SDK harness
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          DEBUG_CLAUDE_AGENT_SDK: "1"
         run: npx tsx daemon/harness/run-cycle.ts
 
       - name: Push changes
+        if: always()
         run: |
           git add -A
           # Only commit if there are actual changes
           if ! git diff --cached --quiet; then
-            echo "Changes detected — pushing to remote"
+            echo "Changes detected — committing and pushing"
+            git commit -m "Cycle harness artifacts [auto]"
             git push
           else
-            echo "No changes to push"
+            # Try pushing any commits the harness or agent already made
+            if [ "$(git rev-parse HEAD)" != "$(git rev-parse @{u})" ]; then
+              echo "Unpushed commits found — pushing"
+              git push
+            else
+              echo "No changes to push"
+            fi
           fi

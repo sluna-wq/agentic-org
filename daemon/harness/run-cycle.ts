@@ -123,6 +123,7 @@ IMPORTANT: Do NOT run git push — the harness handles that. Do commit your chan
         permissionMode: "bypassPermissions",
         allowDangerouslySkipPermissions: true,
         settingSources: ["project"],  // Load CLAUDE.md
+        stderr: (data: string) => process.stderr.write(data),
       },
     })) {
       if (message.type === "assistant") {
