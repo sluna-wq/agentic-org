@@ -113,5 +113,13 @@
 - **Action taken**: New practice: every coherent set of approved changes gets committed AND pushed right away, even during conversation mode. No exceptions.
 - **Tags**: process, discipline, git
 
+### LRN-010: Product repo bootstrap with comprehensive CLAUDE.md accelerates execution
+- **Date**: 2026-02-15
+- **Source**: BL-014 — dbt-guardian product repo bootstrap
+- **Insight**: Starting a product with a comprehensive CLAUDE.md (tech stack, conventions, architecture, testing strategy, CI/CD patterns) gives all agents — current and future — a complete orientation. The 350+ line CLAUDE.md becomes the single source of truth for "how to work in this codebase." This frontloads decisions (Python 3.11+, Poetry, pytest, ruff/black/mypy, agent interface patterns) so execution sessions don't waste time debating tooling. The scaffold should be complete but minimally functional: directory structure, package config, stub files, CI/CD workflows, README with product vision, LICENSE. This unblocks immediate work (parser implementation) while establishing quality patterns (linting, type checking, test coverage from commit #1).
+- **Evidence**: BL-014 completed in single autonomous cycle. Created: comprehensive CLAUDE.md (350+ lines covering tech stack, project structure, conventions, testing, CLI, dbt integration, security, performance, deployment), pyproject.toml with Poetry config and all tooling (pytest, ruff, black, mypy, pip-audit), full directory structure (src/dbt_guardian with agents/parsers/analyzers/generators/utils subdirs), CLI skeleton with click + rich, GitHub Actions CI/CD (tests, lint, type check, security audit) and release workflow (PyPI publishing), README with product vision and roadmap, LICENSE (MIT). Committed with 16 files, 939 insertions. Product repo now registered in `.product-repos.md`. BL-015 (parser) unblocked.
+- **Action taken**: Product repo at `/home/runner/work/agentic-org/dbt-guardian` ready for feature work. Pattern validated: comprehensive CLAUDE.md + full scaffold + CI/CD + commit = ready to execute. Will replicate for future product repos.
+- **Tags**: process, product, bootstrap, standards, ai-native
+
 ---
 *Update protocol: Add entries after completing any work item, resolving any incident, or running any experiment. Entries are append-only — never delete a learning, even if it's later superseded (add a note instead). Tag entries for searchability. Review during PB-003 (Weekly Planning).*
