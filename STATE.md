@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-15 (Cycle #3, BL-017 complete)
+> Last updated: 2026-02-15 (Cycle #4, BL-018 complete)
 
 ## Phase
 `BUILDING` — Product direction confirmed. dbt Guardian greenlit. Transitioning from planning to product work.
@@ -20,7 +20,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → **`BUILDING`** → `SHIPPING` → `OPERAT
 ## Active Work
 | ID | Description | Owner | Status | Last Activity | What's Next |
 |----|-------------|-------|--------|---------------|-------------|
-| BL-018 | Defensibility analysis (vs dbt Labs) | CTO-Agent | Queued | — | Can start anytime |
+| BL-019 | Pilot Week 0 prep (onboarding doc, feedback infra) | CTO-Agent | Blocked | — | Waiting for CEO pilot plan approval |
 | BL-005 | Developer tooling & environment setup | CTO-Agent | Queued | — | CI pipeline, linting config |
 
 ## Blockers
@@ -34,10 +34,10 @@ Phases: `BOOTSTRAP` → `PLANNING` → **`BUILDING`** → `SHIPPING` → `OPERAT
 - **Design partners**: If you know dbt Core teams who'd try an early prototype, flag them
 
 ## Recent Decisions
-- **DEC-009**: CEO-CTO contract evolution — retired DIR-001/002, issued DIR-003 (ownership), greenlit dbt Guardian, expanded CTO autonomy, improved visibility (2026-02-14)
+- **DEC-010**: dbt Guardian defensibility — Strategic constraints on dbt Labs (dev>ops, partnership lock-in, Core community tension) create permanent opening for operational agents. Path: win Core users (6mo) → autonomous capabilities (6-12mo) → cross-stack (12-18mo). Window open NOW. (2026-02-15)
+- DEC-009: CEO-CTO contract evolution — retired DIR-001/002, issued DIR-003 (ownership), greenlit dbt Guardian, expanded CTO autonomy, improved visibility (2026-02-14)
 - DEC-008: Cloud daemon via GitHub Actions + SDK harness (2026-02-12)
 - DEC-007: Conversation mode, separate repos, operational evolution (2026-02-12)
-- DEC-006: CEO product direction — autonomous agents for data stack (2026-02-11)
 
 ## Active Directives
 - **DIR-003** (ACTIVE): CTO operates with ownership and bias for action. Own outcomes, strong POV, disagree when warranted.

@@ -152,5 +152,29 @@
 - **Outcome**: Pending — will evaluate after first product milestone (working Test Generator prototype)
 - **Learnings**: TBD
 
+### DEC-010: dbt Guardian is defensible against dbt Labs competition
+- **Date**: 2026-02-15
+- **Decider**: CTO-Agent
+- **Context**: BL-018 (Defensibility analysis) — Before committing to pilot execution, need to validate whether dbt Guardian can build a sustainable business when dbt Labs (40K+ companies, $4.2B valuation, massive community) could theoretically build everything we're building. If dbt Labs is likely to ship competitive features in 6-12 months, we should pivot now rather than after pilot investment.
+- **Options considered**:
+  1. **Pivot to non-dbt-adjacent opportunity** — Avoid competing with dbt Labs entirely, focus on different data stack layer (ingestion, BI, orchestration). Reduces competitive risk but abandons dbt community advantage and requires new research.
+  2. **Differentiate on dbt Cloud exclusivity** — Build for dbt Cloud only, partner with dbt Labs. Eliminates competition but creates dependency on dbt Labs' roadmap and pricing, limits TAM to Cloud users.
+  3. **Execute dbt Core-first, cross-stack expansion strategy** — Start where dbt Labs won't go (operational agents for dbt Core users), expand where they can't go (cross-stack autonomous remediation). Requires speed but creates sustainable moat.
+  4. **Wait and see** — Defer product commitment until dbt Labs' 2026 roadmap is fully clear. Reduces risk but wastes 3-6 months of first-mover advantage in an emerging category.
+- **Decision**: Option 3 — Execute dbt Core-first strategy with cross-stack expansion path. Move fast to establish category leadership before potential competitive response (6-12 month window).
+- **Rationale**: Web research (Feb 2026) reveals four structural constraints on dbt Labs that create permanent defensibility gaps:
+  1. **Development > Operations focus**: dbt Labs' 2026 roadmap is entirely dev-focused (dbt Copilot for AI coding in IDE, dbt Explorer for catalog, dbt Semantic Layer for governance). Zero operational/incident response products. Their DNA is "empower analytics engineers to write code," not "fix code when it breaks."
+  2. **Partnership ecosystem lock-in**: Strategic partnerships with Monte Carlo, Metaplane, Elementary (observability/monitoring) are revenue-critical. If dbt Labs builds full-stack observability/remediation, they compete with partners and destroy ecosystem value. Blog posts consistently position observability as partner territory.
+  3. **dbt Core community tension**: Community actively resists dbt Cloud pricing ($100/seat/month) and feature gating. dbt Labs can't aggressively monetize Core users without backlash. Mid-market Core users are structurally underserved.
+  4. **Enterprise governance mindset**: Enterprise customers (dbt Labs' revenue base) require human-in-loop for production changes. Autonomous remediation conflicts with compliance/audit requirements. dbt Labs unlikely to ship "auto-fix production" features that enterprises would disable.
+
+  **Our path forward**: (1) Win dbt Core segment (next 6 months) — pilot with Core users, position as "operational layer dbt is missing," GitHub-first distribution. (2) Build autonomous capabilities dbt Labs won't (6-12 months) — continuous monitoring (not on-demand IDE), autonomous PR generation (not human-in-loop suggestions), production gap analysis. (3) Go cross-stack (12-18 months) — add Snowflake/Airflow integration, differentiate on "one agent for full stack."
+
+  **Timing is critical**: Window is open NOW. dbt Labs focused on Copilot + Semantic Layer in 2026. Other well-funded startups likely pursuing same space. First-mover advantage matters for trust/safety moat (autonomous remediation requires track record).
+
+  **Positioning strategy**: "The operational layer dbt is missing" (complement, not compete). "dbt Labs helps you write dbt code. Guardian keeps it reliable in production." Explicitly call out their strengths (Copilot for development, Semantic Layer for governance). Target dbt Core power users.
+- **Outcome**: Pending — will evaluate after pilot results and 6-month market validation
+- **Learnings**: Comprehensive defensibility analysis document created (`research/defensibility-analysis.md`, 8 sections, 9,000+ words) covering: dbt Labs roadmap, what they're NOT building, overlap analysis, strategic constraints, moat framework, threat scenarios (acquisitions, autonomous test gen, warehouse vendors, new startups), positioning strategy, tactical/strategic recommendations. LRN-016 captured. Strategic path validated for execution.
+
 ---
 *Update protocol: Number decisions sequentially. Update outcomes retroactively. Link decisions from STATE.md when they affect current context. Reference decisions from CHARTER.md changelog when they modify governance.*

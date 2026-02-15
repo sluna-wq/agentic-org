@@ -16,7 +16,6 @@ Items are scored on:
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
 | BL-019 | **Pilot execution (Week 0 prep)** — Create pilot onboarding doc, set up feedback infrastructure, test on sample projects, get CEO approval. Output: `product/pilot-onboarding.md` + pilot-ready package | 5 | 5 | S | BL-017 ✓ | CTO-Agent |
-| BL-018 | **Defensibility analysis** — Deep dive on dbt Labs roadmap (Copilot, Explorer, Semantic Layer), what they're likely to build vs not, where our cross-stack story creates a moat. Inform product positioning. Output: `research/defensibility-analysis.md` | 4 | 4 | M | None | CTO-Agent |
 
 ### Priority 1 — Infrastructure (do alongside product)
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
@@ -38,6 +37,7 @@ Items are scored on:
 ## Completed
 | ID | Description | Completed | Outcome | Learnings Ref |
 |----|-------------|-----------|---------|---------------|
+| BL-018 | Defensibility analysis (vs dbt Labs) | 2026-02-15 | Success — Comprehensive defensibility analysis (8 sections, 9K+ words) covering dbt Labs roadmap, what they're NOT building, overlap analysis, strategic constraints, moat framework, threat scenarios with mitigation, positioning strategy. Key finding: dbt Labs focused on dev tools (Copilot, Semantic Layer), not operational agents. Window open for dbt Guardian. | LRN-016 |
 | BL-017 | Pilot plan & design partner strategy | 2026-02-15 | Success — Comprehensive 13-section pilot plan covering: product context, goals, metrics, partner criteria, timeline, outreach channels, onboarding flow, feedback framework, success scenarios, synthesis deliverables, open questions, risk assessment. Ready for CEO review. | LRN-015 |
 | BL-016 | Test Generator agent v0 | 2026-02-15 | Success — Full implementation: TestCoverageAnalyzer (detects gaps, prioritizes by column patterns), SchemaYamlGenerator (PR-ready YAML with placeholders), CLI commands (analyze + generate-tests), 35+ unit tests. Works on any dbt Core project. | LRN-014 |
 | BL-015 | dbt project parser (manifest.json, catalog, YAML) | 2026-02-15 | Success — Full parser implementation with 3 modules (ManifestParser, CatalogParser, ProjectParser), Pydantic models, type hints, CLI commands, unit tests. In `products/dbt-guardian/` (mono-repo approach until GitHub repo creation is available). | LRN-013 |
