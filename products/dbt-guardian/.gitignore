@@ -27,7 +27,7 @@ env/
 .venv
 
 # Poetry
-poetry.lock
+# Note: poetry.lock is committed for reproducible builds
 
 # Testing
 .coverage
@@ -37,7 +37,7 @@ htmlcov/
 .hypothesis/
 
 # IDEs
-.vscode/
+# Note: .vscode/ is committed with recommended settings
 .idea/
 *.swp
 *.swo

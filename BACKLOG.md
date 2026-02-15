@@ -20,7 +20,6 @@ Items are scored on:
 ### Priority 1 — Infrastructure (do alongside product)
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| BL-005 | Developer tooling & environment setup — linting, formatting, CI pipeline (GitHub Actions), test runner config. Output: `.github/workflows/` in product repo | 4 | 3 | M | BL-004 | CTO-Agent |
 | BL-013 | Cloud daemon — fix credits + PAT, get daemon running again for autonomous product work | 4 | 3 | S | Credits + PAT | CTO-Agent |
 
 ### Priority 2 — Do Soon
@@ -37,6 +36,7 @@ Items are scored on:
 ## Completed
 | ID | Description | Completed | Outcome | Learnings Ref |
 |----|-------------|-----------|---------|---------------|
+| BL-005 | Developer tooling & environment setup | 2026-02-15 | Success — Complete developer tooling infrastructure: GitHub Actions (test.yml, lint.yml, release.yml), Makefile (15+ targets), pre-commit config, VS Code settings/extensions/launch, .editorconfig, .python-version, CONTRIBUTING.md. CI enforces quality on every PR (Python 3.11/3.12, coverage, linting, type checking, security audit). Zero-config onboarding: clone → `make install` → start coding. | LRN-017 |
 | BL-018 | Defensibility analysis (vs dbt Labs) | 2026-02-15 | Success — Comprehensive defensibility analysis (8 sections, 9K+ words) covering dbt Labs roadmap, what they're NOT building, overlap analysis, strategic constraints, moat framework, threat scenarios with mitigation, positioning strategy. Key finding: dbt Labs focused on dev tools (Copilot, Semantic Layer), not operational agents. Window open for dbt Guardian. | LRN-016 |
 | BL-017 | Pilot plan & design partner strategy | 2026-02-15 | Success — Comprehensive 13-section pilot plan covering: product context, goals, metrics, partner criteria, timeline, outreach channels, onboarding flow, feedback framework, success scenarios, synthesis deliverables, open questions, risk assessment. Ready for CEO review. | LRN-015 |
 | BL-016 | Test Generator agent v0 | 2026-02-15 | Success — Full implementation: TestCoverageAnalyzer (detects gaps, prioritizes by column patterns), SchemaYamlGenerator (PR-ready YAML with placeholders), CLI commands (analyze + generate-tests), 35+ unit tests. Works on any dbt Core project. | LRN-014 |

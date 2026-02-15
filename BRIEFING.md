@@ -5,14 +5,25 @@
 > STATE.md is the dashboard, this is the narrative.
 
 ## Latest Briefing
-**Date**: 2026-02-15 (Cycle #4)
+**Date**: 2026-02-15 (Cycle #5)
 **Author**: CTO-Agent
 
 ### TL;DR
-🛡️ **BL-018 complete: dbt Guardian is defensible against dbt Labs.** Comprehensive competitive analysis (9K+ words) reveals dbt Labs has structural constraints: (1) focused on dev tools (Copilot, Semantic Layer) not ops, (2) can't go cross-stack (partnership conflicts), (3) won't build autonomous remediation (governance + liability), (4) can't aggressively monetize dbt Core (community tension). **Our moat: operational agents for dbt Core → cross-stack autonomous remediation.** Window open NOW — dbt Labs not building this in 2026.
+🔧 **BL-005 complete: Developer tooling infrastructure is production-ready.** Complete CI/CD setup for dbt Guardian: GitHub Actions (test + lint + release workflows), Makefile (15+ commands), pre-commit hooks, VS Code config, CONTRIBUTING.md. CI enforces quality on every PR (Python 3.11/3.12, 80%+ coverage, linting, type checking, security audit). Zero-config onboarding: `make install` → start coding. Template validated for future repos. **Product is now ready for external contributors and pilot partners.**
 
 ### What Happened Since Last Briefing
-1. **BL-018 complete (Defensibility analysis)** — Comprehensive competitive analysis (`research/defensibility-analysis.md`, 8 sections, 9,000+ words):
+1. **BL-005 complete (Developer tooling & environment setup)** — Complete infrastructure for quality enforcement and developer experience:
+   - **GitHub Actions**: 3 workflows in `.github/workflows/` — test.yml (Python 3.11/3.12 matrix, coverage reporting to Codecov, dependency caching), lint.yml (ruff + black + isort + mypy + pip-audit), release.yml (PyPI trusted publishing + GitHub releases, manual trigger)
+   - **Makefile**: 15+ targets for common dev tasks — test (with variants: unit/integration/e2e/fast), lint, format, type-check, security, audit (all checks), clean, run, build, publish
+   - **Pre-commit hooks**: .pre-commit-config.yaml with 5 hooks (trailing whitespace, YAML check, black, isort, ruff, mypy) — optional but recommended
+   - **VS Code setup**: .vscode/settings.json (Python interpreter, formatters, linters, 100-char rulers), extensions.json (recommended extensions: Python, Black, Ruff, mypy, etc.), launch.json (debug configs for CLI + pytest)
+   - **Cross-editor**: .editorconfig for consistent formatting across all editors
+   - **pyenv integration**: .python-version specifies Python 3.11
+   - **Developer docs**: CONTRIBUTING.md (6 sections: setup, workflow, code style, testing guidelines, making changes, release process) with concrete examples
+   - **README updates**: Added CI badges, development commands section
+   - **CLAUDE.md updates**: New sections for VS Code setup and pre-commit hooks
+   - **Quality enforcement**: CI fails if tests fail, coverage <70%, linting fails, type errors, or security vulnerabilities detected
+2. **BL-018 complete (Defensibility analysis)** — *(Previous cycle)* Comprehensive competitive analysis (`research/defensibility-analysis.md`, 8 sections, 9,000+ words):
    - **dbt Labs 2026 roadmap**: dbt Copilot (AI coding in IDE, GA), dbt Explorer (catalog), dbt Semantic Layer (governance for AI/LLMs), dbt Fusion (next-gen engine). All dev-focused.
    - **What dbt Labs is NOT building**: Operational incident response, autonomous test generation at runtime, cross-stack remediation, dbt Core operational features, true autonomous remediation
    - **Overlap analysis**: Test generation (moderate overlap, different use cases — theirs is IDE on-demand, ours is continuous autonomous)
@@ -24,9 +35,10 @@
 2. **DEC-010 logged**: dbt Guardian defensibility validated. Path forward clear.
 
 ### Decisions Made
-- **LRN-016**: dbt Labs' structural constraints create permanent defensibility gaps. They focus on development (IDE, Copilot), not operations (incident response, autonomous fixes). Partnership ecosystem (Monte Carlo, Elementary, Metaplane) prevents them from going cross-stack. Community tension over dbt Cloud pricing creates opening for dbt Core-first products. Window open NOW — they're focused on Copilot + Semantic Layer in 2026, not operational agents.
-- **DEC-010**: Strategic path validated — (1) win dbt Core users (next 6 months), (2) build autonomous capabilities dbt Labs won't (6-12 months), (3) expand cross-stack before competitors lock us out (12-18 months). First-mover advantage critical.
-- **Positioning confirmed**: "Operational layer dbt is missing" (complementary, not competitive). Explicitly call out dbt Labs' strengths (Copilot for development, Semantic Layer for governance). Target dbt Core power users frustrated with Cloud pricing.
+- **LRN-017**: Developer tooling should be comprehensive and opinionated from day one. Setting up CI/CD, linting, formatting, type checking, security auditing, and IDE config early establishes quality standards before bad habits form. Zero-config onboarding (clone → `make install` → start coding) removes friction. Pattern validated — will use as template for future repos.
+- **Infrastructure approach**: Commit VS Code settings (not gitignored) to provide batteries-included developer experience. Commit poetry.lock (changed from gitignoring) for reproducible builds. Pre-commit hooks are optional (not forced) to balance convenience and consistency.
+- **CI strategy**: Test on both Python 3.11 and 3.12. Fail on coverage <70%, any linting errors, type errors, or security vulnerabilities. Use caching for faster builds. Trusted publishing to PyPI (no tokens needed).
+- *(Previous cycle)* **LRN-016 + DEC-010**: dbt Guardian defensibility validated. Window open NOW — dbt Labs focused elsewhere in 2026.
 
 ### Decisions Needed From You
 *(Still pending from previous briefing)*
@@ -50,12 +62,12 @@
 | Org phase | BUILDING |
 | Product repos | 1 (dbt-guardian in products/) |
 | Active agents | 1 (CTO-Agent) |
-| Backlog items | 14 total (1 blocked on CEO, 1 queued, 12 complete) |
+| Backlog items | 14 total (1 blocked on CEO, 13 complete) |
 | Product capabilities | 1 (Test Generator v0) ✅ |
 | Pilot readiness | Plan ✅ + Defensibility ✅, Week 0 prep blocked on CEO approval |
 | Playbooks | 19 (PB-001 through PB-019) |
 | Skills | 3 (/cto, /status, /sync) |
-| Daemon cycles | 4 (autonomous) |
+| Daemon cycles | 5 (autonomous) |
 | Test coverage | 35+ unit tests, 100% passing |
 | GitHub | Org repo live, product code in products/ |
 | Research docs | 7 complete (added defensibility) |

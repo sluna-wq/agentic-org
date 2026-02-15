@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-15 (Cycle #4, BL-018 complete)
+> Last updated: 2026-02-15 (Cycle #5, BL-005 complete)
 
 ## Phase
 `BUILDING` — Product direction confirmed. dbt Guardian greenlit. Transitioning from planning to product work.
@@ -21,7 +21,6 @@ Phases: `BOOTSTRAP` → `PLANNING` → **`BUILDING`** → `SHIPPING` → `OPERAT
 | ID | Description | Owner | Status | Last Activity | What's Next |
 |----|-------------|-------|--------|---------------|-------------|
 | BL-019 | Pilot Week 0 prep (onboarding doc, feedback infra) | CTO-Agent | Blocked | — | Waiting for CEO pilot plan approval |
-| BL-005 | Developer tooling & environment setup | CTO-Agent | Queued | — | CI pipeline, linting config |
 
 ## Blockers
 - **Cloud daemon**: Anthropic API credits at $0 + ORG_PAT needs repo write scope. Daemon paused until both fixed.
@@ -48,8 +47,8 @@ Phases: `BOOTSTRAP` → `PLANNING` → **`BUILDING`** → `SHIPPING` → `OPERAT
 | Dimension | Status | Notes |
 |-----------|--------|-------|
 | Liveness | PAUSED | Cloud daemon needs credits + PAT |
-| Delivery | ON_TRACK | Test Generator v0 complete! Pilot plan next |
-| Quality | EXCELLENT | 35+ unit tests, type-safe, comprehensive coverage |
+| Delivery | ON_TRACK | Test Generator v0 complete! CI/CD + tooling ready |
+| Quality | EXCELLENT | 35+ unit tests, CI/CD enforced, comprehensive tooling |
 | Team | Minimal | CTO-Agent only |
 | Knowledge | Strong | Research complete, product direction clear |
 

@@ -166,35 +166,71 @@ When we add autonomous agent capabilities:
 ### Setup
 ```bash
 cd products/dbt-guardian
-poetry install
+make install               # OR: poetry install
 poetry shell
 ```
 
 ### Run tests
 ```bash
-pytest                     # All tests
-pytest tests/unit/         # Unit tests only
-pytest -v --cov            # With coverage report
+make test                  # All tests with coverage
+make test-fast             # Without coverage (faster)
+make test-unit             # Unit tests only
+make test-integration      # Integration tests only
+make test-e2e              # E2E tests only
 ```
 
 ### Quality checks
 ```bash
-ruff check .               # Linting
-black --check .            # Formatting check
-mypy src/                  # Type checking
-pip-audit                  # Security audit
+make lint                  # All linting checks
+make format                # Auto-format code
+make type-check            # Type checking with mypy
+make security              # Security audit
+make audit                 # Run all checks
 ```
 
 ### Run CLI locally
 ```bash
-poetry run dbt-guardian --help
+make run                   # Show help
+make run ARGS="analyze /path/to/dbt/project"
+# OR: poetry run dbt-guardian --help
+```
+
+### VS Code Setup
+The `.vscode/` directory contains:
+- **settings.json** - Python interpreter, formatters, linters
+- **extensions.json** - Recommended extensions
+- **launch.json** - Debug configurations
+
+Open the project in VS Code and install recommended extensions when prompted.
+
+### Pre-commit Hooks (Optional)
+```bash
+poetry add --group dev pre-commit
+poetry run pre-commit install
+poetry run pre-commit run --all-files
 ```
 
 ## CI/CD
 
-- **Every PR**: Run tests, lint, type check, security audit
-- **Every merge to main**: Same checks + build package
-- **Manual release trigger**: Publish to PyPI
+GitHub Actions workflows in `.github/workflows/`:
+
+- **test.yml** - Runs on every PR and push to main
+  - Tests on Python 3.11 and 3.12
+  - Coverage reporting to Codecov
+  - Caches dependencies for faster runs
+
+- **lint.yml** - Runs on every PR and push to main
+  - ruff (linting)
+  - black (formatting)
+  - isort (import sorting)
+  - mypy (type checking)
+  - pip-audit (security)
+
+- **release.yml** - Manual trigger only
+  - Runs full test suite
+  - Builds package
+  - Publishes to PyPI with trusted publishing
+  - Creates GitHub release with artifacts
 
 ## Distribution
 

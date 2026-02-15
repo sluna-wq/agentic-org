@@ -1,5 +1,10 @@
 # dbt Guardian
 
+[![Test](https://github.com/agentic-org/agentic-org/actions/workflows/test.yml/badge.svg)](https://github.com/agentic-org/agentic-org/actions/workflows/test.yml)
+[![Lint](https://github.com/agentic-org/agentic-org/actions/workflows/lint.yml/badge.svg)](https://github.com/agentic-org/agentic-org/actions/workflows/lint.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+
 **Autonomous reliability agents for dbt projects.**
 
 ## What It Does
@@ -45,7 +50,33 @@ dbt-guardian generate-tests /path/to/dbt/project
 
 ## Development
 
-See [CLAUDE.md](CLAUDE.md) for developer instructions.
+### Setup
+
+```bash
+# Install dependencies
+make install
+# OR: poetry install
+
+# Activate virtual environment
+poetry shell
+```
+
+### Common Commands
+
+```bash
+make test           # Run tests with coverage
+make lint           # Run all linting checks
+make format         # Auto-format code
+make type-check     # Run mypy type checking
+make security       # Run security audit
+make audit          # Run all quality checks
+```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for full development guide.
+
+### Architecture
+
+See [CLAUDE.md](CLAUDE.md) for detailed technical documentation.
 
 ## License
 
