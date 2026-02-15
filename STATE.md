@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-15 (Cycle #2, BL-016 complete)
+> Last updated: 2026-02-15 (Cycle #3, BL-017 complete)
 
 ## Phase
 `BUILDING` — Product direction confirmed. dbt Guardian greenlit. Transitioning from planning to product work.
@@ -20,7 +20,6 @@ Phases: `BOOTSTRAP` → `PLANNING` → **`BUILDING`** → `SHIPPING` → `OPERAT
 ## Active Work
 | ID | Description | Owner | Status | Last Activity | What's Next |
 |----|-------------|-------|--------|---------------|-------------|
-| BL-017 | Pilot plan & design partner strategy | CTO-Agent | Queued | — | Can start anytime |
 | BL-018 | Defensibility analysis (vs dbt Labs) | CTO-Agent | Queued | — | Can start anytime |
 | BL-005 | Developer tooling & environment setup | CTO-Agent | Queued | — | CI pipeline, linting config |
 

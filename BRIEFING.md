@@ -5,29 +5,41 @@
 > STATE.md is the dashboard, this is the narrative.
 
 ## Latest Briefing
-**Date**: 2026-02-15 (Cycle #2)
+**Date**: 2026-02-15 (Cycle #3)
 **Author**: CTO-Agent
 
 ### TL;DR
-🎉 **Major milestone: BL-016 (Test Generator v0) shipped!** First autonomous agent capability is complete and ready for pilot testing. Full implementation: TestCoverageAnalyzer (pattern-based gap detection), SchemaYamlGenerator (PR-ready YAML with placeholders), rich CLI commands (analyze + generate-tests), 35+ unit tests. This is the core dbt Guardian product — analyzes any dbt Core project for test coverage gaps and generates schema.yml suggestions. **Ready to find design partners.**
+📋 **BL-017 complete: Comprehensive pilot plan ready for CEO review.** 13-section pilot plan covering goals, metrics, partner selection (Tier 1-3 criteria), 4-week timeline, outreach channels (network + community), onboarding flow, feedback framework, success scenarios, synthesis deliverables, risk assessment. Defines what pilot success looks like (3-5 partners, 2+ report value, 1+ time savings, 0 critical bugs) and abort signals (no partners in 2 weeks = reassess). **Ready to execute Week 0 prep once CEO approves.**
 
 ### What Happened Since Last Briefing
-1. **BL-016 complete (Test Generator v0)** — First autonomous agent capability shipped:
-   - **TestCoverageAnalyzer** (`analyzers/coverage.py`): Pattern-based gap detection (ID columns, foreign keys, timestamps, status fields). Priority scoring (1-5). Generates CoverageReport with gaps and rationale.
-   - **SchemaYamlGenerator** (`generators/schema_yaml.py`): Converts gaps to PR-ready schema.yml. Simple tests (not_null, unique) as strings. Complex tests (accepted_values, relationships) as dict placeholders with TODOs. Supports incremental merge with existing schema.yml.
-   - **CLI commands**: `dbt-guardian analyze` (shows coverage % + top gaps in rich table), `dbt-guardian generate-tests` (creates schema.yml with --merge and --priority options)
-   - **35+ unit tests**: test_coverage_analyzer.py (13 tests), test_schema_yaml_generator.py (14 tests). All passing.
-   - **Pattern-based approach**: ID_PATTERNS, TIMESTAMP_PATTERNS, STATUS_PATTERNS. Deterministic, fast, maintainable. See LRN-014.
-2. **Product architecture validated** — Parser → Analyzer → Generator → CLI flow works end-to-end
-3. **Test coverage excellent** — 35+ unit tests with fixtures, edge cases, incremental merge scenarios
+1. **BL-017 complete (Pilot plan)** — Comprehensive 13-section pilot plan created (`product/pilot-plan.md`, 500+ lines):
+   - **Product context**: What we built (Test Generator v0), what's missing (no PR automation, no dbt Cloud), installation/usage
+   - **Pilot goals**: Primary (validate PMF, test prioritization, UX gaps, stress-test), Secondary (design partner relationships), Explicitly NOT (PR automation, dbt Cloud, pricing)
+   - **Success metrics**: Must-have (3-5 partners, 2+ successful, 1+ time savings, 0 critical bugs), Nice-to-have (repeat usage, feature requests), Red flags (no partners, ghost after install, parser crashes, competitive threat)
+   - **Partner selection**: Ideal profile (mid-market, 5-20 data engineers, dbt Core + Snowflake/Postgres, messy test coverage), Tier 1-3 criteria, disqualifiers
+   - **Timeline**: 4 weeks (Week 0 prep → Week 1-3 execution → Week 4 synthesis)
+   - **Outreach channels**: Tier 1 (CEO network, advisor intros), Tier 2 (dbt Slack, Locally Optimistic, Reddit), Tier 3 (LinkedIn, conference hallways), Tier 4 avoid (cold email, paid ads, PH/HN)
+   - **Onboarding flow**: 5-step partner journey (outreach → onboarded → active → feedback → retention)
+   - **Feedback framework**: Structured interview questions, documentation template, async survey fallback
+   - **Success scenarios**: Best case → Good case → Weak case → Failure case (learnings for each)
+   - **Synthesis deliverables**: pilot-synthesis.md structure (9 sections), updated backlog, CEO briefing
+   - **Open questions**: CEO time commitment, pilot publicity, failure criteria, incentives, network intros, conference attendance
+   - **Risk assessment**: Technical (parser crashes, false positives), Market (no one cares, dbt Labs ships this), Execution (can't find partners, ghosting)
+2. **Next step queued (BL-019)** — Week 0 prep (onboarding doc, feedback infrastructure, sample project testing, CEO approval)
 
 ### Decisions Made
-- **LRN-014**: Pattern-based test detection (not ML) is the right approach. Simple, deterministic, 80%+ coverage of high-value gaps. Generate placeholders for complex tests (accepted_values, relationships) rather than trying to infer — humans know their domain better.
-- **Priority scoring**: 1=primary keys, 2=foreign keys, 3=status columns, 4=timestamps, 5=other. Helps users focus on high-impact gaps first.
-- **Incremental merge**: Support both "generate from scratch" and "merge with existing schema.yml" workflows — users have existing test files.
+- **LRN-015**: Comprehensive pilot planning frontloads risk mitigation. 13-section plan serves three purposes: (1) CEO-CTO alignment on success criteria, (2) CTO playbook for execution (no mid-pilot improvisation), (3) legible/actionable results (clear synthesis framework). Key: actionable (concrete partner criteria, structured outreach, detailed feedback questions, explicit abort signals), not academic.
+- **Pilot success definition**: 3-5 partners use tool on real projects, 2+ report value, 1+ time savings, 0 critical bugs. Abort if: no partners after 2 weeks, partners ghost, parser unreliable, competitive threat.
+- **Partner tiering**: Tier 1 (CEO network, warm intros) = 30-50% conversion. Tier 2 (community) = 10-20%. Tier 3 (cold) = <5%. Focus on Tier 1.
 
 ### Decisions Needed From You
-**Design partners**: Test Generator v0 is ready for pilot testing. Do you know any dbt Core teams (5-20 engineers, Snowflake/Postgres) who'd try an early prototype? We need 2-3 design partners to validate the approach and refine the product.
+1. **Approve pilot plan**: Review `product/pilot-plan.md`. If approved, CTO will execute Week 0 prep (BL-019: onboarding doc, feedback infrastructure, sample testing).
+2. **Open questions from pilot plan** (Section 11):
+   - **CEO time for outreach**: How much time can you allocate to warm intros? (1 hour? 5 hours? 20 hours?) We need 3-5 partners, Tier 1 (network) has 30-50% conversion.
+   - **Pilot publicity**: Public (blog, tweet, dbt Slack announcement) or quiet? Recommend quiet for v0 (quality control).
+   - **Failure criteria**: If <2 partners in 2 weeks, pivot immediately or keep pushing?
+   - **Network intros**: Can you identify 5-10 warm leads from personal network? (Names/companies for initial outreach)
+   - **Conference attendance**: Attending any data conferences in next 4 weeks? (In-person demos = 30-50% conversion)
 
 ### Risks & Concerns
 - Cloud daemon paused due to $0 API credits — needs top-up at console.anthropic.com
@@ -41,15 +53,16 @@
 | Org phase | BUILDING |
 | Product repos | 1 (dbt-guardian in products/) |
 | Active agents | 1 (CTO-Agent) |
-| Backlog items | 13 total (3 active, 10 complete) |
+| Backlog items | 14 total (2 active, 11 complete) |
 | Product capabilities | 1 (Test Generator v0) ✅ |
+| Pilot readiness | Pilot plan complete ✅, Week 0 prep next |
 | Playbooks | 19 (PB-001 through PB-019) |
 | Skills | 3 (/cto, /status, /sync) |
-| Daemon cycles | 2 (autonomous) |
+| Daemon cycles | 3 (autonomous) |
 | Test coverage | 35+ unit tests, 100% passing |
 | GitHub | Org repo live, product code in products/ |
 | Research docs | 6 complete |
-| Learnings | 14 entries |
+| Learnings | 15 entries |
 
 ---
 
@@ -78,6 +91,7 @@
 ## Briefing Archive
 | Date | TL;DR |
 |------|-------|
+| 2026-02-15 (#3) | 📋 **BL-017 complete: Pilot plan ready for CEO review.** 13-section plan (500+ lines): goals, metrics, partner selection, timeline, outreach channels, feedback framework, success scenarios, risk assessment. Defines success (3-5 partners, 2+ value, 1+ time savings) and abort signals. Week 0 prep next (BL-019). |
 | 2026-02-15 (#2) | 🎉 **BL-016 complete: Test Generator v0 shipped!** TestCoverageAnalyzer + SchemaYamlGenerator + rich CLI + 35 tests. First autonomous agent capability ready for pilot. Pattern-based approach validated (LRN-014). Design partners needed. |
 | 2026-02-15 (#2) | Autonomous Cycle #2: BL-015 complete. dbt parser shipped (ManifestParser, CatalogParser, ProjectParser). Multi-repo issue resolved via mono-repo approach. BL-016 unblocked. |
 | 2026-02-15 (#1) | Autonomous Cycle #2: BL-014 complete. dbt-guardian product repo bootstrapped with full Python scaffold, CLAUDE.md, CI/CD. Phase → BUILDING. |

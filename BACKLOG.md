@@ -15,7 +15,7 @@ Items are scored on:
 ### Priority 0 — Product (dbt Guardian)
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| BL-017 | **Pilot plan & design partner outreach** — Write formal pilot plan (scope, success metrics, timeline, selection criteria). Identify channels for finding dbt Core design partners. For CEO review. Output: `product/pilot-plan.md` | 5 | 4 | S | BL-016 ✓ | CTO-Agent |
+| BL-019 | **Pilot execution (Week 0 prep)** — Create pilot onboarding doc, set up feedback infrastructure, test on sample projects, get CEO approval. Output: `product/pilot-onboarding.md` + pilot-ready package | 5 | 5 | S | BL-017 ✓ | CTO-Agent |
 | BL-018 | **Defensibility analysis** — Deep dive on dbt Labs roadmap (Copilot, Explorer, Semantic Layer), what they're likely to build vs not, where our cross-stack story creates a moat. Inform product positioning. Output: `research/defensibility-analysis.md` | 4 | 4 | M | None | CTO-Agent |
 
 ### Priority 1 — Infrastructure (do alongside product)
@@ -38,6 +38,7 @@ Items are scored on:
 ## Completed
 | ID | Description | Completed | Outcome | Learnings Ref |
 |----|-------------|-----------|---------|---------------|
+| BL-017 | Pilot plan & design partner strategy | 2026-02-15 | Success — Comprehensive 13-section pilot plan covering: product context, goals, metrics, partner criteria, timeline, outreach channels, onboarding flow, feedback framework, success scenarios, synthesis deliverables, open questions, risk assessment. Ready for CEO review. | LRN-015 |
 | BL-016 | Test Generator agent v0 | 2026-02-15 | Success — Full implementation: TestCoverageAnalyzer (detects gaps, prioritizes by column patterns), SchemaYamlGenerator (PR-ready YAML with placeholders), CLI commands (analyze + generate-tests), 35+ unit tests. Works on any dbt Core project. | LRN-014 |
 | BL-015 | dbt project parser (manifest.json, catalog, YAML) | 2026-02-15 | Success — Full parser implementation with 3 modules (ManifestParser, CatalogParser, ProjectParser), Pydantic models, type hints, CLI commands, unit tests. In `products/dbt-guardian/` (mono-repo approach until GitHub repo creation is available). | LRN-013 |
 | BL-014 | Product repo bootstrap (dbt-guardian) | 2026-02-15 | Success — Full repo scaffold: CLAUDE.md, Python project structure, CI/CD, CLI skeleton. Local at `/home/runner/work/agentic-org/dbt-guardian` | LRN-010 |

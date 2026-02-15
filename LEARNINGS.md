@@ -132,6 +132,14 @@
 ---
 *Update protocol: Add entries after completing any work item, resolving any incident, or running any experiment. Entries are append-only — never delete a learning, even if it's later superseded (add a note instead). Tag entries for searchability. Review during PB-003 (Weekly Planning).*
 
+### LRN-015: Comprehensive pilot planning frontloads risk mitigation and accelerates execution
+- **Date**: 2026-02-15
+- **Source**: BL-017 — Pilot plan & design partner strategy
+- **Insight**: A thorough pilot plan (13 sections, 500+ lines) that covers product context, goals, metrics, partner selection, timeline, outreach channels, onboarding flow, feedback framework, success scenarios, synthesis deliverables, risk assessment, and open questions is NOT over-planning — it's essential risk management for a 4-week pilot that could validate or invalidate product-market fit. The plan serves three purposes: (1) aligns CEO and CTO on what success looks like, (2) gives the CTO a playbook for execution (no mid-pilot improvisation), (3) makes pilot results legible and actionable (clear synthesis framework). The key is making it actionable, not academic: concrete partner criteria (Tier 1-3), structured outreach channels (expected yield), detailed feedback questions (what we're learning), and explicit abort signals (when to pivot). A good pilot plan should feel like reading a field guide, not a strategy deck.
+- **Evidence**: BL-017 produced `product/pilot-plan.md` covering: (1) product context (what we built, what's missing, how to use it), (2) pilot goals (primary + secondary + explicitly NOT goals), (3) success metrics (must-have + nice-to-have + red flags), (4) partner selection criteria (ideal profile + Tier 1/2/3 + disqualifiers), (5) 4-week timeline (Prep → Week 1 outreach → Week 2-3 usage → Week 4 synthesis), (6) outreach channels (Tier 1-4 with expected yield), (7) onboarding flow (5-step partner journey), (8) feedback framework (structured interview questions + documentation template), (9) success scenarios (best case → failure case with learnings for each), (10) synthesis deliverables (pilot-synthesis.md structure), (11) open questions for CEO (strategic, operational, distribution), (12) risk assessment (technical, market, execution risks with mitigation), (13) success definition (TL;DR). Plan is ready for CEO review and provides Week 0 prep work (onboarding doc, feedback infrastructure, sample project testing).
+- **Action taken**: Pilot plan complete and ready for CEO approval. Next step: BL-019 (Week 0 prep) once CEO approves. Pattern validated: comprehensive planning upfront → fast execution → clear synthesis. Will use for future pilots and product launches.
+- **Tags**: process, product, planning, pilot, risk-management
+
 ### LRN-014: Pattern-based test coverage analysis scales better than ML heuristics
 - **Date**: 2026-02-15
 - **Source**: BL-016 — Test Generator agent v0
