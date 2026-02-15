@@ -1,0 +1,71 @@
+[tool.poetry]
+name = "dbt-guardian"
+version = "0.1.0"
+description = "Autonomous reliability agents for dbt projects"
+authors = ["Agentic Org <noreply@agentic.org>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/agentic-org/dbt-guardian"
+repository = "https://github.com/agentic-org/dbt-guardian"
+keywords = ["dbt", "data", "testing", "agents", "automation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+click = "^8.1.7"
+rich = "^13.7.0"
+pydantic = "^2.5.0"
+pyyaml = "^6.0.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+pytest-cov = "^4.1.0"
+ruff = "^0.1.9"
+black = "^23.12.1"
+isort = "^5.13.2"
+mypy = "^1.8.0"
+pip-audit = "^2.6.1"
+
+[tool.poetry.scripts]
+dbt-guardian = "dbt_guardian.cli:cli"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+select = ["E", "F", "I", "N", "W", "UP", "B", "A", "C4", "SIM"]
+ignore = []
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
+addopts = "--cov=src/dbt_guardian --cov-report=term-missing --cov-fail-under=70"
+
+[tool.coverage.run]
+source = ["src/dbt_guardian"]
+omit = ["*/tests/*", "*/__pycache__/*"]

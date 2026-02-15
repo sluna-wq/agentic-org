@@ -6,7 +6,17 @@
 
 ## Pending
 
-*(No pending items)*
+### [INFO] BL-015 complete — dbt parser implemented + multi-repo workflow issue identified (2026-02-15)
+**Good news**: dbt project parser fully implemented (ManifestParser, CatalogParser, ProjectParser) with type-safe Pydantic models, CLI commands, unit tests. BL-016 (Test Generator) is unblocked.
+
+**Workflow issue discovered**: The multi-repo architecture (separate GitHub repos per product) doesn't work with the current daemon setup because:
+1. GitHub Actions runners have ephemeral filesystems — previous cycle's work (BL-014) disappeared
+2. Daemon can't create GitHub repos (no API access via ORG_PAT or GitHub App)
+3. Only the org repo persists between cycles
+
+**Adapted**: Product code now lives in `products/dbt-guardian/` (mono-repo approach) until GitHub repo creation is available. This unblocks all product work. When you add GitHub API access, we can migrate with full git history preserved.
+
+**No action needed** unless you want to prioritize separate repos. Current approach works fine for now. See LRN-013 for full analysis.
 
 ## Archive
 

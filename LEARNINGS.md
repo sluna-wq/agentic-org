@@ -121,5 +121,13 @@
 - **Action taken**: Product repo at `/home/runner/work/agentic-org/dbt-guardian` ready for feature work. Pattern validated: comprehensive CLAUDE.md + full scaffold + CI/CD + commit = ready to execute. Will replicate for future product repos.
 - **Tags**: process, product, bootstrap, standards, ai-native
 
+### LRN-013: Multi-repo workflow requires GitHub API access — adapt with mono-repo until available
+- **Date**: 2026-02-15
+- **Source**: BL-015 — dbt project parser implementation (Cycle #2)
+- **Insight**: The designed multi-repo architecture (separate GitHub repos for each product) requires GitHub API access to create repos, which the daemon doesn't have. GitHub Actions runners have ephemeral filesystems — work created locally in one cycle doesn't persist to the next. The previous cycle (BL-014) created a product repo locally but it disappeared when this cycle started. The pragmatic solution: temporarily use a mono-repo approach (`products/` directory in the org repo) until we have GitHub repo creation capability (via ORG_PAT or GitHub App). This unblocks product work NOW while preserving the path to multi-repo later. The trade-off is acceptable because the org repo is the only persistent storage the daemon can write to.
+- **Evidence**: Cycle #2 started, found no dbt-guardian repo at expected path despite cycle log showing successful BL-014 completion. Investigated and realized: (1) GitHub Actions runners are stateless between runs, (2) daemon can't create GitHub repos, (3) previous work was lost because it wasn't committed to the org repo. Adapted by creating `products/dbt-guardian/` in org repo, implemented full parser (3 modules, Pydantic models, CLI, tests), committed to org repo. Work is now persistent and BL-016 is unblocked.
+- **Action taken**: Created `products/dbt-guardian/` with full dbt parser implementation. Updated WORKBENCH.md understanding (mono-repo interim). Flagged GitHub repo creation need in STATE.md "Where CEO Can Help" and CEO-INBOX.md. When GitHub API access is available, we can migrate `products/dbt-guardian/` to a separate repo with full git history preserved.
+- **Tags**: process, infrastructure, architecture, pragmatism, daemon
+
 ---
 *Update protocol: Add entries after completing any work item, resolving any incident, or running any experiment. Entries are append-only — never delete a learning, even if it's later superseded (add a note instead). Tag entries for searchability. Review during PB-003 (Weekly Planning).*

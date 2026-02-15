@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-15 (Cycle #2, BL-014 complete)
+> Last updated: 2026-02-15 (Cycle #2, BL-015 complete)
 
 ## Phase
 `BUILDING` — Product direction confirmed. dbt Guardian greenlit. Transitioning from planning to product work.
@@ -20,17 +20,18 @@ Phases: `BOOTSTRAP` → `PLANNING` → **`BUILDING`** → `SHIPPING` → `OPERAT
 ## Active Work
 | ID | Description | Owner | Status | Last Activity | What's Next |
 |----|-------------|-------|--------|---------------|-------------|
-| BL-015 | dbt project parser (manifest.json, catalog, YAML) | CTO-Agent | Queued | — | Ready to start (BL-014 done) |
-| BL-016 | Test Generator agent v0 | CTO-Agent | Queued | — | Blocked on BL-015 |
+| BL-016 | Test Generator agent v0 | CTO-Agent | Queued | — | Ready to start (BL-015 done) |
 | BL-017 | Pilot plan & design partner strategy | CTO-Agent | Queued | — | Can start anytime |
 | BL-018 | Defensibility analysis (vs dbt Labs) | CTO-Agent | Queued | — | Can start anytime |
 
 ## Blockers
 - **Cloud daemon**: Anthropic API credits at $0 + ORG_PAT needs repo write scope. Daemon paused until both fixed.
+- **Multi-repo workflow**: Can't create separate GitHub repos from daemon. Product code temporarily in `products/` directory of org repo.
 
 ## Where CEO Can Help
 - **Credits**: Top up Anthropic API balance → unblocks autonomous daemon cycles
 - **ORG_PAT**: Regenerate with `repo` scope → unblocks daemon push
+- **GitHub repo creation**: Daemon needs ability to create repos via GitHub API → enables proper multi-repo architecture
 - **Design partners**: If you know dbt Core teams who'd try an early prototype, flag them
 
 ## Recent Decisions
@@ -48,8 +49,8 @@ Phases: `BOOTSTRAP` → `PLANNING` → **`BUILDING`** → `SHIPPING` → `OPERAT
 | Dimension | Status | Notes |
 |-----------|--------|-------|
 | Liveness | PAUSED | Cloud daemon needs credits + PAT |
-| Delivery | IN_PROGRESS | dbt-guardian repo live, parser next |
-| Quality | N/A | No product code yet |
+| Delivery | IN_PROGRESS | Parser complete, Test Generator next |
+| Quality | GOOD | Tests written, type-safe code |
 | Team | Minimal | CTO-Agent only |
 | Knowledge | Strong | Research complete, product direction clear |
 
