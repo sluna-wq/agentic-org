@@ -2,62 +2,57 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-14T20:47:00Z (Cycle #2)
+> Last updated: 2026-02-14 (CEO check-in, DEC-009)
 
 ## Phase
-`PLANNING` — CEO shared product direction. Cloud daemon being deployed.
+`BUILDING` — Product direction confirmed. dbt Guardian greenlit. Transitioning from planning to product work.
 
-Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → `SHIPPING` → `OPERATING`
+Phases: `BOOTSTRAP` → `PLANNING` → **`BUILDING`** → `SHIPPING` → `OPERATING`
 
-## Current Cycle
-- **Cycle #**: 2
-- **Started**: 2026-02-14T20:42:35Z
-- **Mode**: Autonomous (GitHub Actions)
-- **Focus**: BL-004 (Technical standards & conventions) — complete
+## Product: dbt Guardian
+**Autonomous reliability agents for dbt projects.** Starting with dbt Core users (not dbt Cloud). First agent: Test Generator — analyzes dbt project coverage gaps, generates schema.yml tests, opens PRs.
 
-## Current Focus
-**Cloud daemon operational but paused — out of API credits.** 2 successful cloud cycles ran on Feb 13 (~$3.70 total). 8+ failures since due to empty credit balance. Harness now has error classification (out_of_credits, auth_error) and push-on-failure. Needs: (1) Anthropic credits topped up, (2) ORG_PAT updated with repo write scope.
+- **Target customer**: Mid-market data teams (5-20 engineers) running dbt Core + Snowflake/Postgres
+- **Strategic framing**: Work with the data stack, then hollow it out. Start alongside tools, make them interchangeable over time.
+- **Moat**: Cross-stack remediation. dbt is entry point, not ceiling.
+- **Key decision**: DEC-009
 
 ## Active Work
-| ID | Description | Owner | Phase | Last Activity | ETA | Blocker? |
-|----|-------------|-------|-------|---------------|-----|----------|
-| BL-013 | Cloud daemon deployment | CTO-Agent | Blocked | 2026-02-12 | Pending credits | Needs secrets in GitHub |
-| BL-005 | Developer tooling & environment setup | CTO-Agent | Queued | 2026-02-14 | Next cycle | No |
+| ID | Description | Owner | Status | Last Activity | What's Next |
+|----|-------------|-------|--------|---------------|-------------|
+| BL-014 | Product repo bootstrap (`dbt-guardian`) | CTO-Agent | Queued | 2026-02-14 | Create repo, scaffold, CLAUDE.md |
+| BL-015 | dbt project parser (manifest.json, catalog, YAML) | CTO-Agent | Queued | — | Blocked on BL-014 |
+| BL-016 | Test Generator agent v0 | CTO-Agent | Queued | — | Blocked on BL-015 |
+| BL-017 | Pilot plan & design partner strategy | CTO-Agent | Queued | — | Can start anytime |
+| BL-018 | Defensibility analysis (vs dbt Labs) | CTO-Agent | Queued | — | Can start anytime |
 
 ## Blockers
-- **Credits**: Anthropic API balance is $0. Top up at https://console.anthropic.com
-- **ORG_PAT**: Token lacks repo write scope — push step gets 403. Regenerate with `repo` scope (classic) or `contents: write` (fine-grained).
+- **Cloud daemon**: Anthropic API credits at $0 + ORG_PAT needs repo write scope. Daemon paused until both fixed.
 
-## Key Context
-- **Cloud daemon architecture decided (DEC-008)**: GitHub Actions + Claude Agent SDK harness. CLI stays for CEO interactive sessions.
-- **CEO product direction received**: Autonomous agents for data stack management (DEC-006)
-- **Liveness metrics added**: cycles/day, hours since last cycle, consecutive failures, cost, duration (see METRICS.md)
-- Product repos model: products live in separate git repos (see .product-repos.md)
-- GitHub repo live — continuous push enabled
-- CTO Autonomous Zone expanded — full repo authority with do-no-harm principle (DEC-005)
-- DIR-001 + DIR-002 active
-- CTO-Agent operating solo, no specialists
+## Where CEO Can Help
+- **Credits**: Top up Anthropic API balance → unblocks autonomous daemon cycles
+- **ORG_PAT**: Regenerate with `repo` scope → unblocks daemon push
+- **Design partners**: If you know dbt Core teams who'd try an early prototype, flag them
 
 ## Recent Decisions
+- **DEC-009**: CEO-CTO contract evolution — retired DIR-001/002, issued DIR-003 (ownership), greenlit dbt Guardian, expanded CTO autonomy, improved visibility (2026-02-14)
 - DEC-008: Cloud daemon via GitHub Actions + SDK harness (2026-02-12)
-- DEC-007: CEO-CTO alignment — conversation mode, separate repos, operational evolution (2026-02-12)
-- DEC-006: CEO product direction — autonomous agents for data stack excellence (2026-02-11)
-- DEC-005: Expand CTO autonomy, GitHub CI, proactive CTO backlog (2026-02-11)
+- DEC-007: Conversation mode, separate repos, operational evolution (2026-02-12)
+- DEC-006: CEO product direction — autonomous agents for data stack (2026-02-11)
 
-## Upcoming
-- **First cloud cycle** — validate GitHub Actions daemon end-to-end
-- **CEO review of product concepts** — 4 docs in `research/`, start with `product-concepts.md`
-- BL-002: Claude Code & Agent SDK deep dive (first cloud cycle)
-- BL-004: Technical standards & conventions
+## Active Directives
+- **DIR-003** (ACTIVE): CTO operates with ownership and bias for action. Own outcomes, strong POV, disagree when warranted.
+- ~~DIR-001~~ (RETIRED): Org infra before product — done.
+- ~~DIR-002~~ (RETIRED): AI expertise before product — done.
 
 ## Health
 | Dimension | Status | Notes |
 |-----------|--------|-------|
-| Liveness | PAUSED | Cloud daemon works but out of API credits + PAT needs write scope |
-| Delivery | N/A | No product work started |
-| Quality | N/A | No product work started |
-| Team | Minimal | CTO-Agent only, no specialists |
-| Knowledge | Strong | Full artifact suite, skills, daemon, three interfaces |
+| Liveness | PAUSED | Cloud daemon needs credits + PAT |
+| Delivery | STARTING | Product work queued, repo bootstrap next |
+| Quality | N/A | No product code yet |
+| Team | Minimal | CTO-Agent only |
+| Knowledge | Strong | Research complete, product direction clear |
 
 ---
-*Update protocol: Update the "Last updated" timestamp on every change. Update "Current Cycle" at start/end of every daemon cycle. Update "Last Activity" in active work table on every meaningful action. Keep this under 100 lines.*
+*Update protocol: Update the "Last updated" timestamp on every change. Keep "Where CEO Can Help" current — this is how the CEO knows where to unblock. Keep this under 100 lines.*

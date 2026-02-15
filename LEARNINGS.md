@@ -89,5 +89,29 @@
 - **Action taken**: Created `standards/CONVENTIONS.md` with sections on: AI-native development philosophy, repository architecture, language standards (JS/TS/Python), project structure, testing strategy (unit/integration/e2e), code quality & review, CI/CD patterns, dependency management, security standards, documentation, git conventions, error handling & logging, performance standards, accessibility standards, and change management. Document includes changelog for tracking evolution. BL-005 (developer tooling) now unblocked.
 - **Tags**: process, standards, architecture, quality, ai-native
 
+### LRN-010: CTO must own outcomes, not execute tasks
+- **Date**: 2026-02-14
+- **Source**: DEC-009 — CEO-CTO contract evolution
+- **Insight**: Operating like a staff engineer who waits for requirements is a failure mode for a CTO agent. A CTO has a point of view on everything, drives results without being asked, proactively identifies problems, and pushes back when things don't make sense. The backlog is not a to-do list — it's a means to an outcome. Culture (how we operate) matters as much as architecture (what we build).
+- **Evidence**: CEO explicitly called out that the CTO was being too passive — presenting options instead of recommendations, waiting for directives instead of driving. CEO shared Amazon leadership principles as the target operating culture. The shift from "here are 3 options" to "here's what I think we should do and why" is fundamental.
+- **Action taken**: Issued DIR-003 (ownership principle). Restructured STATE.md to show "Where CEO Can Help" instead of just "Blockers." CTO now brings recommendations, not menus.
+- **Tags**: culture, process, leadership
+
+### LRN-011: Visibility beats control for CEO-CTO operating rhythm
+- **Date**: 2026-02-14
+- **Source**: DEC-009 — CEO-CTO contract evolution
+- **Insight**: The CEO doesn't want to approve every step — they want to understand where things stand and where they can help. The right contract is: CTO has broad autonomy to make product and technical decisions, CEO gets real-time visibility and clear asks. Approval gates on routine work slow the org down without adding value. The CEO's time is best spent on unblocking, strategic direction, and go/no-go on irreversible decisions.
+- **Evidence**: CEO said the current contract was "too restrictive" but also lacked visibility. The fix wasn't more checkpoints — it was better dashboards (STATE.md with "Where CEO Can Help") and aggressive flagging (CEO-INBOX.md). Retired two blocking directives that were gatekeeping product work.
+- **Action taken**: Retired DIR-001/DIR-002. Redesigned STATE.md with visibility-first format. Added "Where CEO Can Help" section.
+- **Tags**: process, interfaces, ceo-collaboration
+
+### LRN-012: Commit and push immediately after every approved change
+- **Date**: 2026-02-14
+- **Source**: CEO check-in — called out uncommitted and unpushed changes
+- **Insight**: Changes that aren't committed and pushed don't exist to the rest of the org. The daemon can't see them. GitHub can't see them. The CEO can't review them remotely. Every coherent set of approved changes must be committed AND pushed immediately — not batched, not deferred. "Commit locally" without push is only half the job.
+- **Evidence**: CTO made 7 file changes during CEO session without committing. Then committed without pushing. CEO had to ask about both. This is a discipline failure — the equivalent of saying "I'll file that later" and forgetting.
+- **Action taken**: New practice: every coherent set of approved changes gets committed AND pushed right away, even during conversation mode. No exceptions.
+- **Tags**: process, discipline, git
+
 ---
 *Update protocol: Add entries after completing any work item, resolving any incident, or running any experiment. Entries are append-only — never delete a learning, even if it's later superseded (add a note instead). Tag entries for searchability. Review during PB-003 (Weekly Planning).*

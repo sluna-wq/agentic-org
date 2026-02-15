@@ -131,5 +131,26 @@
 - **Outcome**: Pending — will evaluate after 48h of cloud cycles running
 - **Learnings**: TBD
 
+### DEC-009: CEO-CTO contract evolution — retire gates, expand autonomy, improve visibility, greenlight product
+- **Date**: 2026-02-14
+- **Decider**: CEO (aligned with CTO-Agent)
+- **Context**: CEO check-in covered three topics: (1) product direction — CEO likes dbt Guardian, wants dbt Core focus, wants pilot plan; (2) culture — CEO wants CTO to be 10x more proactive, own outcomes like a real CTO, adopt Amazon-style leadership principles; (3) CEO/CTO contract feels too restrictive but lacks visibility into progress.
+- **Options considered**:
+  1. Keep current directives and gates — safe but slows the org down and doesn't match CEO's desired operating rhythm
+  2. Retire blocking directives, expand CTO product authority, dramatically improve visibility — matches CEO intent and unblocks product work
+- **Decision**: Option 2 — comprehensive evolution:
+  - **Retired DIR-001** (org infra before product) — infrastructure is solid, time to build
+  - **Retired DIR-002** (AI expertise before product) — research done, learn by building
+  - **Issued DIR-003** (ownership and bias for action) — permanent operating principle
+  - **Product greenlit**: dbt Guardian, starting with dbt Core users (not dbt Cloud), Test Generator agent as first capability
+  - **Pilot approach**: 1-2 design partners, mid-market, dbt Core + Snowflake/Postgres, 3-4 week prototype → 2-4 week pilot
+  - **Visibility contract**: STATE.md becomes real-time dashboard with active work detail, CEO-INBOX.md used aggressively for unblocking
+  - **Culture shift**: CTO owns outcomes, has strong POV, disagrees when warranted, drives without being asked
+  - **Clarity commitment**: Keep research docs (what's true) cleanly separated from product specs (what we're building)
+  - **Strategic framing**: "Work with the data stack, then hollow them out" — start alongside existing tools, make them interchangeable over time
+- **Rationale**: The org has been in planning/research mode for 3 days. Infrastructure works. Research is done. The CEO is ready to build. Keeping gates up is the opposite of bias for action. The real risk now is moving too slowly, not moving too fast.
+- **Outcome**: Pending — will evaluate after first product milestone (working Test Generator prototype)
+- **Learnings**: TBD
+
 ---
 *Update protocol: Number decisions sequentially. Update outcomes retroactively. Link decisions from STATE.md when they affect current context. Reference decisions from CHARTER.md changelog when they modify governance.*

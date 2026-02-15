@@ -12,34 +12,31 @@ Items are scored on:
 
 ## Queue
 
-### Priority 1 — Do Next
+### Priority 0 — Product (dbt Guardian)
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| BL-005 | Developer tooling & environment setup — linting, formatting, CI pipeline (GitHub Actions), test runner config. Output: `.github/workflows/`, working CI/CD | 4 | 3 | M | BL-004 | CTO-Agent |
+| BL-014 | **Product repo bootstrap** — Create `dbt-guardian` repo, scaffold project (Python, Claude Agent SDK), CLAUDE.md with conventions, CI/CD. Follow PB-019. | 5 | 5 | S | None | CTO-Agent |
+| BL-015 | **dbt project parser** — Build core capability to parse dbt `manifest.json`, `catalog.json`, and project YAML files. Extract models, tests, columns, lineage, SQL. This is the foundation everything else builds on. | 5 | 5 | M | BL-014 | CTO-Agent |
+| BL-016 | **Test Generator agent v0** — Analyze dbt project for test coverage gaps. Generate `schema.yml` test suggestions (not_null, unique, accepted_values, relationships). Output as PR-ready YAML. Target: works on any dbt Core project with a manifest.json. | 5 | 5 | L | BL-015 | CTO-Agent |
+| BL-017 | **Pilot plan & design partner outreach** — Write formal pilot plan (scope, success metrics, timeline, selection criteria). Identify channels for finding dbt Core design partners. For CEO review. Output: `product/pilot-plan.md` | 5 | 4 | S | BL-014 | CTO-Agent |
+| BL-018 | **Defensibility analysis** — Deep dive on dbt Labs roadmap (Copilot, Explorer, Semantic Layer), what they're likely to build vs not, where our cross-stack story creates a moat. Inform product positioning. Output: `research/defensibility-analysis.md` | 4 | 4 | M | None | CTO-Agent |
 
-### Priority 1.5 — Product Exploration (CEO-directed, DEC-006)
+### Priority 1 — Infrastructure (do alongside product)
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| BL-009 | Data stack competitive landscape — map existing players (Monte Carlo, Datafold, Atlan, Sifflet, Great Expectations, Elementary, Metaplane, etc.), their positioning, gaps, and where an agentic approach is differentiated. Output: `research/data-stack-competitive-landscape.md` | 5 | 5 | M | None | CTO-Agent |
-| BL-010 | Modern data stack pain points & agent opportunities — map the full data stack (ingestion → transformation → warehouse → orchestration → BI → reverse ETL), identify top pain points at each layer, and assess which are most amenable to autonomous agent intervention. Output: `research/data-stack-pain-points.md` | 5 | 5 | M | None | CTO-Agent |
-| BL-011 | Agent architecture for data stack — design patterns for specialized agents (what agents, what they own, how they coordinate, what tools/access they need, safety model). Output: `research/agent-architecture-for-data.md` | 5 | 4 | M | BL-001, BL-010 | CTO-Agent |
-| BL-012 | Product concept synthesis — combine research into 2-3 concrete product concepts with positioning, MVP scope, go-to-market angle. For CEO review. Output: `research/product-concepts.md` | 5 | 4 | M | BL-009, BL-010, BL-011 | CTO-Agent |
+| BL-005 | Developer tooling & environment setup — linting, formatting, CI pipeline (GitHub Actions), test runner config. Output: `.github/workflows/` in product repo | 4 | 3 | M | BL-004 | CTO-Agent |
+| BL-013 | Cloud daemon — fix credits + PAT, get daemon running again for autonomous product work | 4 | 3 | S | Credits + PAT | CTO-Agent |
 
 ### Priority 2 — Do Soon
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| BL-003 | Org talent & capability plan — propose which specialist agent roles the org needs first, update ROSTER.md, propose hiring sequence to CEO via CEO-INBOX.md | 4 | 3 | S | BL-001, BL-002 | CTO-Agent |
-| BL-006 | Competitive & market landscape — survey AI agent product landscape, what exists, what's missing, where's the opportunity. Output: `research/market-landscape.md` | 4 | 3 | M | None | CTO-Agent |
-| BL-007 | Product vision drafting — based on research, draft 2-3 concrete product concepts for CEO review. Output: `research/product-vision-draft.md` | 5 | 2 | S | BL-001, BL-002, BL-006 | CTO-Agent |
-| BL-008 | Org process stress test — mini PB-013 audit, verify daemon/skills/cross-references all work end-to-end, find and fix gaps. Output: LEARNINGS.md entries, fixes | 3 | 3 | S | None | CTO-Agent |
-
-### Priority 3 — Do Eventually
-| ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
-|----|-------------|--------|---------|--------|-------------|-------|
-| BL-013 | Cloud deployment — move daemon to cloud VM for 24/7 operation. CEO interacts via GitHub mobile. Output: working cloud VM, documented setup in `daemon/README.md` | 4 | 2 | M | Product shipping | CTO-Agent |
+| BL-003 | Org talent & capability plan — what specialist agents do we need to ship dbt Guardian? | 4 | 3 | S | BL-014 | CTO-Agent |
+| BL-008 | Org process stress test — mini PB-013 audit | 3 | 2 | S | None | CTO-Agent |
 
 ### Icebox
 *(Ideas captured but not yet prioritized)*
+- BL-006: Broader market landscape (superseded by product-specific research)
+- BL-007: Product vision drafting (superseded by DEC-009, product direction confirmed)
 
 ## Completed
 | ID | Description | Completed | Outcome | Learnings Ref |
