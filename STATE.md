@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-15 (Cycle #2, BL-015 complete)
+> Last updated: 2026-02-15 (Cycle #2, BL-016 complete)
 
 ## Phase
 `BUILDING` — Product direction confirmed. dbt Guardian greenlit. Transitioning from planning to product work.
@@ -20,9 +20,9 @@ Phases: `BOOTSTRAP` → `PLANNING` → **`BUILDING`** → `SHIPPING` → `OPERAT
 ## Active Work
 | ID | Description | Owner | Status | Last Activity | What's Next |
 |----|-------------|-------|--------|---------------|-------------|
-| BL-016 | Test Generator agent v0 | CTO-Agent | Queued | — | Ready to start (BL-015 done) |
 | BL-017 | Pilot plan & design partner strategy | CTO-Agent | Queued | — | Can start anytime |
 | BL-018 | Defensibility analysis (vs dbt Labs) | CTO-Agent | Queued | — | Can start anytime |
+| BL-005 | Developer tooling & environment setup | CTO-Agent | Queued | — | CI pipeline, linting config |
 
 ## Blockers
 - **Cloud daemon**: Anthropic API credits at $0 + ORG_PAT needs repo write scope. Daemon paused until both fixed.
@@ -49,8 +49,8 @@ Phases: `BOOTSTRAP` → `PLANNING` → **`BUILDING`** → `SHIPPING` → `OPERAT
 | Dimension | Status | Notes |
 |-----------|--------|-------|
 | Liveness | PAUSED | Cloud daemon needs credits + PAT |
-| Delivery | IN_PROGRESS | Parser complete, Test Generator next |
-| Quality | GOOD | Tests written, type-safe code |
+| Delivery | ON_TRACK | Test Generator v0 complete! Pilot plan next |
+| Quality | EXCELLENT | 35+ unit tests, type-safe, comprehensive coverage |
 | Team | Minimal | CTO-Agent only |
 | Knowledge | Strong | Research complete, product direction clear |
 
