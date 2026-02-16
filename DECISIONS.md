@@ -176,5 +176,32 @@
 - **Outcome**: Pending — will evaluate after pilot results and 6-month market validation
 - **Learnings**: Comprehensive defensibility analysis document created (`research/defensibility-analysis.md`, 8 sections, 9,000+ words) covering: dbt Labs roadmap, what they're NOT building, overlap analysis, strategic constraints, moat framework, threat scenarios (acquisitions, autonomous test gen, warehouse vendors, new startups), positioning strategy, tactical/strategic recommendations. LRN-016 captured. Strategic path validated for execution.
 
+### DEC-011: Stay lean on specialist agents until PMF is validated
+- **Date**: 2026-02-16
+- **Decider**: CTO-Agent
+- **Context**: BL-003 (Org talent & capability plan) — As the org enters product execution phase (pilot → v1.0 → cross-stack), need to define what specialist agents are required, when to hire them, and how to avoid premature team scaling before validating product-market fit.
+- **Options considered**:
+  1. **Hire specialists now** — Proactively hire Backend Specialist (agent orchestration), QA Specialist, Data Engineer to build parallel capacity and accelerate delivery. Enables faster execution but adds $270-450/month cost and 4-6 hours/week management overhead before we know if the product has PMF.
+  2. **Hire incrementally as capabilities are needed** — Add specialists when specific features require expertise CTO-Agent lacks (e.g., hire Data Engineer when Airflow integration starts). Reduces premature cost but may create delivery bottlenecks if hiring takes 2+ weeks.
+  3. **Stay lean (CTO solo) until execution bottleneck or PMF validation** — CTO-Agent handles all work through pilot and v1.0. Hire only when triggered by: (a) execution bottleneck (can't deliver on roadmap), (b) specialized expertise gap (capability CTO doesn't have), (c) operational scale (customer volume requires support), or (d) quality/velocity trade-off. Maximizes efficiency and defers hiring cost/complexity until constraints are proven.
+  4. **Hire PM and QA immediately, defer technical specialists** — Add Product Manager Agent to handle customer research and QA Specialist to ensure quality, but keep technical work with CTO-Agent. Balances quality/customer focus with technical efficiency but splits strategic context across roles early.
+- **Decision**: Option 3 — Stay lean (CTO-Agent solo) through pilot (Month 0-3). Reassess after pilot synthesis with actual execution data. Hire Data Engineer Agent at Month 6-9 when cross-stack work begins (FIRST must-hire). Hire SaaS team (Frontend/DevOps/Security) at Month 9-12 if SaaS product is greenlit.
+- **Rationale**: Analyzed dbt Guardian roadmap against CTO-Agent current capabilities and found NO blocking capability gaps for next 6 months:
+  - **Test Generator pilot (Month 0-3)**: Requires backend (Python), dbt domain, pilot execution — CTO-Agent has all ✅. Performance to date: 14/14 backlog items completed on time (100% delivery rate), 35+ unit tests, comprehensive documentation, zero rework. No execution bottleneck.
+  - **v0.2-0.3 with PR automation (Month 1-3)**: Requires GitHub API + dbt Cloud API integration — within CTO-Agent capability ✅. No specialized expertise needed.
+  - **Multi-agent orchestration v1.0 (Month 3-6)**: Requires agent framework knowledge (LangGraph or Claude SDK) — CTO researched in BL-002, can architect and implement ✅. Optional Backend Specialist hire if complexity bottlenecks delivery, but not required upfront.
+  - **Cross-stack expansion (Month 6-12)**: Requires deep Airflow/Snowflake/Looker domain knowledge — this is FIRST true capability gap. Hire Data Engineer Agent then.
+  - **SaaS product (Month 9-12, if greenlit)**: Requires frontend (React), DevOps (Kubernetes), security (compliance) — hire 3-4 specialists then.
+
+  Defined 7 specialist roles in detail at `org/talent-capability-plan.md`: Backend Specialist (Agent Orchestration), Data Engineer Agent, Frontend Engineer Agent, DevOps Engineer Agent, QA Specialist Agent, Product Manager Agent, Security Engineer Agent. Each role has: scope, hiring trigger, tools, reporting structure, success criteria. Estimated cost: $90/month per agent (Claude API), scaling from $90 (current) to $630 (7-agent SaaS team). Human review overhead: ~2 hours/week per specialist. At 6+ agents, CTO becomes full-time manager (may need Engineering Manager Agent).
+
+  **Key insight**: Hiring before PMF is premature optimization. The risk is NOT "we can't execute fast enough" (CTO is delivering on all commitments) — the risk is "we hire a team and then pivot because pilot reveals we're building the wrong thing." Stay lean, move fast, validate PMF, THEN scale the team based on actual constraints (not hypothetical needs).
+
+  **Hiring triggers defined**: (1) Execution bottleneck — CTO can't deliver on roadmap due to lack of parallel capacity, (2) Specialized expertise gap — capability requires deep domain knowledge CTO doesn't have and would take >1 month to learn, (3) Operational scale — customer volume requires dedicated support, (4) Quality/velocity trade-off — shipping speed constrained by insufficient testing/review.
+
+  **Reassessment gates**: (a) After pilot synthesis (end of Month 3) — use real execution data to validate hiring timeline, (b) Quarterly reviews — update talent plan based on product roadmap changes, (c) When any hiring trigger is met — hire immediately, don't wait for next planning cycle.
+- **Outcome**: Pending — will evaluate after pilot synthesis (BL-020) with actual data on execution bottlenecks, customer needs, and PMF validation
+- **Learnings**: Comprehensive talent plan created at `org/talent-capability-plan.md` (11 sections, 400+ lines): current state assessment, 7 specialist roles with hiring triggers, sequencing timeline (Month 0-3 solo → Month 6-9 Data Engineer → Month 9-12 SaaS team), cost analysis, org structure evolution, alternative staffing models (consultant agents, human specialists, hybrid model), decision framework, success metrics, open questions for CEO. LRN-019 captured. Pattern: define roles and triggers BEFORE you need them → hire quickly when triggered.
+
 ---
 *Update protocol: Number decisions sequentially. Update outcomes retroactively. Link decisions from STATE.md when they affect current context. Reference decisions from CHARTER.md changelog when they modify governance.*

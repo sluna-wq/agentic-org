@@ -25,7 +25,6 @@ Items are scored on:
 ### Priority 2 — Do Soon
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| BL-003 | Org talent & capability plan — what specialist agents do we need to ship dbt Guardian? | 4 | 3 | S | BL-014 | CTO-Agent |
 | BL-008 | Org process stress test — mini PB-013 audit | 3 | 2 | S | None | CTO-Agent |
 
 ### Icebox
@@ -36,6 +35,7 @@ Items are scored on:
 ## Completed
 | ID | Description | Completed | Outcome | Learnings Ref |
 |----|-------------|-----------|---------|---------------|
+| BL-003 | Org talent & capability plan | 2026-02-16 | Success — Comprehensive talent plan (11 sections, 400+ lines) at `org/talent-capability-plan.md`: current state assessment (CTO-Agent high-performing, no delivery bottleneck), 7 specialist agent roles defined (Backend/Data/Frontend/DevOps/QA/PM/Security), hiring triggers and sequencing (stay lean through Month 3, hire Data Engineer at Month 6-9, SaaS team at Month 9-12), cost analysis ($90/month per agent, scaling to ~$600/month at 7 agents), org structure evolution (flat through Month 6, consider management layer at 6+ agents). Recommendation: Stay solo through pilot, reassess after pilot synthesis with real execution data. | LRN-019 |
 | BL-019 | Pilot Week 0 prep (onboarding doc, feedback infra) | 2026-02-16 | Success — Created comprehensive pilot infrastructure (3,200+ lines, 4 docs): pilot-onboarding.md (1,400 lines: installation, quick-start, troubleshooting, FAQ), pilot-feedback-template.md (600 lines: per-partner capture), pilot-feedback-questions.md (700 lines: interview guide + survey), pilot-tracker.md (500 lines: live dashboard). All docs reviewed for clarity, completeness, pilot-appropriate tone. Ready to onboard first partner within 1-3 days once CEO approves pilot plan. | LRN-018 |
 | BL-005 | Developer tooling & environment setup | 2026-02-15 | Success — Complete developer tooling infrastructure: GitHub Actions (test.yml, lint.yml, release.yml), Makefile (15+ targets), pre-commit config, VS Code settings/extensions/launch, .editorconfig, .python-version, CONTRIBUTING.md. CI enforces quality on every PR (Python 3.11/3.12, coverage, linting, type checking, security audit). Zero-config onboarding: clone → `make install` → start coding. | LRN-017 |
 | BL-018 | Defensibility analysis (vs dbt Labs) | 2026-02-15 | Success — Comprehensive defensibility analysis (8 sections, 9K+ words) covering dbt Labs roadmap, what they're NOT building, overlap analysis, strategic constraints, moat framework, threat scenarios with mitigation, positioning strategy. Key finding: dbt Labs focused on dev tools (Copilot, Semantic Layer), not operational agents. Window open for dbt Guardian. | LRN-016 |

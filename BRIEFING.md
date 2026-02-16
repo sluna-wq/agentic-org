@@ -5,14 +5,23 @@
 > STATE.md is the dashboard, this is the narrative.
 
 ## Latest Briefing
-**Date**: 2026-02-16 (Cycle #6)
+**Date**: 2026-02-16 (Cycle #7)
 **Author**: CTO-Agent
 
 ### TL;DR
-🚀 **BL-019 Week 0 prep complete: Pilot infrastructure ready for partner onboarding.** Created comprehensive pilot infrastructure (3,200+ lines across 4 docs): partner onboarding guide with quick-start + FAQ, feedback collection templates, interview guide with 20-min script + async survey, live pilot dashboard for tracking. All docs reviewed for clarity and pilot-appropriate tone. Ready to onboard first partner within 1-3 days once CEO approves pilot plan. **Proactively unblocked Week 1 execution while awaiting CEO approval.**
+📋 **BL-003 complete: Org talent & capability plan ready.** Comprehensive 11-section plan (400+ lines) at `org/talent-capability-plan.md`: 7 specialist agent roles defined (Backend, Data Engineer, Frontend, DevOps, QA, PM, Security), hiring triggers and sequencing timeline, cost analysis ($90/month per agent, scaling to ~$600 at 7 agents), org structure evolution. **Recommendation: Stay lean (CTO solo) through pilot (Month 0-3), hire Data Engineer at Month 6-9, SaaS team at Month 9-12 if needed. Reassess after pilot synthesis with real execution data.** Decision captured as DEC-011.
 
 ### What Happened Since Last Briefing
-1. **BL-019 Week 0 prep complete (Pilot infrastructure)** — All pilot preparation work finished, unblocking Week 1 execution once CEO approves:
+1. **BL-003 complete (Org talent & capability plan)** — Comprehensive 11-section plan created at `org/talent-capability-plan.md` (400+ lines):
+   - **Current state assessment**: CTO-Agent high-performing (14/14 backlog items completed on time, 100% delivery rate, 35+ unit tests, comprehensive docs, zero rework). No execution bottleneck. Capability gaps analyzed: frontend, data engineering, DevOps, QA, PM — NONE block next 6 months of work.
+   - **7 specialist agent roles defined**: Backend Specialist - Agent Orchestration, Data Engineer Agent (Airflow/Snowflake/Looker), Frontend Engineer Agent (React/Next.js), DevOps Engineer Agent (Kubernetes/AWS), QA Specialist Agent, Product Manager Agent, Security Engineer Agent. Each role has: scope, hiring trigger, tools, reporting structure, success criteria.
+   - **Hiring triggers defined**: (1) Execution bottleneck (CTO can't deliver on roadmap), (2) Specialized expertise gap (capability requires deep domain knowledge CTO lacks), (3) Operational scale (customer volume requires support), (4) Quality/velocity trade-off (shipping constrained by testing/review).
+   - **Hiring sequencing timeline**: Month 0-3 (Pilot → v0.2-0.3) = CTO solo ✅, Month 3-6 (v1.0 multi-agent orchestration) = CTO + optional Backend Specialist, Month 6-9 (Cross-stack) = **Data Engineer Agent ← FIRST MUST-HIRE**, Month 9-12 (SaaS if greenlit) = Frontend + DevOps + Security agents.
+   - **Cost analysis**: $90/month per agent (Claude API), scaling from $90 (current) to ~$630 (7-agent SaaS team). Human review overhead: ~2 hours/week per specialist. At 6+ agents, CTO becomes full-time manager (may need Engineering Manager Agent).
+   - **Org structure evolution**: Flat through Month 6, consider management layer at 6+ agents. Alternative staffing models: consultant agents (one-time work), human specialists (when agent capability insufficient), hybrid model (agent + human pair).
+   - **Open questions for CEO**: Hiring philosophy (stay lean vs proactive), cost tolerance threshold, human vs agent preference for high-stakes work, org complexity threshold for management layer, pilot implications for hiring timeline.
+   - **Recommendation**: **Stay lean through pilot. Reassess after pilot synthesis (end of Month 3) with real execution data on bottlenecks and customer needs.** First specialist hire: Data Engineer Agent when cross-stack work begins (Month 6-9). If SaaS is greenlit, hire frontend/DevOps/security team (Month 9-12).
+2. *(Previous cycle)* **BL-019 Week 0 prep complete (Pilot infrastructure)** — All pilot preparation work finished, unblocking Week 1 execution once CEO approves:
    - **Pilot onboarding doc** (`product/pilot-onboarding.md`, 1,400 lines): Complete partner onboarding guide with installation (step-by-step), quick-start (5-min first run), usage examples, troubleshooting (common errors + fixes), FAQ (15+ questions), feedback channels, contact info. Ready to send to first pilot partner.
    - **Feedback infrastructure** (3 comprehensive docs):
      - `pilot-feedback-template.md` (600 lines): Per-partner feedback capture (installation experience, usage quality, prioritization accuracy, value assessment, pricing willingness, competitive context, action items)
@@ -44,7 +53,8 @@
 2. **DEC-010 logged**: dbt Guardian defensibility validated. Path forward clear.
 
 ### Decisions Made
-- **Pilot prep approach (Cycle #6)**: When blocked on CEO approval, proactively prepare supporting infrastructure rather than waiting idle. Week 0 prep work (onboarding docs, feedback infrastructure) unblocks Week 1 execution as soon as CEO approves, demonstrating ownership and bias for action (DIR-003). Created comprehensive but approachable docs — partners should feel welcomed, not overwhelmed.
+- **DEC-011 (Cycle #7)**: Stay lean on specialist agents until PMF validated. CTO-Agent operates solo through pilot (Month 0-3). Hire Data Engineer Agent at Month 6-9 when cross-stack work begins (FIRST must-hire). Hire SaaS team (Frontend/DevOps/Security) at Month 9-12 if greenlit. Rationale: Current CTO performance is excellent (100% delivery), no capability gaps for next 6 months, hiring before PMF is premature optimization. Defined 7 specialist roles with clear hiring triggers and sequencing. Reassess after pilot synthesis with real execution data. See `org/talent-capability-plan.md`.
+- *(Previous cycle)* **Pilot prep approach (Cycle #6)**: When blocked on CEO approval, proactively prepare supporting infrastructure rather than waiting idle. Week 0 prep work (onboarding docs, feedback infrastructure) unblocks Week 1 execution as soon as CEO approves, demonstrating ownership and bias for action (DIR-003). Created comprehensive but approachable docs — partners should feel welcomed, not overwhelmed.
 - *(Previous cycle)* **LRN-017**: Developer tooling should be comprehensive and opinionated from day one. Setting up CI/CD, linting, formatting, type checking, security auditing, and IDE config early establishes quality standards before bad habits form. Zero-config onboarding (clone → `make install` → start coding) removes friction. Pattern validated — will use as template for future repos.
 - **Infrastructure approach**: Commit VS Code settings (not gitignored) to provide batteries-included developer experience. Commit poetry.lock (changed from gitignoring) for reproducible builds. Pre-commit hooks are optional (not forced) to balance convenience and consistency.
 - **CI strategy**: Test on both Python 3.11 and 3.12. Fail on coverage <70%, any linting errors, type errors, or security vulnerabilities. Use caching for faster builds. Trusted publishing to PyPI (no tokens needed).
@@ -71,16 +81,19 @@
 | Org phase | BUILDING |
 | Product repos | 1 (dbt-guardian in products/) |
 | Active agents | 1 (CTO-Agent) |
-| Backlog items | 14 total (1 blocked on CEO, 13 complete) |
+| Specialist agents planned | 7 roles defined, 0 hired (stay lean through pilot) |
+| Backlog items | 15 total (1 blocked on CEO, 14 complete) |
 | Product capabilities | 1 (Test Generator v0) ✅ |
-| Pilot readiness | Plan ✅ + Defensibility ✅ + Week 0 prep ✅, ready for Week 1 (awaiting CEO approval) |
+| Pilot readiness | Plan ✅ + Defensibility ✅ + Week 0 prep ✅ + Talent plan ✅, ready for Week 1 (awaiting CEO approval) |
 | Playbooks | 19 (PB-001 through PB-019) |
 | Skills | 3 (/cto, /status, /sync) |
-| Daemon cycles | 6 (autonomous) |
+| Daemon cycles | 7 (autonomous) |
 | Test coverage | 35+ unit tests, 100% passing |
 | GitHub | Org repo live, product code in products/ |
-| Research docs | 7 complete (added defensibility) |
-| Learnings | 16 entries |
+| Research docs | 7 complete (landscape, capabilities, data stack, concepts, defensibility) |
+| Org docs | Talent plan ✅ (7 roles, hiring triggers, cost analysis) |
+| Learnings | 19 entries |
+| Decisions | 11 logged |
 
 ---
 
@@ -109,6 +122,7 @@
 ## Briefing Archive
 | Date | TL;DR |
 |------|-------|
+| 2026-02-16 (#6) | 🚀 **BL-019 Week 0 prep complete: Pilot infrastructure ready for partner onboarding.** Created comprehensive pilot infrastructure (3,200+ lines across 4 docs): partner onboarding guide with quick-start + FAQ, feedback collection templates, interview guide with 20-min script + async survey, live pilot dashboard for tracking. All docs reviewed for clarity and pilot-appropriate tone. Ready to onboard first partner within 1-3 days once CEO approves pilot plan. **Proactively unblocked Week 1 execution while awaiting CEO approval.** |
 | 2026-02-15 (#4) | 🛡️ **BL-018 complete: dbt Guardian defensible vs dbt Labs.** Competitive analysis (9K words) shows dbt Labs structurally constrained (dev>ops focus, partnership conflicts, Core community tension). Window open NOW (6-12mo). Path: win Core users → autonomous capabilities → cross-stack. |
 | 2026-02-15 (#3) | 📋 **BL-017 complete: Pilot plan ready for CEO review.** 13-section plan (500+ lines): goals, metrics, partner selection, timeline, outreach channels, feedback framework, success scenarios, risk assessment. Defines success (3-5 partners, 2+ value, 1+ time savings) and abort signals. Week 0 prep next (BL-019). |
 | 2026-02-15 (#2) | 🎉 **BL-016 complete: Test Generator v0 shipped!** TestCoverageAnalyzer + SchemaYamlGenerator + rich CLI + 35 tests. First autonomous agent capability ready for pilot. Pattern-based approach validated (LRN-014). Design partners needed. |

@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-16 (Cycle #6, BL-019 Week 0 prep complete)
+> Last updated: 2026-02-16 (Cycle #7, BL-003 talent plan complete)
 
 ## Phase
 `BUILDING` — Product direction confirmed. dbt Guardian greenlit. Transitioning from planning to product work.
@@ -20,7 +20,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → **`BUILDING`** → `SHIPPING` → `OPERAT
 ## Active Work
 | ID | Description | Owner | Status | Last Activity | What's Next |
 |----|-------------|-------|--------|---------------|-------------|
-| BL-019 | Pilot Week 0 prep (onboarding doc, feedback infra) | CTO-Agent | Complete | 2026-02-16 | Week 0 prep done. Awaiting CEO pilot plan approval for Week 1 execution |
+| — | No active work | — | — | — | Awaiting CEO pilot plan approval to start BL-020 |
 
 ## Blockers
 - **Cloud daemon**: Anthropic API credits at $0 + ORG_PAT needs repo write scope. Daemon paused until both fixed.
@@ -33,10 +33,10 @@ Phases: `BOOTSTRAP` → `PLANNING` → **`BUILDING`** → `SHIPPING` → `OPERAT
 - **Design partners**: If you know dbt Core teams who'd try an early prototype, flag them
 
 ## Recent Decisions
-- **DEC-010**: dbt Guardian defensibility — Strategic constraints on dbt Labs (dev>ops, partnership lock-in, Core community tension) create permanent opening for operational agents. Path: win Core users (6mo) → autonomous capabilities (6-12mo) → cross-stack (12-18mo). Window open NOW. (2026-02-15)
+- **DEC-011**: Org talent plan — Stay lean (CTO-Agent solo) through pilot (Month 0-3). First specialist hire: Data Engineer Agent at Month 6-9 when cross-stack work begins. SaaS team (Frontend/DevOps/Security) at Month 9-12 if needed. 7 specialist roles defined with hiring triggers. Reassess after pilot synthesis. (2026-02-16)
+- DEC-010: dbt Guardian defensibility — Strategic constraints on dbt Labs (dev>ops, partnership lock-in, Core community tension) create permanent opening for operational agents. Path: win Core users (6mo) → autonomous capabilities (6-12mo) → cross-stack (12-18mo). Window open NOW. (2026-02-15)
 - DEC-009: CEO-CTO contract evolution — retired DIR-001/002, issued DIR-003 (ownership), greenlit dbt Guardian, expanded CTO autonomy, improved visibility (2026-02-14)
 - DEC-008: Cloud daemon via GitHub Actions + SDK harness (2026-02-12)
-- DEC-007: Conversation mode, separate repos, operational evolution (2026-02-12)
 
 ## Active Directives
 - **DIR-003** (ACTIVE): CTO operates with ownership and bias for action. Own outcomes, strong POV, disagree when warranted.
