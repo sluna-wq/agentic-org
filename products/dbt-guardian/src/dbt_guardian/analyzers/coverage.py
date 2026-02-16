@@ -32,6 +32,7 @@ class ColumnGap:
     suggested_tests: List[TestType]
     priority: int  # 1 (high) to 5 (low)
     rationale: str
+    inferred_parent_table: Optional[str] = None  # For relationship tests
 
 
 @dataclass
@@ -105,6 +106,11 @@ class TestCoverageAnalyzer:
                 )
 
                 if suggested_tests:
+                    # Infer parent table for relationship tests
+                    inferred_parent = None
+                    if TestType.RELATIONSHIPS in suggested_tests:
+                        inferred_parent = self.infer_parent_table(col_name)
+
                     gaps.append(
                         ColumnGap(
                             model_name=model.name,
@@ -118,6 +124,7 @@ class TestCoverageAnalyzer:
                             rationale=self._build_rationale(
                                 col_name, col_type, suggested_tests
                             ),
+                            inferred_parent_table=inferred_parent,
                         )
                     )
 
@@ -207,6 +214,29 @@ class TestCoverageAnalyzer:
             pass
 
         return list(suggestions)
+
+    def infer_parent_table(self, col_name: str) -> Optional[str]:
+        """Infer parent table name from foreign key column name.
+
+        Args:
+            col_name: Column name (e.g., "user_id", "customer_id")
+
+        Returns:
+            Inferred parent table name (e.g., "users", "customers") or None
+        """
+        col_lower = col_name.lower()
+
+        # Only infer for _id suffix columns
+        if not col_lower.endswith("_id") or col_lower == "id":
+            return None
+
+        # Extract prefix (e.g., "user" from "user_id")
+        prefix = col_lower[:-3]
+
+        # Pluralize: try to convert singular to plural
+        # Simple heuristic: add 's' (handles most common cases)
+        # Special cases could be added later (person->people, etc.)
+        return f"{prefix}s"
 
     def _calculate_priority(
         self,

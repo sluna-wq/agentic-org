@@ -46,6 +46,7 @@ def sample_report():
             suggested_tests=[TestType.NOT_NULL, TestType.RELATIONSHIPS],
             priority=2,
             rationale="Foreign key should reference parent table",
+            inferred_parent_table="users",
         ),
     ]
 
@@ -118,14 +119,16 @@ def test_generate_includes_placeholders_for_complex_tests(sample_report):
     assert accepted_values_test is not None
     assert "TODO" in str(accepted_values_test["accepted_values"]["values"])
 
-    # Check relationships placeholder
+    # Check relationships - should use inferred parent table "users"
     user_id_col = next(c for c in orders["columns"] if c["name"] == "user_id")
     relationships_test = next(
         (t for t in user_id_col["tests"] if isinstance(t, dict) and "relationships" in t),
         None,
     )
     assert relationships_test is not None
-    assert "TODO" in relationships_test["relationships"]["to"]
+    # With inferred parent table, should have "users", not "TODO"
+    assert relationships_test["relationships"]["to"] == "ref('users')"
+    assert relationships_test["relationships"]["field"] == "id"
 
 
 def test_generate_respects_priority_threshold(sample_report):
@@ -268,3 +271,26 @@ def test_generate_incremental_adds_new_models(sample_report, tmp_path):
     model_names = {m["name"] for m in merged["models"]}
     assert "users" in model_names
     assert "orders" in model_names
+
+
+def test_generate_uses_inferred_parent_table(sample_report):
+    """Test that inferred parent tables are used in relationship tests."""
+    generator = SchemaYamlGenerator()
+    yaml_content = generator.generate(sample_report)
+    parsed = yaml.safe_load(yaml_content)
+
+    # Find the orders model
+    orders = next(m for m in parsed["models"] if m["name"] == "orders")
+    user_id_col = next(c for c in orders["columns"] if c["name"] == "user_id")
+
+    # Find the relationships test
+    relationship_test = None
+    for test in user_id_col["tests"]:
+        if isinstance(test, dict) and "relationships" in test:
+            relationship_test = test["relationships"]
+            break
+
+    assert relationship_test is not None
+    # Should use inferred parent table "users", not "TODO_parent_model"
+    assert relationship_test["to"] == "ref('users')"
+    assert relationship_test["field"] == "id"

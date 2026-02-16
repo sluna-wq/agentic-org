@@ -205,3 +205,30 @@ def test_rationale_generation():
     # Rationale should mention why tests are suggested
     assert "unique" in id_gap.rationale.lower() or "primary key" in id_gap.rationale.lower()
     assert len(id_gap.rationale) > 0
+
+
+def test_infer_parent_table():
+    """Test that parent tables are correctly inferred from FK column names."""
+    analyzer = TestCoverageAnalyzer()
+
+    # Test common patterns
+    assert analyzer.infer_parent_table("user_id") == "users"
+    assert analyzer.infer_parent_table("customer_id") == "customers"
+    assert analyzer.infer_parent_table("order_id") == "orders"
+    assert analyzer.infer_parent_table("product_id") == "products"
+
+    # Test edge cases
+    assert analyzer.infer_parent_table("id") is None  # Primary key, not FK
+    assert analyzer.infer_parent_table("email") is None  # Not an ID column
+    assert analyzer.infer_parent_table("status") is None  # Not an ID column
+
+
+def test_analyze_populates_inferred_parent_table(sample_manifest):
+    """Test that inferred parent tables are populated for FK gaps."""
+    analyzer = TestCoverageAnalyzer()
+    report = analyzer.analyze(sample_manifest)
+
+    # user_id in orders table should have inferred parent
+    user_id_gap = next((g for g in report.gaps if g.column_name == "user_id"), None)
+    assert user_id_gap is not None
+    assert user_id_gap.inferred_parent_table == "users"

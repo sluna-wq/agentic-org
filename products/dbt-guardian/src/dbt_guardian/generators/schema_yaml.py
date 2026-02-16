@@ -111,12 +111,16 @@ class SchemaYamlGenerator:
                 )
 
             elif test_type == TestType.RELATIONSHIPS:
-                # For relationships, we add a placeholder
+                # For relationships, use inferred parent table if available
+                parent_model = gap.inferred_parent_table or "TODO_parent_model"
+                # Infer parent column (usually "id")
+                parent_field = "id"
+
                 tests.append(
                     {
                         "relationships": {
-                            "to": "ref('TODO_parent_model')",
-                            "field": "TODO_parent_column",
+                            "to": f"ref('{parent_model}')",
+                            "field": parent_field,
                             "config": {"severity": "warn"},
                         }
                     }
@@ -143,7 +147,8 @@ class SchemaYamlGenerator:
             "#",
             "# This file contains AI-generated test suggestions. Review and customize before use.",
             "# - For 'accepted_values', replace TODO with actual valid values",
-            "# - For 'relationships', specify the parent model and field",
+            "# - For 'relationships', parent tables are auto-inferred (e.g., user_id -> users)",
+            "#   Verify the inferred parent model and field are correct",
             "# - Remove [AUTO] prefix from descriptions and add domain context",
         ]
         return "\n".join(header_lines)
