@@ -25,7 +25,7 @@ Items are scored on:
 ### Priority 2 — Do Soon
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| BL-008 | Org process stress test — mini PB-013 audit | 3 | 2 | S | None | CTO-Agent |
+| — | *None* | — | — | — | — | — |
 
 ### Icebox
 *(Ideas captured but not yet prioritized)*
@@ -35,6 +35,7 @@ Items are scored on:
 ## Completed
 | ID | Description | Completed | Outcome | Learnings Ref |
 |----|-------------|-----------|---------|---------------|
+| BL-008 | Org process stress test (mini PB-013 audit) | 2026-02-16 | Success — Systematic audit of all org artifacts after 7 autonomous cycles. Verified: core knowledge architecture internally consistent ✅, playbooks reflect learnings ✅, 4 skills operational ✅. Fixed 2 inconsistencies: ROSTER.md updated with talent plan findings (no capability gaps for 6mo), STATE.md corrected to Cycle #8. Evaluated new AI tools (Feb 2026): Claude Opus 4.6 (1M context, compaction API, adaptive thinking), Agent SDK updates (Agent Teams, memory frontmatter, hook events) — all relevant for future adoption. Pattern: audit at natural checkpoints → catch drift early → fix immediately → evaluate new tools. | LRN-020 |
 | BL-003 | Org talent & capability plan | 2026-02-16 | Success — Comprehensive talent plan (11 sections, 400+ lines) at `org/talent-capability-plan.md`: current state assessment (CTO-Agent high-performing, no delivery bottleneck), 7 specialist agent roles defined (Backend/Data/Frontend/DevOps/QA/PM/Security), hiring triggers and sequencing (stay lean through Month 3, hire Data Engineer at Month 6-9, SaaS team at Month 9-12), cost analysis ($90/month per agent, scaling to ~$600/month at 7 agents), org structure evolution (flat through Month 6, consider management layer at 6+ agents). Recommendation: Stay solo through pilot, reassess after pilot synthesis with real execution data. | LRN-019 |
 | BL-019 | Pilot Week 0 prep (onboarding doc, feedback infra) | 2026-02-16 | Success — Created comprehensive pilot infrastructure (3,200+ lines, 4 docs): pilot-onboarding.md (1,400 lines: installation, quick-start, troubleshooting, FAQ), pilot-feedback-template.md (600 lines: per-partner capture), pilot-feedback-questions.md (700 lines: interview guide + survey), pilot-tracker.md (500 lines: live dashboard). All docs reviewed for clarity, completeness, pilot-appropriate tone. Ready to onboard first partner within 1-3 days once CEO approves pilot plan. | LRN-018 |
 | BL-005 | Developer tooling & environment setup | 2026-02-15 | Success — Complete developer tooling infrastructure: GitHub Actions (test.yml, lint.yml, release.yml), Makefile (15+ targets), pre-commit config, VS Code settings/extensions/launch, .editorconfig, .python-version, CONTRIBUTING.md. CI enforces quality on every PR (Python 3.11/3.12, coverage, linting, type checking, security audit). Zero-config onboarding: clone → `make install` → start coding. | LRN-017 |
