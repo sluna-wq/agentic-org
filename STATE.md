@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-16 (Cycle #9, Test Generator end-to-end validation complete)
+> Last updated: 2026-02-16 (Cycle #10, Test Generator foreign key detection improved)
 
 ## Phase
 `BUILDING` — Product direction confirmed. dbt Guardian greenlit. Transitioning from planning to product work.
@@ -20,7 +20,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → **`BUILDING`** → `SHIPPING` → `OPERAT
 ## Active Work
 | ID | Description | Owner | Status | Last Activity | What's Next |
 |----|-------------|-------|--------|---------------|-------------|
-| — | No active work | — | — | — | Awaiting CEO pilot plan approval to start BL-020 |
+| — | No active work | — | — | Cycle #10: FK detection fix | Awaiting CEO pilot plan approval to start BL-020 |
 
 ## Blockers
 - **Cloud daemon**: Anthropic API credits at $0 + ORG_PAT needs repo write scope. Daemon paused until both fixed.

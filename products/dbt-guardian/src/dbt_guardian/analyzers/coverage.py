@@ -54,6 +54,7 @@ class TestCoverageAnalyzer:
     """Analyze test coverage gaps in dbt projects."""
 
     # Column name patterns that suggest specific tests
+    # Note: Foreign key check (ends_with "_id") runs first, so this catches primary keys
     ID_PATTERNS = {"id", "_id", "uuid", "_key"}
     TIMESTAMP_PATTERNS = {"created_at", "updated_at", "deleted_at", "timestamp"}
     STATUS_PATTERNS = {"status", "state", "type", "_type"}
@@ -155,9 +156,34 @@ class TestCoverageAnalyzer:
         suggestions: Set[TestType] = set()
         col_lower = col_name.lower()
         type_lower = (col_type or "").lower()
+        model_lower = model.name.lower()
 
-        # ID columns should be unique and not null
-        if any(pattern in col_lower for pattern in self.ID_PATTERNS):
+        # Foreign key patterns: ends with _id but prefix doesn't match model name
+        # (e.g., user_id in orders table is FK, but order_id in orders table is PK)
+        # Extract prefix before _id (e.g., "user" from "user_id")
+        col_prefix = col_lower[:-3] if col_lower.endswith("_id") else ""
+
+        # Check if this is a foreign key (prefix doesn't match model name)
+        # Handle both singular and plural model names (orders/order, users/user)
+        is_foreign_key = (
+            col_lower.endswith("_id")
+            and col_lower != "id"
+            and col_prefix != model_lower  # exact match
+            and col_prefix != model_lower.rstrip('s')  # orders -> order
+            and col_prefix + 's' != model_lower  # user -> users
+        )
+
+        if is_foreign_key:
+            if TestType.NOT_NULL.value not in existing_tests:
+                suggestions.add(TestType.NOT_NULL)
+            # Relationships test is more complex - needs target model
+            # We'll suggest it but note it requires configuration
+            if TestType.RELATIONSHIPS.value not in existing_tests:
+                suggestions.add(TestType.RELATIONSHIPS)
+
+        # ID columns should be unique and not null (primary keys)
+        # This catches "id", "order_id" in orders table, "uuid", "_key" suffix
+        elif any(pattern in col_lower for pattern in self.ID_PATTERNS):
             if TestType.NOT_NULL.value not in existing_tests:
                 suggestions.add(TestType.NOT_NULL)
             if TestType.UNIQUE.value not in existing_tests:
@@ -174,15 +200,6 @@ class TestCoverageAnalyzer:
                 suggestions.add(TestType.NOT_NULL)
             if TestType.ACCEPTED_VALUES.value not in existing_tests:
                 suggestions.add(TestType.ACCEPTED_VALUES)
-
-        # Foreign key patterns (ends with _id but not just "id")
-        elif col_lower.endswith("_id") and col_lower != "id":
-            if TestType.NOT_NULL.value not in existing_tests:
-                suggestions.add(TestType.NOT_NULL)
-            # Relationships test is more complex - needs target model
-            # We'll suggest it but note it requires configuration
-            if TestType.RELATIONSHIPS.value not in existing_tests:
-                suggestions.add(TestType.RELATIONSHIPS)
 
         # Generic nullability check for important types
         elif any(t in type_lower for t in self.NULLABLE_TYPES):
@@ -210,9 +227,15 @@ class TestCoverageAnalyzer:
             Priority score
         """
         col_lower = col_name.lower()
+        model_lower = model.name.lower()
 
-        # Priority 1: Primary keys (id, uuid)
-        if col_lower in {"id", "uuid"} and TestType.UNIQUE in suggested_tests:
+        # Priority 1: Primary keys (id, uuid) - high priority even if just missing one test
+        if col_lower in {"id", "uuid"}:
+            return 1
+
+        # Also priority 1: table_id in its own table (e.g., order_id in orders)
+        col_prefix = col_lower[:-3] if col_lower.endswith("_id") else ""
+        if col_prefix and (col_prefix == model_lower or col_prefix == model_lower.rstrip('s') or col_prefix + 's' == model_lower):
             return 1
 
         # Priority 2: Foreign keys and critical timestamps

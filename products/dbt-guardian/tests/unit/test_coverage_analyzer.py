@@ -67,15 +67,17 @@ def test_analyze_identifies_id_gaps(sample_manifest):
 
 
 def test_analyze_identifies_foreign_key_gaps(sample_manifest):
-    """Test that foreign key columns are identified."""
+    """Test that foreign key columns are identified correctly."""
     analyzer = TestCoverageAnalyzer()
     report = analyzer.analyze(sample_manifest)
 
-    # user_id should suggest not_null and relationships
+    # user_id should suggest not_null and relationships (NOT unique)
     user_id_gap = next((g for g in report.gaps if g.column_name == "user_id"), None)
     assert user_id_gap is not None
     assert TestType.NOT_NULL in user_id_gap.suggested_tests
     assert TestType.RELATIONSHIPS in user_id_gap.suggested_tests
+    # Foreign keys should NOT suggest unique (they're not primary keys)
+    assert TestType.UNIQUE not in user_id_gap.suggested_tests
     assert user_id_gap.priority == 2  # High priority for FKs
 
 
