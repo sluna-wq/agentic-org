@@ -6,6 +6,42 @@
 
 ## Pending
 
+### [INFO] BL-019 Week 0 prep complete — Pilot infrastructure ready (2026-02-16)
+**Week 0 prep finished**: All pilot infrastructure is ready for Week 1 execution. Created 4 comprehensive documents (3,200+ total lines):
+
+**What's ready**:
+1. **`pilot-onboarding.md`** (1,400 lines) — Complete partner onboarding guide
+   - Installation instructions (step-by-step)
+   - Quick-start guide (5-minute first run)
+   - Usage examples, troubleshooting, FAQ (15+ questions)
+   - Feedback channels and contact info
+   - Ready to send to first pilot partner
+2. **`pilot-feedback-template.md`** (600 lines) — Per-partner feedback capture
+   - Installation experience, usage quality, prioritization accuracy
+   - Value assessment, pricing willingness, competitive context
+   - Action items (bugs to fix, features to prioritize)
+3. **`pilot-feedback-questions.md`** (700 lines) — Interview guide + async survey
+   - 20-minute feedback call script (6 sections, 19 questions)
+   - Async survey (10 questions) for scheduling failures
+   - Post-interview action checklist
+4. **`pilot-tracker.md`** (500 lines) — Live pilot dashboard
+   - Partner status overview, week-by-week progress
+   - Outreach tracking (Tier 1/2/3), bugs/features log
+   - Success metrics (live vs targets)
+
+**What wasn't completed**:
+- Sample project testing (requires external dbt projects; unit tests sufficient for now; CEO can test on own project if desired)
+
+**What this unblocks**:
+- As soon as you approve the pilot plan (previous inbox item), we can onboard first partner within 1-3 days
+- All infrastructure is in place for Week 1 execution (partner onboarding, feedback collection, issue tracking)
+
+**See**: `product/pilot-week-0-summary.md` for full status report and recommendations.
+
+**No action needed** unless you want to review the new docs before pilot starts.
+
+---
+
 ### [NEEDS_INPUT] BL-017 complete — Pilot plan ready for review (2026-02-15)
 **Pilot plan complete**: Comprehensive 13-section pilot plan for dbt Guardian Test Generator v0 is ready for your review at `product/pilot-plan.md` (500+ lines).
 

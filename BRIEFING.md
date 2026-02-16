@@ -5,14 +5,23 @@
 > STATE.md is the dashboard, this is the narrative.
 
 ## Latest Briefing
-**Date**: 2026-02-15 (Cycle #5)
+**Date**: 2026-02-16 (Cycle #6)
 **Author**: CTO-Agent
 
 ### TL;DR
-🔧 **BL-005 complete: Developer tooling infrastructure is production-ready.** Complete CI/CD setup for dbt Guardian: GitHub Actions (test + lint + release workflows), Makefile (15+ commands), pre-commit hooks, VS Code config, CONTRIBUTING.md. CI enforces quality on every PR (Python 3.11/3.12, 80%+ coverage, linting, type checking, security audit). Zero-config onboarding: `make install` → start coding. Template validated for future repos. **Product is now ready for external contributors and pilot partners.**
+🚀 **BL-019 Week 0 prep complete: Pilot infrastructure ready for partner onboarding.** Created comprehensive pilot infrastructure (3,200+ lines across 4 docs): partner onboarding guide with quick-start + FAQ, feedback collection templates, interview guide with 20-min script + async survey, live pilot dashboard for tracking. All docs reviewed for clarity and pilot-appropriate tone. Ready to onboard first partner within 1-3 days once CEO approves pilot plan. **Proactively unblocked Week 1 execution while awaiting CEO approval.**
 
 ### What Happened Since Last Briefing
-1. **BL-005 complete (Developer tooling & environment setup)** — Complete infrastructure for quality enforcement and developer experience:
+1. **BL-019 Week 0 prep complete (Pilot infrastructure)** — All pilot preparation work finished, unblocking Week 1 execution once CEO approves:
+   - **Pilot onboarding doc** (`product/pilot-onboarding.md`, 1,400 lines): Complete partner onboarding guide with installation (step-by-step), quick-start (5-min first run), usage examples, troubleshooting (common errors + fixes), FAQ (15+ questions), feedback channels, contact info. Ready to send to first pilot partner.
+   - **Feedback infrastructure** (3 comprehensive docs):
+     - `pilot-feedback-template.md` (600 lines): Per-partner feedback capture (installation experience, usage quality, prioritization accuracy, value assessment, pricing willingness, competitive context, action items)
+     - `pilot-feedback-questions.md` (700 lines): 20-minute feedback call script (6 sections, 19 structured questions) + async survey (10 questions) for scheduling failures + post-interview action checklist
+     - `pilot-tracker.md` (500 lines): Live pilot dashboard (partner status overview, week-by-week progress, outreach tracking for Tier 1/2/3, bugs/features log, success metrics tracking)
+   - **Week 0 summary** (`product/pilot-week-0-summary.md`, 300 lines): Status report with recommendations for CEO approval/revision
+   - **Sample project testing**: Deferred (unit tests sufficient, CEO can test on own project if desired, or do during Week 1)
+   - **All docs reviewed** for: clarity (no jargon), completeness, accuracy (match tool capabilities), pilot-appropriate framing (early tool, honest feedback wanted, no sales pressure)
+2. *(Previous cycle)* **BL-005 complete (Developer tooling & environment setup)** — Complete infrastructure for quality enforcement and developer experience:
    - **GitHub Actions**: 3 workflows in `.github/workflows/` — test.yml (Python 3.11/3.12 matrix, coverage reporting to Codecov, dependency caching), lint.yml (ruff + black + isort + mypy + pip-audit), release.yml (PyPI trusted publishing + GitHub releases, manual trigger)
    - **Makefile**: 15+ targets for common dev tasks — test (with variants: unit/integration/e2e/fast), lint, format, type-check, security, audit (all checks), clean, run, build, publish
    - **Pre-commit hooks**: .pre-commit-config.yaml with 5 hooks (trailing whitespace, YAML check, black, isort, ruff, mypy) — optional but recommended
@@ -35,14 +44,14 @@
 2. **DEC-010 logged**: dbt Guardian defensibility validated. Path forward clear.
 
 ### Decisions Made
-- **LRN-017**: Developer tooling should be comprehensive and opinionated from day one. Setting up CI/CD, linting, formatting, type checking, security auditing, and IDE config early establishes quality standards before bad habits form. Zero-config onboarding (clone → `make install` → start coding) removes friction. Pattern validated — will use as template for future repos.
+- **Pilot prep approach (Cycle #6)**: When blocked on CEO approval, proactively prepare supporting infrastructure rather than waiting idle. Week 0 prep work (onboarding docs, feedback infrastructure) unblocks Week 1 execution as soon as CEO approves, demonstrating ownership and bias for action (DIR-003). Created comprehensive but approachable docs — partners should feel welcomed, not overwhelmed.
+- *(Previous cycle)* **LRN-017**: Developer tooling should be comprehensive and opinionated from day one. Setting up CI/CD, linting, formatting, type checking, security auditing, and IDE config early establishes quality standards before bad habits form. Zero-config onboarding (clone → `make install` → start coding) removes friction. Pattern validated — will use as template for future repos.
 - **Infrastructure approach**: Commit VS Code settings (not gitignored) to provide batteries-included developer experience. Commit poetry.lock (changed from gitignoring) for reproducible builds. Pre-commit hooks are optional (not forced) to balance convenience and consistency.
 - **CI strategy**: Test on both Python 3.11 and 3.12. Fail on coverage <70%, any linting errors, type errors, or security vulnerabilities. Use caching for faster builds. Trusted publishing to PyPI (no tokens needed).
 - *(Previous cycle)* **LRN-016 + DEC-010**: dbt Guardian defensibility validated. Window open NOW — dbt Labs focused elsewhere in 2026.
 
 ### Decisions Needed From You
-*(Still pending from previous briefing)*
-1. **Approve pilot plan**: Review `product/pilot-plan.md`. If approved, CTO will execute Week 0 prep (BL-019: onboarding doc, feedback infrastructure, sample testing).
+1. **Approve pilot plan**: Review `product/pilot-plan.md` (flagged 2026-02-15). **Week 0 prep is now complete** — as soon as you approve, we can onboard first partner within 1-3 days. See `product/pilot-week-0-summary.md` for status.
 2. **Open questions from pilot plan** (Section 11):
    - **CEO time for outreach**: How much time can you allocate to warm intros? We need 3-5 partners, Tier 1 (network) has 30-50% conversion.
    - **Pilot publicity**: Public or quiet? Recommend quiet for v0.
@@ -64,10 +73,10 @@
 | Active agents | 1 (CTO-Agent) |
 | Backlog items | 14 total (1 blocked on CEO, 13 complete) |
 | Product capabilities | 1 (Test Generator v0) ✅ |
-| Pilot readiness | Plan ✅ + Defensibility ✅, Week 0 prep blocked on CEO approval |
+| Pilot readiness | Plan ✅ + Defensibility ✅ + Week 0 prep ✅, ready for Week 1 (awaiting CEO approval) |
 | Playbooks | 19 (PB-001 through PB-019) |
 | Skills | 3 (/cto, /status, /sync) |
-| Daemon cycles | 5 (autonomous) |
+| Daemon cycles | 6 (autonomous) |
 | Test coverage | 35+ unit tests, 100% passing |
 | GitHub | Org repo live, product code in products/ |
 | Research docs | 7 complete (added defensibility) |

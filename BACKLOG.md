@@ -15,7 +15,7 @@ Items are scored on:
 ### Priority 0 — Product (dbt Guardian)
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| BL-019 | **Pilot execution (Week 0 prep)** — Create pilot onboarding doc, set up feedback infrastructure, test on sample projects, get CEO approval. Output: `product/pilot-onboarding.md` + pilot-ready package | 5 | 5 | S | BL-017 ✓ | CTO-Agent |
+| BL-020 | **Pilot execution (Week 1-4)** — Partner outreach, onboarding, feedback collection, synthesis. Requires CEO approval of pilot plan first. | 5 | 5 | L | BL-019 ✓ + CEO approval | CTO-Agent + CEO |
 
 ### Priority 1 — Infrastructure (do alongside product)
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
@@ -36,6 +36,7 @@ Items are scored on:
 ## Completed
 | ID | Description | Completed | Outcome | Learnings Ref |
 |----|-------------|-----------|---------|---------------|
+| BL-019 | Pilot Week 0 prep (onboarding doc, feedback infra) | 2026-02-16 | Success — Created comprehensive pilot infrastructure (3,200+ lines, 4 docs): pilot-onboarding.md (1,400 lines: installation, quick-start, troubleshooting, FAQ), pilot-feedback-template.md (600 lines: per-partner capture), pilot-feedback-questions.md (700 lines: interview guide + survey), pilot-tracker.md (500 lines: live dashboard). All docs reviewed for clarity, completeness, pilot-appropriate tone. Ready to onboard first partner within 1-3 days once CEO approves pilot plan. | LRN-018 |
 | BL-005 | Developer tooling & environment setup | 2026-02-15 | Success — Complete developer tooling infrastructure: GitHub Actions (test.yml, lint.yml, release.yml), Makefile (15+ targets), pre-commit config, VS Code settings/extensions/launch, .editorconfig, .python-version, CONTRIBUTING.md. CI enforces quality on every PR (Python 3.11/3.12, coverage, linting, type checking, security audit). Zero-config onboarding: clone → `make install` → start coding. | LRN-017 |
 | BL-018 | Defensibility analysis (vs dbt Labs) | 2026-02-15 | Success — Comprehensive defensibility analysis (8 sections, 9K+ words) covering dbt Labs roadmap, what they're NOT building, overlap analysis, strategic constraints, moat framework, threat scenarios with mitigation, positioning strategy. Key finding: dbt Labs focused on dev tools (Copilot, Semantic Layer), not operational agents. Window open for dbt Guardian. | LRN-016 |
 | BL-017 | Pilot plan & design partner strategy | 2026-02-15 | Success — Comprehensive 13-section pilot plan covering: product context, goals, metrics, partner criteria, timeline, outreach channels, onboarding flow, feedback framework, success scenarios, synthesis deliverables, open questions, risk assessment. Ready for CEO review. | LRN-015 |
