@@ -25,7 +25,7 @@ Items are scored on:
 ### Priority 2 — Do Soon
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| — | *None* | — | — | — | — | — |
+| BL-021 | **"SDKification" research — Helping software companies transform for the agent economy.** Thesis: agents become general, great products have ~50% pure logic trapped behind GUIs, needs extracting into SDKs/APIs for agent consumption. Research: (1) market sizing & ripest categories, (2) existing landscape (MCP, Zapier, API wrappers), (3) generalizable SDKification process, (4) GUI→API case studies. | 4 | 3 | M | None | CTO-Agent |
 
 ### Icebox
 *(Ideas captured but not yet prioritized)*
