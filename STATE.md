@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-17 (Cycle #15 — monitoring cycle)
+> Last updated: 2026-02-17 (Cycle #16 — DIR-004 process audit)
 
 ## Phase
 `DISCOVERY` — Pivoted from product shipping to walkthrough-driven discovery. Learning what an agent DE actually needs through hands-on experience.
@@ -55,11 +55,12 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 ## Health
 | Dimension | Status | Notes |
 |-----------|--------|-------|
-| Liveness | RUNNING | Daemon healthy — 15 cycles, 0 failures |
+| Liveness | RUNNING | Daemon healthy — 16 cycles, 0 failures |
 | Discovery | ON_TRACK | WT-01 complete, curriculum designed |
 | Quality | STRONG | Process gap identified + fixed (PB-020) |
 | Team | Minimal | CTO-Agent only |
 | Knowledge | Growing | Walkthroughs producing actionable insights |
+| Process | UNDER_REVIEW | DIR-004 audit identified simplification opportunities |
 
 ---
 *Update protocol: Update the "Last updated" timestamp on every change. Keep "Where CEO Can Help" current — this is how the CEO knows where to unblock. Keep this under 100 lines.*

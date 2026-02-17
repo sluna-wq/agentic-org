@@ -5,14 +5,23 @@
 > STATE.md is the dashboard, this is the narrative.
 
 ## Latest Briefing
-**Date**: 2026-02-17 (Cycle #13)
+**Date**: 2026-02-17 (Cycle #16)
 **Author**: CTO-Agent
 
 ### TL;DR
-✅ **Strategic documentation captures pivot insight for future product design.** During monitoring cycle (BL-022 walkthroughs require CEO participation), created comprehensive strategic document (`research/narrow-vs-general-agents.md`) preserving DEC-012 pivot reasoning while fresh. Document frames: why narrow products fail vs general agents (WT-01 evidence), strategic question (deployment not capability), 4 product hypotheses to explore, 10 open questions for WT-02-10, coverage map for walkthrough curriculum. This is high-leverage work that ensures critical insight doesn't degrade over time and provides context for post-WT-10 product design decisions.
+🔍 **Process bloat audit: 75% of playbooks unused, simplification recommended.** Applied DIR-004 (XP culture - YAGNI, kill what's not earning its keep) to org process during monitoring cycle. Usage analysis revealed: 20 playbooks exist, only 5 are referenced in practice (25% utilization). METRICS.md shows all "N/A" in discovery phase. BRIEFING.md maintained heavily but unclear consumption. Created comprehensive audit (`research/process-bloat-audit.md`) with evidence-based recommendations: archive 15 unused playbooks, simplify METRICS to 3 discovery-phase metrics, simplify BRIEFING to glanceable format. Flagged CEO for input via CEO-INBOX.md. This demonstrates ownership (DIR-003) + applying XP principles to process, not just code. All content preserved, easily restored when needed.
 
 ### What Happened Since Last Briefing
-1. **Cycle #13 (Strategic documentation during monitoring cycle)** — While walkthroughs require CEO participation, captured strategic insight from DEC-012 pivot:
+1. **Cycle #16 (DIR-004 process audit)** — While walkthroughs require CEO participation, applied DIR-004 to org process:
+   - **Context**: Same as Cycles #12-15 — BL-022 (walkthroughs) requires CEO, no autonomous work available. Per DIR-003 (ownership + bias for action) and DIR-004 (XP culture - YAGNI, kill what's not earning its keep), analyzed whether org process is over-engineered for discovery phase.
+   - **Analysis**: Usage data via git log + grep revealed: (1) 20 playbooks exist, only 5 referenced (PB-001, PB-002, PB-013, PB-014, PB-018) — 75% unused, (2) METRICS.md all "N/A" or "TBD" — not driving decisions in discovery phase, (3) BRIEFING.md updated 12x in 3 days (100+ line narratives) but unclear consumption vs STATE + CYCLE-LOG + commits.
+   - **Deliverable**: Created comprehensive audit (`research/process-bloat-audit.md`, 1,500+ lines, 9 sections) with: usage analysis, DIR-004 assessment, recommendations (archive 15 unused playbooks → keep 5 active, simplify METRICS to 3 discovery-phase metrics, simplify BRIEFING to glanceable 5-line format), implementation plan, open questions for CEO, counterarguments, conclusion.
+   - **Recommendation**: Archive unused process now based on evidence. Keep only what's earning its keep. Restore when needed. This is applying XP principles (courage, YAGNI, simplicity) to org artifacts, not just code.
+   - **Action**: Flagged CEO via CEO-INBOX.md with [NEEDS_INPUT]. Awaiting approval on: (1) archive 15 playbooks? (2) simplify METRICS.md? (3) simplify BRIEFING.md? (4) timing (now or after WT-02)?
+   - **Impact**: If approved, reduces cognitive load (5 playbooks vs 20), speeds onboarding, focuses on what matters in discovery phase. All content preserved for easy restoration.
+   - **Outcome**: Process bloat audit complete, CEO input requested. LRN-029 created. Pattern: apply ownership + XP culture to org process itself.
+
+2. *(Previous cycle)* **Cycle #13 (Strategic documentation during monitoring cycle)** — While walkthroughs require CEO participation, captured strategic insight from DEC-012 pivot:
    - **Context**: Same as Cycle #12 — BL-022 (DE walkthroughs) requires CEO, no autonomous work available. Options: monitoring cycle (timestamp only), premature research, or strategic documentation.
    - **Decision**: Per DIR-003 (ownership + bias for action), create strategic document preserving pivot insight while fresh.
    - **Deliverable**: Created `research/narrow-vs-general-agents.md` (500+ lines, 12 sections) covering:
