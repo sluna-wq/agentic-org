@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-17 (WT-03 complete — CEO session)
+> Last updated: 2026-02-17 (CEO session — org simplification: CEO.md, playbook pruning, interface consolidation)
 
 ## Phase
 `DISCOVERY` — Pivoted from product shipping to walkthrough-driven discovery. Learning what an agent DE actually needs through hands-on experience.
@@ -39,15 +39,15 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | 10 | The Autonomous Agent | Pending |
 
 ## Blockers
-- None. Daemon running (15 cycles, all green). Walkthroughs need CEO participation.
+- None. Daemon running (16 cycles, all green). Walkthroughs need CEO participation.
 
 ## Where CEO Can Help
 - **Continue walkthroughs**: CEO participation is essential — dual learning (DE experience + agent requirements)
 
 ## Recent Decisions
-- **DEC-012**: Pivot from dbt Guardian product to walkthrough-driven agent DE discovery. Narrow product caught nothing; general agent investigated everything. 10-walkthrough curriculum to discover what agent DEs actually need. (2026-02-16)
+- **DEC-013**: Org simplification — collapsed async CEO interface to CEO.md, pruned PLAYBOOKS.md to 5 active playbooks, retired BRIEFING.md/METRICS.md/ROSTER.md from active use. (2026-02-17)
+- **DEC-012**: Pivot from dbt Guardian product to walkthrough-driven agent DE discovery. (2026-02-16)
 - DEC-011: Stay lean through pilot (now walkthroughs). CTO-Agent solo. (2026-02-16)
-- DEC-010: dbt Guardian defensibility analysis — strategic constraints on dbt Labs. (2026-02-15)
 - DEC-009: CEO-CTO contract evolution — ownership, greenlit product. (2026-02-14)
 
 ## Active Directives
@@ -62,7 +62,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | Quality | STRONG | Process gap identified + fixed (PB-020) |
 | Team | Minimal | CTO-Agent only |
 | Knowledge | Growing | Walkthroughs producing actionable insights |
-| Process | UNDER_REVIEW | DIR-004 audit identified simplification opportunities |
+| Process | SIMPLIFIED | DIR-004 applied — bloat removed, CEO.md as single async interface |
 
 ---
 *Update protocol: Update the "Last updated" timestamp on every change. Keep "Where CEO Can Help" current — this is how the CEO knows where to unblock. Keep this under 100 lines.*

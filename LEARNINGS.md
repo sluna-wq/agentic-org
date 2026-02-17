@@ -300,5 +300,14 @@
 - **Evidence**: WT-03 entity resolution: 11 exact email matches (auto-merge), 3 exact name matches (high confidence — James Brown, Jessica Clark, Emma Williams), 6 unmatched (4 genuinely new leads, 2 same-last-name-only which are different people). The agent correctly identified all categories. A human needed to confirm the name matches and reject the last-name-only matches. Pattern works for any cross-system join: CRM↔marketing, CRM↔support, CRM↔billing.
 - **Action taken**: Entity resolution added to the agent escalation protocol design. Pattern: agent builds match table with confidence scores → auto-merges high confidence → escalates ambiguous → human decides → agent executes. Will refine in WT-08 (The Duplicate Problem).
 - **Tags**: product, agents, entity-resolution, escalation, data-engineering, walkthrough
+
+### LRN-035: Single async CEO interface beats distributed async channels
+- **Date**: 2026-02-17
+- **Source**: CEO session — feedback on org bloat and async communication
+- **Insight**: CEO flagged that async communication was fragmented across CEO-INBOX.md (pending items), BRIEFING.md (narrative reports), and THREAD.md (private context), with no single place to see what's pending on their side, where the org stands, and what happened recently. Applied AI best practice: a single, scannable interface for the human-in-the-loop is more effective than multiple specialized channels. CEO.md consolidates all three concerns: "Your Queue" (what needs you), "Where Things Stand" (current status), and "Last 10 Cycles" (recent activity log). This pattern — a single dashboard for the human stakeholder — should be the default for any async human-agent interface.
+- **Evidence**: CEO could not see pending items without opening CEO-INBOX.md, couldn't see current status without reading STATE.md, couldn't see recent activity without reading CYCLE-LOG.md. No way to react async without starting a full session. Classic fragmentation problem — each channel made sense individually, but the cognitive load of checking three places made async review impractical. CEO explicitly said "async is a mess."
+- **Action taken**: Created CEO.md. Retired CEO-INBOX.md and BRIEFING.md from active use. Updated CLAUDE.md, PLAYBOOKS.md (PB-001, PB-020), and PB-014 (autonomous cycle) to maintain CEO.md instead. Pattern: for any human-in-the-loop interface, design it as a single artifact with clear sections rather than multiple specialized files.
+- **Tags**: process, interfaces, async, human-in-the-loop, applied-ai, simplification
+
 ---
-*Update protocol: Add entries after completing work (per PB-002), after incidents/outages (per PB-005), and after experiments/spikes. Keep learnings atomic and actionable. Tags enable filtering. The org reviews this during planning (PB-003) and quarterly audits (PB-013).*
+*Update protocol: Add entries after completing work (per PB-002), after incidents/outages, and after experiments/spikes. Keep learnings atomic and actionable. Tags enable filtering.*

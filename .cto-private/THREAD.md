@@ -72,5 +72,19 @@ Emerging product shape across WT-01→03: agent that does mechanical 80% and esc
 
 3/10 walkthroughs complete. WT-04 (Schema Migration) next session.
 
+### CEO → CTO (2026-02-17) — Org simplification session
+CEO flagged two issues: (1) observable bloat — too much text without clear organization across too many files; (2) async communication is broken — fragmented across CEO-INBOX.md, BRIEFING.md, and THREAD.md, with no way for CEO to react async without opening a full session.
+
+CEO directed: collapse all async to a single CEO.md file with what's pending on their side, where things are, and what's happened in the last 10 cycles (autonomous or with CEO). Also confirmed process simplification (already in CEO-INBOX queue) should proceed.
+
+### CTO → CEO (2026-02-17) — Response + implementation
+Implemented immediately:
+- Created **CEO.md** — single async interface: "Your Queue" (pending items), "Where Things Stand" (current status + walkthrough progress), "Last 10 Cycles" (unified activity log). Retired CEO-INBOX.md and BRIEFING.md from active use.
+- Pruned **PLAYBOOKS.md** from 20 to 5 active playbooks. Archived the other 15 in PLAYBOOKS-ARCHIVE.md (restorable in minutes).
+- Updated **CLAUDE.md** — simplified bootstrap, points to CEO.md instead of CEO-INBOX.md + BRIEFING.md.
+- Logged as DEC-013. Applied AI best practice: single human-in-the-loop interface beats distributed channels (LRN-035).
+
+On your async reaction problem: you can write to `.cto-private/THREAD.md` async (I read it every session start). But there's no push notification — you'd have to open a Claude Code session to write, which defeats the purpose. The honest answer is: async reactions only work if we add a notification mechanism (email, Slack). Not tackling that today, but flagging it as an open problem.
+
 ---
 *Update protocol: Append new entries at the bottom with `### [ROLE] → [ROLE] (date)` header. Never delete entries. CTO reads on every session startup. Specialist agents must not access this file.*

@@ -222,5 +222,17 @@
 - **Outcome**: Pending — WT-01 complete, WT-02 through WT-10 in progress. Product direction will emerge from walkthrough synthesis (WT-10).
 - **Learnings**: LRN-024 (narrow product vs general agent), LRN-025 (deployment not capability is the barrier), LRN-026 (learning by doing beats research)
 
+### DEC-013: Org simplification — collapse async to CEO.md, prune playbooks
+- **Date**: 2026-02-17
+- **Decider**: CEO + CTO-Agent (aligned in CEO session)
+- **Context**: CEO flagged observable bloat — too much text without clear organization. Two specific problems: (1) async CEO communication was split across CEO-INBOX.md, BRIEFING.md, and THREAD.md with no single view for the CEO; (2) org had 20 playbooks but only 5 were ever used, plus dead files (METRICS.md all N/A, ROSTER.md only 1 agent).
+- **Options considered**:
+  1. Keep existing structure, add navigation — reduces cognitive load slightly but doesn't fix the underlying bloat
+  2. Collapse and simplify — create CEO.md as single CEO interface, archive unused playbooks, retire dead files
+- **Decision**: Option 2. Created CEO.md (pending queue + current status + last 10 cycles). Reduced PLAYBOOKS.md from 20 to 5 active playbooks (archived rest in PLAYBOOKS-ARCHIVE.md). Retired BRIEFING.md, METRICS.md, ROSTER.md from active use. Updated CLAUDE.md and PB-001 to reflect new structure.
+- **Rationale**: DIR-004 (XP/YAGNI) applied to org process itself. Evidence-based: 16 cycles of actual usage showed exactly what was and wasn't being used. CEO can't react async without a clear, unified interface. Simpler = faster onboarding for any agent, less maintenance overhead, lower cognitive load for CEO. All archived content preserved and restorable.
+- **Outcome**: Pending — evaluate at next audit whether CEO.md is sufficient as sole async interface
+- **Learnings**: LRN-035
+
 ---
 *Update protocol: Number decisions sequentially. Update outcomes retroactively. Link decisions from STATE.md when they affect current context. Reference decisions from CHARTER.md changelog when they modify governance.*
