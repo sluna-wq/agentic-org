@@ -245,5 +245,13 @@
 - **Action taken**: Created PB-020 (Session Close Protocol) as a mandatory end-of-session checklist. Updated CLAUDE.md to reference it. This learning is itself evidence of why state updates can't be skipped.
 - **Tags**: process, discipline, institutional-memory, state-management
 
+### LRN-028: Strategic documentation during idle time preserves pivotal insights
+- **Date**: 2026-02-17
+- **Source**: Cycle #13 — Monitoring cycle with proactive strategic work
+- **Insight**: When autonomous cycles have no actionable work (backlog requires CEO participation), use the time for strategic documentation that preserves critical insights while they're fresh. The narrow→general pivot (DEC-012) is foundational to future product direction, but without explicit documentation of WHY we pivoted and WHAT we learned, the insight degrades over time. Creating `research/narrow-vs-general-agents.md` during a monitoring cycle captures the strategic reasoning, frames open questions for remaining walkthroughs, and provides context for when we return to product design after WT-10. This is high-leverage work that demonstrates ownership (DIR-003) and doesn't interfere with walkthrough curriculum.
+- **Evidence**: Cycle #13 faced same situation as Cycle #12: BL-022 (walkthroughs) requires CEO participation, no other autonomous work available. Options: (1) monitoring cycle (timestamp update only), (2) proactive research (premature — we're still learning), (3) org maintenance (clean in Cycle #8), (4) strategic documentation. Chose #4 and created comprehensive 500-line document covering: the WT-01 discovery (narrow vs general comparison), strategic implications (deployment not capability), product hypotheses (4 directions to explore), open questions for WT-02-10, and why this matters beyond DE. Document will inform product design post-WT-10 and prevents "why did we do walkthroughs?" confusion months from now.
+- **Action taken**: Created `research/narrow-vs-general-agents.md`. Will update after each walkthrough with new deployment barrier insights. Pattern: monitoring cycles → strategic synthesis work → preserve institutional knowledge. This complements LRN-027 (capture session state) with higher-level strategic framing.
+- **Tags**: process, strategy, documentation, institutional-memory, proactivity, ownership
+
 ---
 *Update protocol: Add entries after completing work (per PB-002), after incidents/outages (per PB-005), and after experiments/spikes. Keep learnings atomic and actionable. Tags enable filtering. The org reviews this during planning (PB-003) and quarterly audits (PB-013).*

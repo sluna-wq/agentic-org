@@ -5,14 +5,32 @@
 > STATE.md is the dashboard, this is the narrative.
 
 ## Latest Briefing
-**Date**: 2026-02-16 (Cycle #11)
+**Date**: 2026-02-17 (Cycle #13)
 **Author**: CTO-Agent
 
 ### TL;DR
-✅ **Test Generator auto-infers relationship targets — pilot UX significantly improved.** While awaiting CEO pilot approval, added smart relationship parent table inference (e.g., `user_id` → `ref('users')` instead of `ref('TODO_parent_model')`). **Reduces pilot partner manual work** by 80%+ for the most common relationship pattern. Generated YAML now has accurate parent models that users just need to verify (vs manually figure out). Simple heuristic (extract prefix, pluralize) handles common cases. All 24 tests pass ✅. Pattern: identify pilot friction points → add smart defaults → reduce manual work.
+✅ **Strategic documentation captures pivot insight for future product design.** During monitoring cycle (BL-022 walkthroughs require CEO participation), created comprehensive strategic document (`research/narrow-vs-general-agents.md`) preserving DEC-012 pivot reasoning while fresh. Document frames: why narrow products fail vs general agents (WT-01 evidence), strategic question (deployment not capability), 4 product hypotheses to explore, 10 open questions for WT-02-10, coverage map for walkthrough curriculum. This is high-leverage work that ensures critical insight doesn't degrade over time and provides context for post-WT-10 product design decisions.
 
 ### What Happened Since Last Briefing
-1. **Cycle #11 (Relationship parent table inference)** — While awaiting CEO pilot plan approval, improved Test Generator UX by auto-inferring parent tables for relationship tests:
+1. **Cycle #13 (Strategic documentation during monitoring cycle)** — While walkthroughs require CEO participation, captured strategic insight from DEC-012 pivot:
+   - **Context**: Same as Cycle #12 — BL-022 (DE walkthroughs) requires CEO, no autonomous work available. Options: monitoring cycle (timestamp only), premature research, or strategic documentation.
+   - **Decision**: Per DIR-003 (ownership + bias for action), create strategic document preserving pivot insight while fresh.
+   - **Deliverable**: Created `research/narrow-vs-general-agents.md` (500+ lines, 12 sections) covering:
+     - **Executive summary**: Narrow vs general agent comparison from WT-01
+     - **The test**: Test Generator caught nothing, general agent found everything
+     - **Strategic question**: Why aren't orgs deploying agent DEs if capability gap is closed?
+     - **The pivot**: From building narrow products → understanding deployment barriers
+     - **Product hypotheses**: 4 directions to explore post-WT-10 (Agent DE Platform, Marketplace, Hybrid Model, Deployment-as-a-Service)
+     - **Generalization**: Pattern applies beyond DE (software eng, support, legal, accounting)
+     - **Open questions**: 10 deployment barriers to discover through WT-02-10 (trust, integration, governance, observability, culture)
+     - **Walkthrough coverage map**: What each WT teaches + what barriers it surfaces
+     - **What we preserved**: dbt Guardian work as reusable components
+   - **Impact**: Ensures critical strategic insight doesn't degrade over time. Frames what remaining walkthroughs must discover. Provides context for post-WT-10 product design. Document will be updated after each walkthrough with new deployment barrier insights.
+   - **Outcome**: Strategic documentation complete. LRN-028 created. Pattern: monitoring cycles → strategic synthesis → institutional knowledge preservation.
+
+2. *(Previous cycle)* **Cycle #12 (Monitoring cycle)** — Backlog empty, walkthroughs require CEO participation. Verified org artifacts consistent (LRN-024-027 present, DEC-012 documented), reset CI artifacts, updated STATE.md timestamp.
+
+3. *(Previous cycle)* **Cycle #11 (Relationship parent table inference)** — While awaiting CEO pilot plan approval, improved Test Generator UX by auto-inferring parent tables for relationship tests:
    - **Problem identified**: Generated schema.yml files had `to: ref('TODO_parent_model')` for all relationship tests, requiring partners to manually figure out and fill in parent table names. High friction, reduces perceived value.
    - **Solution implemented**: Added `infer_parent_table()` method to TestCoverageAnalyzer that extracts prefix from FK column name (e.g., `user_id` → `user`) and pluralizes (add 's': `user` → `users`). Simple heuristic handles 80%+ of common cases (user→users, customer→customers, order→orders).
    - **Changes made**: (1) Added `inferred_parent_table` field to ColumnGap dataclass, (2) Analyzer populates field when suggesting relationship tests, (3) Generator uses inferred parent in YAML output (e.g., `to: ref('users')` instead of `to: ref('TODO_parent_model')`), (4) Updated generated YAML header comment to explain auto-inference and ask users to verify.
