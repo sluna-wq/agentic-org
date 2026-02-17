@@ -1,0 +1,21 @@
+account_id,first_name,last_name,email,street,city,state_code,postal_code,created_at,updated_at,is_active,account_tier,phone,country_code
+1,Michael,Chen,michael.chen@gmail.com,123 Oak Street,San Francisco,CA,94102,2023-01-15 08:30:00,2024-11-02 14:20:00,true,gold,+1-555-0101,US
+2,Sarah,Johnson,sarah.j@yahoo.com,456 Maple Ave,Portland,OR,97201,2023-02-20 11:45:00,2024-10-15 09:00:00,true,silver,,US
+3,Raj,Patel,raj.patel@outlook.com,789 Pine Blvd,Austin,TX,78701,2023-03-01 16:00:00,2024-09-20 11:30:00,true,gold,+1-555-0103,US
+4,Emma,Williams,,321 Cedar Ln,Seattle,WA,98101,2023-03-15 09:15:00,2024-08-10 16:45:00,true,silver,+1-555-0104,US
+5,James,Brown,james.b@gmail.com,654 Birch Rd,Chicago,IL,60601,2023-04-02 13:20:00,2024-12-01 10:00:00,true,platinum,+1-555-0105,US
+6,Maria,Garcia,maria.garcia@hotmail.com,987 Elm Street,Mexico City,,06600,2023-04-18 07:30:00,2024-07-25 14:15:00,false,silver,+1-555-0106,MX
+7,David,Kim,david.kim@gmail.com,147 Willow Way,Los Angeles,CA,90001,2023-05-10 10:00:00,2024-11-18 08:30:00,true,gold,+1-555-0107,US
+8,Lisa,Anderson,lisa.a@company.com,258 Spruce Ct,Vancouver,,V6B1A1,2023-05-22 15:45:00,2024-06-30 12:00:00,true,silver,,CA
+9,Robert,Taylor,robert.taylor@gmail.com,369 Ash Drive,Denver,CO,80201,2023-06-05 12:00:00,2024-10-05 15:30:00,true,gold,+1-555-0109,US
+10,Jennifer,Martinez,jen.martinez@gmail.com,741 Poplar St,Miami,FL,33101,2023-06-20 14:30:00,2024-09-12 11:00:00,true,silver,+1-555-0110,US
+11,William,Thompson,w.thompson@business.com,852 Chestnut Ave,Boston,MA,02101,2023-07-08 09:00:00,2024-11-30 16:30:00,true,platinum,+1-555-0111,US
+12,Amanda,White,amanda.w@gmail.com,963 Magnolia Blvd,Atlanta,GA,30301,2023-07-22 11:15:00,2024-08-20 10:45:00,true,silver,,US
+13,Christopher,Davis,chris.d@outlook.com,159 Sycamore Ln,Nashville,TN,37201,2023-08-05 16:45:00,2024-12-10 09:15:00,true,gold,+1-555-0113,US
+14,Jessica,Wilson,jessica.w@yahoo.com,357 Cypress Dr,Phoenix,AZ,85001,2023-08-19 08:30:00,2024-07-15 14:00:00,false,silver,+1-555-0114,US
+15,Matthew,Moore,m.moore@company.com,486 Juniper Rd,Minneapolis,MN,55401,2023-09-03 13:00:00,2024-10-28 12:30:00,true,platinum,+1-555-0115,US
+16,Ashley,Jackson,ashley.j@gmail.com,624 Hickory Way,Detroit,MI,48201,2023-09-17 10:30:00,2024-09-05 15:45:00,true,silver,,US
+17,Joshua,Harris,josh.h@business.com,753 Walnut Ct,Philadelphia,PA,19101,2023-10-01 14:00:00,2024-11-15 08:00:00,true,gold,+1-555-0117,US
+18,Stephanie,Lewis,steph.l@gmail.com,891 Peach Ave,Charlotte,NC,28201,2023-10-15 09:45:00,2024-06-20 13:15:00,true,silver,+1-555-0118,US
+19,Daniel,Robinson,dan.r@outlook.com,246 Apricot St,Las Vegas,NV,89101,2023-11-02 15:30:00,2024-12-05 10:30:00,true,gold,+1-555-0119,US
+20,Megan,Clark,megan.c@yahoo.com,135 Plum Blvd,San Diego,CA,92101,2023-11-18 11:00:00,2024-08-25 14:45:00,true,silver,,US

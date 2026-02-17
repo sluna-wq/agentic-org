@@ -2,17 +2,13 @@
 
 > **Your single async interface to the org.**
 > What needs you → what's happening → what's been done. Updated every cycle and every CEO session.
-> _Last updated: 2026-02-17 (CEO session — bloat reduction + CEO.md creation)_
+> _Last updated: 2026-02-17 (Autonomous cycle #17 — WT-04 scenario built)_
 
 ---
 
 ## Your Queue — Needs You
 
-| # | Item | Context | Since |
-|---|------|---------|-------|
-| 1 | **Process simplification approval** | Cycle 16 audit found 75% of playbooks unused. Recommend archiving 15, keeping 5. Details in `research/process-bloat-audit.md`. CEO signed off verbally this session — implementing now. | 2026-02-17 |
-
-_Nothing else pending. When this is empty, the org is running without you._
+_Nothing pending. When this is empty, the org is running without you._
 
 ---
 
@@ -37,7 +33,9 @@ _Nothing else pending. When this is empty, the org is running without you._
 
 **What we're learning**: After 3 walkthroughs, a pattern is forming. Agent DEs should automate the mechanical 80% (staging templates, reconciliation, standard tests) and escalate the 20% requiring business judgment (entity resolution thresholds, attribution models, currency handling). Not a narrow tool, not fully autonomous — something in between that knows when to ask.
 
-**Blockers**: None. Daemon healthy (16 cycles, 0 failures). Walkthroughs need CEO time.
+**Blockers**: None. Daemon healthy (17 cycles, 0 failures). Walkthroughs need CEO time.
+
+**Ready to go**: WT-04 scenario fully scaffolded (`walkthroughs/wt04_schema_migration/`). Pull it up and start — README has the full setup and walkthrough guide.
 
 ---
 
@@ -55,6 +53,7 @@ _Nothing else pending. When this is empty, the org is running without you._
 | 14 | Autonomous | Monitoring only. CI artifact cleanup (node_modules). | — |
 | 15 | Autonomous | Monitoring only. State timestamp updated. | — |
 | 16 | Autonomous | DIR-004 process audit — 75% of playbooks unused, bloat identified, recommendations written | `research/process-bloat-audit.md` |
+| 17 | Autonomous | WT-04 scenario scaffolded — broken state, 4 analysis files, schema contract test, postmortem template | `walkthroughs/wt04_schema_migration/` |
 | WT-01 | CEO session | Walkthrough: "The Data You Inherit" — dbt Guardian caught nothing; general agent found everything | DEC-012 pivot |
 | WT-02 | CEO session | Walkthrough: "The Dashboard Is Wrong" — 3 bugs found (NULL semantics, duplicates, multi-currency) | LRN-029–031 |
 | WT-03 | CEO session | Walkthrough: "New Data Source Onboarding" — full HubSpot pipeline, entity resolution boundary | LRN-032–033 |
@@ -74,6 +73,7 @@ _Nothing else pending. When this is empty, the org is running without you._
 
 | Item | Resolution | Date |
 |------|-----------|------|
+| Process simplification approval | Implemented — 15 playbooks archived, CEO.md created as single async interface, BRIEFING.md + METRICS.md retired. | 2026-02-17 |
 | Process bloat audit [NEEDS_INPUT] | CEO approved simplification this session. CTO implementing: archive 15 playbooks, collapse async to CEO.md, retire BRIEFING.md + METRICS.md. | 2026-02-17 |
 | State loss incident [INFO] | PB-020 implemented. Learnings captured retroactively (LRN-024–027). | 2026-02-16 |
 | BL-019 Week 0 prep complete | Superseded by DEC-012 pivot to walkthroughs. | 2026-02-16 |

@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-17 (CEO session — org simplification: CEO.md, playbook pruning, interface consolidation)
+> Last updated: 2026-02-17 (Autonomous cycle #17 — WT-04 scenario scaffolded)
 
 ## Phase
 `DISCOVERY` — Pivoted from product shipping to walkthrough-driven discovery. Learning what an agent DE actually needs through hands-on experience.
@@ -22,7 +22,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 ## Active Work
 | ID | Description | Owner | Status | Last Activity | What's Next |
 |----|-------------|-------|--------|---------------|-------------|
-| — | DE Walkthroughs | CEO + CTO | In progress | WT-03 complete | WT-04: "The Schema Migration" |
+| — | DE Walkthroughs | CEO + CTO | In progress | WT-04 scenario ready | WT-04: "The Schema Migration" — scenario scaffolded, ready for CEO |
 
 ## Walkthrough Progress
 | # | Walkthrough | Status |
@@ -39,7 +39,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | 10 | The Autonomous Agent | Pending |
 
 ## Blockers
-- None. Daemon running (16 cycles, all green). Walkthroughs need CEO participation.
+- None. Daemon running (17 cycles, all green). Walkthroughs need CEO participation.
 
 ## Where CEO Can Help
 - **Continue walkthroughs**: CEO participation is essential — dual learning (DE experience + agent requirements)
@@ -57,7 +57,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 ## Health
 | Dimension | Status | Notes |
 |-----------|--------|-------|
-| Liveness | RUNNING | Daemon healthy — 16 cycles, 0 failures |
+| Liveness | RUNNING | Daemon healthy — 17 cycles, 0 failures |
 | Discovery | ON_TRACK | WT-01 complete, curriculum designed |
 | Quality | STRONG | Process gap identified + fixed (PB-020) |
 | Team | Minimal | CTO-Agent only |

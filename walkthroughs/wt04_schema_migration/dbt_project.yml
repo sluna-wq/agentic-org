@@ -1,0 +1,23 @@
+name: 'wt04_schema_migration'
+version: '1.0.0'
+profile: 'acme_analytics'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+analysis-paths: ["analyses"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  wt04_schema_migration:
+    +schema: raw
+
+models:
+  wt04_schema_migration:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
