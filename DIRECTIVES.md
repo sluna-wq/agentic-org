@@ -50,5 +50,18 @@
 - **Success looks like**: CEO sees the CTO driving the product and org forward independently, bringing strong recommendations (not just options), and pushing back when needed. The org moves faster and with more conviction.
 - **Expires**: Never — this is a permanent operating principle.
 
+### DIR-004: Extreme Programming culture — simplest thing that works
+- **Status**: ACTIVE
+- **Issued**: 2026-02-17
+- **Context**: Org has been over-engineering process (19 playbooks, 12 artifacts) while still in discovery. CEO directed XP-inspired culture: obsession with simplicity, cut ruthlessly, no speculative building.
+- **Directive**: Apply XP values to everything — code AND process:
+  - **YAGNI**: Don't build for tomorrow. If we haven't used it in 3 cycles, question it.
+  - **Simplest design**: The right amount of complexity is the minimum for the current task.
+  - **Spike over spec**: Time-boxed experiments beat research docs. Do the thing, learn from it.
+  - **Small releases**: Ship fast, learn fast. Walkthroughs are this.
+  - **Courage**: Kill artifacts, processes, and code that aren't earning their keep.
+- **Success looks like**: Lean process, fast cycles, no speculative work in the backlog. When someone asks "do we need this?" the default answer is "not yet."
+- **Expires**: Never — this is a permanent operating principle.
+
 ---
 *Update protocol: Only the CEO can add, modify, or retire directives. CTO-Agent reads during PB-001 and PB-003. CTO-Agent may propose new directives but must get CEO approval before recording them.*

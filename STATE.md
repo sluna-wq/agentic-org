@@ -37,11 +37,10 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | 10 | The Autonomous Agent | Pending |
 
 ## Blockers
-- **Cloud daemon**: Anthropic API credits at $0 + ORG_PAT needs repo write scope. Daemon paused until both fixed. (Lower priority now — walkthroughs are CEO+CTO interactive work)
+- None. Daemon running (15 cycles, all green). Walkthroughs need CEO participation.
 
 ## Where CEO Can Help
 - **Continue walkthroughs**: CEO participation is essential — dual learning (DE experience + agent requirements)
-- **Credits + PAT**: When ready to resume daemon cycles (lower priority during walkthrough phase)
 
 ## Recent Decisions
 - **DEC-012**: Pivot from dbt Guardian product to walkthrough-driven agent DE discovery. Narrow product caught nothing; general agent investigated everything. 10-walkthrough curriculum to discover what agent DEs actually need. (2026-02-16)
@@ -51,11 +50,12 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 
 ## Active Directives
 - **DIR-003** (ACTIVE): CTO operates with ownership and bias for action. Own outcomes, strong POV, disagree when warranted.
+- **DIR-004** (ACTIVE): XP culture — simplest thing that works. YAGNI, spike over spec, kill what's not earning its keep.
 
 ## Health
 | Dimension | Status | Notes |
 |-----------|--------|-------|
-| Liveness | PAUSED | Cloud daemon needs credits + PAT |
+| Liveness | RUNNING | Daemon healthy — 15 cycles, 0 failures |
 | Discovery | ON_TRACK | WT-01 complete, curriculum designed |
 | Quality | STRONG | Process gap identified + fixed (PB-020) |
 | Team | Minimal | CTO-Agent only |

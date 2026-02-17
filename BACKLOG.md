@@ -22,13 +22,9 @@ Items are scored on:
 |----|-------------|--------|---------|--------|-------------|-------|
 | BL-013 | Cloud daemon — fix credits + PAT, get daemon running again | 3 | 2 | S | Credits + PAT | CTO-Agent |
 
-### Priority 2 — Do Later
-| ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
-|----|-------------|--------|---------|--------|-------------|-------|
-| BL-021 | **"SDKification" research** — Helping software companies transform for the agent economy. | 4 | 2 | M | None | CTO-Agent |
-
 ### Icebox
-*(Ideas captured but not yet prioritized)*
+*(Ideas captured but not yet prioritized — YAGNI per DIR-004)*
+- BL-021: "SDKification" research — Moved from P2 to Icebox. Speculative while still in discovery (DIR-004: YAGNI). Revisit only if walkthroughs surface this as the product direction.
 - BL-006: Broader market landscape (superseded by product-specific research)
 - BL-007: Product vision drafting (superseded by DEC-009, product direction confirmed)
 - BL-020: dbt Guardian pilot execution (ON HOLD — pivot to walkthroughs per DEC-012. May revive in different form after WT-10 synthesis.)
