@@ -8,6 +8,7 @@
 ## PB-001: Agent Session Startup
 **When**: Any agent begins a new work session.
 **Steps**:
+0. `git pull origin main` — sync latest state before doing anything
 1. Read `STATE.md` — understand current phase, active work, blockers, and context
 2. **CTO-Agent only**: Read `.cto-private/CEO-INBOX.md` — check for CEO responses or clear acknowledged items
 3. **CTO-Agent only**: Read `.cto-private/THREAD.md` — check for new CEO messages
@@ -31,6 +32,7 @@
 5. If the work produced a decision, log it in `DECISIONS.md`
 6. If metrics changed, update `METRICS.md`
 7. Commit all changes with a descriptive message
+8. `git push origin main` — persist changes to remote so no work is lost
 
 ## PB-003: Weekly Planning (CTO-Agent)
 **When**: Start of each planning cycle.
