@@ -1,9 +1,9 @@
 {
-  "last_cycle": 14,
-  "last_timestamp": "2026-02-17T09:04:45Z",
+  "last_cycle": 15,
+  "last_timestamp": "2026-02-17T13:39:24Z",
   "last_status": "success",
   "last_error_category": null,
-  "last_cost_usd": 0.59456825,
+  "last_cost_usd": 0.521986,
   "last_duration_minutes": 2,
   "last_turns": 19,
   "consecutive_failures": 0
