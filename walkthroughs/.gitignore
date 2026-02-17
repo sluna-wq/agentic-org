@@ -1,0 +1,7 @@
+.venv/
+*.duckdb
+*.duckdb.wal
+acme_analytics/target/
+acme_analytics/logs/
+logs/
+__pycache__/

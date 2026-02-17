@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: main_raw
+    database: warehouse
+    description: Raw data from Acme Corp source systems
+    tables:
+      - name: raw_customers
+        description: Customer records from the CRM
+      - name: raw_orders
+        description: Orders from the e-commerce platform
+      - name: raw_payments
+        description: Payment transactions from Stripe
+      - name: raw_products
+        description: Product catalog from the inventory system
+      - name: raw_order_items
+        description: Line items for each order
+      - name: raw_web_events
+        description: Clickstream data from the web analytics tracker

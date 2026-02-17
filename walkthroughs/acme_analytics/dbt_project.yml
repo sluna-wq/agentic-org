@@ -1,0 +1,27 @@
+name: 'acme_analytics'
+version: '1.0.0'
+profile: 'acme_analytics'
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+analysis-paths: ["analyses"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  acme_analytics:
+    +schema: raw
+
+models:
+  acme_analytics:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: ephemeral
+    marts:
+      +materialized: table

@@ -1,0 +1,35 @@
+# dbt Guardian - Test Coverage Suggestions
+#
+# Coverage: 0.0% (0/2 columns)
+# Models analyzed: 13
+# Gaps found: 2 (showing priority <= 3)
+#
+# This file contains AI-generated test suggestions. Review and customize before use.
+# - For 'accepted_values', replace TODO with actual valid values
+# - For 'relationships', parent tables are auto-inferred (e.g., user_id -> users)
+#   Verify the inferred parent model and field are correct
+# - Remove [AUTO] prefix from descriptions and add domain context
+version: 2
+models:
+- name: stg_customers
+  columns:
+  - name: customer_id
+    description: '[AUTO] Foreign key should not be null; Foreign key should reference parent table'
+    tests:
+    - not_null
+    - relationships:
+        to: ref('customers')
+        field: id
+        config:
+          severity: warn
+- name: stg_orders
+  columns:
+  - name: order_id
+    description: '[AUTO] Foreign key should not be null; Foreign key should reference parent table'
+    tests:
+    - not_null
+    - relationships:
+        to: ref('orders')
+        field: id
+        config:
+          severity: warn

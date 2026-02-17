@@ -1,0 +1,18 @@
+product_id,product_name,category,subcategory,unit_price,cost_price,supplier,is_active,created_at,weight_kg
+P001,Wireless Bluetooth Headphones,Electronics,Audio,79.99,32.00,TechSupply Co,true,2023-01-01,0.25
+P002,USB-C Hub 7-in-1,Electronics,Accessories,49.99,18.50,TechSupply Co,true,2023-01-01,0.15
+P003,Ergonomic Office Chair,Furniture,Chairs,349.00,145.00,OfficePro Ltd,true,2023-01-15,18.5
+P004,Standing Desk Converter,Furniture,Desks,289.00,120.00,OfficePro Ltd,true,2023-01-15,12.3
+P005,Mechanical Keyboard RGB,Electronics,Input Devices,129.99,52.00,TechSupply Co,true,2023-02-01,0.95
+P006,27" 4K Monitor,Electronics,Displays,449.99,210.00,DisplayTech Inc,true,2023-02-01,6.8
+P007,Laptop Stand Aluminum,Electronics,Accessories,39.99,12.00,TechSupply Co,true,2023-03-01,1.2
+P008,Noise Cancelling Earbuds,Electronics,Audio,159.99,65.00,TechSupply Co,true,2023-03-01,0.05
+P009,Webcam 1080p,Electronics,Video,69.99,28.00,TechSupply Co,true,2023-04-01,0.12
+P010,Desk Lamp LED,Furniture,Lighting,45.00,15.00,OfficePro Ltd,true,2023-04-01,1.8
+P011,Cable Management Kit,Electronics,Accessories,24.99,6.00,TechSupply Co,true,2023-05-01,0.5
+P012,Monitor Arm Dual,Furniture,Accessories,189.00,78.00,OfficePro Ltd,true,2023-05-01,4.2
+P013,Wireless Mouse,Electronics,Input Devices,34.99,11.00,TechSupply Co,true,2023-06-01,0.08
+P014,Desk Pad XXL,Furniture,Accessories,29.99,8.00,OfficePro Ltd,true,2023-06-01,0.4
+P015,USB Microphone,Electronics,Audio,89.99,35.00,TechSupply Co,false,2023-07-01,0.35
+P016,DISCONTINUED - Old Webcam,Electronics,Video,-1.00,0.00,TechSupply Co,false,2022-01-01,0.10
+P017,,Electronics,,99.99,40.00,,true,2023-08-01,

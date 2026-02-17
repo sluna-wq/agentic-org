@@ -1,0 +1,26 @@
+customer_id,first_name,last_name,email,created_at,updated_at,is_active,customer_segment,phone,country
+1,Michael,Chen,michael.chen@gmail.com,2023-01-15 08:30:00,2024-11-02 14:20:00,true,premium,+1-555-0101,US
+2,Sarah,Johnson,sarah.j@yahoo.com,2023-02-20 11:45:00,2024-10-15 09:00:00,true,standard,,US
+3,Raj,Patel,raj.patel@outlook.com,2023-03-01 16:00:00,2024-09-20 11:30:00,true,premium,+1-555-0103,US
+4,Emma,Williams,,2023-03-15 09:15:00,2024-08-10 16:45:00,true,standard,+1-555-0104,US
+5,James,Brown,james.b@gmail.com,2023-04-02 13:20:00,2024-12-01 10:00:00,true,enterprise,+1-555-0105,US
+6,Maria,Garcia,maria.garcia@hotmail.com,2023-04-18 07:30:00,2024-07-25 14:15:00,false,standard,+1-555-0106,MX
+7,David,Kim,david.kim@gmail.com,2023-05-10 10:00:00,2024-11-18 08:30:00,true,premium,+1-555-0107,US
+8,Lisa,Anderson,lisa.a@company.com,2023-05-22 15:45:00,2024-06-30 12:00:00,true,standard,,CA
+9,Robert,Taylor,robert.taylor@gmail.com,2023-06-05 12:00:00,2024-10-05 15:30:00,true,premium,+1-555-0109,US
+10,Jennifer,Martinez,jennifer.m@yahoo.com,2023-06-20 09:30:00,2024-11-28 11:00:00,true,standard,+1-555-0110,US
+11,William,Lee,,2023-07-08 14:15:00,2024-09-12 16:00:00,true,enterprise,+1-555-0111,US
+12,Amanda,White,amanda.w@gmail.com,2023-07-25 11:00:00,2024-08-20 09:45:00,false,standard,+1-555-0112,US
+13,Daniel,Harris,daniel.harris@outlook.com,2023-08-12 08:45:00,2024-12-10 13:30:00,true,premium,,US
+14,Jessica,Clark,jessica.clark@gmail.com,2023-08-30 16:30:00,2024-11-05 10:15:00,true,standard,+1-555-0114,UK
+15,Christopher,Lewis,chris.lewis@gmail.com,2023-09-15 10:00:00,2024-10-22 14:00:00,true,standard,+1-555-0115,US
+16,Ashley,Robinson,ashley.r@yahoo.com,2023-09-28 13:45:00,2024-07-15 11:30:00,false,standard,+1-555-0116,US
+17,Matthew,Walker,matt.walker@company.com,2023-10-10 09:15:00,2024-12-15 08:00:00,true,enterprise,+1-555-0117,US
+18,Stephanie,Hall,steph.hall@gmail.com,2023-10-25 15:00:00,2024-11-30 15:45:00,true,premium,+1-555-0118,US
+19,Andrew,Allen,andrew.allen@outlook.com,2023-11-05 11:30:00,2024-09-08 12:00:00,true,standard,,CA
+20,Nicole,Young,nicole.y@gmail.com,2023-11-20 08:00:00,2024-10-18 09:30:00,true,standard,+1-555-0120,US
+21,Michael,Chen,m.chen.personal@gmail.com,2023-12-01 14:00:00,2024-11-02 14:20:00,true,standard,+1-555-0101,US
+22,Test,User,test@test.com,2024-01-01 00:00:00,2024-01-01 00:00:00,false,standard,,US
+23,NULL,NULL,null@example.com,2024-02-14 10:30:00,2024-02-14 10:30:00,true,standard,,US
+24,,,,2024-03-01 12:00:00,2024-03-01 12:00:00,true,unknown,,
+25,Sophie,Dubois,sophie.d@orange.fr,2023-06-15 09:00:00,2024-11-10 14:00:00,true,premium,+33-1-23-45-67,FR
