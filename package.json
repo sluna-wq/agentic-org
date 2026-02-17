@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@anthropic-ai/claude-agent-sdk": "^0.2.42",
+    "@anthropic-ai/claude-agent-sdk": "^0.2.45",
     "tsx": "^4.21.0"
   }
 }
