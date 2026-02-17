@@ -237,5 +237,22 @@
 7. First commit: scaffold project structure per the product's CLAUDE.md conventions
 8. Update STATE.md to reflect the new product repo
 
+## PB-020: Session Close Protocol
+**When**: Every CTO session is ending — whether conversation mode or execution mode. **This is mandatory, not optional.**
+**Why**: LRN-027 — a walkthrough pivot session's learnings were lost because state updates were skipped. Lost learnings are lost work.
+**Steps**:
+1. **Ask**: "What changed this session?" — list decisions, learnings, direction changes, new work items
+2. **Update STATE.md** — reflect current reality (phase, active work, blockers, health)
+3. **Update LEARNINGS.md** — capture any new insights with full LRN- format
+4. **Update DECISIONS.md** — log any material decisions with full DEC- format
+5. **Update BACKLOG.md** — add/complete/reprioritize items as needed
+6. **Update THREAD.md** — append session summary to CEO↔CTO thread
+7. **Update CEO-INBOX.md** — flag anything that needs CEO attention
+8. **Commit all changes** with descriptive message
+9. **Push to remote** — `git push origin main`
+10. **Verify**: Run `git status` — nothing should be uncommitted
+
+**Hard rule**: A session does not end until steps 1-10 are complete. If context window is running low, prioritize STATE.md + LEARNINGS.md + commit/push — these are the minimum viable persistence.
+
 ---
 *Update protocol: Add new playbooks as patterns emerge. Revise existing playbooks when LEARNINGS.md shows they're not working. Reference playbook IDs from other docs when relevant.*

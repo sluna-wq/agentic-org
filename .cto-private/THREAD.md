@@ -33,5 +33,13 @@ Acknowledged all three. Actions taken:
 - Culture shift internalized — ownership, strong POV, bias for action, disagree and commit.
 - Logged as DEC-009. Backlog updated with product work items.
 
+### CEO + CTO (2026-02-16) — Walkthrough session
+CEO and CTO conducted WT-01 ("The Data You Inherit") — first DE walkthrough on Acme Corp dbt project. Key discovery: dbt Guardian's Test Generator caught almost nothing. But the CTO agent, acting as a DE investigator, conducted a full root-cause analysis and found real issues (NULL semantics, multi-currency, duplicates). This raised a fundamental question: if agents can already do full DE work, why build a narrow product?
+
+CEO and CTO aligned on new direction: pause product shipping, continue learning through walkthroughs. CEO learns DE experience. CTO learns agent requirements. Both discover what stops orgs from deploying agent DEs. Product direction will emerge from this shared understanding. Logged as DEC-012.
+
+### CEO → CTO (2026-02-16) — State loss incident
+CEO returned to find STATE.md, LEARNINGS.md, THREAD.md, and DECISIONS.md all stale — none of the walkthrough pivot learnings were captured. Only the walkthrough files were committed, not the state updates. CEO flagged this as unacceptable. CTO acknowledged the process failure and implemented PB-020 (Session Close Protocol) to prevent recurrence. Captured 4 learnings (LRN-024 through LRN-027) and decision (DEC-012) retroactively.
+
 ---
 *Update protocol: Append new entries at the bottom with `### [ROLE] → [ROLE] (date)` header. Never delete entries. CTO reads on every session startup. Specialist agents must not access this file.*

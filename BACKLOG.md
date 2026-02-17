@@ -12,25 +12,26 @@ Items are scored on:
 
 ## Queue
 
-### Priority 0 — Product (dbt Guardian)
+### Priority 0 — Active: DE Walkthroughs (Discovery Phase)
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| BL-020 | **Pilot execution (Week 1-4)** — Partner outreach, onboarding, feedback collection, synthesis. Requires CEO approval of pilot plan first. | 5 | 5 | L | BL-019 ✓ + CEO approval | CTO-Agent + CEO |
+| BL-022 | **DE Walkthroughs (WT-02 through WT-10)** — Continue walkthrough curriculum. Each scenario teaches different DE skills and surfaces agent DE requirements. CEO + CTO both participate. WT-10 synthesizes all learnings into agent design. | 5 | 5 | L | WT-01 ✓ | CEO + CTO-Agent |
 
-### Priority 1 — Infrastructure (do alongside product)
+### Priority 1 — Infrastructure (when needed)
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| BL-013 | Cloud daemon — fix credits + PAT, get daemon running again for autonomous product work | 4 | 3 | S | Credits + PAT | CTO-Agent |
+| BL-013 | Cloud daemon — fix credits + PAT, get daemon running again | 3 | 2 | S | Credits + PAT | CTO-Agent |
 
-### Priority 2 — Do Soon
+### Priority 2 — Do Later
 | ID | Description | Impact | Urgency | Effort | Dependencies | Owner |
 |----|-------------|--------|---------|--------|-------------|-------|
-| BL-021 | **"SDKification" research — Helping software companies transform for the agent economy.** Thesis: agents become general, great products have ~50% pure logic trapped behind GUIs, needs extracting into SDKs/APIs for agent consumption. Research: (1) market sizing & ripest categories, (2) existing landscape (MCP, Zapier, API wrappers), (3) generalizable SDKification process, (4) GUI→API case studies. | 4 | 3 | M | None | CTO-Agent |
+| BL-021 | **"SDKification" research** — Helping software companies transform for the agent economy. | 4 | 2 | M | None | CTO-Agent |
 
 ### Icebox
 *(Ideas captured but not yet prioritized)*
 - BL-006: Broader market landscape (superseded by product-specific research)
 - BL-007: Product vision drafting (superseded by DEC-009, product direction confirmed)
+- BL-020: dbt Guardian pilot execution (ON HOLD — pivot to walkthroughs per DEC-012. May revive in different form after WT-10 synthesis.)
 
 ## Completed
 | ID | Description | Completed | Outcome | Learnings Ref |

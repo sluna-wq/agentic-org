@@ -6,85 +6,32 @@
 
 ## Pending
 
-### [INFO] BL-019 Week 0 prep complete — Pilot infrastructure ready (2026-02-16)
-**Week 0 prep finished**: All pilot infrastructure is ready for Week 1 execution. Created 4 comprehensive documents (3,200+ total lines):
+### [INFO] State loss incident fixed — PB-020 implemented (2026-02-16)
+**What happened**: The walkthrough pivot session (WT-01 + strategic discussion) was committed with walkthrough files but without updating STATE.md, LEARNINGS.md, DECISIONS.md, or THREAD.md. When the next session started, the CTO had no record of the pivot or any learnings from the walkthroughs.
 
-**What's ready**:
-1. **`pilot-onboarding.md`** (1,400 lines) — Complete partner onboarding guide
-   - Installation instructions (step-by-step)
-   - Quick-start guide (5-minute first run)
-   - Usage examples, troubleshooting, FAQ (15+ questions)
-   - Feedback channels and contact info
-   - Ready to send to first pilot partner
-2. **`pilot-feedback-template.md`** (600 lines) — Per-partner feedback capture
-   - Installation experience, usage quality, prioritization accuracy
-   - Value assessment, pricing willingness, competitive context
-   - Action items (bugs to fix, features to prioritize)
-3. **`pilot-feedback-questions.md`** (700 lines) — Interview guide + async survey
-   - 20-minute feedback call script (6 sections, 19 questions)
-   - Async survey (10 questions) for scheduling failures
-   - Post-interview action checklist
-4. **`pilot-tracker.md`** (500 lines) — Live pilot dashboard
-   - Partner status overview, week-by-week progress
-   - Outreach tracking (Tier 1/2/3), bugs/features log
-   - Success metrics (live vs targets)
+**What was lost**: 4 strategic learnings (LRN-024 through LRN-027), 1 pivot decision (DEC-012), session context in THREAD.md.
 
-**What wasn't completed**:
-- Sample project testing (requires external dbt projects; unit tests sufficient for now; CEO can test on own project if desired)
+**Fix applied**: All learnings and decisions captured retroactively this session. Created PB-020 (Session Close Protocol) as mandatory end-of-session checklist. Added step 12 to CLAUDE.md bootstrap requiring PB-020 before any session ends.
 
-**What this unblocks**:
-- As soon as you approve the pilot plan (previous inbox item), we can onboard first partner within 1-3 days
-- All infrastructure is in place for Week 1 execution (partner onboarding, feedback collection, issue tracking)
-
-**See**: `product/pilot-week-0-summary.md` for full status report and recommendations.
-
-**No action needed** unless you want to review the new docs before pilot starts.
+**No action needed** — this is for visibility. The process is fixed.
 
 ---
 
-### [NEEDS_INPUT] BL-017 complete — Pilot plan ready for review (2026-02-15)
-**Pilot plan complete**: Comprehensive 13-section pilot plan for dbt Guardian Test Generator v0 is ready for your review at `product/pilot-plan.md` (500+ lines).
-
-**What it covers**:
-- Product context (what we built, what's missing, how to use it)
-- Pilot goals (validate PMF, test prioritization, UX gaps, stress-test on real projects)
-- Success metrics (3-5 partners, 2+ report value, 1+ time savings, 0 critical bugs)
-- Partner selection (Tier 1-3 criteria: mid-market, 5-20 data engineers, dbt Core + Snowflake/Postgres)
-- 4-week timeline (Week 0 prep → Week 1-3 execution → Week 4 synthesis)
-- Outreach channels (Tier 1: your network 30-50% conversion, Tier 2: community 10-20%, Tier 3: cold <5%)
-- Onboarding flow, feedback framework, success scenarios, synthesis deliverables
-- Risk assessment (technical, market, execution)
-
-**Open questions for you** (Section 11 of pilot plan):
-1. **CEO time for outreach**: How much time can you allocate to warm intros? We need 3-5 partners, your network has highest conversion (30-50%).
-2. **Pilot publicity**: Public announcement (blog, dbt Slack) or quiet? Recommend quiet for v0.
-3. **Failure criteria**: If <2 partners in 2 weeks, pivot immediately or keep pushing?
-4. **Network intros**: Can you identify 5-10 warm leads from personal network for initial outreach?
-5. **Conference attendance**: Any data conferences in next 4 weeks? (In-person demos = 30-50% conversion)
-
-**Next step if approved**: BL-019 (Week 0 prep) — onboarding doc, feedback infrastructure, sample project testing.
-
-**Action needed**: Review pilot plan, answer open questions, approve or request changes.
-
-### [INFO] BL-015 complete — dbt parser implemented + multi-repo workflow issue identified (2026-02-15)
-**Good news**: dbt project parser fully implemented (ManifestParser, CatalogParser, ProjectParser) with type-safe Pydantic models, CLI commands, unit tests. BL-016 (Test Generator) is unblocked.
-
-**Workflow issue discovered**: The multi-repo architecture (separate GitHub repos per product) doesn't work with the current daemon setup because:
-1. GitHub Actions runners have ephemeral filesystems — previous cycle's work (BL-014) disappeared
-2. Daemon can't create GitHub repos (no API access via ORG_PAT or GitHub App)
-3. Only the org repo persists between cycles
-
-**Adapted**: Product code now lives in `products/dbt-guardian/` (mono-repo approach) until GitHub repo creation is available. This unblocks all product work. When you add GitHub API access, we can migrate with full git history preserved.
-
-**No action needed** unless you want to prioritize separate repos. Current approach works fine for now. See LRN-013 for full analysis.
-
 ## Archive
 
+### [INFO] BL-019 Week 0 prep complete — Pilot infrastructure ready (2026-02-16)
+Archived: Pilot approach superseded by walkthrough-driven discovery (DEC-012). Pilot infrastructure preserved but on hold.
+
+### [NEEDS_INPUT] BL-017 complete — Pilot plan ready for review (2026-02-15)
+Archived: Pilot plan superseded by walkthrough-driven discovery (DEC-012). CEO and CTO aligned on walkthroughs during session. No approval needed.
+
+### [INFO] BL-015 complete — dbt parser implemented + multi-repo workflow issue identified (2026-02-15)
+Archived: Product work preserved in `products/dbt-guardian/`. May become building blocks for agent DE product.
+
 ### [INFO] Product research complete — 4 docs ready for review (2026-02-11)
-CEO reviewed 2026-02-14. Product direction confirmed: dbt Guardian, dbt Core first, Test Generator agent as first capability. See DEC-009.
+CEO reviewed 2026-02-14. Product direction confirmed: dbt Guardian, dbt Core first, Test Generator agent as first capability. See DEC-009. Later pivoted per DEC-012.
 
 ### [NEEDS_INPUT] Product direction needed (2026-02-11)
-The org is fully bootstrapped with all interfaces, daemon, and skills. Blocked on: what product are we building?
 **Resolved**: CEO directed pre-product work — build AI agent expertise first. DIR-002 issued, backlog seeded (BL-001, BL-002, BL-003). Archived 2026-02-11.
 
 ---

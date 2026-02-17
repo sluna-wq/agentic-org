@@ -203,5 +203,24 @@
 - **Outcome**: Pending — will evaluate after pilot synthesis (BL-020) with actual data on execution bottlenecks, customer needs, and PMF validation
 - **Learnings**: Comprehensive talent plan created at `org/talent-capability-plan.md` (11 sections, 400+ lines): current state assessment, 7 specialist roles with hiring triggers, sequencing timeline (Month 0-3 solo → Month 6-9 Data Engineer → Month 9-12 SaaS team), cost analysis, org structure evolution, alternative staffing models (consultant agents, human specialists, hybrid model), decision framework, success metrics, open questions for CEO. LRN-019 captured. Pattern: define roles and triggers BEFORE you need them → hire quickly when triggered.
 
+### DEC-012: Pivot from dbt Guardian product to walkthrough-driven agent DE discovery
+- **Date**: 2026-02-16
+- **Decider**: CEO + CTO-Agent (aligned in walkthrough session)
+- **Context**: After completing WT-01 ("The Data You Inherit") — the first DE walkthrough on the Acme Corp dbt project — CEO and CTO discovered that dbt Guardian's Test Generator caught almost nothing on a realistic project, while the CTO agent conducting a full DE investigation found real data quality issues (NULL semantics, multi-currency mixing, duplicates). This raised a fundamental question: if general-purpose agents can already do full DE work, why build a narrow product tool?
+- **Options considered**:
+  1. **Continue dbt Guardian pilot as planned** — Ship Test Generator v0 to partners, iterate based on feedback. Preserves existing work (35+ tests, pilot infrastructure, onboarding docs) but ships a product we now know is solving the wrong problem.
+  2. **Pivot to agent-as-DE product** — Skip walkthroughs, immediately build an "agent data engineer" product. Fast but premature — we don't yet understand what deployment barriers exist or what the right product shape is.
+  3. **Walkthrough-driven discovery** — Pause product shipping. Run 10 realistic DE walkthroughs together (CEO + CTO). CEO learns DE reality. CTO learns agent requirements. Both learn what stops orgs from deploying agent DEs. Let product direction emerge from hands-on experience.
+  4. **Abandon data engineering direction entirely** — Pivot to SDKification (BL-021) or other opportunity. Throws away months of domain knowledge and research.
+- **Decision**: Option 3 — Walkthrough-driven discovery. 10-walkthrough curriculum covering the full DE experience: inheriting a project, dashboard investigations, source onboarding, schema migrations, performance debugging, staleness/observability, PII governance, deduplication, metrics layer, and finally designing the autonomous agent (WT-10).
+- **Rationale**: The walkthrough approach is superior to both pure research and premature product building because:
+  1. **Research failed us**: Weeks of competitive analysis and market research led to a product that caught nothing on a realistic project. The problem wasn't lack of research — it was lack of experiential understanding.
+  2. **Agent capability is proven**: WT-01 demonstrated that agents CAN do full DE investigations. The open question isn't "can agents do this?" but "what stops orgs from deploying them?" — and that question is best answered by experiencing the DE role firsthand.
+  3. **Dual learning**: CEO builds data engineering intuition (essential for product decisions). CTO builds requirements understanding (essential for product design). Shared context beats any number of research docs.
+  4. **WT-10 is the synthesis**: The final walkthrough explicitly designs the agent from all accumulated experience — turning 9 walkthroughs of problems into agent requirements, trust boundaries, tool design, and escalation protocols.
+  5. **dbt Guardian work isn't wasted**: Parser, test coverage analyzer, and schema generator are useful components. The question is whether they're a product or building blocks for something larger.
+- **Outcome**: Pending — WT-01 complete, WT-02 through WT-10 in progress. Product direction will emerge from walkthrough synthesis (WT-10).
+- **Learnings**: LRN-024 (narrow product vs general agent), LRN-025 (deployment not capability is the barrier), LRN-026 (learning by doing beats research)
+
 ---
 *Update protocol: Number decisions sequentially. Update outcomes retroactively. Link decisions from STATE.md when they affect current context. Reference decisions from CHARTER.md changelog when they modify governance.*

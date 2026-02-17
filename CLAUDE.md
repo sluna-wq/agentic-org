@@ -31,6 +31,7 @@ Follow **PB-001** in PLAYBOOKS.md:
 9. If doing product work, read `WORKBENCH.md` and `product/CLAUDE.md`
 10. **If interactive (CEO present)**: Enter **CONVERSATION MODE** — greet CEO with brief status, ask what they need. Be fully present for discussion. Do NOT auto-execute org work. See PB-017. (CEO can reference `CEO-GUIDE.md` for all commands and interaction patterns.)
 11. **If daemon-triggered**: Enter **EXECUTION MODE** — follow PB-014 (Autonomous CTO Cycle)
+12. **Before ending ANY session**: Run **PB-020 (Session Close Protocol)** — update STATE.md, LEARNINGS.md, DECISIONS.md, BACKLOG.md, THREAD.md. Commit and push. **This is mandatory.** Lost learnings are lost work (see LRN-027).
 
 ## The Three Interfaces
 
