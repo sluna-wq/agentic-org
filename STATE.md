@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-17 (Cycle #16 — DIR-004 process audit)
+> Last updated: 2026-02-17 (WT-03 complete — CEO session)
 
 ## Phase
 `DISCOVERY` — Pivoted from product shipping to walkthrough-driven discovery. Learning what an agent DE actually needs through hands-on experience.
@@ -13,6 +13,8 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 **Discovering what it takes to deploy agents as data engineers.** Through 10 realistic DE walkthroughs, CEO and CTO are building shared understanding of: what DEs actually do, what agents can already handle, and what's stopping orgs from deploying agent DEs.
 
 - **Key insight (WT-01)**: dbt Guardian (narrow product) caught almost nothing. A general agent conducting a full DE investigation found everything. Agents are capable enough — the question is deployment, not capability.
+- **Key insight (WT-02)**: The highest-value agent capability is continuous reconciliation (pipeline vs external source of truth), not pipeline building. Investigation methodology is fully automatable — it's a decision tree, not intuition. Tests should check intent, not arbitrary thresholds.
+- **Key insight (WT-03)**: Source onboarding is 80% template (staging models, mart SQL) and 20% judgment (entity resolution thresholds, attribution choices). Ideal agent shape: automate the 80%, surface 3-4 decisions for human, execute the rest. Entity resolution is a well-defined escalation boundary.
 - **Strategic question**: What stops organizations from deploying agents as data engineers to fix and operate everything?
 - **Previous product (dbt Guardian)**: Test Generator v0 complete but solving the wrong problem. Parser/analyzer components may become building blocks for the real product.
 - **Key decision**: DEC-012
@@ -20,15 +22,15 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 ## Active Work
 | ID | Description | Owner | Status | Last Activity | What's Next |
 |----|-------------|-------|--------|---------------|-------------|
-| — | DE Walkthroughs | CEO + CTO | In progress | WT-01 complete | WT-02: "The Dashboard Is Wrong" |
+| — | DE Walkthroughs | CEO + CTO | In progress | WT-03 complete | WT-04: "The Schema Migration" |
 
 ## Walkthrough Progress
 | # | Walkthrough | Status |
 |---|------------|--------|
 | 1 | The Data You Inherit | Done |
-| 2 | The Dashboard Is Wrong | Next |
-| 3 | New Data Source Onboarding | Pending |
-| 4 | The Schema Migration | Pending |
+| 2 | The Dashboard Is Wrong | Done |
+| 3 | New Data Source Onboarding | Done |
+| 4 | The Schema Migration | Next |
 | 5 | Why Is This Query So Slow? | Pending |
 | 6 | The Data Is Stale | Pending |
 | 7 | PII Everywhere | Pending |

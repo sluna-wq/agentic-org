@@ -176,8 +176,8 @@ source .venv/bin/activate
 | # | Walkthrough | Status | Date |
 |---|------------|--------|------|
 | 1 | The Data You Inherit | ✅ Done | 2026-02-16 |
-| 2 | The Dashboard Is Wrong | ⬜ | |
-| 3 | New Data Source Onboarding | ⬜ | |
+| 2 | The Dashboard Is Wrong | ✅ Done | 2026-02-17 |
+| 3 | New Data Source Onboarding | ✅ Done | 2026-02-17 |
 | 4 | The Schema Migration | ⬜ | |
 | 5 | Why Is This Query So Slow? | ⬜ | |
 | 6 | The Data Is Stale | ⬜ | |

@@ -41,5 +41,36 @@ CEO and CTO aligned on new direction: pause product shipping, continue learning 
 ### CEO → CTO (2026-02-16) — State loss incident
 CEO returned to find STATE.md, LEARNINGS.md, THREAD.md, and DECISIONS.md all stale — none of the walkthrough pivot learnings were captured. Only the walkthrough files were committed, not the state updates. CEO flagged this as unacceptable. CTO acknowledged the process failure and implemented PB-020 (Session Close Protocol) to prevent recurrence. Captured 4 learnings (LRN-024 through LRN-027) and decision (DEC-012) retroactively.
 
+### CEO + CTO (2026-02-17) — WT-02 walkthrough session
+Conducted WT-02 ("The Dashboard Is Wrong") — VP of Sales reports revenue off by ~40% vs Stripe. Investigation traced the discrepancy through the full DAG: 40 raw orders → 12 in staging (70% silently dropped). Three bugs found:
+
+1. **NULL semantics** (CRITICAL) — `WHERE lower(notes) NOT LIKE '%test%'` drops all NULL-notes orders because NULL NOT LIKE x → NULL → FALSE. Fixed with `(notes IS NULL OR ...)`.
+2. **Duplicate payments** (HIGH) — 4 enterprise wire transfers had ETL re-sync duplicates. Fixed with ROW_NUMBER dedup in stg_payments.
+3. **Multi-currency mixing** (MEDIUM) — GBP/EUR/CAD summed as USD. Fixed with currency filter in fct_revenue_daily.
+
+CEO asked strong questions throughout: staging vs mart architecture, what reconciliation tests are, why dbt didn't catch this, how scheduling works, what the manifest is, and whether the volume test was brittle (it was — replaced with intent-based tests).
+
+Three strategic learnings for agent DE product:
+- **LRN-029**: Highest-value agent capability is continuous reconciliation, not pipeline building
+- **LRN-030**: Test intent not metrics — agents should generate intent-based tests
+- **LRN-031**: Investigation methodology is fully automatable — it's a decision tree with the manifest as input
+
+CEO is building solid DE intuition. WT-03 next.
+
+### CEO + CTO (2026-02-17) — WT-03 walkthrough session
+Conducted WT-03 ("New Data Source Onboarding") — Marketing VP wants CAC by channel after buying HubSpot. Built full pipeline: 3 HubSpot seed tables → 3 staging models → entity resolution intermediate → attribution mart → CAC by channel mart.
+
+Key discussion: entity resolution in practice. CEO asked the right question: "what happens when fuzzy matches are wrong?" Answer: false positives (wrong merges) are worse than false negatives (missed matches). Conservative approach: auto-merge high confidence only, escalate ambiguous. This is a well-defined agent escalation boundary.
+
+Built first-touch attribution model. Answered Karen's question: email marketing is best channel ($0 spend, $5K revenue), Google Ads drives volume but at $4K CAC and 0.5x ROAS.
+
+Two learnings:
+- **LRN-032**: Source onboarding is 80% template / 20% judgment — ideal agent task shape
+- **LRN-033**: Entity resolution is a well-defined escalation boundary for agent DEs
+
+Emerging product shape across WT-01→03: agent that does mechanical 80% and escalates the 20% requiring business judgment. Not narrow tool, not fully autonomous — something in between that knows when to ask.
+
+3/10 walkthroughs complete. WT-04 (Schema Migration) next session.
+
 ---
 *Update protocol: Append new entries at the bottom with `### [ROLE] → [ROLE] (date)` header. Never delete entries. CTO reads on every session startup. Specialist agents must not access this file.*
