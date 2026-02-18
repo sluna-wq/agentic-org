@@ -45,5 +45,12 @@ Bootstrap decisions (2026-02-11 through 2026-02-14). Full text in git history.
 - **Decision**: CEO.md as single async interface. PLAYBOOKS.md pruned to 5 active. BRIEFING.md, METRICS.md, ROSTER.md, WORKBENCH.md, CEO-GUIDE.md, PLAYBOOKS-ARCHIVE.md deleted. BACKLOG.md and DECISIONS.md compressed. DIR-004 applied to org process itself.
 - **Outcome**: Implemented this session.
 
+### DEC-014: Pull SDKification research forward — don't wait for WT-10
+- **Date**: 2026-02-17
+- **Deciders**: CEO + CTO
+- **Context**: WT-04 session produced the "human as copilot" form factor insight. For agent-drives-human-watches to work, the agent needs direct SDK/API access to the data stack — not computer use. This is an architectural question that affects everything downstream. BL-021 was iceboxed until WT-10 synthesis; that's too late.
+- **Decision**: Research now. Map what APIs/SDKs exist across the full data stack. Identify gaps where computer use would still be needed. Produce research artifact + agent toolset spec. Feeds directly into product thesis and any build work.
+- **Outcome**: Pending — daemon tasks BL-023 through BL-026 created.
+
 ---
 *New decisions go here. Update outcomes when results are known.*

@@ -83,5 +83,21 @@ Bootstrap and product-build learnings (2026-02-11 through 2026-02-15). Full text
 - **Date**: 2026-02-17 | **Source**: CEO session feedback
 - **Insight**: CEO couldn't see pending items, status, and recent activity without reading 3 separate files. CEO.md consolidates all three. Design async human-in-the-loop interfaces as one artifact with clear sections.
 
+### LRN-036: Detection latency is the real incident cost, not fix time
+- **Date**: 2026-02-17 | **Source**: WT-04
+- **Insight**: The schema migration caused 47 minutes of dark dashboards before anyone knew — not because the fix was hard (fixing one file healed 8 models), but because detection was slow. An agent polling schema diffs every 5-10 min collapses detection to near-zero. Fix speed matters less than detection speed.
+
+### LRN-037: Human as copilot — the role inversion
+- **Date**: 2026-02-17 | **Source**: CEO insight, WT-04 session
+- **Insight**: Standard framing: agent is the copilot, human drives. Wrong. In Claude Code, the agent drives and the human watches in real time, redirects, grabs the wheel when needed. Agent DE should work the same way: agent runs queries, drafts fixes, executes — human is co-present and can intervene. Accountability via presence + override, not approval gates.
+
+### LRN-038: SDKification beats computer use — data stack has real APIs
+- **Date**: 2026-02-17 | **Source**: CEO insight, WT-04 session
+- **Insight**: An agent DE doesn't need computer use (screen-scraping). The data stack has direct programmatic access: dbt artifacts (manifest.json, catalog.json, run_results.json), warehouse information_schema, dbt Cloud REST API, Snowflake Python connector, BigQuery client library, DuckDB native Python. Claude Code uses file system + bash, not screen-scraping VS Code. Agent DE uses SDK/API access, not screenshots. Computer use is a fallback for BI tools lacking APIs.
+
+### LRN-039: The residual human role is context + org standing, not capability
+- **Date**: 2026-02-17 | **Source**: WT-04 session
+- **Insight**: The judgment calls that remain for humans in schema migrations aren't capability gaps — they're context gaps (does "platinum" mean the same as "enterprise" for commissions?) and standing gaps (who has the relationship to negotiate process change with the backend team). This residual shifts as agents get more context, but it doesn't disappear with capability improvements alone.
+
 ---
 *Add entries after completing work or learning something material. Keep them atomic and actionable.*

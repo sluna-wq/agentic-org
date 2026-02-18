@@ -86,5 +86,29 @@ Implemented immediately:
 
 On your async reaction problem: you can write to `.cto-private/THREAD.md` async (I read it every session start). But there's no push notification — you'd have to open a Claude Code session to write, which defeats the purpose. The honest answer is: async reactions only work if we add a notification mechanism (email, Slack). Not tackling that today, but flagging it as an open problem.
 
+### CEO + CTO (2026-02-17) — WT-04 + form factor breakthrough session
+
+Ran WT-04 ("The Schema Migration") agent lens only — CEO chose to skip hands-on, go straight to what an agent would do. Good call: we extracted the insights without the time cost.
+
+Key learnings from WT-04 discussion:
+1. **Detection latency is the real cost** (LRN-036) — 47 min of dark dashboards was a detection problem, not a fix problem. Schema drift polling (agent queries information_schema every 5-10 min, diffs against registered sources) closes this to near-zero.
+2. **How would the agent actually know the backend deployed?** CEO pushed on this honestly — it's not magic. Polling (pull-based, no backend cooperation) or DB audit logs / CI webhooks (event-driven, requires integration). Polling is the realistic baseline.
+
+**The form factor breakthrough (LRN-037):**
+CEO: "who is the copilot?" In Claude Code, the human watches the agent work in real time — agent drives, human redirects. Same frame applies to agent DE. Not "agent as assistant to human DE." Agent investigates, queries, drafts fix — human is co-present and grabs the wheel when something is wrong. Accountability via presence + override, not approval gates.
+
+This immediately surfaced the SDKification question (LRN-038): for agent-drives-human-watches to work, the agent needs direct programmatic access to the data stack. dbt artifacts (manifest.json), warehouse SQL, dbt Cloud API — not computer use. Computer use is a fallback for BI tools without APIs. Claude Code uses file system + bash, not screen-scraping an IDE. Same principle.
+
+**Residual human role (LRN-039):** business context + org standing. Not capability gaps — context gaps (does "platinum" = "enterprise" for commission?) and standing gaps (who has the relationship with the backend team). These shift but don't vanish with capability improvements.
+
+**What was kicked off:**
+- BL-023: SDKification research artifact (daemon)
+- BL-024: Product thesis v1 (daemon)
+- BL-025: Scaffold WT-05/06/07 in parallel (daemon sub-agents)
+- BL-026: Agent toolset spec (daemon, blocked on BL-023)
+- BL-021 pulled from icebox → active via DEC-014
+
+CEO aligned on "full speed" daemon tasking — not one task per cycle, multiple parallel tracks.
+
 ---
 *Update protocol: Append new entries at the bottom with `### [ROLE] → [ROLE] (date)` header. Never delete entries. CTO reads on every session startup. Specialist agents must not access this file.*
