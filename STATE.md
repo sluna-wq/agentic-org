@@ -44,7 +44,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | 10 | The Autonomous Agent | Pending |
 
 ## Blockers
-- None. Daemon running (20 cycles, all green). Walkthroughs need CEO participation.
+- None. Daemon running (cycles 19-20 hit $2 budget cap — fixed to $4, cycle log archived). Walkthroughs need CEO participation.
 
 ## Where CEO Can Help
 - **WT-05, WT-06, WT-07 are ready**: Three scenarios queued up — slow query fan-out, silent staleness, PII leak. Pull up any README to start.
@@ -63,7 +63,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 ## Health
 | Dimension | Status | Notes |
 |-----------|--------|-------|
-| Liveness | RUNNING | Daemon healthy — 20 cycles, 0 failures |
+| Liveness | RUNNING | Daemon healthy — 20 cycles, 2 failures (cycles 19-20: budget cap, fixed → $4) |
 | Discovery | ON_TRACK | WT-04 complete, WT-05/06/07 ready for CEO |
 | Quality | STRONG | Process gap identified + fixed (PB-020) |
 | Team | Minimal | CTO-Agent only |

@@ -34,7 +34,7 @@ const CYCLE_PROMPT = path.join(ORG_DIR, "daemon/cto-cycle-prompt.md");
 const REPORT_DIR = path.join(ORG_DIR, "daemon/reports");
 
 const MAX_TURNS = 50;           // Hard cap on agent turns per cycle
-const MAX_BUDGET_USD = 2.00;    // Hard cap on API spend per cycle
+const MAX_BUDGET_USD = 4.00;    // Hard cap on API spend per cycle
 const MODEL = "sonnet";         // Default model for autonomous cycles
 
 // ─── Helpers ────────────────────────────────────────────────────────────────

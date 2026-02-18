@@ -4,13 +4,12 @@ This is a daemon-triggered session. No human is present. Follow PB-014 (Autonomo
 
 ## Your Mission This Cycle
 
-1. **Orient**: Read CLAUDE.md, STATE.md, DIRECTIVES.md, .cto-private/CEO-INBOX.md, BACKLOG.md
-2. **Check for CEO responses**: If the CEO wrote anything in .cto-private/THREAD.md or cleared items from CEO-INBOX.md, process those first
+1. **Orient**: Read STATE.md, DIRECTIVES.md, CEO.md, BACKLOG.md (CLAUDE.md is already loaded — skip it)
+2. **Check for CEO responses**: If the CEO wrote anything in CEO.md queue or .cto-private/THREAD.md, process those first
 3. **Work**: Pick the highest-priority item from BACKLOG.md. Execute it. You have full authority within this repo.
 4. **Update state**: Update STATE.md (active work, current cycle, last activity). Keep it accurate.
-5. **Log**: Append this cycle's summary to daemon/CYCLE-LOG.md
-6. **Flag if needed**: If anything needs CEO attention, write to .cto-private/CEO-INBOX.md per PB-016
-7. **Brief**: Update BRIEFING.md if meaningful progress was made
+5. **Log**: Append ONE table row to daemon/CYCLE-LOG.md — terse format only. Focus | 1-sentence actions | 1-word outcome. Do NOT write freeform paragraphs.
+6. **Flag if needed**: If anything needs CEO attention, update CEO.md (Your Queue section)
 
 ## Authority
 
