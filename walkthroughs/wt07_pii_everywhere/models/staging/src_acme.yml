@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: raw_customers
+        description: "Customer records including PII — email, phone, partial SSN"
+        columns:
+          - name: customer_id
+          - name: first_name
+          - name: last_name
+          - name: email
+            description: "PII: customer email address"
+          - name: phone
+            description: "PII: customer phone number"
+          - name: ssn_last4
+            description: "PII: last 4 digits of SSN"
+          - name: signup_date
+          - name: plan
+          - name: country
+      - name: raw_orders
+      - name: raw_marketing_exports

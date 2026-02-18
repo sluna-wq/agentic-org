@@ -32,3 +32,30 @@
 | 17 | 2026-02-17T20:56:19Z | ~25min | WT-04 scenario scaffolding — schema migration walkthrough | Ran autonomous cycle per PB-014. Orientation: BL-022 (walkthroughs) requires CEO participation. Last CEO session (earlier today) implemented process simplification (CEO.md as single interface, 15 playbooks archived). Cleared stale "process simplification approval" item from CEO queue — already implemented. Proactive work: scaffolded the WT-04 "Schema Migration" scenario so CEO can start immediately without setup. Created `walkthroughs/wt04_schema_migration/` with: (1) `README.md` — full walkthrough guide with Slack alert scenario, step-by-step instructions, schema diff table, agent DE lens analysis; (2) `seeds/raw_accounts.csv` — new schema (accounts renamed from customers, address split into 4 columns, tier values renamed: premium→gold etc.); (3) `analyses/01_blast_radius.sql` — investigation queries; (4) `analyses/02_solution_staging.sql` — reference fix with backward-compat pattern + key decisions explained; (5) `analyses/03_verification.sql` — sanity checks post-fix; (6) `analyses/04_postmortem.md` — retrospective template with agent DE analysis; (7) `tests/assert_schema_contract.sql` — schema contract test (would have prevented incident); (8) `dbt_project.yml`. Updated CEO.md (cleared queue, added cycle to log), STATE.md (cycle count, active work description). | ✓ Complete — WT-04 scenario fully ready. CEO can pull up README and start immediately. Pattern: use daemon cycles to pre-build walkthrough scenarios → reduce CEO session setup overhead. | No |
 | 18 | 2026-02-18T03:17:09Z | ~30min | WT-05 scenario scaffolding — fan-out bug / performance investigation | Ran autonomous cycle per PB-014. Orientation: BL-022 (walkthroughs) requires CEO participation; BL-025 (scaffold WT-05/06/07) is highest-value autonomous work. Budget-aware: tackled WT-05 thoroughly rather than three scenarios superficially. Built complete `walkthroughs/wt05_slow_query/` with: (1) `README.md` — full walkthrough guide with Slack incident scenario (3x revenue inflation), 5-phase learning structure, key concepts (grain discipline, fan-out pattern, materialization ladder), agent lens analysis; (2) 4 seed CSVs (raw_orders, raw_order_items, raw_customers, raw_products — 50 orders, 20 customers, 5 products); (3) `models/staging/stg_orders.sql` — BROKEN model with fan-out bug (joins raw_order_items inside staging, inflates downstream aggregations); (4) `stg_customers.sql`, `stg_products.sql` — clean staging models; (5) `models/marts/fct_revenue_daily.sql`, `fct_orders.sql` — downstream victims of the fan-out; (6) `analyses/01_investigation.sql` — 5-step diagnosis (row count ratios, duplicate detection, revenue quantification, root cause trace, blast radius); (7) `analyses/02_solution.sql` — 4-part fix (clean stg_orders, new stg_order_items, updated fct_orders, materialization guidance incl. incremental pattern); (8) `analyses/03_verification.sql` — 6 post-fix checks; (9) `analyses/04_postmortem.md` — timeline, root cause, changes, agent perspective; (10) `tests/assert_stg_orders_grain.sql` — grain test preventing recurrence. Updated STATE.md (WT-05 ready, BL-025 in progress), CEO.md (queue updated, cycle logged), BACKLOG.md (BL-025 detail updated). | ✓ Complete — WT-05 scenario fully ready. CEO can start immediately. Pattern: fan-out bug is ideal agent-copilot scenario — agent investigates in minutes, human decides on data model direction. | No |
 | 19 | 2026-02-18T05:39:06Z | ~15min | WT-06 scenario scaffold — "The Data Is Stale" | Scaffolded complete WT-06 environment: 4 seed CSVs (raw_pipeline_runs is the smoking gun — shows silent selector bug), 3 staging models (stg_pipeline_runs derives `is_phantom_success` flag), 2 mart models (valid SQL, just never refreshed), 4 analysis files (investigation→solution→verification→postmortem), freshness singular test. Core scenario: pipeline shows green (exit_code=0) but orchestrator used `--select staging.*` — marts silently skipped for 3 days. Key concept: success ≠ freshness. Updated STATE.md, CEO.md, BACKLOG.md. CEO-INBOX.md stale item noted (already resolved in DEC-013). | ✓ Complete — WT-06 ready for CEO. WT-07 (PII Everywhere) is next daemon task. | No |
+
+---
+
+## Cycle #20 — 2026-02-18T09:04:31Z
+
+**Work completed**: Scaffolded WT-07 (PII Everywhere)
+
+**Files created** (16 files):
+- `walkthroughs/wt07_pii_everywhere/README.md` — full walkthrough doc
+- `walkthroughs/wt07_pii_everywhere/dbt_project.yml`
+- `seeds/raw_customers.csv` — 20 customers with PII (email, phone, ssn_last4)
+- `seeds/raw_orders.csv` — 20 orders
+- `seeds/raw_marketing_exports.csv` — 10 vendor export records
+- `models/staging/stg_customers.sql` — intentional SELECT * bug
+- `models/staging/stg_orders.sql`, `stg_marketing_exports.sql` — clean models
+- `models/staging/src_acme.yml`, `stg_models.yml` — schema + PII annotations
+- `models/marts/fct_customer_orders.sql`, `fct_marketing_reach.sql` — PII propagates here
+- `tests/assert_no_pii_in_marts.sql` — CI gate
+- `analyses/01_investigation.sql` through `04_postmortem.md`
+
+**Scenario summary**: Security audit flags PII (email, phone, ssn_last4) leaking from raw_customers through stg_customers (SELECT *) into BI mart and vendor export pipeline. GDPR Art. 33 angle added (EU residents in vendor exports). Fix: explicit column selection in staging + CI test gate.
+
+**State updates**: STATE.md (WT-07 ready, cycle #20), BACKLOG.md (BL-025 updated), CEO.md (WT-07 added to queue)
+
+**Next cycle**: BL-025 continues — scaffold WT-08 (The Duplicate Problem). Or BL-023 (SDKification research) if budget allows a deeper research artifact.
+
+**Health**: Green. 20 cycles, 0 failures.

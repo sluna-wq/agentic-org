@@ -1,55 +1,32 @@
 # CEO.md
 
-> **Your single async interface to the org.**
-> What needs you → what's happening → what's been done.
-> _Last updated: 2026-02-18 (Autonomous cycle #19 — WT-06 scaffolded and ready)_
+## Your Queue
 
----
+Three walkthroughs are ready — pick any one to start:
 
-## Your Queue — Needs You
+- **WT-05**: `walkthroughs/wt05_slow_query/README.md` — Revenue dashboard 3x inflated. Fan-out bug in staging grain. ~45 min.
+- **WT-06**: `walkthroughs/wt06_data_stale/README.md` — 60h of missing data, orchestrator shows all green. Silent selector bug. ~45 min.
+- **WT-07**: `walkthroughs/wt07_pii_everywhere/README.md` — Security audit flags PII in BI and vendor exports. Lineage trace + compliance incident. ~45 min. *(new this cycle)*
 
-**WT-05 and WT-06 are ready.** WT-05: `walkthroughs/wt05_slow_query/README.md` — fan-out bug, revenue 3x inflated, trace grain violation through DAG. WT-06: `walkthroughs/wt06_data_stale/README.md` — pipeline shows green but data is 60h stale, silent selector bug in orchestrator.
+Each has: full scenario narrative, seed data, dbt models with the bug in place, investigation queries, solution, verification, and postmortem. The agent lens section at the end of each README is where the real product insight lives.
 
-_Research tracks (BL-023/024/026) still pending — daemon continues next cycle._
+Research tracks (BL-023/024/026) still pending — daemon continues scaffolding remaining walkthroughs (WT-08/09/10) in parallel.
 
----
+## Status
 
-## Where Things Stand
-
-**Phase**: `DISCOVERY` — learning what agent DEs actually need. Form factor is crystallizing.
-
-| # | Walkthrough | Status |
-|---|------------|--------|
-| 1 | The Data You Inherit | Done |
-| 2 | The Dashboard Is Wrong | Done |
-| 3 | New Data Source Onboarding | Done |
-| 4 | The Schema Migration | Done (agent lens) |
-| 5 | Why Is This Query So Slow? | **Ready** |
-| 6 | The Data Is Stale | **Ready** |
-| 7–10 | ... | Pending |
-
-**Form factor breakthrough**: Human is the copilot. Agent drives (queries, investigates, drafts), human watches in real time and redirects — like Claude Code. SDKification (direct API access to data stack) is the right architecture, not computer use.
-
----
+Phase: DISCOVERY. WT-01 through WT-04 done (with you). WT-05, WT-06, WT-07 ready. WT-08–10 pending scaffold.
 
 ## Last 10 Cycles
 
-| Cycle | Type | What Happened |
-|-------|------|--------------|
-| 14 | Autonomous | Monitoring + CI cleanup (node_modules) |
-| 15 | Autonomous | Monitoring only |
-| 16 | Autonomous | Process audit — identified bloat, recommendations written |
-| 17 | Autonomous | WT-04 scenario scaffolded |
-| **18** | **Autonomous** | **WT-05 scenario scaffolded — fan-out bug, grain discipline, materialization** |
-| **19** | **Autonomous** | **WT-06 scenario scaffolded — data staleness, silent orchestrator skip, freshness monitoring** |
-| WT-01 | CEO session | "The Data You Inherit" — dbt Guardian caught nothing; general agent found everything → DEC-012 pivot |
-| WT-02 | CEO session | "The Dashboard Is Wrong" — 3 bugs found (NULL semantics, duplicates, multi-currency) |
-| WT-03 | CEO session | "New Data Source Onboarding" — HubSpot pipeline, entity resolution boundary |
-| — | CEO session | Org simplification — CEO.md, pruned to 5 playbooks, deleted 6 dead files |
-| WT-04 | CEO session | "The Schema Migration" — agent lens only. Detection latency insight. Form factor breakthrough: human as copilot. SDKification direction set. Daemon tasked at full speed (BL-023–026). |
-
----
-
-## How to React
-
-Open Claude Code in `agentic-org/` and talk to the CTO. That's it.
+| Cycle | Date | Work |
+|-------|------|------|
+| #11 | 2026-02-15 | FK detection improvements |
+| #12 | 2026-02-16 | Monitoring (discovery pivot) |
+| #13 | 2026-02-16 | Monitoring (discovery pivot) |
+| #14 | 2026-02-16 | Monitoring (discovery pivot) |
+| #15 | 2026-02-16 | Monitoring (discovery pivot) |
+| #16 | 2026-02-17 | Process bloat audit |
+| #17 | 2026-02-17 | Scaffolded WT-04 scenario |
+| #18 | 2026-02-17 | Scaffolded WT-05 (slow query fan-out) |
+| #19 | 2026-02-18 | Scaffolded WT-06 (data staleness) |
+| #20 | 2026-02-18 | Scaffolded WT-07 (PII everywhere) |

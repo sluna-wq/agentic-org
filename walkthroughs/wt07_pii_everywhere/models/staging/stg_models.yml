@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Staged customer records — should contain NO PII columns"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: "SHOULD NOT EXIST in stg_customers — presence indicates PII leak"
+      - name: phone
+        description: "SHOULD NOT EXIST in stg_customers — presence indicates PII leak"
+      - name: ssn_last4
+        description: "SHOULD NOT EXIST in stg_customers — presence indicates PII leak"
+
+  - name: stg_orders
+    description: "Staged orders — no PII"
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_marketing_exports
+    description: "Marketing export log — no PII, only customer_id references"
+    columns:
+      - name: export_id
+        tests:
+          - unique
+          - not_null
