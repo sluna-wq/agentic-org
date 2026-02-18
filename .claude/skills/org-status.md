@@ -7,25 +7,23 @@ description: Org dashboard — see who's working on what, phase, health, and blo
 
 Read the following files and render a clean dashboard view:
 
-1. Read `STATE.md` — phase, current cycle, active work table, blockers, health
-2. Read `BACKLOG.md` — what's queued (Priority 1 items only)
-3. Read `ROSTER.md` — active agents and capability gaps
-4. Read `METRICS.md` — current values for tracked metrics
+1. Read `STATE.md` — phase, active work table, blockers, health
+2. Read `CEO.md` — pending queue items
+3. Read `BACKLOG.md` — what's queued (active items only)
 
 ## Output format:
 ```
 ORG STATUS — [timestamp]
 Phase: [phase]
-Cycle: #[N] ([mode]) — started [time]
 
 ACTIVE WORK
 [Render the active work table from STATE.md]
 
 BACKLOG (next up)
-[Top 3-5 Priority 1 items]
+[Top 3-5 active items]
 
-TEAM
-[Active agents] | [Capability gaps count]
+CEO QUEUE
+[Items from CEO.md Your Queue, or "Empty"]
 
 HEALTH
 [Render health table from STATE.md]

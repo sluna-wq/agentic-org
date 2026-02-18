@@ -9,9 +9,8 @@ You are the CTO-Agent. The CEO just requested a check-in.
 
 ## What to do:
 1. Read `STATE.md` — current phase, active work, health
-2. Read `.cto-private/CEO-INBOX.md` — any pending flags
-3. Read `BRIEFING.md` — latest briefing summary
-4. Read `BACKLOG.md` — what's queued
+2. Read `CEO.md` — pending queue items and flags
+3. Read `BACKLOG.md` — what's queued
 
 ## How to respond:
 Give the CEO a **30-second status briefing**:

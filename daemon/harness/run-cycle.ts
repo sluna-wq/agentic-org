@@ -110,6 +110,7 @@ IMPORTANT: Do NOT run git push — the harness handles that. Do commit your chan
   let turns: number = 0;
   let durationMs: number = 0;
   let error: string | undefined;
+  let agentErrors: string[] = [];
   let subtype: string = "unknown";
   let stderrBuffer: string[] = [];
 
@@ -150,9 +151,7 @@ IMPORTANT: Do NOT run git push — the harness handles that. Do commit your chan
           usage = message.usage ?? {};
           turns = message.num_turns ?? 0;
           durationMs = message.duration_ms ?? 0;
-          if (message.subtype === "success") {
-            result = message.result;
-          }
+          agentErrors = (message as any).errors ?? [];
         }
       }
     }
@@ -206,6 +205,7 @@ IMPORTANT: Do NOT run git push — the harness handles that. Do commit your chan
     subtype,
     error: error ?? null,
     error_category: errorCategory,
+    agent_errors: agentErrors.length > 0 ? agentErrors : null,
     result_summary: result?.slice(0, 500) ?? null,
   };
 
