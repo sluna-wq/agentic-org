@@ -1,0 +1,21 @@
+name: 'wt08_duplicate_records'
+version: '1.0.0'
+config-version: 2
+
+profile: 'default'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+
+models:
+  wt08_duplicate_records:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
+
+seeds:
+  wt08_duplicate_records:
+    +schema: raw

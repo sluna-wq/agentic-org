@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_payments
+    description: "Staged payments — WARNING: contains ETL retry duplicates"
+    columns:
+      - name: payment_id
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        tests:
+          - not_null
+      - name: amount
+        tests:
+          - not_null
+
+  - name: stg_orders
+    description: "Staged orders"
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_customers
+    description: "Staged customers"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null

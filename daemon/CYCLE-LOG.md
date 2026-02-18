@@ -59,3 +59,35 @@
 **Next cycle**: BL-025 continues — scaffold WT-08 (The Duplicate Problem). Or BL-023 (SDKification research) if budget allows a deeper research artifact.
 
 **Health**: Green. 20 cycles, 0 failures.
+
+---
+
+## Cycle #21 — 2026-02-18T13:40:58Z
+
+**Work completed**: Scaffolded WT-08 (The Duplicate Problem)
+
+**Files created** (17 files):
+- `walkthroughs/wt08_duplicate_records/README.md` — full walkthrough doc
+- `walkthroughs/wt08_duplicate_records/dbt_project.yml`
+- `seeds/raw_payments.csv` — 40 payment rows: 20 canonical + 20 ETL retry duplicates (same order/customer/amount, timestamps 2–8s apart, different payment_ids)
+- `seeds/raw_orders.csv` — 20 orders across 10 customers
+- `seeds/raw_customers.csv` — 10 customers
+- `models/staging/stg_payments.sql` — naive staging, no dedup (the bug)
+- `models/staging/stg_orders.sql`, `stg_customers.sql` — clean passthrough models
+- `models/staging/src_acme.yml`, `stg_models.yml` — source defs + dbt tests (unique on payment_id — passes despite semantic duplicates)
+- `models/marts/fct_revenue_monthly.sql`, `fct_customer_ltv.sql` — inflated aggregations
+- `analyses/01_investigation.sql` — 4-step diagnosis: confirm gap, locate inflation, find duplicate signature, scope blast radius
+- `analyses/02_solution.sql` — ROW_NUMBER() dedup with is_duplicate flag
+- `analyses/03_verification.sql` — post-fix validation
+- `analyses/04_postmortem.md` — root cause, why tests missed it, prevention checklist
+- `tests/assert_no_duplicate_payments.sql` — CI gate on semantic uniqueness (order_id, customer_id, amount)
+
+**Scenario summary**: Finance raises ticket — dashboard shows $847K monthly revenue, bank reconciliation shows $603K ($244K discrepancy). ETL retry logic inserts new UUID per retry; `dbt test --unique` on payment_id passes because each UUID is genuinely unique. Semantic duplicates (same order, same amount, 2–8s apart) are invisible to structural tests. Fix: deduplicate on business key at staging layer.
+
+**Key learning embedded**: A `unique` test on a surrogate key is structural, not semantic. Idempotency must be enforced at ingestion. Trust the reconciliation number over the dashboard.
+
+**State updates**: STATE.md (WT-08 ready, cycle #21, 21 cycles 0 failures), BACKLOG.md (BL-025 updated to WT-09 next), CEO.md (WT-08 added to queue, cycle logged)
+
+**Next cycle**: BL-025 continues — scaffold WT-09 (Building the Metrics Layer). Or BL-023 (SDKification research) if more strategic value this cycle.
+
+**Health**: Green. 21 cycles, 0 failures.

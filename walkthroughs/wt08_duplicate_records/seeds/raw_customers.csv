@@ -1,0 +1,11 @@
+customer_id,first_name,last_name,email,created_at
+C001,Alice,Brennan,alice@example.com,2024-01-03
+C002,Ben,Castillo,ben@example.com,2024-01-05
+C003,Carmen,Delgado,carmen@example.com,2024-01-08
+C004,David,Evans,david@example.com,2024-01-10
+C005,Elena,Firth,elena@example.com,2024-01-12
+C006,Frank,Garcia,frank@example.com,2024-01-15
+C007,Grace,Huang,grace@example.com,2024-01-18
+C008,Henry,Ingram,henry@example.com,2024-01-20
+C009,Isla,Jensen,isla@example.com,2024-01-22
+C010,James,Kim,james@example.com,2024-01-25

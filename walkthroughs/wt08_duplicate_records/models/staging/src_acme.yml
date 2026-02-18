@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: raw_payments
+        description: "Payment records from payment processor — includes ETL retry duplicates"
+      - name: raw_orders
+        description: "Order records from transactional database"
+      - name: raw_customers
+        description: "Customer master from CRM"

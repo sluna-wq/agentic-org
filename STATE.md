@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-18 (Autonomous cycle #20 — WT-07 PII Everywhere scaffolded)
+> Last updated: 2026-02-18 (Autonomous cycle #21 — WT-08 The Duplicate Problem scaffolded)
 
 ## Phase
 `DISCOVERY` — Pivoted from product shipping to walkthrough-driven discovery. Learning what an agent DE actually needs through hands-on experience.
@@ -26,7 +26,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | BL-022 | DE Walkthroughs | CEO + CTO | In progress | WT-04 complete (agent lens) | WT-05/06 ready — CEO can start immediately |
 | BL-023 | SDKification research | Daemon | Pending | Kicked off cycle #17 | Research artifact in research/ |
 | BL-024 | Product thesis v1 | Daemon | Pending | Kicked off cycle #17 | Synthesis doc in research/ |
-| BL-025 | Scaffold WT-07, WT-08 | Daemon | In progress | WT-07 done (cycle #20) | WT-08 next |
+| BL-025 | Scaffold WT-09, WT-10 | Daemon | In progress | WT-08 done (cycle #21) | WT-09 next |
 | BL-026 | Agent toolset spec | Daemon | Pending | Blocked on BL-023 | Tool signatures doc in research/ |
 
 ## Walkthrough Progress
@@ -39,15 +39,15 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | 5 | Why Is This Query So Slow? | **Ready** (scaffolded cycle #18) |
 | 6 | The Data Is Stale | **Ready** (scaffolded cycle #19) |
 | 7 | PII Everywhere | **Ready** (scaffolded cycle #20) |
-| 8 | The Duplicate Problem | Pending |
+| 8 | The Duplicate Problem | **Ready** (scaffolded cycle #21) |
 | 9 | Building the Metrics Layer | Pending |
 | 10 | The Autonomous Agent | Pending |
 
 ## Blockers
-- None. Daemon running (20 cycles, all green). Walkthroughs need CEO participation.
+- None. Daemon running (21 cycles, all green). Walkthroughs need CEO participation.
 
 ## Where CEO Can Help
-- **WT-05, WT-06, WT-07 are ready**: Three scenarios queued up — slow query fan-out, silent staleness, PII leak. Pull up any README to start.
+- **WT-05, WT-06, WT-07, WT-08 are ready**: Four scenarios queued up — slow query fan-out, silent staleness, PII leak, duplicate payments. Pull up any README to start.
 
 ## Recent Decisions
 - **DEC-014**: Pull SDKification research forward — form factor insight (human as copilot) requires SDK/API-first architecture. Don't wait for WT-10. (2026-02-17)
@@ -63,7 +63,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 ## Health
 | Dimension | Status | Notes |
 |-----------|--------|-------|
-| Liveness | RUNNING | Daemon healthy — 20 cycles, 0 failures |
+| Liveness | RUNNING | Daemon healthy — 21 cycles, 0 failures |
 | Discovery | ON_TRACK | WT-04 complete, WT-05/06/07 ready for CEO |
 | Quality | STRONG | Process gap identified + fixed (PB-020) |
 | Team | Minimal | CTO-Agent only |
