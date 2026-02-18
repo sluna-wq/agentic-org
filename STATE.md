@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-18 (Autonomous cycle #18 — WT-05 scenario scaffolded)
+> Last updated: 2026-02-18 (Autonomous cycle #19 — WT-06 scenario scaffolded)
 
 ## Phase
 `DISCOVERY` — Pivoted from product shipping to walkthrough-driven discovery. Learning what an agent DE actually needs through hands-on experience.
@@ -26,7 +26,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | BL-022 | DE Walkthroughs | CEO + CTO | In progress | WT-04 complete (agent lens) | WT-05 scenario ready — CEO can start immediately |
 | BL-023 | SDKification research | Daemon | Pending | Kicked off cycle #17 | Research artifact in research/ |
 | BL-024 | Product thesis v1 | Daemon | Pending | Kicked off cycle #17 | Synthesis doc in research/ |
-| BL-025 | Scaffold WT-06, WT-07 | Daemon | In progress | WT-05 done (cycle #18) | Two more scenario environments |
+| BL-025 | Scaffold WT-07 | Daemon | In progress | WT-06 done (cycle #19) | One more scenario environment |
 | BL-026 | Agent toolset spec | Daemon | Pending | Blocked on BL-023 | Tool signatures doc in research/ |
 
 ## Walkthrough Progress
@@ -37,7 +37,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | 3 | New Data Source Onboarding | Done |
 | 4 | The Schema Migration | Done (agent lens) |
 | 5 | Why Is This Query So Slow? | **Ready** (scaffolded cycle #18) |
-| 6 | The Data Is Stale | Pending |
+| 6 | The Data Is Stale | **Ready** (scaffolded cycle #19) |
 | 7 | PII Everywhere | Pending |
 | 8 | The Duplicate Problem | Pending |
 | 9 | Building the Metrics Layer | Pending |

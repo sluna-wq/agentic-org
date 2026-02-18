@@ -1,0 +1,21 @@
+customer_id,name,email,signup_date,plan
+cust_01,Amara Osei,amara.osei@example.com,2024-01-02,pro
+cust_02,Ben Kowalski,ben.kowalski@example.com,2024-01-03,starter
+cust_03,Chloe Dubois,chloe.dubois@example.com,2024-01-04,pro
+cust_04,Diego Reyes,diego.reyes@example.com,2024-01-05,starter
+cust_05,Elena Novak,elena.novak@example.com,2024-01-07,enterprise
+cust_06,Finn Larsen,finn.larsen@example.com,2024-01-08,pro
+cust_07,Grace Kim,grace.kim@example.com,2024-01-09,starter
+cust_08,Hiro Tanaka,hiro.tanaka@example.com,2024-01-10,enterprise
+cust_09,Isabel Moreau,isabel.moreau@example.com,2024-01-12,pro
+cust_10,James Okafor,james.okafor@example.com,2024-01-14,starter
+cust_11,Kira Patel,kira.patel@example.com,2024-01-15,pro
+cust_12,Luca Romano,luca.romano@example.com,2024-01-17,enterprise
+cust_13,Mia Santos,mia.santos@example.com,2024-01-19,starter
+cust_14,Noah Fischer,noah.fischer@example.com,2024-01-20,pro
+cust_15,Olivia Chen,olivia.chen@example.com,2024-01-22,enterprise
+cust_16,Paulo Lima,paulo.lima@example.com,2024-01-24,starter
+cust_17,Quinn Murphy,quinn.murphy@example.com,2024-01-25,pro
+cust_18,Rania Hassan,rania.hassan@example.com,2024-01-28,starter
+cust_19,Sofia Andersen,sofia.andersen@example.com,2024-01-31,pro
+cust_20,Theo Bergmann,theo.bergmann@example.com,2024-02-02,enterprise

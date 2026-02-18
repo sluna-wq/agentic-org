@@ -1,0 +1,16 @@
+run_id,run_date,status,exit_code,models_run,duration_seconds
+run_001,2024-01-15,success,0,all,142
+run_002,2024-01-22,success,0,all,138
+run_003,2024-01-29,success,0,all,151
+run_004,2024-02-01,success,0,all,144
+run_005,2024-02-02,success,0,all,139
+run_006,2024-02-03,success,0,all,147
+run_007,2024-02-04,success,0,all,143
+run_008,2024-02-05,success,0,all,140
+run_009,2024-02-06,success,0,all,136
+run_010,2024-02-07,success,0,all,148
+run_011,2024-02-08,success,0,all,145
+run_012,2024-02-09,success,0,staging.*,41
+run_013,2024-02-10,success,0,staging.*,39
+run_014,2024-02-11,success,0,staging.*,43
+run_015,2024-02-11,success,0,staging.*,38

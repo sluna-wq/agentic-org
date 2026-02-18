@@ -1,0 +1,28 @@
+name: 'wt06_data_stale'
+version: '1.0.0'
+config-version: 2
+
+profile: 'default'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+seeds:
+  wt06_data_stale:
+    +schema: raw
+
+models:
+  wt06_data_stale:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

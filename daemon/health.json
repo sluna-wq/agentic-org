@@ -1,10 +1,10 @@
 {
-  "last_cycle": 18,
-  "last_timestamp": "2026-02-18T03:17:09Z",
-  "last_status": "success",
-  "last_error_category": null,
-  "last_cost_usd": 1.5862928500000002,
-  "last_duration_minutes": 7,
-  "last_turns": 41,
-  "consecutive_failures": 0
+  "last_cycle": 19,
+  "last_timestamp": "2026-02-18T05:39:06Z",
+  "last_status": "error",
+  "last_error_category": "agent_error",
+  "last_cost_usd": 2.00141745,
+  "last_duration_minutes": 12,
+  "last_turns": 9,
+  "consecutive_failures": 1
 }

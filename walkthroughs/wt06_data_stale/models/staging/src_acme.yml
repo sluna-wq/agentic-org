@@ -1,0 +1,100 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: "Raw tables loaded from transactional systems and pipeline audit log"
+
+    # Freshness thresholds: warn if data is >1 day old, error if >2 days old.
+    # These are evaluated when you run `dbt source freshness`.
+    # The loaded_at_field must be a timestamp column on each table.
+    # NOTE: Our raw tables use order_date/event_date (date, not timestamp).
+    # In production you'd add a _loaded_at timestamp on ingest. For this walkthrough,
+    # we document the expected thresholds as a design reference.
+    freshness:
+      warn_after: {count: 1, period: day}
+      error_after: {count: 2, period: day}
+
+    tables:
+      - name: raw_orders
+        description: "Orders from the transactional system. One row per order."
+        # loaded_at_field: _loaded_at  # would be set in production
+        columns:
+          - name: order_id
+            description: "Unique order identifier"
+            tests: [unique, not_null]
+          - name: customer_id
+            description: "Reference to raw_customers"
+            tests: [not_null]
+          - name: order_date
+            description: "Date the order was placed"
+            tests: [not_null]
+          - name: amount
+            description: "Total order value in USD"
+            tests: [not_null]
+          - name: status
+            description: "Order fulfillment status"
+            tests:
+              - accepted_values:
+                  values: ['completed', 'pending', 'cancelled', 'refunded']
+
+      - name: raw_events
+        description: "User behavior events. One row per event."
+        columns:
+          - name: event_id
+            description: "Unique event identifier"
+            tests: [unique, not_null]
+          - name: customer_id
+            description: "Reference to raw_customers"
+            tests: [not_null]
+          - name: event_type
+            description: "Type of user event"
+            tests:
+              - accepted_values:
+                  values: ['signup', 'purchase', 'pageview']
+          - name: event_date
+            description: "Date the event occurred"
+            tests: [not_null]
+
+      - name: raw_customers
+        description: "Customer master table. One row per customer."
+        columns:
+          - name: customer_id
+            description: "Unique customer identifier"
+            tests: [unique, not_null]
+          - name: email
+            description: "Customer email address"
+            tests: [unique, not_null]
+          - name: plan
+            description: "Subscription plan tier"
+            tests:
+              - accepted_values:
+                  values: ['starter', 'pro', 'enterprise']
+
+      - name: raw_pipeline_runs
+        description: >
+          Audit log of dbt pipeline executions. One row per pipeline run.
+          The models_run column records which dbt selector was used.
+          When models_run = 'staging.*', mart models were NOT executed.
+          This is the key diagnostic table for staleness investigations.
+        columns:
+          - name: run_id
+            description: "Unique identifier for each pipeline execution"
+            tests: [unique, not_null]
+          - name: run_date
+            description: "Date the pipeline executed"
+            tests: [not_null]
+          - name: status
+            description: "Orchestrator-reported status (not always reliable — see walkthrough)"
+            tests:
+              - accepted_values:
+                  values: ['success', 'failure', 'partial']
+          - name: exit_code
+            description: "Process exit code. 0 = success per the OS, but not per data freshness."
+          - name: models_run
+            description: >
+              The dbt selector used for this run. 'all' means every model ran.
+              'staging.*' means only staging models ran — marts were silently skipped.
+              This is the smoking gun for the Feb 9-11 staleness window.
+          - name: duration_seconds
+            description: "How long the run took. Notice Feb 9-11 runs are ~40s vs ~145s for full runs."

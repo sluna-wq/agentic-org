@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: >
+      Cleaned and typed orders. One row per order. Grain is order_id.
+      Data covers Jan 2024 through Feb 8 2024 — the pipeline stopped refreshing
+      this model's downstream mart consumers after Feb 8 due to the selector bug,
+      but this staging view itself is correct (views re-execute on query).
+    columns:
+      - name: order_id
+        description: "Unique order identifier"
+        tests: [unique, not_null]
+      - name: customer_id
+        description: "Customer who placed the order"
+        tests: [not_null]
+      - name: order_date
+        description: "Date the order was placed, cast to date type"
+        tests: [not_null]
+      - name: amount
+        description: "Order value in USD"
+        tests: [not_null]
+      - name: status
+        description: "Normalized order status (lowercase)"
+        tests:
+          - accepted_values:
+              values: ['completed', 'pending', 'cancelled', 'refunded']
+      - name: order_month
+        description: "First day of the month the order was placed — for monthly aggregations"
+      - name: order_size_tier
+        description: "Order value tier: high (>=300), medium (>=100), low (<100)"
+        tests:
+          - accepted_values:
+              values: ['high', 'medium', 'low']
+
+  - name: stg_events
+    description: >
+      Cleaned user behavior events. One row per event. Grain is event_id.
+      Covers signup, purchase, and pageview events through Feb 8 2024.
+    columns:
+      - name: event_id
+        description: "Unique event identifier"
+        tests: [unique, not_null]
+      - name: customer_id
+        description: "Customer who generated the event"
+        tests: [not_null]
+      - name: event_type
+        description: "Event category (signup, purchase, pageview)"
+        tests:
+          - accepted_values:
+              values: ['signup', 'purchase', 'pageview']
+      - name: event_date
+        description: "Date the event occurred"
+        tests: [not_null]
+      - name: is_signup
+        description: "Boolean flag — true if event_type = signup"
+      - name: is_purchase
+        description: "Boolean flag — true if event_type = purchase"
+      - name: is_pageview
+        description: "Boolean flag — true if event_type = pageview"
+
+  - name: stg_pipeline_runs
+    description: >
+      Cleaned pipeline audit log with derived diagnostic fields.
+      The key derived column is ran_mart_models — false means marts were silently skipped.
+      The is_phantom_success flag identifies runs that reported exit_code=0 but did
+      not execute all models. These are the dangerous cases: everything looks fine
+      but your mart layer is frozen.
+    columns:
+      - name: run_id
+        description: "Unique run identifier"
+        tests: [unique, not_null]
+      - name: run_date
+        description: "Date of the pipeline run"
+        tests: [not_null]
+      - name: status
+        description: "Orchestrator status (misleadingly 'success' even for partial runs)"
+      - name: exit_code
+        description: "Process exit code — 0 does NOT mean all models ran"
+      - name: models_run
+        description: "The dbt selector used. 'staging.*' = marts were excluded."
+      - name: duration_seconds
+        description: "Run duration. Full runs ~145s; staging-only runs ~40s."
+      - name: ran_mart_models
+        description: "Derived boolean: did this run include mart layer models?"
+      - name: is_phantom_success
+        description: "Derived boolean: exit_code=0 but mart models were skipped."
+      - name: run_scope_label
+        description: "Human-readable label for what the run covered."

@@ -6,35 +6,7 @@
 
 ## Pending
 
-### [NEEDS_INPUT] Process bloat audit — 75% of playbooks unused (2026-02-17)
-
-**Context**: During monitoring cycle, applied DIR-004 (XP culture - YAGNI, kill what's not earning its keep) to org process. Usage analysis reveals significant over-engineering for discovery phase.
-
-**Key findings**:
-- **20 playbooks exist, only 5 are used** (PB-001, PB-002, PB-013, PB-014, PB-018). 15 playbooks (75%) never referenced in 15 cycles.
-- **METRICS.md all "N/A"** — Not tracking anything useful in discovery phase
-- **BRIEFING.md high maintenance** — 100+ line narratives updated 12x in 3 days, unclear consumption vs STATE + CYCLE-LOG + commits
-
-**Recommendation** (detailed in `research/process-bloat-audit.md`):
-1. **Archive 15 unused playbooks** → Keep 5 active ones, preserve rest in PLAYBOOKS-ARCHIVE.md (easily restored when needed)
-2. **Simplify METRICS.md** → 3 discovery-phase metrics (walkthroughs completed, deployment barriers, daemon health) vs 15+ speculative ones
-3. **Simplify BRIEFING.md** → Glanceable 5-line format vs 100-line detailed narrative
-
-**Rationale**:
-- DIR-004 principle: "If we haven't used it in 3 cycles, question it"
-- Evidence-based: Usage data shows what's actually valuable vs what we thought might be valuable
-- Reversible: All content preserved, can restore in 5 minutes if needed
-- Reduces cognitive load: Simpler = faster onboarding, less maintenance
-
-**Open questions**:
-1. Too aggressive? Want to keep any of the 15 unused playbooks active?
-2. METRICS.md simplified version acceptable?
-3. BRIEFING.md: archive entirely or simplify to bullets?
-4. Timing: now or wait until after WT-02?
-
-**My POV** (per DIR-003): We should do this now. We built comprehensive process during bootstrap (smart). Now we have real data showing which 25% is actually needed. Be courageous — archive what's not earning its keep. This is applying XP to process, not just code.
-
-**Action needed**: Approve/revise recommendations, then I'll implement in one cycle.
+_Nothing pending._
 
 ---
 
@@ -50,6 +22,9 @@
 ---
 
 ## Archive
+
+### [RESOLVED] Process bloat audit — 75% of playbooks unused (2026-02-17)
+Archived: Recommendations implemented in DEC-013 (2026-02-17) — org simplification cycle. CEO.md is now single async interface, PLAYBOOKS.md pruned to 5 active playbooks, BRIEFING.md/METRICS.md/ROSTER.md retired from active use. No CEO input needed.
 
 ### [INFO] BL-019 Week 0 prep complete — Pilot infrastructure ready (2026-02-16)
 Archived: Pilot approach superseded by walkthrough-driven discovery (DEC-012). Pilot infrastructure preserved but on hold.
