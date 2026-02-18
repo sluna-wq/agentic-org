@@ -1,0 +1,6 @@
+product_id,product_name,category,unit_price,cost,is_active
+501,Pro Analytics Suite,software,249.99,45.00,true
+502,Data Connector Basic,integration,89.50,12.00,true
+503,Cloud Storage 1TB,infrastructure,499.00,180.00,true
+504,Enterprise Platform,software,1200.00,210.00,true
+505,Monitoring Agent,software,25.00,4.00,true

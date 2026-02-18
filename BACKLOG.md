@@ -8,7 +8,7 @@
 | BL-022 | DE Walkthroughs WT-05 through WT-10 | CEO + CTO |
 | BL-023 | SDKification research: map APIs/SDKs across full data stack | Daemon |
 | BL-024 | Product thesis v1: synthesize WT-01-04 + form factor into "what are we building" | Daemon |
-| BL-025 | Scaffold WT-05, WT-06, WT-07 scenarios (parallel, one per sub-agent) | Daemon |
+| BL-025 | Scaffold WT-06, WT-07 scenarios | Daemon |
 | BL-026 | Agent toolset spec: define exact tool signatures for agent DE (feeds from BL-023) | Daemon |
 
 ### BL-023 detail — SDKification research
@@ -27,9 +27,8 @@ One document answering: what are we building, for whom, how does it work, what's
 - **Tool access**: SDKified (BL-023 feeds this)
 - **Deliverable**: `research/product-thesis-v1.md`
 
-### BL-025 detail — Scaffold WT-05, WT-06, WT-07
-Build three scenario environments like WT-04: seeds with realistic broken/starting state, analysis SQL files, agent lens section, postmortem template. Use sub-agents in parallel.
-- WT-05: "Why Is This Query So Slow?" — performance investigation, query profiling, materialization decisions
+### BL-025 detail — Scaffold WT-06, WT-07
+WT-05 done (cycle #18). Build remaining two scenario environments like WT-04/05.
 - WT-06: "The Data Is Stale" — freshness monitoring, schedule debugging, orchestration failure modes
 - WT-07: "PII Everywhere" — compliance discovery, column classification, masking strategy
 

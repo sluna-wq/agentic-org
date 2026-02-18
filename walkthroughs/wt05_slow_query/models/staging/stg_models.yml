@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: >
+      Staged orders — WARNING: currently joined with order_items creating fan-out.
+      One row per order LINE ITEM, not per order. Downstream models must aggregate carefully.
+    columns:
+      - name: order_id
+        description: "Order identifier (not unique in this model — see fan-out bug)"
+      - name: customer_id
+        tests: [not_null]
+      - name: amount
+        description: "Order amount — inflated by fan-out if aggregated without dedup"
+
+  - name: stg_customers
+    description: "One row per customer. Clean."
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+
+  - name: stg_products
+    description: "One row per product with derived margin columns."
+    columns:
+      - name: product_id
+        tests: [unique, not_null]

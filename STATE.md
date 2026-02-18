@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-17 (CEO session — WT-04 complete, form factor breakthrough, SDKification research kicked off)
+> Last updated: 2026-02-18 (Autonomous cycle #18 — WT-05 scenario scaffolded)
 
 ## Phase
 `DISCOVERY` — Pivoted from product shipping to walkthrough-driven discovery. Learning what an agent DE actually needs through hands-on experience.
@@ -23,10 +23,10 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 ## Active Work
 | ID | Description | Owner | Status | Last Activity | What's Next |
 |----|-------------|-------|--------|---------------|-------------|
-| BL-022 | DE Walkthroughs | CEO + CTO | In progress | WT-04 complete (agent lens) | WT-05: "Why Is This Query So Slow?" — pending scaffold (BL-025) |
-| BL-023 | SDKification research | Daemon | Pending | Kicked off this session | Research artifact in research/ |
-| BL-024 | Product thesis v1 | Daemon | Pending | Kicked off this session | Synthesis doc in research/ |
-| BL-025 | Scaffold WT-05/06/07 | Daemon | Pending | Kicked off this session | Three scenario environments |
+| BL-022 | DE Walkthroughs | CEO + CTO | In progress | WT-04 complete (agent lens) | WT-05 scenario ready — CEO can start immediately |
+| BL-023 | SDKification research | Daemon | Pending | Kicked off cycle #17 | Research artifact in research/ |
+| BL-024 | Product thesis v1 | Daemon | Pending | Kicked off cycle #17 | Synthesis doc in research/ |
+| BL-025 | Scaffold WT-06, WT-07 | Daemon | In progress | WT-05 done (cycle #18) | Two more scenario environments |
 | BL-026 | Agent toolset spec | Daemon | Pending | Blocked on BL-023 | Tool signatures doc in research/ |
 
 ## Walkthrough Progress
@@ -36,8 +36,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | 2 | The Dashboard Is Wrong | Done |
 | 3 | New Data Source Onboarding | Done |
 | 4 | The Schema Migration | Done (agent lens) |
-| 5 | Why Is This Query So Slow? | Scaffolding (daemon) |
-| 5 | Why Is This Query So Slow? | Pending |
+| 5 | Why Is This Query So Slow? | **Ready** (scaffolded cycle #18) |
 | 6 | The Data Is Stale | Pending |
 | 7 | PII Everywhere | Pending |
 | 8 | The Duplicate Problem | Pending |
@@ -45,10 +44,10 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | 10 | The Autonomous Agent | Pending |
 
 ## Blockers
-- None. Daemon running (17 cycles, all green). Walkthroughs need CEO participation.
+- None. Daemon running (18 cycles, all green). Walkthroughs need CEO participation.
 
 ## Where CEO Can Help
-- **Continue walkthroughs**: CEO participation is essential — dual learning (DE experience + agent requirements)
+- **WT-05 is ready**: Fan-out bug scenario with seed data, investigation queries, reference solution. Pull up `walkthroughs/wt05_slow_query/README.md` to start.
 
 ## Recent Decisions
 - **DEC-014**: Pull SDKification research forward — form factor insight (human as copilot) requires SDK/API-first architecture. Don't wait for WT-10. (2026-02-17)
@@ -64,8 +63,8 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 ## Health
 | Dimension | Status | Notes |
 |-----------|--------|-------|
-| Liveness | RUNNING | Daemon healthy — 17 cycles, 0 failures |
-| Discovery | ON_TRACK | WT-01 complete, curriculum designed |
+| Liveness | RUNNING | Daemon healthy — 18 cycles, 0 failures |
+| Discovery | ON_TRACK | WT-04 complete, WT-05 ready |
 | Quality | STRONG | Process gap identified + fixed (PB-020) |
 | Team | Minimal | CTO-Agent only |
 | Knowledge | Growing | Walkthroughs producing actionable insights |
