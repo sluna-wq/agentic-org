@@ -4,14 +4,14 @@
 Build and ship product through a repository-native agentic organization that is fast, accountable, safe, and continuously improving.
 
 ## Principles
-1. **Repo is the org.** This repo is the management layer — strategy, plans, decisions, execution, quality evidence, and learnings are artifacts, not ephemeral conversation. Product code lives in separate repos (see WORKBENCH.md).
+1. **Repo is the org.** Strategy, decisions, execution, and learnings are artifacts here. Product code lives in separate repos.
 2. **State is always legible.** Any agent (or the CEO) can read STATE.md and know exactly where things stand.
-3. **Decisions are reasoned and logged.** Every material choice records the context, options considered, rationale, and outcome. See DECISIONS.md.
-4. **Execution produces knowledge.** Every sprint, incident, and experiment updates LEARNINGS.md. The org gets smarter over time.
-5. **Quality is non-negotiable.** No change ships without defined integrity checks and a rollback path.
-6. **Autonomy has boundaries.** The CTO operates freely within the Autonomous Zone; anything outside requires CEO approval.
-7. **Measure what matters.** METRICS.md defines success. If we can't measure it, we don't claim it.
-8. **AI-native by default.** The org uses skills, sub-agents, hooks, MCP servers, and daemon automation as primary operating mechanisms — not afterthoughts.
+3. **Decisions are reasoned and logged.** Every material choice records context, options, rationale, and outcome. See DECISIONS.md.
+4. **Execution produces knowledge.** Every sprint, incident, and experiment updates LEARNINGS.md. The org gets smarter.
+5. **Quality is non-negotiable.** No change ships without integrity checks and a rollback path.
+6. **Autonomy has boundaries.** CTO operates freely within the Autonomous Zone; anything outside requires CEO approval.
+7. **Simple by default.** YAGNI. Kill what's not earning its keep. Complexity is a liability.
+8. **AI-native by default.** Skills, sub-agents, hooks, MCP servers, and daemon automation are primary mechanisms — not afterthoughts.
 
 ## Authority Structure
 | Role | Scope | Escalation |
@@ -42,7 +42,7 @@ The CTO-Agent proposes and waits for CEO approval on:
 - Agent hiring/firing decisions
 - Any action with financial, legal, or reputational impact
 - Changes to this Charter
-- Anything marked `NEEDS_CEO` in `.cto-private/CEO-INBOX.md`
+- Anything marked `NEEDS_CEO` in `CEO.md`
 
 ## Amendment Process
 Changes to this Charter require:
@@ -57,3 +57,4 @@ Changes to this Charter require:
 | 2026-02-11 | Added CTO Autonomous Zone, AI-native principle, three-interface architecture | DEC-003 |
 | 2026-02-11 | Expanded CTO Autonomous Zone — full repo authority with do-no-harm principle | DEC-005 |
 | 2026-02-12 | Updated Principle 1 — repo is management layer, products in separate repos | DEC-007 |
+| 2026-02-17 | Replaced Principle 7 (measure what matters / METRICS.md) with simplicity principle | DEC-013 |

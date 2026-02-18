@@ -1,313 +1,87 @@
 # Learnings
 
-> **What the org knows from experience — institutional memory that compounds.**
-> Every completed work item, incident, and experiment should leave a trace here.
-> This is how the org gets smarter. Agents read this to avoid repeating mistakes and to build on what worked.
-
-## Format
-```
-### LRN-[NNN]: [Title]
-- **Date**: YYYY-MM-DD
-- **Source**: What work/incident/experiment produced this learning?
-- **Insight**: What did we learn?
-- **Evidence**: What specifically happened that taught us this?
-- **Action taken**: Did we change a playbook, metric, or process? (Link if so)
-- **Tags**: [architecture | process | quality | tooling | hiring | product | ...]
-```
+> Institutional memory. Add entries after completing work or learning something material. Full entries in git history.
 
 ---
 
-### LRN-001: Self-referential org structure requires explicit update protocols
-- **Date**: 2026-02-11
-- **Source**: BOOT-001 — Org bootstrap
-- **Insight**: A knowledge architecture only stays current if every document has a clear "update protocol" section that defines *when* and *how* it gets updated. Without this, docs go stale and the self-model diverges from reality — breaking the closed loop.
-- **Evidence**: While designing the bootstrap, considered systems that have "architecture docs" that nobody updates. The failure mode is always the same: no trigger for updates. Solved by embedding update protocols directly in each document and making PB-002 (Completing Work) require artifact updates.
-- **Action taken**: Every foundational doc includes an update protocol footer. PB-002 and PB-007 codify the update pattern.
-- **Tags**: architecture, process
+## Summary: LRN-001 through LRN-023
+Bootstrap and product-build learnings (2026-02-11 through 2026-02-15). Full text in git history.
 
-### LRN-002: Org structure needs explicit interfaces, not just internal coherence
-- **Date**: 2026-02-11
-- **Source**: DEC-002 — Building CEO↔Org and Org↔Product interfaces
-- **Insight**: A self-referential org that only talks to itself is useless. It needs two clear boundary interfaces: one upward to the CEO (visibility + steering) and one downward to the product (execution). Without these, the CEO can't see what's happening, and agents can't translate plans into code.
-- **Evidence**: After bootstrap, the org had 9 interlocking docs but no defined way for the CEO to give persistent direction (directives get lost in chat) or for agents to know how code changes should flow (branch strategy, testing, review). The CEO explicitly asked for these interfaces.
-- **Action taken**: Created DIRECTIVES.md, BRIEFING.md, WORKBENCH.md. Added PB-010 (Briefing), PB-011 (Processing Directives), PB-012 (Product Execution). Updated PB-001 to include new docs in session startup.
-- **Tags**: architecture, process, interfaces
-
-### LRN-003: AI-native must be concrete and operational, not aspirational
-- **Date**: 2026-02-11
-- **Source**: DEC-003 — Redesign for autonomy, privacy, AI-native operation
-- **Insight**: Saying "we're AI-native" is meaningless without concrete mechanisms. AI-native means: capabilities encoded as skills (invocable, reusable), automation via hooks (not manual checklists), parallel work via sub-agents, external integration via MCP, and autonomous operation via daemon. Each principle must map to a specific tool or mechanism.
-- **Evidence**: CEO pushed back on vague "AI-native principles" — asked for concrete examples of how the org uses AI tools. Revised to map each principle to a specific Claude Code capability: skills → `/cto`, `/status`, `/sync`; hooks → auto state updates; sub-agents → Task tool; daemon → cron + `claude -p`. Also added "adopt or evaluate within 1 cycle" rule to prevent falling behind.
-- **Action taken**: AI-Native Operating Principles section in CLAUDE.md now maps each principle to a specific mechanism. Skills directory created. Daemon directory created. Principle 6 ensures ongoing adoption of new tools.
-- **Tags**: architecture, tooling, ai-native
-
-### LRN-004: Parallel sub-agents are highly effective for research sprints
-- **Date**: 2026-02-11
-- **Source**: BL-009, BL-010, BL-011, BL-012 — Product exploration research
-- **Insight**: Running 3 research sub-agents in parallel (competitive landscape, pain points, architecture) produced 4 comprehensive research docs in a single session. The key is giving each agent a clear, non-overlapping scope with specific deliverables. The synthesis step (BL-012) works best done by the CTO-Agent directly, since it requires cross-referencing all three outputs.
-- **Evidence**: Three parallel agents each produced 400-600 line research docs. The CTO then synthesized into a 200-line product concepts doc with recommendation. Total wall-clock time was dominated by the slowest agent, not the sum of all three.
-- **Action taken**: Will use this pattern for future research sprints. Decompose into independent research questions → parallel agents → CTO synthesis.
-- **Tags**: process, tooling, ai-native, research
-
-### LRN-005: The data stack competitive landscape has a clear agentic gap
-- **Date**: 2026-02-11
-- **Source**: BL-009 — Competitive landscape research
-- **Insight**: As of early 2026, no company has shipped production-grade autonomous remediation for data pipelines. The market has observability (Monte Carlo, Anomalo), testing (Great Expectations, Elementary), and cataloging (Atlan, Collibra) — but every player stops at alerting. The "detect + diagnose + fix" loop is unsolved. This is a genuine market gap, not a feature gap.
-- **Evidence**: Mapped 30+ companies across 5 categories. The competitive map's "agentic" quadrant is empty. Closest attempts: Anomalo (AI diagnosis, no fix), Monte Carlo (AI RCA, no fix), Dagster+Sifflet (orchestration + observability, no autonomous remediation).
-- **Action taken**: Product concepts prioritize the "close the loop" positioning. Research docs capture detailed competitive profiles for reference.
-- **Tags**: product, market, competitive-intelligence
-
-### LRN-006: AI agent framework landscape has reached production maturity in 2026
-- **Date**: 2026-02-12
-- **Source**: BL-001 — AI agent landscape research
-- **Insight**: The AI agent framework landscape has consolidated and matured. Production adoption reached 57.3% (up from 11% in Q1 2025). Three clear categories emerged: orchestration frameworks (LangGraph, CrewAI, AutoGen), model-native SDKs (Claude Agent SDK, OpenAI), and specialized tooling (AgentOps, Langfuse). MCP (Model Context Protocol) is becoming the universal standard for tool integration (75% vendor adoption expected by end of 2026). The winning combination for this org: Claude Agent SDK or LangGraph for orchestration, MCP for tools, Langfuse/LangSmith for observability, and token optimization as a first-class concern.
-- **Evidence**: Comprehensive research across 8+ frameworks, 30+ web sources, production adoption data, and technical deep-dives. Key findings: LangGraph has 62% market share for complex workflows, OpenAI's Assistants API is being sunset (Aug 2026), MCP is replacing proprietary tool formats, and cost optimization is a gating factor (agents make 3-10x more LLM calls than chat interfaces).
-- **Action taken**: Research doc `research/ai-agent-landscape.md` produced with framework comparisons, production readiness assessments, emerging patterns, and org-specific recommendations. This informs future technical decisions on framework adoption and architecture patterns.
-- **Tags**: research, tooling, ai-native, architecture
-
-### LRN-007: CEO sessions must be conversation mode — execution belongs between sessions
-- **Date**: 2026-02-12
-- **Source**: DEC-007 — CEO-CTO alignment conversation
-- **Insight**: When the CEO opens a session, the CTO should be fully present for strategic discussion — not context-switching into org maintenance or execution. The current bootstrap conflated "session start" with "do org work," preventing genuine strategic conversations. The fix: explicit CONVERSATION MODE (CEO present → discuss, debate, align) vs EXECUTION MODE (daemon → pick up work, execute). Conversation produces alignment artifacts (directives, backlog items, decisions). Execution happens between sessions.
-- **Evidence**: CEO explicitly flagged that sessions were interrupted by org work the CTO was meant to plan and execute independently. The CEO wants to discuss freely, disagree, debate, and align — then have the CTO execute between meetings.
-- **Action taken**: Updated CLAUDE.md bootstrap, PB-001, created PB-017 (Conversation Mode Protocol). Two clear modes now govern CTO behavior.
-- **Tags**: process, interfaces, ceo-collaboration
-
-### LRN-008: Claude Agent SDK research reveals production-ready tooling with critical context management requirements
-- **Date**: 2026-02-14
-- **Source**: BL-002 — Claude Code & Agent SDK deep dive
-- **Insight**: Claude Agent SDK and the broader ecosystem have matured significantly for production use. Key findings: (1) Open standards (Agent Skills, MCP) are winning across the industry — Microsoft, OpenAI, Cursor adopting; (2) Context management is the primary failure mode — context degradation requires aggressive management in long-running agents; (3) Production tooling is ready — observability (OpenTelemetry), session management, automatic compaction built-in; (4) Cost optimization is critical — agents consume 3-10x more tokens than chat interfaces; (5) Verification is mandatory — LLMs produce plausible but edge-case-vulnerable code. For this org: standardize on Agent Skills format, implement MCP servers (GitHub, Slack, Filesystem), add observability from day one, establish retry patterns with exponential backoff and dead letter queues.
-- **Evidence**: Comprehensive 2,711-line research doc covering 7 areas: tool use patterns, MCP server development, sub-agent orchestration, prompt engineering, SDK architecture, capabilities/limitations, and latest developments (Feb 2026). 50+ sources cited. Key technical insights: layered SDK architecture (Presentation → Application → Domain → Infrastructure), Claude 4.x models with extended context (200K tokens), MCP as universal tool protocol, Agent Skills as portable skill format.
-- **Action taken**: Research doc `research/claude-agent-capabilities.md` produced with immediate actions (standardize skills, deploy MCP servers, implement observability, establish error handling) and strategic investments (multi-agent orchestration, context management protocol, CI/CD pipeline, cost optimization). 10 open questions identified for further exploration.
-- **Tags**: research, tooling, ai-native, architecture, production-readiness
-
-### LRN-009: Comprehensive technical standards document requires anticipating product diversity while staying grounded
-- **Date**: 2026-02-14
-- **Source**: BL-004 — Technical standards & conventions
-- **Insight**: Creating technical standards before the first product requires balancing specificity (useful, actionable rules) with flexibility (multiple products, multiple tech stacks). The solution: establish core principles (AI-native development, explicit over clever, test behaviors not implementation), define concrete standards for the current stack (Node.js/JavaScript), and create placeholders for future stacks (TypeScript, Python) with clear adoption triggers. Standards must cover the full lifecycle: code style, testing, CI/CD, git workflow, security, documentation, error handling, performance, and accessibility. The key is making standards executable — not aspirational guidelines, but specific patterns with examples of good/bad code.
-- **Evidence**: Produced 600+ line `standards/CONVENTIONS.md` covering 15 major areas. Balanced current needs (JavaScript/Node.js conventions match our package.json) with future needs (TypeScript section "when adopted," Python section "if needed"). Included concrete examples (good/bad code snippets), rationale for each choice, and clear update protocol. Document is structured to serve both agents (explicit patterns to follow) and future code reviews (checklist format).
-- **Action taken**: Created `standards/CONVENTIONS.md` with sections on: AI-native development philosophy, repository architecture, language standards (JS/TS/Python), project structure, testing strategy (unit/integration/e2e), code quality & review, CI/CD patterns, dependency management, security standards, documentation, git conventions, error handling & logging, performance standards, accessibility standards, and change management. Document includes changelog for tracking evolution. BL-005 (developer tooling) now unblocked.
-- **Tags**: process, standards, architecture, quality, ai-native
-
-### LRN-010: CTO must own outcomes, not execute tasks
-- **Date**: 2026-02-14
-- **Source**: DEC-009 — CEO-CTO contract evolution
-- **Insight**: Operating like a staff engineer who waits for requirements is a failure mode for a CTO agent. A CTO has a point of view on everything, drives results without being asked, proactively identifies problems, and pushes back when things don't make sense. The backlog is not a to-do list — it's a means to an outcome. Culture (how we operate) matters as much as architecture (what we build).
-- **Evidence**: CEO explicitly called out that the CTO was being too passive — presenting options instead of recommendations, waiting for directives instead of driving. CEO shared Amazon leadership principles as the target operating culture. The shift from "here are 3 options" to "here's what I think we should do and why" is fundamental.
-- **Action taken**: Issued DIR-003 (ownership principle). Restructured STATE.md to show "Where CEO Can Help" instead of just "Blockers." CTO now brings recommendations, not menus.
-- **Tags**: culture, process, leadership
-
-### LRN-011: Visibility beats control for CEO-CTO operating rhythm
-- **Date**: 2026-02-14
-- **Source**: DEC-009 — CEO-CTO contract evolution
-- **Insight**: The CEO doesn't want to approve every step — they want to understand where things stand and where they can help. The right contract is: CTO has broad autonomy to make product and technical decisions, CEO gets real-time visibility and clear asks. Approval gates on routine work slow the org down without adding value. The CEO's time is best spent on unblocking, strategic direction, and go/no-go on irreversible decisions.
-- **Evidence**: CEO said the current contract was "too restrictive" but also lacked visibility. The fix wasn't more checkpoints — it was better dashboards (STATE.md with "Where CEO Can Help") and aggressive flagging (CEO-INBOX.md). Retired two blocking directives that were gatekeeping product work.
-- **Action taken**: Retired DIR-001/DIR-002. Redesigned STATE.md with visibility-first format. Added "Where CEO Can Help" section.
-- **Tags**: process, interfaces, ceo-collaboration
-
-### LRN-012: Commit and push immediately after every approved change
-- **Date**: 2026-02-14
-- **Source**: CEO check-in — called out uncommitted and unpushed changes
-- **Insight**: Changes that aren't committed and pushed don't exist to the rest of the org. The daemon can't see them. GitHub can't see them. The CEO can't review them remotely. Every coherent set of approved changes must be committed AND pushed immediately — not batched, not deferred. "Commit locally" without push is only half the job.
-- **Evidence**: CTO made 7 file changes during CEO session without committing. Then committed without pushing. CEO had to ask about both. This is a discipline failure — the equivalent of saying "I'll file that later" and forgetting.
-- **Action taken**: New practice: every coherent set of approved changes gets committed AND pushed right away, even during conversation mode. No exceptions.
-- **Tags**: process, discipline, git
-
-### LRN-010: Product repo bootstrap with comprehensive CLAUDE.md accelerates execution
-- **Date**: 2026-02-15
-- **Source**: BL-014 — dbt-guardian product repo bootstrap
-- **Insight**: Starting a product with a comprehensive CLAUDE.md (tech stack, conventions, architecture, testing strategy, CI/CD patterns) gives all agents — current and future — a complete orientation. The 350+ line CLAUDE.md becomes the single source of truth for "how to work in this codebase." This frontloads decisions (Python 3.11+, Poetry, pytest, ruff/black/mypy, agent interface patterns) so execution sessions don't waste time debating tooling. The scaffold should be complete but minimally functional: directory structure, package config, stub files, CI/CD workflows, README with product vision, LICENSE. This unblocks immediate work (parser implementation) while establishing quality patterns (linting, type checking, test coverage from commit #1).
-- **Evidence**: BL-014 completed in single autonomous cycle. Created: comprehensive CLAUDE.md (350+ lines covering tech stack, project structure, conventions, testing, CLI, dbt integration, security, performance, deployment), pyproject.toml with Poetry config and all tooling (pytest, ruff, black, mypy, pip-audit), full directory structure (src/dbt_guardian with agents/parsers/analyzers/generators/utils subdirs), CLI skeleton with click + rich, GitHub Actions CI/CD (tests, lint, type check, security audit) and release workflow (PyPI publishing), README with product vision and roadmap, LICENSE (MIT). Committed with 16 files, 939 insertions. Product repo now registered in `.product-repos.md`. BL-015 (parser) unblocked.
-- **Action taken**: Product repo at `/home/runner/work/agentic-org/dbt-guardian` ready for feature work. Pattern validated: comprehensive CLAUDE.md + full scaffold + CI/CD + commit = ready to execute. Will replicate for future product repos.
-- **Tags**: process, product, bootstrap, standards, ai-native
-
-### LRN-013: Multi-repo workflow requires GitHub API access — adapt with mono-repo until available
-- **Date**: 2026-02-15
-- **Source**: BL-015 — dbt project parser implementation (Cycle #2)
-- **Insight**: The designed multi-repo architecture (separate GitHub repos for each product) requires GitHub API access to create repos, which the daemon doesn't have. GitHub Actions runners have ephemeral filesystems — work created locally in one cycle doesn't persist to the next. The previous cycle (BL-014) created a product repo locally but it disappeared when this cycle started. The pragmatic solution: temporarily use a mono-repo approach (`products/` directory in the org repo) until we have GitHub repo creation capability (via ORG_PAT or GitHub App). This unblocks product work NOW while preserving the path to multi-repo later. The trade-off is acceptable because the org repo is the only persistent storage the daemon can write to.
-- **Evidence**: Cycle #2 started, found no dbt-guardian repo at expected path despite cycle log showing successful BL-014 completion. Investigated and realized: (1) GitHub Actions runners are stateless between runs, (2) daemon can't create GitHub repos, (3) previous work was lost because it wasn't committed to the org repo. Adapted by creating `products/dbt-guardian/` in org repo, implemented full parser (3 modules, Pydantic models, CLI, tests), committed to org repo. Work is now persistent and BL-016 is unblocked.
-- **Action taken**: Created `products/dbt-guardian/` with full dbt parser implementation. Updated WORKBENCH.md understanding (mono-repo interim). Flagged GitHub repo creation need in STATE.md "Where CEO Can Help" and CEO-INBOX.md. When GitHub API access is available, we can migrate `products/dbt-guardian/` to a separate repo with full git history preserved.
-- **Tags**: process, infrastructure, architecture, pragmatism, daemon
+| # | Learning |
+|---|----------|
+| LRN-001 | Every doc needs an explicit update protocol or it goes stale |
+| LRN-002 | Org needs explicit interfaces upward (CEO) and downward (product) |
+| LRN-003 | AI-native must map to concrete mechanisms — not aspirational |
+| LRN-004 | Parallel sub-agents excel at research sprints |
+| LRN-005 | Data stack has a clear agentic gap — operational agents, not dev tools |
+| LRN-006 | AI agent frameworks reached production maturity in 2026 |
+| LRN-007 | CEO sessions = conversation mode; execution happens between sessions |
+| LRN-008 | Claude Agent SDK production-ready; context management is the critical constraint |
+| LRN-009 | Comprehensive standards upfront reduce rework |
+| LRN-010 | Thorough product CLAUDE.md accelerates agent execution |
+| LRN-011 | Visibility beats control for CEO-CTO rhythm |
+| LRN-012 | Commit and push immediately after every approved change |
+| LRN-013 | Multi-repo workflow needs GitHub API — mono-repo until available |
+| LRN-014 | Pattern-based test coverage analysis scales better than ML heuristics |
+| LRN-015 | Comprehensive pilot planning frontloads risk mitigation |
+| LRN-016 | dbt Labs' structural constraints create a defensibility window for operational agents |
+| LRN-017 | Opinionated developer tooling from day one accelerates onboarding |
+| LRN-018 | Proactive pilot infrastructure prep unblocks when approvals arrive |
+| LRN-019 | Stay lean on specialist agents until PMF is validated |
+| LRN-020 | Regular org audits catch drift early |
+| LRN-021 | End-to-end testing before pilot de-risks launch |
+| LRN-022 | Proactive bug fixes from validation improve quality |
+| LRN-023 | Auto-inferring relationship test targets improves UX |
 
 ---
-*Update protocol: Add entries after completing any work item, resolving any incident, or running any experiment. Entries are append-only — never delete a learning, even if it's later superseded (add a note instead). Tag entries for searchability. Review during PB-003 (Weekly Planning).*
 
-### LRN-015: Comprehensive pilot planning frontloads risk mitigation and accelerates execution
-- **Date**: 2026-02-15
-- **Source**: BL-017 — Pilot plan & design partner strategy
-- **Insight**: A thorough pilot plan (13 sections, 500+ lines) that covers product context, goals, metrics, partner selection, timeline, outreach channels, onboarding flow, feedback framework, success scenarios, synthesis deliverables, risk assessment, and open questions is NOT over-planning — it's essential risk management for a 4-week pilot that could validate or invalidate product-market fit. The plan serves three purposes: (1) aligns CEO and CTO on what success looks like, (2) gives the CTO a playbook for execution (no mid-pilot improvisation), (3) makes pilot results legible and actionable (clear synthesis framework). The key is making it actionable, not academic: concrete partner criteria (Tier 1-3), structured outreach channels (expected yield), detailed feedback questions (what we're learning), and explicit abort signals (when to pivot). A good pilot plan should feel like reading a field guide, not a strategy deck.
-- **Evidence**: BL-017 produced `product/pilot-plan.md` covering: (1) product context (what we built, what's missing, how to use it), (2) pilot goals (primary + secondary + explicitly NOT goals), (3) success metrics (must-have + nice-to-have + red flags), (4) partner selection criteria (ideal profile + Tier 1/2/3 + disqualifiers), (5) 4-week timeline (Prep → Week 1 outreach → Week 2-3 usage → Week 4 synthesis), (6) outreach channels (Tier 1-4 with expected yield), (7) onboarding flow (5-step partner journey), (8) feedback framework (structured interview questions + documentation template), (9) success scenarios (best case → failure case with learnings for each), (10) synthesis deliverables (pilot-synthesis.md structure), (11) open questions for CEO (strategic, operational, distribution), (12) risk assessment (technical, market, execution risks with mitigation), (13) success definition (TL;DR). Plan is ready for CEO review and provides Week 0 prep work (onboarding doc, feedback infrastructure, sample project testing).
-- **Action taken**: Pilot plan complete and ready for CEO approval. Next step: BL-019 (Week 0 prep) once CEO approves. Pattern validated: comprehensive planning upfront → fast execution → clear synthesis. Will use for future pilots and product launches.
-- **Tags**: process, product, planning, pilot, risk-management
+### LRN-024: Narrow product catches nothing — general agent investigates everything
+- **Date**: 2026-02-16 | **Source**: WT-01
+- **Insight**: dbt Guardian Test Generator suggested generic `not_null` tests. The same agent acting as a general DE investigator found NULL semantics bugs, multi-currency mixing, and duplicate payments. Narrow product was solving the wrong problem. Capability isn't the barrier — deployment is.
 
-### LRN-014: Pattern-based test coverage analysis scales better than ML heuristics
-- **Date**: 2026-02-15
-- **Source**: BL-016 — Test Generator agent v0
-- **Insight**: For identifying missing dbt tests, simple pattern matching on column names and types is more effective and maintainable than complex ML-based approaches. Patterns like "ends with _id", "equals 'id' or 'uuid'", "contains 'status' or 'type'" capture 80%+ of high-value test opportunities. The key is combining name patterns with type hints and existing test awareness to avoid false positives. Priority scoring (1-5 based on column criticality) helps users focus on high-impact gaps first. For complex tests like accepted_values and relationships, generate placeholder configurations (with TODO markers) rather than trying to infer valid values — the human knows their domain better.
-- **Evidence**: Implemented TestCoverageAnalyzer with pattern-based logic: ID_PATTERNS (id, _id, uuid), TIMESTAMP_PATTERNS (created_at, updated_at), STATUS_PATTERNS (status, state, type). Combined with priority scoring (primary keys = 1, foreign keys = 2, status columns = 3, timestamps = 4, other = 5). Built SchemaYamlGenerator to output PR-ready schema.yml with not_null/unique tests as strings and accepted_values/relationships as dict placeholders with TODOs. Added rich CLI commands: `analyze` (shows coverage + top gaps in table format) and `generate-tests` (creates schema.yml with --merge option for incremental updates). Wrote 35+ unit tests covering gap detection, test suggestion logic, priority calculation, YAML generation, and incremental merging. All tests pass. Pattern-based approach is deterministic, fast, and easy to debug.
-- **Action taken**: Test Generator v0 complete in `products/dbt-guardian/`: TestCoverageAnalyzer (analyzers/coverage.py), SchemaYamlGenerator (generators/schema_yaml.py), updated CLI with analyze + generate-tests commands (rich output), 35+ unit tests. Ready for pilot testing on real dbt projects. Pattern-based approach validated — will extend patterns as we learn from pilot usage.
-- **Tags**: product, architecture, dbt, testing, pragmatism
+### LRN-025: The question is deployment, not capability
+- **Date**: 2026-02-16 | **Source**: WT-01
+- **Insight**: Agents can already do full DE investigations. The open question is: what stops organizations from deploying them? That's what the walkthroughs are for.
 
-### LRN-016: dbt Labs' strategic constraints create permanent defensibility gaps for operational agents
-- **Date**: 2026-02-15
-- **Source**: BL-018 — Defensibility analysis (vs dbt Labs)
-- **Insight**: dbt Guardian is defensible against dbt Labs competition because dbt Labs has four structural constraints: (1) They focus on DEVELOPMENT (Copilot, IDE) not OPERATIONS (runtime reliability, incident response), (2) They can't go cross-stack without competing with their partnership ecosystem (Monte Carlo, Elementary, Metaplane), (3) They won't build autonomous remediation (conflicts with enterprise governance requirements and human-in-loop DNA), (4) They can't aggressively monetize dbt Core users without community backlash (community tension over Cloud pricing). This creates a permanent opening for dbt Guardian: start where dbt Labs WON'T go (operational reliability for dbt Core), expand where they CAN'T go (cross-stack autonomous remediation).
-- **Evidence**: Web research (Feb 2026) on dbt Labs roadmap shows three strategic pillars: dbt Copilot (AI coding assistant in IDE), dbt Explorer (data catalog), dbt Semantic Layer (governance for AI/LLMs). Zero operational/incident response products announced. Their blog posts on observability consistently position it as a partner concern (Monte Carlo, Metaplane). Copilot's test generation is IDE-based, on-demand, human-in-loop — not continuous, autonomous, production-monitoring. dbt Fusion licensing controversy shows community tension. No evidence of autonomous remediation plans (liability risk, partnership conflicts, enterprise governance conflicts).
-- **Action taken**: Comprehensive defensibility analysis in `research/defensibility-analysis.md` (8 sections, 9,000+ words): dbt Labs roadmap, what they're NOT building, overlap analysis (test generation = moderate, different use cases), strategic constraints (partnership lock-in, Core community tension, dev>ops DNA, enterprise governance), our moat framework (operational expertise, cross-stack, Core focus, safety/trust), threat scenarios (acquisition, autonomous test gen, warehouse vendors, new startups) with mitigation, positioning strategy ("operational layer dbt is missing"), tactical/strategic recommendations. Key insight: window is open NOW (dbt Labs focused on Copilot + Semantic Layer in 2026). Our path: win Core users (6mo) → build autonomous capabilities (6-12mo) → go cross-stack (12-18mo).
-- **Tags**: product, competitive-intelligence, strategy, defensibility, dbt
+### LRN-026: Learn by doing beats learn by researching
+- **Date**: 2026-02-16 | **Source**: WT-01 + CEO feedback
+- **Insight**: Weeks of research led to a product that caught nothing. One walkthrough session triggered a strategic pivot. Experiencing the DE role firsthand produces more actionable insight than any research doc.
 
-### LRN-017: Developer tooling infrastructure should be comprehensive and opinionated from day one
-- **Date**: 2026-02-15
-- **Source**: BL-005 — Developer tooling & environment setup
-- **Insight**: Setting up comprehensive developer tooling infrastructure early (CI/CD, linting, formatting, type checking, security auditing, IDE config) establishes quality standards before any bad habits form. An opinionated, batteries-included setup removes friction and ensures consistency. Key components: (1) GitHub Actions workflows (test, lint, release), (2) Makefile for common commands, (3) pre-commit hooks config, (4) VS Code settings with recommended extensions, (5) EditorConfig for cross-editor consistency, (6) CONTRIBUTING.md to document the workflow. The goal is zero-config onboarding: clone → `make install` → start coding with automatic formatting, linting, and testing.
-- **Evidence**: Created complete developer tooling stack for dbt Guardian: `.github/workflows/` (test.yml with Python 3.11/3.12 matrix + coverage, lint.yml with ruff/black/isort/mypy/pip-audit, release.yml with PyPI trusted publishing), Makefile with 15+ targets (test, lint, format, type-check, security, audit, clean, run), `.pre-commit-config.yaml` (5 hooks including black, isort, ruff, mypy), `.vscode/` (settings.json, extensions.json, launch.json), `.editorconfig` (cross-editor consistency), `.python-version` (pyenv integration), CONTRIBUTING.md (6-section development guide with examples). pyproject.toml already configured all tools (ruff, black, isort, mypy strict mode, pytest with 70% coverage floor). Updated README.md with badges and development commands. Updated CLAUDE.md to document new workflow.
-- **Action taken**: Complete developer tooling infrastructure now in `products/dbt-guardian/`. CI/CD will enforce quality on every PR. Developers get immediate feedback via pre-commit hooks (optional) or `make audit`. VS Code users get one-click setup with recommended extensions. Pattern validated: invest in tooling upfront → quality becomes automatic. Will reuse this setup pattern for future product repos (as template).
-- **Tags**: tooling, quality, process, developer-experience, ci-cd
+### LRN-027: Lost session state = lost work
+- **Date**: 2026-02-16 | **Source**: Process failure
+- **Insight**: Pivot session committed walkthrough files but skipped all state updates. Next session had completely stale context. PB-020 (Session Close Protocol) created as mandatory fix.
 
-### LRN-018: Proactive pilot infrastructure prep unblocks execution when approvals arrive
-- **Date**: 2026-02-16
-- **Source**: BL-019 — Pilot Week 0 prep
-- **Insight**: When blocked on external approvals (CEO review, partner commitments, etc.), use the wait time to build supporting infrastructure that will accelerate execution once approval arrives. For pilot programs, this means: comprehensive partner onboarding documentation (installation, quick-start, troubleshooting, FAQ), structured feedback collection frameworks (interview guides, templates, tracking systems), and clear success metrics dashboards. The goal is "CEO approves → onboard first partner within 24-48 hours" rather than "CEO approves → spend a week building docs before we can start." This demonstrates ownership (DIR-003: bias for action) and de-risks the pilot timeline (Week 0 prep won't eat into Week 1-4 execution).
-- **Evidence**: While waiting for CEO pilot plan approval (BL-017 in CEO-INBOX since 2026-02-15), completed full Week 0 prep: (1) Created `pilot-onboarding.md` (1,400 lines: installation step-by-step, 5-min quick-start, usage examples, troubleshooting common errors, FAQ with 15+ questions, feedback channels, contact info) — ready to send to first pilot partner, (2) Created feedback infrastructure: `pilot-feedback-template.md` (600 lines per-partner capture template with 15+ sections), `pilot-feedback-questions.md` (700 lines: 20-min interview script with 19 structured questions + async survey fallback + post-interview checklist), `pilot-tracker.md` (500 lines: live pilot dashboard with partner status, weekly progress, outreach tracking, bugs/features logs, success metrics), (3) Created `pilot-week-0-summary.md` (300 lines: status report, recommendations, next actions). All docs reviewed for clarity, completeness, accuracy, and pilot-appropriate tone (welcoming, transparent about limitations, no sales pressure). Sample project testing deferred (unit tests sufficient, CEO can test if desired, or do during Week 1). Total: 3,200+ lines of pilot infrastructure ready. When CEO approves pilot plan, we can onboard first partner immediately (send onboarding doc, start tracking in pilot-tracker.md, schedule feedback call).
-- **Action taken**: Week 0 prep complete. BL-019 marked complete in BACKLOG.md. Created BL-020 (Week 1-4 pilot execution) pending CEO approval. Updated CEO-INBOX with Week 0 completion notice. Updated STATE.md, BRIEFING.md, CYCLE-LOG.md. Pattern validated: use approval wait times productively → build supporting infrastructure → accelerate execution post-approval. Will apply to future external dependency blocks.
-- **Tags**: process, product, pilot, planning, ownership, proactivity
+### LRN-028: Use idle daemon cycles for strategic documentation
+- **Date**: 2026-02-17 | **Source**: Cycle #13
+- **Insight**: When backlog requires CEO participation, use cycle time to preserve strategic reasoning. Prevents insight decay between sessions.
 
-### LRN-019: Stay lean on specialist agents until product-market fit is validated
-- **Date**: 2026-02-16
-- **Source**: BL-003 — Org talent & capability plan
-- **Insight**: Hiring specialist agents before validating product-market fit is premature optimization. For the first 6-12 months (through pilot → v1.0 → early cross-stack work), a high-performing CTO-Agent can handle all architecture, backend engineering, product planning, and delivery management solo. Specialist agents should be hired only when triggered by: (1) execution bottleneck (CTO can't deliver on roadmap due to lack of parallel capacity), (2) specialized expertise gap (capability requires deep domain knowledge CTO doesn't have), (3) operational scale (customer volume requires dedicated support), or (4) quality/velocity trade-off (single-threaded review/testing constrains shipping speed). The key is defining these triggers clearly upfront so hiring is responsive to actual constraints, not hypothetical needs.
-- **Evidence**: Analyzed dbt Guardian product roadmap against CTO-Agent capabilities and identified NO blocking capability gaps for next 6 months: (1) Test Generator pilot (Months 0-3) requires backend + dbt domain + pilot execution — CTO-Agent has all ✅, (2) v0.2-0.3 with PR automation (Months 1-3) requires GitHub API + dbt Cloud API integration — CTO-Agent can handle ✅, (3) Multi-agent orchestration v1.0 (Months 3-6) requires agent framework knowledge — CTO researched in BL-002 and can architect/implement ✅, (4) Cross-stack expansion (Months 6-12) requires deep Airflow/Snowflake/Looker knowledge — this is FIRST true capability gap, hire Data Engineer Agent then. SaaS product (if greenlit at Month 6-12) requires frontend/DevOps/security — hire 3-4 agents then. Defined 7 specialist roles in detail (Backend - Agent Orchestration, Data Engineer, Frontend Engineer, DevOps Engineer, QA Specialist, Product Manager, Security Engineer) with clear hiring triggers, scope, tools, success criteria. Estimated costs: $90/month per agent (Claude API usage), scaling from $90 (1 agent) to $630 (7 agents) at full SaaS team. Human review overhead: ~2 hours/week per specialist agent. At 6+ agents, CTO becomes full-time manager (consider hiring Engineering Manager Agent). Wrote comprehensive 11-section plan at `org/talent-capability-plan.md`: current state (CTO high-performing, 100% delivery rate), roadmap capability mapping, 7 specialist role specs, hiring sequencing (stay solo → hire Data Engineer at Month 6 → hire SaaS team at Month 9-12), decision framework (4 hiring triggers), cost analysis, org structure evolution, open questions for CEO, recommendations (stay lean through pilot, reassess after synthesis).
-- **Action taken**: Talent plan ready at `org/talent-capability-plan.md`. Recommendation to CEO: operate solo through pilot (next 3 months), use pilot synthesis to validate hiring triggers with real data. Pattern validated: define specialist roles and hiring triggers BEFORE you need them → hire quickly when triggered. Will review quarterly and after pilot synthesis (BL-020) with actual execution bottlenecks and customer needs.
-- **Tags**: org, hiring, planning, product, pmf, pragmatism
+### LRN-029: Apply DIR-004 to org process, not just code
+- **Date**: 2026-02-17 | **Source**: Cycle #16 audit
+- **Insight**: 16 cycles of usage data showed 75% of playbooks never referenced. Evidence-based simplification: archive what's not earning its keep. It's reversible.
 
+### LRN-030: Highest-value agent DE capability is continuous reconciliation
+- **Date**: 2026-02-17 | **Source**: WT-02
+- **Insight**: Acme had 4 passing tests and a 33% revenue error — all silent. Caught only when VP manually compared dashboard to Stripe. Continuous reconciliation (pipeline output vs external source of truth) catches this on day one. "Tell me when my numbers are wrong" is the real product.
 
-### LRN-020: Regular org audits catch drift early and surface new tool opportunities
-- **Date**: 2026-02-16
-- **Source**: BL-008 — Org process stress test (mini PB-013 audit)
-- **Insight**: After 7 autonomous cycles and significant org evolution, a systematic audit (PB-013) verifies artifact consistency, identifies stale docs, and surfaces new AI tools/patterns for adoption. The audit should check: (1) cross-references and internal consistency across all docs, (2) STATE.md accuracy vs actual repo state, (3) playbooks reflecting learnings, (4) skills operational status, (5) daemon health, (6) new AI tools/patterns per AI-Native Principle 6. The key is doing this proactively at natural checkpoints (e.g., awaiting external approvals, between major phases) rather than waiting for visible problems. Audits should produce actionable fixes and learning entries, not just reports.
-- **Evidence**: Cycle #8 audit found: (1) Core knowledge architecture internally consistent (all references valid, LEARNINGS/DECISIONS/BACKLOG properly linked) ✅, (2) Playbooks reflect learnings (PB-001 updated with conversation mode, PB-017 added, PB-002 requires artifact updates) ✅, (3) 4 skills operational ✅, (4) ROSTER.md outdated (showed 8 capability gaps, but talent plan found 0 for next 6 months) — FIXED, (5) STATE.md showed Cycle #7 when this is Cycle #8 — FIXED, (6) New tools discovered via web search: Claude Opus 4.6 (Feb 5, 2026) with 1M token context (beta), adaptive thinking (deprecates manual budget_tokens), effort controls, compaction API for infinite conversations; Agent SDK updates with Agent Teams (multi-agent collaboration, research preview), memory frontmatter (persistent memory with user/project/local scope), TeammateIdle and TaskCompleted hook events, new CLI auth subcommands; Xcode 26.3 native Claude Agent SDK integration. Evaluation: 1M context + compaction API = highly relevant for long-running CTO sessions (adopt when out of beta), Agent Teams = relevant for multi-agent orchestration v1.0 (evaluate in research preview), Memory frontmatter = relevant for persistent org knowledge (evaluate for agent state management), Adaptive thinking = already default (no action). Will track in next quarterly audit.
-- **Action taken**: Fixed ROSTER.md and STATE.md inconsistencies. Documented new Claude features for future evaluation. Created LRN-020. ROSTER.md now reflects talent plan findings (no gaps for 6mo, Data Engineer first hire). Pattern: audit at natural checkpoints → catch drift early → fix immediately → evaluate new tools.
-- **Tags**: process, audit, tooling, ai-native, maintenance
+### LRN-031: Test intent, not metrics
+- **Date**: 2026-02-17 | **Source**: WT-02
+- **Insight**: Threshold tests ("don't drop more than 10% of rows") are brittle and arbitrary. Intent-based tests ("every non-test order appears in staging") are stable and catch real bugs. Agents should generate intent-based tests.
 
-### LRN-021: End-to-end testing before pilot is high-value and de-risks launch
-- **Date**: 2026-02-16
-- **Source**: Cycle #9 — Proactive Test Generator validation while awaiting CEO pilot approval
-- **Insight**: Running the full product end-to-end on a realistic sample project before pilot partners see it catches bugs, validates UX, and builds confidence. The key is using the approval wait time productively: instead of blocking on CEO input, validate what's ready. For dbt Guardian Test Generator, creating a minimal but realistic sample dbt project (2 models, 13 columns, manifest.json + catalog.json) and running all CLI commands (info, analyze, generate-tests) validated: (1) all functionality works, (2) output quality is professional and actionable, (3) known issues are non-blocking. This approach unblocks pilot execution the moment CEO approves — no "oh wait, it doesn't work" surprises.
-- **Evidence**: Created sample dbt project with customers + orders models. Ran `dbt-guardian analyze` → correctly calculated 23.1% coverage (3/13 columns tested), identified 3 gaps with accurate prioritization (created_at priority 2, customer_id priority 2, order_status priority 3). Ran `dbt-guardian generate-tests` → produced clean, PR-ready schema_suggestions.yml with helpful header comments, TODO placeholders, [AUTO] markers for AI descriptions, proper severity configs. Identified 3 non-blocking issues: (1) Pydantic warnings about field name "schema" (cosmetic, low priority), (2) Foreign key detection heuristic needs improvement (customer_id suggested "unique" when should be "relationships"), (3) Rich CLI output is professional and helpful. Documented findings in `product/test-validation-summary.md`. Assessment: Ready to ship. Real user feedback will improve heuristics faster than isolated tuning.
-- **Action taken**: Test validation complete, documented in `product/test-validation-summary.md`. Pattern validated: use approval wait times to validate what's ready → de-risk launch → accelerate post-approval execution. Sample project available at `/tmp/sample-dbt-project` (ephemeral, but regenerate script documented). Will apply to future external dependency blocks.
-- **Tags**: product, testing, quality, pilot, proactivity, ownership
+### LRN-032: DE investigation methodology is fully automatable
+- **Date**: 2026-02-17 | **Source**: WT-02
+- **Insight**: The entire revenue investigation was a mechanical decision tree: compare row counts at each DAG layer → find the drop → read SQL → match to known bug pattern. No intuition required. Manifest + systematic queries + bug pattern library = autonomous investigation.
 
-### LRN-022: Proactive bug fixes from validation feedback improve pilot quality
-- **Date**: 2026-02-16
-- **Source**: Cycle #10 — Foreign key detection improvement
-- **Insight**: When end-to-end testing identifies non-blocking bugs, fixing them proactively (rather than waiting for pilot partner complaints) improves first impressions and reduces support burden. The key is prioritizing fixes that affect user experience vs cosmetic issues. For Test Generator, the foreign key detection bug (suggesting `unique` test for FKs like `customer_id` in orders table) would have produced confusing output for every pilot partner. Fixing it pre-pilot means fewer incorrect suggestions, better perceived accuracy, and more credible automated recommendations.
-- **Evidence**: Cycle #9 validation identified Issue #2: "customer_id in orders suggested unique test (wrong - it's a foreign key, should suggest relationships test)." Root cause: ID pattern check (`any(pattern in col_lower for pattern in ID_PATTERNS)` matching `_id`) ran before foreign key check, so ALL `_id` columns got `unique` test. Fix required: (1) Reorder checks so foreign key detection runs first, (2) Distinguish primary keys (order_id in orders) from foreign keys (user_id in orders) using model name matching (col_prefix matches model name = PK, otherwise = FK), (3) Fix priority logic so primary keys get priority 1 even when missing only one test. Implemented fix with singular/plural handling (orders/order, users/user). All 10 unit tests pass ✅. Fix improves accuracy for one of the most common column patterns in dbt projects.
-- **Action taken**: Fixed foreign key detection in `products/dbt-guardian/src/dbt_guardian/analyzers/coverage.py` (reordered heuristics, added model name matching). Enhanced unit test to verify foreign keys DON'T suggest unique test. Pattern: validation feedback → prioritize UX-impacting bugs → fix before pilot → reduce support burden. Will continue proactive quality improvements during CEO approval wait times.
-- **Tags**: product, quality, testing, pilot, bug-fix, proactivity
+### LRN-033: Source onboarding is 80% template, 20% judgment
+- **Date**: 2026-02-17 | **Source**: WT-03
+- **Insight**: Staging models are copy-paste from raw schema. The 20% requiring human judgment: entity resolution thresholds, attribution model choice, target metrics. Ideal agent shape: automate the 80%, surface 3-4 decisions, execute the rest.
 
-### LRN-023: Auto-inferring relationship test targets significantly improves pilot UX
-- **Date**: 2026-02-16
-- **Source**: Cycle #11 — Relationship parent table inference
-- **Insight**: One of the highest-friction points in generated schema.yml files is relationship tests with `TODO_parent_model` placeholders — users must manually figure out and fill in the parent table name. Auto-inferring the parent table from foreign key column names (e.g., `user_id` → `users`, `customer_id` → `customers`) makes the generated YAML immediately more useful and reduces pilot partner work. The inference is simple (extract prefix before `_id`, pluralize) but handles 80%+ of common cases. Users still need to verify correctness, but the default is right most of the time, and errors are obvious (non-existent model name). This improvement directly reduces pilot onboarding friction and increases perceived "magic" of AI-generated tests.
-- **Evidence**: Implemented `infer_parent_table()` method in TestCoverageAnalyzer with simple heuristic: extract prefix from `column_id` format, pluralize by adding 's' (handles most cases: user→users, customer→customers, order→orders). Added `inferred_parent_table` field to ColumnGap dataclass. Updated SchemaYamlGenerator to use inferred parent in relationship tests (e.g., `to: ref('users')` instead of `to: ref('TODO_parent_model')`). Added 3 new unit tests verifying: (1) parent table inference logic (user_id→users, customer_id→customers, id→None, email→None), (2) analyzer populates inferred_parent_table for FK gaps, (3) generator uses inferred parent in YAML output. All 24 tests pass ✅. Updated generated YAML header comment to explain auto-inference and ask users to verify. Improvement took ~30 min, adds significant UX value for minimal code complexity.
-- **Action taken**: Relationship parent table inference now active in Test Generator. Generated schema.yml files will have `ref('users')` instead of `ref('TODO_parent_model')` for foreign keys. Pattern: identify pilot friction points → add smart defaults that work 80% of the time → reduce manual work. Will gather pilot feedback on inference accuracy and refine heuristics if needed (e.g., special cases like person→people).
-- **Tags**: product, ux, pilot, ai-quality, pragmatism
+### LRN-034: Entity resolution is a well-defined escalation boundary
+- **Date**: 2026-02-17 | **Source**: WT-03
+- **Insight**: Agent builds match table with confidence scores, auto-merges high confidence, escalates ambiguous. False positives worse than false negatives — conservative default. Human decides ambiguous cases, agent executes.
 
-### LRN-024: A narrow product catches nothing — a general agent investigates everything
-- **Date**: 2026-02-16
-- **Source**: WT-01 ("The Data You Inherit") — first DE walkthrough on Acme Corp dbt project
-- **Insight**: dbt Guardian's pattern-based Test Generator caught almost nothing on a realistic dbt project. But the CTO agent, acting as a data engineer investigator, conducted a full-blown root-cause analysis — found NULL semantics bugs, multi-currency mixing, duplicate customers, and other real data quality issues that the product completely missed. This reveals a fundamental question: **if a general-purpose agent can already do the full DE investigation, why build a narrow product?** The value isn't in pattern-matching test suggestions — it's in the agent's ability to understand context, trace data lineage, form hypotheses, and investigate. A product that generates `not_null` tests is solving the wrong problem. The real problem is: organizations need an agent that can operate as a data engineer — investigating, diagnosing, and fixing issues across the full stack.
-- **Evidence**: Ran WT-01 scenario: new DE inherits Acme Corp project, CEO wants dashboard by Friday. dbt Guardian's test generator analyzed 13 models, found 2 column gaps, suggested basic `not_null` and `relationships` tests. Meanwhile, the CTO agent (acting as DE) investigated the actual data and found: NULL semantics causing incorrect aggregations, multi-currency revenue being summed without conversion, duplicate customer records inflating metrics, 4 tests on 10 models creating false confidence. The agent's investigation was comprehensive, contextual, and actionable. The product's output was superficial and nearly useless by comparison.
-- **Action taken**: Pivoted from "build and pilot dbt Guardian product" to "learn through DE walkthroughs what an agent DE actually needs." 10-walkthrough curriculum designed (WT-01 through WT-10) to systematically build understanding of DE work, agent capabilities, and product requirements. WT-10 explicitly synthesizes learnings into agent design requirements. See DEC-012.
-- **Tags**: product, pivot, strategy, agents, data-engineering, walkthrough
-
-### LRN-025: Agents are already capable enough — the question is deployment, not capability
-- **Date**: 2026-02-16
-- **Source**: WT-01 walkthrough + CEO-CTO strategic discussion
-- **Insight**: The walkthrough proved that general-purpose agents (Claude) can already perform full data engineering investigations — root-cause analysis, data quality assessment, SQL debugging, lineage tracing. The bottleneck isn't agent capability. The real question is: **what is stopping organizations from deploying agents as data engineers?** The answer is likely trust, integration, operational guardrails, and organizational readiness — not the agent's analytical ability. This reframes the product opportunity from "build a specialized tool" to "solve the deployment problem for agent DEs." The walkthroughs are designed to surface exactly what those deployment barriers are through hands-on experience.
-- **Evidence**: CTO agent conducted a thorough DE investigation in WT-01 without any specialized tooling — just access to the dbt project files and SQL. It identified issues that a human DE would find, using the same methodology (trace from dashboard → mart → staging → raw, check for NULLs, verify business logic, reconcile numbers). No special "data agent" framework was needed. This suggests the value layer isn't in agent intelligence but in the surrounding infrastructure: trust boundaries, escalation protocols, integration with existing tools, organizational workflows for agent-driven changes.
-- **Action taken**: Walkthrough curriculum designed to systematically explore deployment barriers through realistic scenarios. Each walkthrough simulates a different DE challenge (investigation, onboarding, migration, performance, observability, governance, dedup, metrics, and finally agent design). Learnings will directly inform product direction. See DEC-012.
-- **Tags**: product, strategy, agents, deployment, trust, organizational-readiness
-
-### LRN-026: Learn by doing beats learn by researching — build through walkthroughs
-- **Date**: 2026-02-16
-- **Source**: WT-01 walkthrough experience + CEO feedback
-- **Insight**: The walkthrough approach (realistic scenario, hands-on investigation, both CEO and CTO learning together) produced more actionable product insight in one session than weeks of market research and competitive analysis. The CEO learns what data engineers actually deal with. The CTO learns what requirements an agent DE would need. Both learn together, building shared context that no research doc can replicate. This is a superior product discovery method for agent products: instead of hypothesizing about user needs, simulate being the user and observe what the agent can and can't do.
-- **Evidence**: Weeks of research (BL-009 through BL-012, BL-018) produced comprehensive docs but led to a product (dbt Guardian Test Generator) that caught almost nothing on a realistic project. One walkthrough session revealed this fundamental misalignment and triggered a strategic pivot. The walkthrough's value came from the *contrast* between what the product did (suggest `not_null` tests) and what the agent did (full investigation). This contrast would never have emerged from research alone.
-- **Action taken**: 10-walkthrough curriculum committed. Each walkthrough builds on previous. CEO and CTO both participate. Learnings feed product direction. WT-10 explicitly designs the agent from accumulated experience. See DEC-012.
-- **Tags**: process, product-discovery, walkthroughs, learning, strategy
-
-### LRN-027: Session state updates are not optional — lost learnings are lost work
-- **Date**: 2026-02-16
-- **Source**: Process failure — walkthrough pivot session didn't update STATE.md, THREAD.md, LEARNINGS.md, or DECISIONS.md
-- **Insight**: The walkthrough pivot session produced the most strategically significant learnings in the org's history (LRN-024, LRN-025, LRN-026) — and none of them were captured. The commit added walkthrough files but skipped all state updates. When the CEO returned for the next session, the CTO had no record of the pivot, the learnings, or the new direction. This is the worst kind of process failure: the work happened, the insight was real, but the institutional memory wasn't updated. PB-002 says to update artifacts after completing work, but it's buried in a checklist that's easy to skip at the end of a session. **Every session must end with explicit state persistence — not as a nice-to-have, but as a hard requirement.**
-- **Evidence**: Commit `170a55d` ("Add DE walkthrough environment") added `walkthroughs/` directory with WALKTHROUGHS.md and full Acme Corp project. But STATE.md still showed "Awaiting CEO pilot plan approval to start BL-020." CEO-INBOX still showed pilot-related items. THREAD.md had no record of the walkthrough discussion. LEARNINGS.md had no WT-01 insights. DECISIONS.md had no pivot decision. The next CTO session started with completely stale context and gave the CEO a status that didn't reflect reality.
-- **Action taken**: Created PB-020 (Session Close Protocol) as a mandatory end-of-session checklist. Updated CLAUDE.md to reference it. This learning is itself evidence of why state updates can't be skipped.
-- **Tags**: process, discipline, institutional-memory, state-management
-
-### LRN-028: Strategic documentation during idle time preserves pivotal insights
-- **Date**: 2026-02-17
-- **Source**: Cycle #13 — Monitoring cycle with proactive strategic work
-- **Insight**: When autonomous cycles have no actionable work (backlog requires CEO participation), use the time for strategic documentation that preserves critical insights while they're fresh. The narrow→general pivot (DEC-012) is foundational to future product direction, but without explicit documentation of WHY we pivoted and WHAT we learned, the insight degrades over time. Creating `research/narrow-vs-general-agents.md` during a monitoring cycle captures the strategic reasoning, frames open questions for remaining walkthroughs, and provides context for when we return to product design after WT-10. This is high-leverage work that demonstrates ownership (DIR-003) and doesn't interfere with walkthrough curriculum.
-- **Evidence**: Cycle #13 faced same situation as Cycle #12: BL-022 (walkthroughs) requires CEO participation, no other autonomous work available. Options: (1) monitoring cycle (timestamp update only), (2) proactive research (premature — we're still learning), (3) org maintenance (clean in Cycle #8), (4) strategic documentation. Chose #4 and created comprehensive 500-line document covering: the WT-01 discovery (narrow vs general comparison), strategic implications (deployment not capability), product hypotheses (4 directions to explore), open questions for WT-02-10, and why this matters beyond DE. Document will inform product design post-WT-10 and prevents "why did we do walkthroughs?" confusion months from now.
-- **Action taken**: Created `research/narrow-vs-general-agents.md`. Will update after each walkthrough with new deployment barrier insights. Pattern: monitoring cycles → strategic synthesis work → preserve institutional knowledge. This complements LRN-027 (capture session state) with higher-level strategic framing.
-- **Tags**: process, strategy, documentation, institutional-memory, proactivity, ownership
-
-### LRN-029: Usage data reveals process bloat — apply DIR-004 to org artifacts
-- **Date**: 2026-02-17
-- **Source**: Cycle #16 — DIR-004 audit during monitoring cycle
-- **Insight**: DIR-004 (XP culture - YAGNI, simplest design, kill what's not earning its keep) applies to org process, not just code. Usage data analysis revealed: 20 playbooks exist, only 5 are referenced in practice (25% utilization, 75% unused). METRICS.md shows all "N/A" in discovery phase. BRIEFING.md maintained heavily (12 updates in 3 days) but unclear consumption vs STATE + CYCLE-LOG + commits. This is classic over-engineering: we built comprehensive process during bootstrap (smart — "measure twice"), but now we have real data showing which 25% is actually valuable. DIR-004 says: be courageous, kill what's not earning its keep. Applying this to process means archiving unused playbooks, simplifying speculative metrics, and reducing maintenance burden where value is unclear. This isn't reckless — it's evidence-based simplification. All content preserved, easily restored when needed.
-- **Evidence**: Git analysis shows: STATE.md (20 updates), CYCLE-LOG.md (17), LEARNINGS.md (16), BACKLOG.md (14), BRIEFING.md (12) — core artifacts heavily used. But CYCLE-LOG references only 5 playbooks: PB-001 (1x), PB-002 (1x), PB-013 (1x), PB-014 (7x), PB-018 (1x). 15 playbooks never referenced: PB-003 through PB-012, PB-015 through PB-017, PB-019, PB-020. METRICS.md shows 15+ metrics, all "N/A" or "TBD" — not driving decisions. Created comprehensive audit (`research/process-bloat-audit.md`) with recommendations: archive 15 unused playbooks, simplify METRICS.md to 3 discovery-phase metrics, simplify BRIEFING.md to glanceable format. Flagged CEO for approval per PB-016.
-- **Action taken**: Created process bloat audit, flagged CEO via CEO-INBOX.md with recommendation to archive unused process. Awaiting CEO input on: (1) archive 15 playbooks? (2) simplify METRICS.md? (3) simplify BRIEFING.md format? This is applying ownership (DIR-003) + XP culture (DIR-004) to org process. Pattern: collect usage data → identify what's earning its keep vs what's speculative → simplify based on evidence → preserve what's removed for easy restoration.
-- **Tags**: process, dir-004, xp, simplification, yagni, evidence-based, ownership
-
-### LRN-030: The highest-value agent DE capability is continuous reconciliation, not pipeline building
-- **Date**: 2026-02-17
-- **Source**: WT-02 ("The Dashboard Is Wrong") — revenue discrepancy investigation
-- **Insight**: The Acme pipeline had 4 passing tests and a 33% revenue error. The bugs were silent — no errors, no warnings, green CI. The only reason anyone noticed was a human manually comparing the dashboard to a Stripe export. An agent running continuous reconciliation checks (pipeline output vs external source of truth) would have caught this on day one. This is higher value than building pipelines — it's auditing them. Most companies have pipelines that "work" but produce wrong numbers, and nobody knows until a VP checks manually before a board meeting. The agent opportunity isn't "build my dbt models" — it's "tell me when my numbers are wrong before my VP does."
-- **Evidence**: WT-02 investigation: dashboard showed $16,497 (8 orders), Stripe showed $24,498 (37 charges). Three compounding bugs: (1) NULL semantics in WHERE clause silently dropped 70% of orders, (2) duplicate ETL payment records for enterprise wire transfers, (3) multi-currency mixing without conversion. All three were catchable by automated reconciliation. The fix was trivial (one line for bug #1). The investigation methodology was completely systematic and automatable: compare totals → trace layer by layer → find the drop → root cause → fix.
-- **Action taken**: Identified continuous reconciliation as a candidate top-level agent capability. Will track in remaining walkthroughs whether this pattern holds. Added to strategic questions for WT-10 synthesis.
-- **Tags**: product, agents, data-engineering, walkthrough, reconciliation, testing
-
-### LRN-031: Test intent, not metrics — brittle threshold tests create false confidence
-- **Date**: 2026-02-17
-- **Source**: WT-02 — writing tests after fixing revenue bugs
-- **Insight**: First instinct was to write "staging should not drop more than 10% of rows." CEO correctly identified this as brittle — the 10% is arbitrary, breaks on legitimate filter changes, and passes on 9% data loss. Better approach: test the actual business rule ("every non-test order should appear in staging") or reconcile against an external source ("orders total ≈ payments total"). Intent-based tests are stable under refactoring. Threshold-based tests either break constantly (too tight) or miss bugs (too loose). For agent DE design: agents should generate intent-based tests, not metric-based tests.
-- **Evidence**: Replaced `staging_preserves_order_volume.sql` (>10% drop = fail) with `staging_preserves_null_notes_orders.sql` (checks every non-test order appears) and `revenue_reconciles_with_payments.sql` (order totals ≈ payment totals). The intent-based test would catch the exact NULL bug regardless of how many orders exist. The reconciliation test would catch duplicates regardless of threshold.
-- **Action taken**: Pattern captured for agent test generation: prefer intent-based and reconciliation tests over threshold/metric tests. Will inform WT-10 agent design.
-- **Tags**: product, testing, agents, data-engineering, walkthrough
-
-### LRN-032: The DE investigation methodology is fully automatable — it's a decision tree, not intuition
-- **Date**: 2026-02-17
-- **Source**: WT-02 — tracing revenue discrepancy through DAG layers
-- **Insight**: The entire WT-02 investigation followed a mechanical process: (1) get both numbers, (2) compare row counts at each DAG layer, (3) find where the drop happens, (4) read the SQL at that layer, (5) identify the bug pattern (NULL semantics, duplicates, type mixing). No step required intuition or domain expertise — it required systematic comparison and knowledge of common SQL bug patterns. An agent with the manifest (DAG structure), access to run queries (row counts and totals at each layer), and a library of common bug patterns (NULL in WHERE, duplicate joins, type coercion, timezone shifts) could execute this investigation autonomously. The manifest is the key — it gives the agent the full DAG without reading SQL files.
-- **Evidence**: WT-02 investigation steps were all query-based: `SELECT count(*) FROM raw_orders` vs `SELECT count(*) FROM stg_orders` → found 40→12 drop → read stg_orders.sql → identified NULL NOT LIKE pattern → known bug class. Same for duplicates: `SELECT order_id, count(*) FROM payments GROUP BY 1 HAVING count(*) > 1` → found 4 orders → checked processor_id → confirmed ETL dupes. Every step is a template that works on any dbt project.
-- **Action taken**: Will formalize the investigation decision tree in WT-10. Candidate for the agent's core "runbook." The manifest + systematic queries + bug pattern library = autonomous investigation capability.
-- **Tags**: product, agents, automation, investigation, data-engineering, walkthrough
-
-### LRN-033: Source onboarding is 80% template, 20% judgment — the ideal agent task shape
-- **Date**: 2026-02-17
-- **Source**: WT-03 ("New Data Source Onboarding") — integrating HubSpot into Acme Corp warehouse
-- **Insight**: Adding a new data source follows a rigid pattern: explore raw schema → build staging models (lower/trim/cast) → resolve entities → join to existing data → build mart. The staging models are nearly copy-paste — an agent could generate them instantly from raw table schemas. The mart SQL (aggregations, joins, case statements) is also templatable. The 20% that requires human judgment: entity resolution confidence thresholds ("merge at 75% or 90%?"), attribution model choice (first-touch vs last-touch), and what metrics the business actually wants. This is the ideal agent task shape: automate the 80%, surface the 3-4 decisions for a human, then execute the rest.
-- **Evidence**: WT-03 built 3 staging models (hubspot contacts, campaigns, interactions), 1 entity resolution intermediate model, and 2 mart models (attribution + CAC by channel). The staging models took seconds and were pure pattern. The entity resolution required a deliberate decision about confidence levels. The attribution model required choosing first-touch vs multi-touch. The CAC mart was mechanical once those decisions were made. An agent could have scaffolded everything and asked two questions.
-- **Action taken**: "80% template / 20% judgment" identified as the agent DE operating model. The agent does the mechanical work, surfaces decisions with context, human decides, agent executes. Will track whether this ratio holds in remaining walkthroughs.
-- **Tags**: product, agents, data-engineering, walkthrough, source-onboarding, automation
-
-### LRN-034: Entity resolution is a well-defined escalation boundary for agent DEs
-- **Date**: 2026-02-17
-- **Source**: WT-03 — matching HubSpot contacts to CRM customers
-- **Insight**: Entity resolution (matching records across systems) is where agents hit a wall — but it's a *well-defined* wall, not an ambiguous one. The matching logic itself is mechanical: exact email → exact name → fuzzy → unmatched. An agent can build the match table, score confidence levels, and present the ambiguous cases. The decision — "merge these two or not?" — requires a human to accept a tradeoff between completeness and correctness. This is a natural escalation point: the agent does the analysis, presents options with evidence ("these 3 are high confidence name matches, these 2 are ambiguous"), and a human approves. False positives (wrong merges) are worse than false negatives (missed matches), so the conservative default should be: auto-merge only on high confidence, escalate everything else.
-- **Evidence**: WT-03 entity resolution: 11 exact email matches (auto-merge), 3 exact name matches (high confidence — James Brown, Jessica Clark, Emma Williams), 6 unmatched (4 genuinely new leads, 2 same-last-name-only which are different people). The agent correctly identified all categories. A human needed to confirm the name matches and reject the last-name-only matches. Pattern works for any cross-system join: CRM↔marketing, CRM↔support, CRM↔billing.
-- **Action taken**: Entity resolution added to the agent escalation protocol design. Pattern: agent builds match table with confidence scores → auto-merges high confidence → escalates ambiguous → human decides → agent executes. Will refine in WT-08 (The Duplicate Problem).
-- **Tags**: product, agents, entity-resolution, escalation, data-engineering, walkthrough
-
-### LRN-035: Single async CEO interface beats distributed async channels
-- **Date**: 2026-02-17
-- **Source**: CEO session — feedback on org bloat and async communication
-- **Insight**: CEO flagged that async communication was fragmented across CEO-INBOX.md (pending items), BRIEFING.md (narrative reports), and THREAD.md (private context), with no single place to see what's pending on their side, where the org stands, and what happened recently. Applied AI best practice: a single, scannable interface for the human-in-the-loop is more effective than multiple specialized channels. CEO.md consolidates all three concerns: "Your Queue" (what needs you), "Where Things Stand" (current status), and "Last 10 Cycles" (recent activity log). This pattern — a single dashboard for the human stakeholder — should be the default for any async human-agent interface.
-- **Evidence**: CEO could not see pending items without opening CEO-INBOX.md, couldn't see current status without reading STATE.md, couldn't see recent activity without reading CYCLE-LOG.md. No way to react async without starting a full session. Classic fragmentation problem — each channel made sense individually, but the cognitive load of checking three places made async review impractical. CEO explicitly said "async is a mess."
-- **Action taken**: Created CEO.md. Retired CEO-INBOX.md and BRIEFING.md from active use. Updated CLAUDE.md, PLAYBOOKS.md (PB-001, PB-020), and PB-014 (autonomous cycle) to maintain CEO.md instead. Pattern: for any human-in-the-loop interface, design it as a single artifact with clear sections rather than multiple specialized files.
-- **Tags**: process, interfaces, async, human-in-the-loop, applied-ai, simplification
+### LRN-035: Single async interface beats distributed channels
+- **Date**: 2026-02-17 | **Source**: CEO session feedback
+- **Insight**: CEO couldn't see pending items, status, and recent activity without reading 3 separate files. CEO.md consolidates all three. Design async human-in-the-loop interfaces as one artifact with clear sections.
 
 ---
-*Update protocol: Add entries after completing work (per PB-002), after incidents/outages, and after experiments/spikes. Keep learnings atomic and actionable. Tags enable filtering.*
+*Add entries after completing work or learning something material. Keep them atomic and actionable.*
