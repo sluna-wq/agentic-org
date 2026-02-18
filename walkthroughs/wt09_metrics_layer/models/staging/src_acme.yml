@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: raw_accounts
+        description: "Customer account master from CRM — one row per account"
+      - name: raw_contracts
+        description: "Subscription and pilot contracts — includes annual_value, type (recurring/pilot/professional_services), status"
+      - name: raw_invoices
+        description: "Invoice records — one per billing cycle per contract — includes type (subscription/setup/credit) and status (paid/pending/void)"
+      - name: raw_payments
+        description: "Payment records linked to invoices — includes refund flag"

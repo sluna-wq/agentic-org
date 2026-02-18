@@ -1,0 +1,107 @@
+version: 2
+
+models:
+  - name: stg_contracts
+    description: "Staged contracts — one row per contract, with monthly_value derived from annual_value"
+    columns:
+      - name: contract_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: account_id
+        description: "Foreign key to stg_accounts (via raw_accounts)"
+        tests:
+          - not_null
+      - name: start_date
+        description: "Contract effective start date"
+        tests:
+          - not_null
+      - name: end_date
+        description: "Contract effective end date (null = open-ended)"
+      - name: annual_value
+        description: "Total contract value per year (ACV), in dollars"
+        tests:
+          - not_null
+      - name: monthly_value
+        description: "Derived: annual_value / 12 — contract-basis monthly run rate (not the same as invoiced MRR)"
+        tests:
+          - not_null
+      - name: type
+        description: "Contract type: 'recurring', 'pilot', or 'professional_services'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['recurring', 'pilot', 'professional_services']
+      - name: status
+        description: "Contract lifecycle status: 'active', 'churned', 'pending'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['active', 'churned', 'pending']
+
+  - name: stg_invoices
+    description: "Staged invoices — one row per invoice, dates cast to date type"
+    columns:
+      - name: invoice_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: account_id
+        description: "Foreign key to account"
+        tests:
+          - not_null
+      - name: contract_id
+        description: "Foreign key to stg_contracts"
+        tests:
+          - not_null
+      - name: invoice_date
+        description: "Date the invoice was issued (accrual recognition date)"
+        tests:
+          - not_null
+      - name: amount
+        description: "Invoice amount in dollars"
+        tests:
+          - not_null
+      - name: type
+        description: "Invoice type: 'subscription', 'setup', or 'credit'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['subscription', 'setup', 'credit']
+      - name: status
+        description: "Invoice status: 'paid', 'pending', or 'void'"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['paid', 'pending', 'void']
+
+  - name: stg_payments
+    description: "Staged payments — refunded payments zeroed out (net basis)"
+    columns:
+      - name: payment_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: account_id
+        description: "Foreign key to account"
+        tests:
+          - not_null
+      - name: invoice_id
+        description: "Foreign key to stg_invoices"
+        tests:
+          - not_null
+      - name: payment_date
+        description: "Date cash was received (cash basis recognition date)"
+        tests:
+          - not_null
+      - name: amount
+        description: "Net payment amount — 0 when refunded=true, original amount otherwise"
+        tests:
+          - not_null
+      - name: refunded
+        description: "True if payment was fully refunded"
+        tests:
+          - not_null
