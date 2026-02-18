@@ -1,16 +1,16 @@
 {
   "cycle": 20,
-  "timestamp": "2026-02-18T17:20:08Z",
-  "duration_minutes": 7,
-  "duration_api_ms": 411348,
+  "timestamp": "2026-02-18T20:57:47Z",
+  "duration_minutes": 0,
+  "duration_api_ms": 678,
   "model": "sonnet",
-  "turns": 11,
-  "cost_usd": 1.9272596999999998,
+  "turns": 1,
+  "cost_usd": 0,
   "usage": {
-    "input_tokens": 11,
-    "cache_creation_input_tokens": 17109,
-    "cache_read_input_tokens": 139176,
-    "output_tokens": 11784,
+    "input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 0,
     "server_tool_use": {
       "web_search_requests": 0,
       "web_fetch_requests": 0
@@ -18,7 +18,7 @@
     "service_tier": "standard",
     "cache_creation": {
       "ephemeral_1h_input_tokens": 0,
-      "ephemeral_5m_input_tokens": 17109
+      "ephemeral_5m_input_tokens": 0
     },
     "inference_geo": "",
     "iterations": [],
