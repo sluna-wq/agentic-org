@@ -11,11 +11,13 @@ Four walkthroughs are ready — pick any one to start:
 
 Each has: full scenario narrative, seed data, dbt models with the bug in place, investigation queries, solution, verification, and postmortem. The agent lens section at the end of each README is where the real product insight lives.
 
-Research tracks (BL-023/024/026) still pending — daemon continues scaffolding remaining walkthroughs (WT-09/10) in parallel.
+Research tracks **done** — BL-023, BL-024, BL-026 completed this session while daemon was down. See research/ for artifacts. Daemon needs credits to resume WT-09/10 scaffolding (BL-025).
 
 ## Status
 
-Phase: DISCOVERY. WT-01 through WT-04 done (with you). WT-05, WT-06, WT-07, WT-08 ready. WT-09–10 pending scaffold.
+Phase: DISCOVERY. WT-01 through WT-04 done (with you). WT-05–08 ready. WT-09–10 pending scaffold (blocked on daemon credits). Research foundation complete: sdkification.md, product-thesis-v1.md, agent-toolset-spec.md all done.
+
+**Daemon**: DOWN (credits exhausted, 5 consecutive failures). Top up credits to restore.
 
 ## Last 10 Cycles
 
@@ -31,3 +33,4 @@ Phase: DISCOVERY. WT-01 through WT-04 done (with you). WT-05, WT-06, WT-07, WT-0
 | #19 | 2026-02-18 | Scaffolded WT-06 (data staleness) |
 | #20 | 2026-02-18 | Scaffolded WT-07 (PII everywhere) |
 | #21 | 2026-02-18 | Scaffolded WT-08 (The Duplicate Problem) |
+| CEO | 2026-02-19 | BL-023 (sdkification), BL-024 (product thesis v1), BL-026 (agent toolset spec) — all done |

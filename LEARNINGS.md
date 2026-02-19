@@ -100,4 +100,24 @@ Bootstrap and product-build learnings (2026-02-11 through 2026-02-15). Full text
 - **Insight**: The judgment calls that remain for humans in schema migrations aren't capability gaps — they're context gaps (does "platinum" mean the same as "enterprise" for commissions?) and standing gaps (who has the relationship to negotiate process change with the backend team). This residual shifts as agents get more context, but it doesn't disappear with capability improvements alone.
 
 ---
+
+## LRN-040: Daemon failure doesn't block research — CTO can execute in-session
+
+**Date:** 2026-02-19 | **Source:** This session (BL-023/024/026 execution while daemon was down)
+
+Daemon was dead (credits, 5 failures). Three research artifacts that were "pending daemon" were blocking downstream work. Instead of waiting for daemon restoration, executed all three in the CEO session using parallel sub-agents. BL-023 (2336 lines), BL-024 (thesis), BL-026 (42 tools) all done in one session.
+
+**Lesson**: Research tasks queued for daemon are executable by CTO-Agent in conversation mode when daemon is unavailable. Don't let daemon health gate CTO-level work. Re-evaluate "Owner: Daemon" assignments — use daemon for tasks that need autonomy between sessions, not tasks that are just "long-running."
+
+---
+
+## LRN-041: The data stack toolset surface is well-defined — 7 servers, 42 tools
+
+**Date:** 2026-02-19 | **Source:** BL-023 (sdkification.md) + BL-026 (agent-toolset-spec.md)
+
+The complete API surface for an agent DE is: dbt artifacts (local JSON, no network), warehouse SQL (INFORMATION_SCHEMA + QUERY_HISTORY), dbt Cloud REST API, Airflow/Prefect orchestrator API, Looker/Metabase BI API, dbt project filesystem, and computer use as explicit fallback. 42 tool signatures fully specified. Three documented gaps: cross-stack lineage, real-time schema events, unified credential management.
+
+**Lesson**: The agent DE is an SDK orchestrator, not a browser automation system. The toolset is bounded and buildable. Computer use is the exception (legacy BI, UI-only admin), not the default.
+
+---
 *Add entries after completing work or learning something material. Keep them atomic and actionable.*

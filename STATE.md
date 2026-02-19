@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-18 (Autonomous cycle #21 — WT-08 The Duplicate Problem scaffolded)
+> Last updated: 2026-02-19 (CEO session — BL-023, BL-024, BL-026 complete; daemon down on credits)
 
 ## Phase
 `DISCOVERY` — Pivoted from product shipping to walkthrough-driven discovery. Learning what an agent DE actually needs through hands-on experience.
@@ -23,11 +23,11 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 ## Active Work
 | ID | Description | Owner | Status | Last Activity | What's Next |
 |----|-------------|-------|--------|---------------|-------------|
-| BL-022 | DE Walkthroughs | CEO + CTO | In progress | WT-04 complete (agent lens) | WT-05/06 ready — CEO can start immediately |
-| BL-023 | SDKification research | Daemon | Pending | Kicked off cycle #17 | Research artifact in research/ |
-| BL-024 | Product thesis v1 | Daemon | Pending | Kicked off cycle #17 | Synthesis doc in research/ |
-| BL-025 | Scaffold WT-09, WT-10 | Daemon | In progress | WT-08 done (cycle #21) | WT-09 next |
-| BL-026 | Agent toolset spec | Daemon | Pending | Blocked on BL-023 | Tool signatures doc in research/ |
+| BL-022 | DE Walkthroughs | CEO + CTO | In progress | WT-04 complete (agent lens) | WT-05/06/07/08 ready — CEO can start immediately |
+| BL-023 | SDKification research | CTO | **Done** | 2026-02-19 CEO session | research/sdkification.md (2336 lines) |
+| BL-024 | Product thesis v1 | CTO | **Done** | 2026-02-19 CEO session | research/product-thesis-v1.md |
+| BL-025 | Scaffold WT-09, WT-10 | Daemon | Blocked | Daemon down (credits) | Resume when credits restored |
+| BL-026 | Agent toolset spec | CTO | **Done** | 2026-02-19 CEO session | research/agent-toolset-spec.md (2622 lines, 42 tools) |
 
 ## Walkthrough Progress
 | # | Walkthrough | Status |
@@ -44,12 +44,14 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | 10 | The Autonomous Agent | Pending |
 
 ## Blockers
-- None. Daemon running (21 cycles, all green). Walkthroughs need CEO participation.
+- **Daemon down**: 5 consecutive failures, credits exhausted. BL-025 (WT-09/10 scaffold) blocked until credits restored. BL-013 (fix cloud daemon) is the resolution path.
 
 ## Where CEO Can Help
 - **WT-05, WT-06, WT-07, WT-08 are ready**: Four scenarios queued up — slow query fan-out, silent staleness, PII leak, duplicate payments. Pull up any README to start.
+- **Top up API credits**: Unblocks daemon → BL-025 (WT-09/10 scaffold) resumes automatically.
 
 ## Recent Decisions
+- **DEC-015**: CTO executed BL-023/024/026 in CEO session (daemon down). Research artifacts produced in parallel via sub-agents. (2026-02-19)
 - **DEC-014**: Pull SDKification research forward — form factor insight (human as copilot) requires SDK/API-first architecture. Don't wait for WT-10. (2026-02-17)
 - **DEC-013**: Org simplification — collapsed async CEO interface to CEO.md, pruned PLAYBOOKS.md to 5 active playbooks, retired BRIEFING.md/METRICS.md/ROSTER.md from active use. (2026-02-17)
 - **DEC-012**: Pivot from dbt Guardian product to walkthrough-driven agent DE discovery. (2026-02-16)
@@ -63,9 +65,9 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 ## Health
 | Dimension | Status | Notes |
 |-----------|--------|-------|
-| Liveness | RUNNING | Daemon healthy — 21 cycles, 0 failures |
+| Liveness | DEGRADED | Daemon down — credits exhausted, 5 consecutive failures (cycle #20). Restore credits to resume. |
 | Discovery | ON_TRACK | WT-04 complete, WT-05/06/07 ready for CEO |
 | Quality | STRONG | Process gap identified + fixed (PB-020) |
 | Team | Minimal | CTO-Agent only |
-| Knowledge | Growing | Walkthroughs producing actionable insights |
+| Knowledge | ACCELERATING | BL-023/024/026 complete. Research foundation solid. 42-tool spec ready for build. |
 | Process | SIMPLIFIED | DIR-004 applied — bloat removed, CEO.md as single async interface |
