@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-03-01 (Daemon cycle #22 — WT-09 confirmed ready, WT-10 scaffolded; daemon restored)
+> Last updated: 2026-03-01 (Daemon cycle #23 — Product decision framework created; monitoring mode, awaiting CEO walkthroughs)
 
 ## Phase
 `DISCOVERY` — Pivoted from product shipping to walkthrough-driven discovery. Learning what an agent DE actually needs through hands-on experience.
@@ -28,6 +28,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | BL-024 | Product thesis v1 | CTO | **Done** | 2026-02-19 CEO session | research/product-thesis-v1.md |
 | BL-025 | Scaffold WT-09, WT-10 | Daemon | **Done** | 2026-03-01 (cycle #22) | WT-09 confirmed ready; WT-10 scaffolded |
 | BL-026 | Agent toolset spec | CTO | **Done** | 2026-02-19 CEO session | research/agent-toolset-spec.md (2622 lines, 42 tools) |
+| BL-027 | Product decision framework | Daemon | **Done** | 2026-03-01 (cycle #23) | research/product-decision-framework.md — synthesis + decision scaffold for post-WT-10 |
 
 ## Walkthrough Progress
 | # | Walkthrough | Status |
@@ -65,7 +66,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 ## Health
 | Dimension | Status | Notes |
 |-----------|--------|-------|
-| Liveness | GREEN | Daemon restored. Cycle #22 complete. All 10 walkthroughs scaffolded. |
+| Liveness | GREEN | Daemon active. Cycle #23 complete. All 10 walkthroughs scaffolded. |
 | Discovery | ON_TRACK | WT-04 complete, WT-05/06/07 ready for CEO |
 | Quality | STRONG | Process gap identified + fixed (PB-020) |
 | Team | Minimal | CTO-Agent only |
