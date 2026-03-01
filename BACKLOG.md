@@ -2,10 +2,10 @@
 
 Active items:
 - BL-022: DE Walkthroughs WT-05 through WT-10 (CEO + CTO) — WT-05/06/07/08 ready now
-- BL-025: Scaffold WT-09, WT-10 scenarios — blocked, daemon down (credits)
+- BL-025: Scaffold WT-09, WT-10 scenarios — **complete** (cycle #22)
 
 When Needed:
-- BL-013: Fix cloud daemon (credits + PAT) — NOW URGENT (5 consecutive failures)
+- BL-013: Fix cloud daemon (PAT refresh) — lower priority now that credits restored
 
 Done (this session):
 - BL-023: SDKification research ✓ — research/sdkification.md (2336 lines, 2026-02-19)
