@@ -14,6 +14,3 @@ Done (this session):
 
 Icebox:
 - BL-020: dbt Guardian pilot — on hold, may revive post-WT-10
-
-Icebox:
-- BL-020: dbt Guardian pilot — on hold, may revive post-WT-10
