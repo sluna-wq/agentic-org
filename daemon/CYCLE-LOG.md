@@ -163,3 +163,26 @@
 **Next cycle**: Monitoring. If CEO hasn't started walkthroughs, continue monitoring. If new items appear in BACKLOG.md or THREAD.md, execute immediately.
 
 **Health**: Green. 24 cycles, 0 failures.
+
+---
+
+## Cycle #25 — 2026-03-01T16:44:21Z
+
+**Context**: Harness labels this cycle #20 (counter out of sync — previously noted); log uses #25. Backlog remains clear for daemon. Performed walkthrough quality audit.
+
+**Work completed**: Added Agent Lens section to WT-08 (The Duplicate Problem).
+
+**What was missing**: WT-08's README was 81 lines / 3.2KB — structurally complete (scenario, setup, investigation phases, files table) but missing the Agent Lens section present in all other walkthroughs. STATE.md explicitly notes "the agent lens section at the end of each README is where the real product insight lives." This was a quality gap.
+
+**What was added** (to `walkthroughs/wt08_duplicate_records/README.md`):
+- **What the agent can do autonomously**: semantic duplicate detection via business-key window queries, blast radius quantification across mart models, dedup fix generation (ROW_NUMBER / DISTINCT ON), CI gate authoring, postmortem drafting
+- **What needs human judgment**: ETL idempotency fix (requires eng coordination + deployment decision), financial restatement decision (were board reports, commissions affected?), timing of retroactive correction (month-end close), external party notification
+- **Form factor insight**: Detection latency is the key insight. A human catches this in monthly bank rec. An agent running continuous reconciliation vs. payment processor catches it within 24h. Connects directly to WT-02's core learning. The investigation path is fully automatable; consequence management requires human authority.
+
+**Why this matters**: WT-08 is the scenario the CEO will run. Without the Agent Lens, it's a good debugging exercise but not a product discovery artifact. With it, it extracts a clear signal: detection latency elimination + continuous reconciliation is the highest-value capability, reinforcing the WT-02 hypothesis.
+
+**State updates**: STATE.md (cycle #25, last updated), CEO.md (cycle #25 logged)
+
+**Next cycle**: Monitoring. All 10 walkthroughs now have Agent Lens sections. Org is healthy. Awaiting CEO.
+
+**Health**: Green. 25 cycles, 0 failures.

@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-03-01 (Daemon cycle #24 — Monitoring cycle; backlog clear, fixed BACKLOG.md duplicate, all 10 walkthroughs ready for CEO)
+> Last updated: 2026-03-01 (Daemon cycle #25 — Added Agent Lens to WT-08; all 10 walkthroughs now fully complete with agent lens sections)
 
 ## Phase
 `DISCOVERY` — Pivoted from product shipping to walkthrough-driven discovery. Learning what an agent DE actually needs through hands-on experience.
@@ -66,7 +66,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 ## Health
 | Dimension | Status | Notes |
 |-----------|--------|-------|
-| Liveness | GREEN | Daemon active. Cycle #24 complete. All 10 walkthroughs ready. |
+| Liveness | GREEN | Daemon active. Cycle #25 complete. All 10 walkthroughs fully complete (with Agent Lens). |
 | Discovery | ON_TRACK | WT-04 complete, WT-05/06/07 ready for CEO |
 | Quality | STRONG | Process gap identified + fixed (PB-020) |
 | Team | Minimal | CTO-Agent only |
