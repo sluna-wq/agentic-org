@@ -1,0 +1,134 @@
+# metrics_canonical.yml
+#
+# CANONICAL METRIC DEFINITIONS — CFO-APPROVED 2026-01-31
+#
+# These definitions supersede the three conflicting definitions in
+# metrics_conflicted.yml. All dashboards and reports should reference
+# the 'monthly_revenue' metric defined here.
+#
+# DECISION SUMMARY (from CFO sign-off session 2026-01-31):
+#
+#   Decision 1 — Status filter:
+#     CHOSEN: completed + invoiced (Finance approach)
+#     RATIONALE: We report on an accrual basis to the board. Revenue is
+#     recognized when the obligation is fulfilled (invoice approved), not
+#     when cash arrives. Sales' completed-only definition understates
+#     recognized revenue; Product's completed+paid definition conflates
+#     revenue recognition with cash collection.
+#
+#   Decision 2 — Date field:
+#     CHOSEN: recognized_at (Finance approach)
+#     RATIONALE: GAAP revenue recognition determines the period. created_at
+#     (Sales) reflects deal activity, not revenue. paid_at (Product) reflects
+#     cash flow, not revenue. For monthly close and board reporting,
+#     recognized_at is the only GAAP-correct basis.
+#
+#   Decision 3 — Currency handling:
+#     CHOSEN: FX-converted at spot rate on recognized_at (Product approach,
+#     applied to Finance's date basis)
+#     RATIONALE: Multi-currency revenue should be reported in USD at the rate
+#     on the recognition date. Face-value treatment (Sales and Finance's
+#     historical approach) was acceptable when non-USD orders were <2% of
+#     volume. Now that GBP and EUR orders are ~18% of volume, face-value
+#     materially misrepresents USD revenue. FX gains/losses are handled
+#     separately by Treasury, not in the revenue line.
+#
+# SIGNED OFF BY: CFO (via email 2026-01-31)
+# IMPLEMENTED BY: Data team (this file + analyses/03_canonical_metrics.sql)
+# TESTS: tests/assert_no_revenue_without_date.sql
+
+version: 2
+
+metrics:
+  - name: monthly_revenue
+    label: Monthly Revenue (Canonical)
+    model: ref('fct_orders')
+    description: >
+      The single canonical definition of monthly revenue for ACME.
+      Board-ready. GAAP-aligned. Used by Finance, Sales, and Product
+      as of 2026-01-31.
+
+      DEFINITION:
+      - Orders with status 'completed' or 'invoiced' (accrual basis,
+        excludes pending and refunded)
+      - Date basis: recognized_at (when revenue was recognized for
+        accounting purposes, not when order was placed or paid)
+      - Currency: FX-converted to USD at the spot rate on recognized_at
+        date using raw_fx_rates
+      - Excludes orders with null recognized_at (pending + refunded)
+
+      WHAT THIS ANSWERS:
+      "How much revenue did ACME recognize in this calendar month?"
+      This is the board number, the P&L number, and the number Finance
+      closes each month.
+
+      WHAT THIS DOES NOT ANSWER:
+      - Cash collected (use paid_at + status='completed' for that)
+      - Deals closed by Sales (use created_at + status='completed')
+      - Pipeline / booked ARR (separate metric, not in this model)
+
+    calculation_method: sum
+    expression: amount_usd_converted
+    timestamp: recognized_at
+    time_grains: [month, quarter, year]
+    dimensions:
+      - customer_id
+      - currency
+      - status
+    filters:
+      - field: is_revenue_recognized
+        operator: '='
+        value: "true"
+      - field: recognized_at
+        operator: 'is not'
+        value: "null"
+
+  - name: monthly_revenue_usd_only
+    label: Monthly Revenue — USD Orders Only
+    model: ref('fct_orders')
+    description: >
+      Subset of monthly_revenue for USD-denominated orders only.
+      Useful for validating that FX conversion is working correctly:
+      amount_usd_converted should equal amount_usd_face for these orders.
+      Not used for board reporting.
+
+    calculation_method: sum
+    expression: amount_usd_converted
+    timestamp: recognized_at
+    time_grains: [month]
+    filters:
+      - field: is_revenue_recognized
+        operator: '='
+        value: "true"
+      - field: currency
+        operator: '='
+        value: "'USD'"
+      - field: recognized_at
+        operator: 'is not'
+        value: "null"
+
+  - name: monthly_revenue_fx_impact
+    label: Monthly Revenue — FX Conversion Impact
+    model: ref('fct_orders')
+    description: >
+      The dollar impact of FX conversion on monthly revenue.
+      Computed as: SUM(amount_usd_converted) - SUM(amount_usd_face)
+      for non-USD orders in the recognized period. A positive value means
+      FX rates moved in ACME's favor (foreign currencies strengthened vs USD).
+      Monitor this to understand when FX is materially affecting the board
+      revenue number.
+
+    calculation_method: derived
+    expression: "SUM(amount_usd_converted) - SUM(amount_usd_face)"
+    timestamp: recognized_at
+    time_grains: [month]
+    filters:
+      - field: is_revenue_recognized
+        operator: '='
+        value: "true"
+      - field: currency
+        operator: '!='
+        value: "'USD'"
+      - field: recognized_at
+        operator: 'is not'
+        value: "null"

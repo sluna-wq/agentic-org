@@ -1,16 +1,16 @@
 {
   "cycle": 20,
-  "timestamp": "2026-02-28T20:39:08Z",
-  "duration_minutes": 0,
-  "duration_api_ms": 626,
+  "timestamp": "2026-03-01T03:23:13Z",
+  "duration_minutes": 12,
+  "duration_api_ms": 713657,
   "model": "sonnet",
-  "turns": 1,
-  "cost_usd": 0,
+  "turns": 4,
+  "cost_usd": 2.06990755,
   "usage": {
-    "input_tokens": 0,
-    "cache_creation_input_tokens": 0,
-    "cache_read_input_tokens": 0,
-    "output_tokens": 0,
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 16642,
+    "cache_read_input_tokens": 61662,
+    "output_tokens": 4526,
     "server_tool_use": {
       "web_search_requests": 0,
       "web_fetch_requests": 0
@@ -18,15 +18,15 @@
     "service_tier": "standard",
     "cache_creation": {
       "ephemeral_1h_input_tokens": 0,
-      "ephemeral_5m_input_tokens": 0
+      "ephemeral_5m_input_tokens": 16642
     },
     "inference_geo": "",
     "iterations": [],
     "speed": "standard"
   },
   "status": "error",
-  "subtype": "success",
-  "error": "SDK exception: Claude Code process exited with code 1",
+  "subtype": "error_max_budget_usd",
+  "error": "Agent ended with: error_max_budget_usd",
   "error_category": "agent_error",
-  "result_summary": "Credit balance is too low"
+  "result_summary": null
 }
