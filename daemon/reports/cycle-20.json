@@ -1,16 +1,16 @@
 {
   "cycle": 20,
-  "timestamp": "2026-03-01T20:41:50Z",
-  "duration_minutes": 5,
-  "duration_api_ms": 285968,
+  "timestamp": "2026-03-02T03:10:54Z",
+  "duration_minutes": 0,
+  "duration_api_ms": 638,
   "model": "sonnet",
-  "turns": 25,
-  "cost_usd": 1.1102615999999998,
+  "turns": 1,
+  "cost_usd": 0,
   "usage": {
-    "input_tokens": 25,
-    "cache_creation_input_tokens": 39186,
-    "cache_read_input_tokens": 863486,
-    "output_tokens": 9371,
+    "input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 0,
     "server_tool_use": {
       "web_search_requests": 0,
       "web_fetch_requests": 0
@@ -18,15 +18,15 @@
     "service_tier": "standard",
     "cache_creation": {
       "ephemeral_1h_input_tokens": 0,
-      "ephemeral_5m_input_tokens": 39186
+      "ephemeral_5m_input_tokens": 0
     },
     "inference_geo": "",
     "iterations": [],
     "speed": "standard"
   },
-  "status": "success",
+  "status": "error",
   "subtype": "success",
-  "error": null,
-  "error_category": null,
-  "result_summary": "Cycle #26 (harness #20) complete.\n\n**Summary:**\n\n**Orient**: Backlog clear for daemon-executable work. No CEO responses pending. All state files current.\n\n**Quality audit**: Verified all 10 walkthroughs have Agent Lens sections — all confirmed present and substantive. WT-09 is the deepest (208 lines on semantic authority and conflict detection); WT-10 synthesizes all nine prior lenses. No remediation needed.\n\n**Housekeeping**:\n- `BACKLOG.md` cleaned up — BL-025 (scaffold WT-09/10) was marked com"
+  "error": "SDK exception: Claude Code process exited with code 1",
+  "error_category": "agent_error",
+  "result_summary": "Credit balance is too low"
 }
