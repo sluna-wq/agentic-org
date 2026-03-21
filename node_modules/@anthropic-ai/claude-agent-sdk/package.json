@@ -1,6 +1,6 @@
 {
   "name": "@anthropic-ai/claude-agent-sdk",
-  "version": "0.2.80",
+  "version": "0.2.81",
   "main": "sdk.mjs",
   "types": "sdk.d.ts",
   "exports": {
@@ -15,6 +15,10 @@
     "./browser": {
       "types": "./browser-sdk.d.ts",
       "default": "./browser-sdk.js"
+    },
+    "./bridge": {
+      "types": "./bridge.d.ts",
+      "default": "./bridge.mjs"
     },
     "./sdk-tools": {
       "types": "./sdk-tools.d.ts"
@@ -58,5 +62,5 @@
     "@img/sharp-win32-arm64": "^0.34.2",
     "@img/sharp-win32-x64": "^0.34.2"
   },
-  "claudeCodeVersion": "2.1.80"
+  "claudeCodeVersion": "2.1.81"
 }
