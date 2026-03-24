@@ -1,0 +1,96 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: >
+      Cleaned staging layer for raw order data. One row per order.
+      This model intentionally preserves all three date fields (created_at,
+      paid_at, recognized_at) and makes no choice about which to use for
+      revenue reporting. That choice is the subject of the CFO decision
+      documented in analyses/04_decision_log.sql and analyses/03_canonical_metrics.sql.
+
+      WARNING: Do not aggregate amount_local directly for multi-currency revenue
+      totals. Use fct_orders which joins fx_rates and produces amount_usd_converted.
+
+    columns:
+      - name: order_id
+        description: >
+          Primary key. Unique identifier for each order.
+          Format: ORD-NNN (e.g., ORD-001).
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: >
+          Foreign key to customer master. Format: CUST-NNN.
+          Not validated in this walkthrough (no customer dim table).
+        tests:
+          - not_null
+
+      - name: status
+        description: >
+          Order lifecycle status, lowercased. Four valid values:
+          - 'completed': Order fulfilled and paid. Sales counts this as revenue.
+          - 'invoiced': Invoice sent, payment not yet received. Finance counts
+            this as recognized revenue (accrual basis). Sales does NOT count this.
+          - 'pending': Order created, not yet invoiced. No team counts this as
+            revenue. Excluded from all definitions.
+          - 'refunded': Payment was received then reversed. Excluded from all
+            revenue definitions (the original order may have been 'completed').
+          The status filter is Conflict #1 between team definitions.
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['completed', 'invoiced', 'pending', 'refunded']
+
+      - name: amount_local
+        description: >
+          Transaction amount in the order's native currency (see currency column).
+          For USD orders this equals the USD revenue amount directly.
+          For GBP and EUR orders, this must be converted using raw_fx_rates
+          before aggregating with USD orders. Using amount_local directly for
+          multi-currency totals is Conflict #3 between team definitions —
+          Sales and Finance use face value USD (implicitly ignoring non-USD FX),
+          while Product converts to USD at the transaction-date spot rate.
+        tests:
+          - not_null
+
+      - name: currency
+        description: >
+          ISO 4217 currency code for amount_local. Values in seed data:
+          'USD', 'GBP', 'EUR'. Most orders are USD. FX conversion rates
+          are in raw_fx_rates.
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['USD', 'GBP', 'EUR']
+
+      - name: created_at
+        description: >
+          Timestamp when the order was placed (deal signed / checkout initiated).
+          Used by Sales as the date basis for revenue attribution because it
+          reflects the sales team's activity. This is Conflict #2 dimension A.
+          Never null — every order has a creation time.
+        tests:
+          - not_null
+
+      - name: paid_at
+        description: >
+          Timestamp when cash was received (payment confirmed by payment processor).
+          Used by Product as the date basis because it reflects actual customer
+          conversion. NULL for invoiced orders (cash not yet received), pending
+          orders, and refunded orders (the refund nullifies the payment event).
+          This is Conflict #2 dimension B. Null for ~30% of orders.
+
+      - name: recognized_at
+        description: >
+          Timestamp when revenue was formally recognized under accrual accounting.
+          Set by Finance/billing systems, not by payment processors.
+          Used by Finance as the date basis because it aligns with GAAP reporting.
+          For 'completed' orders recognized_at typically equals paid_at.
+          For 'invoiced' orders recognized_at is set at invoice approval — Finance
+          recognizes the revenue even before cash arrives. For 'pending' and
+          'refunded' orders recognized_at is NULL.
+          This is Conflict #2 dimension C — the three teams use three different
+          date fields to answer "when did this revenue happen?"

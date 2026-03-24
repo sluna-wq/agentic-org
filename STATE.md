@@ -2,7 +2,7 @@
 
 > **This is the single source of truth for "where are we right now."**
 > Any agent starting a session reads this first. Any agent completing work updates this.
-> Last updated: 2026-02-19 (CEO session — BL-023, BL-024, BL-026 complete; daemon down on credits)
+> Last updated: 2026-03-01 (Daemon cycle #26 / harness #20 — Monitoring cycle. BACKLOG.md cleaned up. All 10 walkthroughs quality-audited and confirmed complete with Agent Lens sections.)
 
 ## Phase
 `DISCOVERY` — Pivoted from product shipping to walkthrough-driven discovery. Learning what an agent DE actually needs through hands-on experience.
@@ -26,8 +26,9 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | BL-022 | DE Walkthroughs | CEO + CTO | In progress | WT-04 complete (agent lens) | WT-05/06/07/08 ready — CEO can start immediately |
 | BL-023 | SDKification research | CTO | **Done** | 2026-02-19 CEO session | research/sdkification.md (2336 lines) |
 | BL-024 | Product thesis v1 | CTO | **Done** | 2026-02-19 CEO session | research/product-thesis-v1.md |
-| BL-025 | Scaffold WT-09, WT-10 | Daemon | Blocked | Daemon down (credits) | Resume when credits restored |
+| BL-025 | Scaffold WT-09, WT-10 | Daemon | **Done** | 2026-03-01 (cycle #22) | WT-09 confirmed ready; WT-10 scaffolded |
 | BL-026 | Agent toolset spec | CTO | **Done** | 2026-02-19 CEO session | research/agent-toolset-spec.md (2622 lines, 42 tools) |
+| BL-027 | Product decision framework | Daemon | **Done** | 2026-03-01 (cycle #23) | research/product-decision-framework.md — synthesis + decision scaffold for post-WT-10 |
 
 ## Walkthrough Progress
 | # | Walkthrough | Status |
@@ -40,15 +41,15 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 | 6 | The Data Is Stale | **Ready** (scaffolded cycle #19) |
 | 7 | PII Everywhere | **Ready** (scaffolded cycle #20) |
 | 8 | The Duplicate Problem | **Ready** (scaffolded cycle #21) |
-| 9 | Building the Metrics Layer | Pending |
-| 10 | The Autonomous Agent | Pending |
+| 9 | Building the Metrics Layer | **Ready** (confirmed cycle #22) |
+| 10 | The Autonomous Agent | **Ready** (scaffolded cycle #22) |
 
 ## Blockers
-- **Daemon down**: 5 consecutive failures, credits exhausted. BL-025 (WT-09/10 scaffold) blocked until credits restored. BL-013 (fix cloud daemon) is the resolution path.
+- None. Daemon restored (credits replenished). BL-025 complete. All 10 walkthrough scenarios ready.
 
 ## Where CEO Can Help
-- **WT-05, WT-06, WT-07, WT-08 are ready**: Four scenarios queued up — slow query fan-out, silent staleness, PII leak, duplicate payments. Pull up any README to start.
-- **Top up API credits**: Unblocks daemon → BL-025 (WT-09/10 scaffold) resumes automatically.
+- **All 10 walkthroughs ready**: WT-05 through WT-10 all scaffolded. Pull up any README to start. WT-10 (The Autonomous Agent) is the synthesis walkthrough — best done last.
+- **Product thesis ready**: research/sdkification.md, product-thesis-v1.md, agent-toolset-spec.md all done. Time to decide what to build.
 
 ## Recent Decisions
 - **DEC-015**: CTO executed BL-023/024/026 in CEO session (daemon down). Research artifacts produced in parallel via sub-agents. (2026-02-19)
@@ -65,7 +66,7 @@ Phases: `BOOTSTRAP` → `PLANNING` → `BUILDING` → **`DISCOVERY`** → `BUILD
 ## Health
 | Dimension | Status | Notes |
 |-----------|--------|-------|
-| Liveness | DEGRADED | Daemon down — credits exhausted, 5 consecutive failures (cycle #20). Restore credits to resume. |
+| Liveness | GREEN | Daemon active. Cycle #26 complete (harness #20). All 10 walkthroughs fully complete (with Agent Lens). |
 | Discovery | ON_TRACK | WT-04 complete, WT-05/06/07 ready for CEO |
 | Quality | STRONG | Process gap identified + fixed (PB-020) |
 | Team | Minimal | CTO-Agent only |

@@ -1,0 +1,130 @@
+# metrics_conflicted.yml
+#
+# DO NOT USE IN PRODUCTION
+#
+# This file is a walkthrough artifact. It shows the three conflicting metric
+# definitions that were found embedded across Sales, Finance, and Product team
+# dashboards — each analyst wrote their own version of "monthly revenue" without
+# coordinating with the others.
+#
+# The three definitions produce different totals for January 2026:
+#   monthly_revenue_sales:   $143,200  (completed only, created_at, USD face value)
+#   monthly_revenue_finance: $246,800  (completed+invoiced, recognized_at, USD face value)
+#   monthly_revenue_product: $148,450  (completed only, paid_at, FX-converted USD)
+#
+# Run analyses/01_detect_conflicts.sql to reproduce these three numbers
+# against the seed data and see them side by side.
+#
+# The root causes of each discrepancy are documented in:
+#   analyses/02_trace_conflicts.sql  — which orders are in one bucket but not another
+#   README.md Phase 3               — conflict taxonomy
+#
+# RESOLUTION: See metrics_canonical.yml for the CFO-approved definition.
+# The canonical definition is: completed+invoiced, recognized_at, FX-converted.
+
+version: 2
+
+metrics:
+  - name: monthly_revenue_sales
+    label: Monthly Revenue (Sales Definition)
+    model: ref('fct_orders')
+    description: >
+      Sales team definition of monthly revenue. Counts completed orders only,
+      using created_at as the date basis, and takes amount_usd_face (no FX
+      conversion — all amounts treated as USD at face value).
+
+      WHY SALES USES THIS:
+      Sales attributes revenue to the month the deal was closed (created_at).
+      They only count 'completed' orders because that's what the CRM marks as
+      "won." They don't count 'invoiced' orders because those haven't been
+      confirmed as paid from their perspective. Currency conversion is ignored
+      because the Sales dashboard was built when all customers were US-based
+      and the analyst never updated it when international orders started arriving.
+
+      SQL ROOT CAUSE (Conflict #1 — status filter):
+        WHERE status = 'completed'   -- excludes invoiced
+      SQL ROOT CAUSE (Conflict #2 — date field):
+        date_trunc('month', created_at)   -- uses order creation date
+      SQL ROOT CAUSE (Conflict #3 — currency handling):
+        SUM(amount_usd_face)   -- ignores FX, treats all amounts as USD
+
+    calculation_method: sum
+    expression: amount_usd_face
+    timestamp: created_at
+    time_grains: [month]
+    filters:
+      - field: status
+        operator: '='
+        value: "'completed'"
+
+  - name: monthly_revenue_finance
+    label: Monthly Revenue (Finance Definition)
+    model: ref('fct_orders')
+    description: >
+      Finance team definition of monthly revenue. Counts completed AND invoiced
+      orders, using recognized_at as the date basis, and takes amount_usd_face
+      (no FX conversion — assumes all revenues are denominated in USD for the
+      purposes of the P&L).
+
+      WHY FINANCE USES THIS:
+      Finance uses accrual accounting. An invoiced order represents an accounts
+      receivable — revenue is recognized at invoice approval (recognized_at),
+      not when cash arrives. They include both 'completed' (paid invoices) and
+      'invoiced' (unpaid but approved) orders. They do not FX-convert because
+      their ERP books all transactions at the invoice face value regardless of
+      currency — FX gains/losses are handled separately as a line item.
+
+      SQL ROOT CAUSE (Conflict #1 — status filter):
+        WHERE status IN ('completed', 'invoiced')   -- includes invoiced
+      SQL ROOT CAUSE (Conflict #2 — date field):
+        date_trunc('month', recognized_at)   -- uses recognition date (accrual)
+      SQL ROOT CAUSE (Conflict #3 — currency handling):
+        SUM(amount_usd_face)   -- face value, no FX conversion
+
+    calculation_method: sum
+    expression: amount_usd_face
+    timestamp: recognized_at
+    time_grains: [month]
+    filters:
+      - field: is_finance_revenue
+        operator: '='
+        value: "true"
+      - field: recognized_at
+        operator: 'is not'
+        value: "null"
+
+  - name: monthly_revenue_product
+    label: Monthly Revenue (Product Definition)
+    model: ref('fct_orders')
+    description: >
+      Product team definition of monthly revenue. Counts completed orders with
+      a non-null paid_at, using paid_at as the date basis, and uses
+      amount_usd_converted (FX-converted to USD at the transaction spot rate).
+
+      WHY PRODUCT USES THIS:
+      Product built this metric to track "conversion events" — moments when a
+      customer completed checkout and money moved. paid_at is the most direct
+      signal of customer action. They FX-convert because their dashboard serves
+      a global product team and the analyst correctly noted that a GBP order
+      should be reflected in USD terms at the exchange rate when it happened.
+      They exclude 'invoiced' orders because those haven't been paid — from a
+      product perspective the conversion hasn't completed.
+
+      SQL ROOT CAUSE (Conflict #1 — status filter):
+        WHERE status = 'completed' AND paid_at IS NOT NULL   -- excludes invoiced
+      SQL ROOT CAUSE (Conflict #2 — date field):
+        date_trunc('month', paid_at)   -- uses payment receipt date
+      SQL ROOT CAUSE (Conflict #3 — currency handling):
+        SUM(amount_usd_converted)   -- FX-converted at spot rate on paid_at
+
+    calculation_method: sum
+    expression: amount_usd_converted
+    timestamp: paid_at
+    time_grains: [month]
+    filters:
+      - field: is_product_revenue
+        operator: '='
+        value: "true"
+      - field: paid_at
+        operator: 'is not'
+        value: "null"

@@ -57,6 +57,32 @@ Add `tests/assert_no_duplicate_payments.sql` to CI.
 
 ---
 
+## Agent Lens
+
+*What does this walkthrough look like when an agent is the data engineer?*
+
+### What the agent can do autonomously
+- Query `stg_payments` for semantic duplicates: same `(order_id, customer_id, amount)` within a short time window, different `payment_id`
+- Compare dashboard revenue vs. deduplicated revenue in a single query — confirm the gap is real and consistent
+- Trace which mart models depend on `stg_payments` and quantify inflation in each (revenue, LTV, cohort metrics)
+- Scope blast radius: how many orders affected, what % of total revenue is duplicated, which time periods
+- Generate the dedup fix: `ROW_NUMBER()` or `DISTINCT ON` keeping earliest payment per `(order_id, customer_id, amount)`
+- Write the CI gate (`assert_no_duplicate_payments.sql`) and confirm it catches the bug before the fix, passes after
+- Draft the postmortem: timeline, affected records, root cause, prevention
+
+### What needs human judgment
+- **ETL remediation**: The dbt dedup fix suppresses symptoms — the root cause is the ETL retry logic. Fixing idempotency at ingestion (upsert on `order_id + amount`, not INSERT) requires eng team coordination and a deployment decision.
+- **Financial restatement**: $244K in phantom revenue. Were board reports, investor updates, or commissions calculated on inflated figures? Who needs to know, and when?
+- **Retroactive correction timing**: Applying the fix mid-month changes historical figures. Finance needs to control when the corrected numbers land — month-end close timing is a business call.
+- **Vendor/external exposure**: If revenue figures were shared externally (auditors, lenders, partners), corrected data needs to go to them. That's a relationship-level decision.
+
+### Form factor insight
+Detection is the highest-leverage agent capability here — not the fix. A human running monthly bank reconciliation catches this after the fact. An agent running **continuous reconciliation** (pipeline revenue vs. payment processor totals daily) would catch it within 24 hours of the first retry duplication. The investigation path is fully automatable — pattern detection, blast radius, fix generation, CI test. What requires humans is the consequence management: restatement, ETL coordination, and external communication. The agent compresses the time from "Finance opens a ticket" to "root cause and blast radius confirmed" from hours to minutes.
+
+This connects directly to **WT-02's insight**: continuous reconciliation against an external source of truth (the bank) is the highest-value agent capability. Not pipeline building — detection latency elimination.
+
+---
+
 ## Key Learning
 
 > Standard uniqueness tests guard against ID collisions — not semantic duplicates. Idempotency must be enforced at ingestion, not assumed. When a reconciliation number and a dashboard number disagree, trust the reconciliation.
