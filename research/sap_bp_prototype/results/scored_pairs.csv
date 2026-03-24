@@ -1,0 +1,47 @@
+id_a,id_b,name_a,name_b,predicted_action,confidence,match_reason
+V017,V018,Valley Packaging Inc,Valley Packaging Incorporated,AUTO_MERGE,0.99,Exact tax ID match
+V010,V041,North Star Engineering,Continental Foods Distribution LLC,AUTO_MERGE,0.99,Exact tax ID match
+V001,V002,Acme Manufacturing Inc,ACME MANUFACTURING INC,AUTO_MERGE,0.99,Exact tax ID match
+C001,V003,Global Steel Corporation,Global Steel Corp,AUTO_MERGE,0.99,Exact tax ID match
+V004,V005,Precision Parts Co,Precision Parts Company,AUTO_MERGE,0.99,Exact tax ID match
+V006,V007,Atlas Industries LLC,Atlas-Meridian Industries LLC,AUTO_MERGE,0.99,Exact tax ID match
+V008,V009,Midwest Chemical Supply,Midwest Chemical Supply Co,AUTO_MERGE,0.99,Exact tax ID match
+V010,V011,North Star Engineering,North Star Engineering LLC,AUTO_MERGE,0.99,Exact tax ID match
+C002,V012,Great Lakes Polymers LLC,Great Lakes Polymers,AUTO_MERGE,0.99,Exact tax ID match
+V011,V041,North Star Engineering LLC,Continental Foods Distribution LLC,AUTO_MERGE,0.99,Exact tax ID match
+V013,V014,Apex Tooling Corp,Apex Tooling Corporation,AUTO_MERGE,0.99,Exact tax ID match
+V015,V016,Heritage Foods LLC,Heritage Foods LLC,AUTO_MERGE,0.99,Exact tax ID match
+V023,V024,Johnson Industrial LLC,Johnson Industrial,AUTO_MERGE,0.97,Exact IBAN match + similar name
+V019,V020,Summit Logistics Inc,Summit Logistics,AUTO_MERGE,0.97,Exact IBAN match + similar name
+V027,V028,Riverside Fabrication Inc,Riverside Fabrication,AUTO_MERGE,0.97,Exact IBAN match + similar name
+V021,V022,Tri-State Components,Tri State Components,AUTO_MERGE,0.88,High name similarity + city + address/phone
+V025,V026,Keystone Materials Corp,Keystone Materials Corporation,AUTO_MERGE,0.88,High name similarity + city + address/phone
+C003,V033,Allied Manufacturing Group,Allied Manufacturing,AUTO_MERGE,0.88,High name similarity + city + address/phone
+V034,V035,National West Supply,National West Supplies Co,AUTO_MERGE,0.88,High name similarity + city + address/phone
+V031,V032,Pioneer Distributing,Pioneer Distribution Co,AUTO_MERGE,0.80,High name similarity + city + address/phone
+V003,V012,Global Steel Corp,Great Lakes Polymers,DISTINCT,0.01,Conflicting tax IDs — different legal entities
+V004,V025,Precision Parts Co,Keystone Materials Corp,DISTINCT,0.01,Conflicting tax IDs — different legal entities
+V001,V033,Acme Manufacturing Inc,Allied Manufacturing,DISTINCT,0.01,Conflicting tax IDs — different legal entities
+V002,V033,ACME MANUFACTURING INC,Allied Manufacturing,DISTINCT,0.01,Conflicting tax IDs — different legal entities
+V009,V036,Midwest Chemical Supply Co,Lakeside Chemicals LLC,DISTINCT,0.01,Conflicting tax IDs — different legal entities
+V038,V039,Pacific Rim Trading LLC,Pacific Rim Trading Corp,DISTINCT,0.01,Conflicting tax IDs — different legal entities
+V040,V041,Continental Foods Group,Continental Foods Distribution LLC,DISTINCT,0.01,Conflicting tax IDs — different legal entities
+V023,V041,Johnson Industrial LLC,Continental Foods Distribution LLC,DISTINCT,0.01,Conflicting tax IDs — different legal entities
+V029,V030,Continental Metals Inc,Continental Metal Inc,ESCALATE,0.65,High name similarity + city + address/phone
+V036,V037,Lakeside Chemicals LLC,Lakeside Chemical Corp,ESCALATE,0.65,High name similarity + city + address/phone
+C003,V001,Allied Manufacturing Group,Acme Manufacturing Inc,ESCALATE,0.45,Low confidence — insufficient signals
+V030,V040,Continental Metal Inc,Continental Foods Group,ESCALATE,0.45,Moderate similarity + city — escalate
+C006,V034,Crown Industrial Supply,National West Supply,ESCALATE,0.45,Low confidence — insufficient signals
+V009,V037,Midwest Chemical Supply Co,Lakeside Chemical Corp,ESCALATE,0.45,Low confidence — insufficient signals
+V029,V040,Continental Metals Inc,Continental Foods Group,ESCALATE,0.45,Moderate similarity + city — escalate
+V029,V041,Continental Metals Inc,Continental Foods Distribution LLC,ESCALATE,0.45,High name similarity + city or phone
+V030,V041,Continental Metal Inc,Continental Foods Distribution LLC,ESCALATE,0.45,High name similarity + city or phone
+C003,V002,Allied Manufacturing Group,ACME MANUFACTURING INC,ESCALATE,0.45,Low confidence — insufficient signals
+C006,V042,Crown Industrial Supply,National Parts Supply,ESCALATE,0.45,Low confidence — insufficient signals
+V034,V042,National West Supply,National Parts Supply,ESCALATE,0.45,High name similarity + city or phone
+V035,V042,National West Supplies Co,National Parts Supply,ESCALATE,0.45,High name similarity + city or phone
+V029,V043,Continental Metals Inc,National Parts Inc,ESCALATE,0.45,Low confidence — insufficient signals
+V034,V043,National West Supply,National Parts Inc,ESCALATE,0.45,High name similarity + city or phone
+V035,V043,National West Supplies Co,National Parts Inc,ESCALATE,0.45,High name similarity + city or phone
+V042,V043,National Parts Supply,National Parts Inc,ESCALATE,0.45,High name similarity + city or phone
+V043,V050,National Parts Inc,Northland Paper Packaging,ESCALATE,0.45,Low confidence — insufficient signals

@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: raw_orders
+        description: "Order master — one row per order. total_amount is the order-level total."
+      - name: raw_order_items
+        description: "Line items — one row per item per order. Orders with multiple products have multiple rows. Joining raw_orders to raw_order_items at order grain WITHOUT aggregating first causes the grain violation in fct_order_revenue."
+      - name: raw_customers
+        description: "Customer master with full PII — email, phone. PII must NOT pass through to mart outputs. tag: pii"
+      - name: raw_pipeline_runs
+        description: "dbt pipeline run metadata — used by the agent to detect staleness and phantom success patterns."

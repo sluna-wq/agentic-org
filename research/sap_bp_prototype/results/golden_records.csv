@@ -1,0 +1,31 @@
+golden_id,primary_id,secondary_id,status,name1,street,city,state,postal_code,tax_id,iban,phone,email,confidence,merge_reason
+GR-M-001,V001,V002,AUTO_MERGED,Acme Manufacturing Inc,123 Industrial Blvd,Chicago,IL,60601,36-1234567,IBAN001,312-555-0100,acct@acmemfg.com,0.99,Exact tax ID match
+GR-M-002,C001,V003,AUTO_MERGED,Global Steel Corporation,500 Steel Way,Pittsburgh,PA,15201,25-7654321,IBAN002,412-555-0200,ar@globalsteel.com,0.99,Exact tax ID match
+GR-M-003,V004,V005,AUTO_MERGED,Precision Parts Co,45 Factory Rd,Detroit,MI,48201,38-9876543,IBAN005,313-555-0500,info@precisionparts.com,0.99,Exact tax ID match
+GR-M-004,V006,V007,AUTO_MERGED,Atlas Industries LLC,200 Commerce Dr,Denver,CO,80201,84-3456789,IBAN006,720-555-0600,ap@atlasindustries.com,0.99,Exact tax ID match
+GR-M-005,V008,V009,AUTO_MERGED,Midwest Chemical Supply,789 Chemical Ln,Kansas City,MO,64101,43-2345678,IBAN007,816-555-0700,supply@mwchem.com,0.99,Exact tax ID match
+GR-M-006,V010,V011,AUTO_MERGED,North Star Engineering,456 Innovation Pkwy,Minneapolis,MN,55401,41-8765432,IBAN008,612-555-0800,,0.99,Exact tax ID match
+GR-M-007,C002,V012,AUTO_MERGED,Great Lakes Polymers LLC,100 Polymer Dr,Cleveland,OH,44101,34-5678901,IBAN010,216-555-1000,customer@glpolymers.com,0.99,Exact tax ID match
+GR-M-008,V013,V014,AUTO_MERGED,Apex Tooling Corp,333 Manufacturing Way,Cincinnati,OH,45201,31-6789012,IBAN011,513-555-1100,,0.99,Exact tax ID match
+GR-M-009,V015,V016,AUTO_MERGED,Heritage Foods LLC,567 Food Processing Blvd,Des Moines,IA,50301,42-7890123,IBAN012,515-555-1200,purchasing@heritagefoods.com,0.99,Exact tax ID match
+GR-M-010,V017,V018,AUTO_MERGED,Valley Packaging Inc,890 Box Maker Rd,Columbus,OH,43201,31-0123456,IBAN013,614-555-1300,,0.99,Exact tax ID match
+GR-M-011,V019,V020,AUTO_MERGED,Summit Logistics Inc,1000 Distribution Pkwy,Louisville,KY,40201,61-2345678,IBAN014,502-555-1400,ap@summitlogistics.com,0.97,Exact IBAN match + similar name
+GR-M-012,V021,V022,AUTO_MERGED,Tri-State Components,88 Parts Ave,Indianapolis,IN,46201,35-3456789,,317-555-1500,,0.88,High name similarity + city + address/phone
+GR-M-013,V023,V024,AUTO_MERGED,Johnson Industrial LLC,222 Industrial Rd,St. Louis,MO,63101,43-4567890,IBAN016,314-555-1600,purchasing@johnsonindustrial.com,0.97,Exact IBAN match + similar name
+GR-M-014,V025,V026,AUTO_MERGED,Keystone Materials Corp,777 Resource Blvd,Philadelphia,PA,19101,23-5678901,,215-555-1700,info@keystonematerials.com,0.88,High name similarity + city + address/phone
+GR-M-015,V027,V028,AUTO_MERGED,Riverside Fabrication Inc,45 River Rd,Sacramento,CA,95801,94-6789012,IBAN018,916-555-1800,,0.97,Exact IBAN match + similar name
+GR-M-016,V031,V032,AUTO_MERGED,Pioneer Distributing,900 Warehouse Dr,Memphis,TN,38101,62-6789012,,901-555-2100,,0.80,High name similarity + city + address/phone
+GR-M-017,C003,V033,AUTO_MERGED,Allied Manufacturing Group,600 Production Dr,Buffalo,NY,14201,16-7890123,,716-555-2200,,0.88,High name similarity + city + address/phone
+GR-M-018,V034,V035,AUTO_MERGED,National West Supply,1400 Trade Center Dr,Denver,CO,80202,,,720-555-2300,,0.88,High name similarity + city + address/phone
+GR-M-019,V011,V041,AUTO_MERGED,North Star Engineering LLC,456 Innovation Pkwy,Minneapolis,MN,55401,41-8765432,IBAN008,612-555-2900,,0.99,Exact tax ID match
+GR-M-020,V010,V041,AUTO_MERGED,North Star Engineering,456 Innovation Pkwy,Minneapolis,MN,55401,41-8765432,IBAN008,612-555-0800,,0.99,Exact tax ID match
+GR-S-001,V038,,SINGLETON,Pacific Rim Trading LLC,888 Harbor Blvd,Los Angeles,CA,90001,95-1234567,,213-555-2600,,1.00,No duplicate found
+GR-S-002,V039,,SINGLETON,Pacific Rim Trading Corp,777 Harbor Blvd,Los Angeles,CA,90002,95-7654321,,310-555-2700,,1.00,No duplicate found
+GR-S-003,V044,,SINGLETON,Cascade Plastics Corp,100 Cascade Way,Portland,OR,97201,93-1234567,IBAN020,503-555-3200,info@cascadeplastics.com,1.00,No duplicate found
+GR-S-004,V045,,SINGLETON,Iron Bridge Fabricators,2000 Bridge St,Pittsburgh,PA,15202,25-2345678,IBAN021,412-555-3300,,1.00,No duplicate found
+GR-S-005,V046,,SINGLETON,Delta Fluid Systems,300 Delta Dr,Houston,TX,77001,74-3456789,,713-555-3400,procurement@deltafluid.com,1.00,No duplicate found
+GR-S-006,V047,,SINGLETON,Granite State Machining,750 Precision Blvd,Manchester,NH,03101,02-4567890,,603-555-3500,,1.00,No duplicate found
+GR-S-007,V048,,SINGLETON,Blue Ridge Components,450 Mountain Industrial Rd,Charlotte,NC,28201,56-5678901,IBAN023,704-555-3600,,1.00,No duplicate found
+GR-S-008,C004,,SINGLETON,Westfield Electronics Inc,200 Tech Park Dr,Austin,TX,78701,74-6789012,,512-555-3700,purchasing@westfieldelec.com,1.00,No duplicate found
+GR-S-009,C005,,SINGLETON,Meridian Aerospace Parts,1 Aerospace Blvd,Seattle,WA,98101,91-7890123,,206-555-3800,,1.00,No duplicate found
+GR-S-010,V049,,SINGLETON,Sunrise Metal Works,75 Sunrise Industrial Dr,Phoenix,AZ,85001,86-9012345,,602-555-4000,,1.00,No duplicate found

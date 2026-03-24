@@ -1,0 +1,57 @@
+record_id,record_type,sap_id,name1,name2,street,city,state,postal_code,country,tax_id,iban,phone,email,data_source,created_year
+V001,VENDOR,LF10001,Acme Manufacturing Inc,,123 Industrial Blvd,Chicago,IL,60601,US,36-1234567,IBAN001,312-555-0100,acct@acmemfg.com,LEGACY,1998
+V002,VENDOR,LF10002,ACME MANUFACTURING INC,,123 Industrial Boulevard,Chicago,IL,60601,US,36-1234567,,,,MANUAL_ENTRY,2006
+V003,VENDOR,LF10003,Global Steel Corp,,500 Steel Way,Pittsburgh,PA,15201,US,25-7654321,IBAN002,412-555-0200,procurement@globalsteel.com,LEGACY,2001
+C001,CUSTOMER,KN10001,Global Steel Corporation,,500 Steel Way,Pittsburgh,PA,15201,US,25-7654321,,412-555-0200,ar@globalsteel.com,MANUAL_ENTRY,2009
+V004,VENDOR,LF10004,Precision Parts Co,,45 Factory Rd,Detroit,MI,48201,US,38-9876543,IBAN005,313-555-0500,info@precisionparts.com,LEGACY,1999
+V005,VENDOR,LF10005,Precision Parts Company,,45 Factory Road,Detroit,MI,48201,US,38-9876543,,313-555-0500,,MANUAL_ENTRY,2003
+V006,VENDOR,LF10006,Atlas Industries LLC,,200 Commerce Dr,Denver,CO,80201,US,84-3456789,IBAN006,720-555-0600,ap@atlasindustries.com,LEGACY,1997
+V007,VENDOR,LF10007,Atlas-Meridian Industries LLC,,200 Commerce Dr,Denver,CO,80202,US,84-3456789,IBAN006,720-555-0600,ap@atlasmeridian.com,ACQUISITION_MERIDIAN,2015
+V008,VENDOR,LF10008,Midwest Chemical Supply,,789 Chemical Ln,Kansas City,MO,64101,US,43-2345678,IBAN007,816-555-0700,,LEGACY,2000
+V009,VENDOR,LF10009,Midwest Chemical Supply Co,,789 Chemical Lane,Kansas City,MO,64101,US,43-2345678,,816-555-0700,supply@mwchem.com,MANUAL_ENTRY,2011
+V010,VENDOR,LF10010,North Star Engineering,,456 Innovation Pkwy,Minneapolis,MN,55401,US,41-8765432,IBAN008,612-555-0800,,LEGACY,1995
+V011,VENDOR,LF10011,North Star Engineering LLC,,456 Innovation Pkwy,Minneapolis,MN,55401,US,41-8765432,IBAN008,,,MANUAL_ENTRY,2007
+V012,VENDOR,LF10012,Great Lakes Polymers,,100 Polymer Dr,Cleveland,OH,44101,US,34-5678901,IBAN010,216-555-1000,vendor@glpolymers.com,LEGACY,2002
+C002,CUSTOMER,KN10002,Great Lakes Polymers LLC,,100 Polymer Dr,Cleveland,OH,44101,US,34-5678901,,216-555-1000,customer@glpolymers.com,MANUAL_ENTRY,2014
+V013,VENDOR,LF10013,Apex Tooling Corp,,333 Manufacturing Way,Cincinnati,OH,45201,US,31-6789012,IBAN011,513-555-1100,,LEGACY,1996
+V014,VENDOR,LF10014,Apex Tooling Corporation,,333 Manufacturing Way,Cincinnati,OH,45201,US,31-6789012,,513-555-1100,,MANUAL_ENTRY,2008
+V015,VENDOR,LF10015,Heritage Foods LLC,,567 Food Processing Blvd,Des Moines,IA,50301,US,42-7890123,IBAN012,515-555-1200,purchasing@heritagefoods.com,LEGACY,1993
+V016,VENDOR,LF10016,Heritage Foods LLC,,567 Food Processing Blvd,Des Moines,IA,50301,US,42-7890123,IBAN012,515-555-1200,ap@heritagefoods.com,MANUAL_ENTRY,2017
+V017,VENDOR,LF10017,Valley Packaging Inc,,890 Box Maker Rd,Columbus,OH,43201,US,31-0123456,IBAN013,614-555-1300,,LEGACY,2004
+V018,VENDOR,LF10018,Valley Packaging Incorporated,,890 Box Maker Road,Columbus,OH,43201,US,31-0123456,,614-555-1300,,MANUAL_ENTRY,2010
+V019,VENDOR,LF10019,Summit Logistics Inc,,1000 Distribution Pkwy,Louisville,KY,40201,US,61-2345678,IBAN014,502-555-1400,ap@summitlogistics.com,LEGACY,1999
+V020,VENDOR,LF10020,Summit Logistics,,1000 Distribution Pkwy,Louisville,KY,40201,US,,IBAN014,502-555-1400,,MANUAL_ENTRY,2005
+V021,VENDOR,LF10021,Tri-State Components,,88 Parts Ave,Indianapolis,IN,46201,US,35-3456789,,317-555-1500,,LEGACY,2001
+V022,VENDOR,LF10022,Tri State Components,,88 Parts Avenue,Indianapolis,IN,46201,US,,317-555-1500,,,MANUAL_ENTRY,2004
+V023,VENDOR,LF10023,Johnson Industrial LLC,,222 Industrial Rd,St. Louis,MO,63101,US,43-4567890,IBAN016,314-555-1600,purchasing@johnsonindustrial.com,LEGACY,1998
+V024,VENDOR,LF10024,Johnson Industrial,,222 Industrial Road,St. Louis,MO,63101,US,,IBAN016,,,MANUAL_ENTRY,2010
+V025,VENDOR,LF10025,Keystone Materials Corp,,777 Resource Blvd,Philadelphia,PA,19101,US,23-5678901,,215-555-1700,info@keystonematerials.com,LEGACY,2003
+V026,VENDOR,LF10026,Keystone Materials Corporation,,777 Resource Blvd,Philadelphia,PA,19101,US,,,215-555-1700,,MANUAL_ENTRY,2007
+V027,VENDOR,LF10027,Riverside Fabrication Inc,,45 River Rd,Sacramento,CA,95801,US,94-6789012,IBAN018,916-555-1800,,LEGACY,2005
+V028,VENDOR,LF10028,Riverside Fabrication,,45 River Road,Sacramento,CA,95801,US,,IBAN018,916-555-1800,,MANUAL_ENTRY,2012
+V029,VENDOR,LF10029,Continental Metals Inc,,400 Metal Way,Cleveland,OH,44102,US,,319-555-1900,,LEGACY,2000
+V030,VENDOR,LF10030,Continental Metal Inc,,411 Metal Way,Cleveland,OH,44103,US,,,216-555-2000,,MANUAL_ENTRY,2012
+V031,VENDOR,LF10031,Pioneer Distributing,,900 Warehouse Dr,Memphis,TN,38101,US,62-6789012,,901-555-2100,,LEGACY,1997
+V032,VENDOR,LF10032,Pioneer Distribution Co,,,Memphis,TN,,US,,,,,,MANUAL_ENTRY,2006
+V033,VENDOR,LF10033,Allied Manufacturing,,600 Production Dr,Buffalo,NY,14201,US,16-7890123,,716-555-2200,,LEGACY,1999
+C003,CUSTOMER,KN10003,Allied Manufacturing Group,,600 Production Dr,Buffalo,NY,14201,US,,,716-555-2200,,MANUAL_ENTRY,2013
+V034,VENDOR,LF10034,National West Supply,,1400 Trade Center Dr,Denver,CO,80202,US,,319-555-2300,,,LEGACY,2001
+V035,VENDOR,LF10035,National West Supplies Co,,1400 Trade Center Drive,Denver,CO,80203,US,,,,,MANUAL_ENTRY,2009
+V036,VENDOR,LF10036,Lakeside Chemicals LLC,,500 Lake Shore Dr,Chicago,IL,60602,US,36-8901234,,312-555-2400,,LEGACY,2003
+V037,VENDOR,LF10037,Lakeside Chemical Corp,,502 Lake Shore Dr,Chicago,IL,60602,US,,,312-555-2500,,MANUAL_ENTRY,2011
+V038,VENDOR,LF10038,Pacific Rim Trading LLC,,888 Harbor Blvd,Los Angeles,CA,90001,US,95-1234567,,213-555-2600,,LEGACY,2003
+V039,VENDOR,LF10039,Pacific Rim Trading Corp,,777 Harbor Blvd,Los Angeles,CA,90002,US,95-7654321,,310-555-2700,,LEGACY,2006
+V040,VENDOR,LF10040,Continental Foods Group,,300 Corporate Dr,Minneapolis,MN,55402,US,41-1234567,,612-555-2800,,LEGACY,1991
+V041,VENDOR,LF10041,Continental Foods Distribution LLC,,300 Corporate Dr,Minneapolis,MN,55402,US,41-8765432,,612-555-2900,,MANUAL_ENTRY,2008
+V042,VENDOR,LF10042,National Parts Supply,,1500 Auto Parts Blvd,Detroit,MI,48202,US,,,313-555-3000,,LEGACY,1996
+V043,VENDOR,LF10043,National Parts Inc,,2200 Industrial Pkwy,Dearborn,MI,48126,US,,,734-555-3100,,LEGACY,2001
+V044,VENDOR,LF10044,Cascade Plastics Corp,,100 Cascade Way,Portland,OR,97201,US,93-1234567,IBAN020,503-555-3200,info@cascadeplastics.com,LEGACY,2000
+V045,VENDOR,LF10045,Iron Bridge Fabricators,,2000 Bridge St,Pittsburgh,PA,15202,US,25-2345678,IBAN021,412-555-3300,,LEGACY,1994
+V046,VENDOR,LF10046,Delta Fluid Systems,,300 Delta Dr,Houston,TX,77001,US,74-3456789,,713-555-3400,procurement@deltafluid.com,LEGACY,2002
+V047,VENDOR,LF10047,Granite State Machining,,750 Precision Blvd,Manchester,NH,03101,US,02-4567890,,603-555-3500,,LEGACY,1999
+V048,VENDOR,LF10048,Blue Ridge Components,,450 Mountain Industrial Rd,Charlotte,NC,28201,US,56-5678901,IBAN023,704-555-3600,,LEGACY,2001
+C004,CUSTOMER,KN10004,Westfield Electronics Inc,,200 Tech Park Dr,Austin,TX,78701,US,74-6789012,,512-555-3700,purchasing@westfieldelec.com,LEGACY,2005
+C005,CUSTOMER,KN10005,Meridian Aerospace Parts,,1 Aerospace Blvd,Seattle,WA,98101,US,91-7890123,,206-555-3800,,LEGACY,2003
+C006,CUSTOMER,KN10006,Crown Industrial Supply,,600 Crown Ct,Baltimore,MD,21201,US,52-8901234,IBAN025,410-555-3900,,LEGACY,2000
+V049,VENDOR,LF10049,Sunrise Metal Works,,75 Sunrise Industrial Dr,Phoenix,AZ,85001,US,86-9012345,,602-555-4000,,LEGACY,1997
+V050,VENDOR,LF10050,Northland Paper & Packaging,,900 Forest Products Way,Green Bay,WI,54301,US,39-0123456,,920-555-4100,info@northlandpaper.com,LEGACY,2006

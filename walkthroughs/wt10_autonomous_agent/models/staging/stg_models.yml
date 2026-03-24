@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Clean order records. One row per order. total_amount is the order-level declared total."
+    columns:
+      - name: order_id
+        description: "Primary key — one row per order"
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+      - name: order_date
+        tests:
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['completed', 'cancelled', 'pending', 'refunded']
+      - name: total_amount
+        description: "Order-level total in USD. Do NOT use this in aggregations joined to raw_order_items — use item-grain aggregations instead."
+
+  - name: stg_order_items
+    description: "Line-item records. One row per item per order. Orders can have 1–3 items. Aggregate to order grain BEFORE joining to stg_orders."
+    columns:
+      - name: item_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        description: "Foreign key to stg_orders. NOT unique in this table — multiple items can belong to one order."
+        tests:
+          - not_null
+      - name: line_total
+        description: "Revenue for this line item. Sum by order_id to get order-level revenue from items."
+
+  - name: stg_customers
+    description: "Customer master. Contains PII (email, phone) — these fields must not be selected into mart outputs."
+    columns:
+      - name: customer_id
+        description: "Primary key"
+        tests:
+          - unique
+          - not_null
+      - name: email
+        description: "PII — customer email address. MUST NOT appear in any mart-layer model. Mask or exclude before mart."
+      - name: phone
+        description: "PII — customer phone number. MUST NOT appear in any mart-layer model."
+      - name: plan
+        tests:
+          - accepted_values:
+              values: ['free', 'pro', 'enterprise']
+
+  - name: stg_pipeline_runs
+    description: "dbt pipeline run metadata. Used by the agent to detect staleness and phantom success."
+    columns:
+      - name: run_id
+        tests:
+          - unique
+          - not_null
+      - name: model_name
+        tests:
+          - not_null
+      - name: status
+        description: "'success', 'warning_cached', 'error'. warning_cached means dbt used a cached result and did NOT rerun the model — data is stale."
